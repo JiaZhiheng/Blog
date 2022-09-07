@@ -1,0 +1,1 @@
+import{_ as t,c as e,o as l,a as r}from"./app.826449cf.js";const f=JSON.parse('{"title":"","description":"","frontmatter":{},"headers":[],"relativePath":"guide/material/regularExpression.md"}'),a={name:"guide/material/regularExpression.md"},d=r("",1),n=[d];function s(i,c,g,x,_,o){return l(),e("div",null,n)}const p=t(a,[["render",s]]);export{f as __pageData,p as default};
