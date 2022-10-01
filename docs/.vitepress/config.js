@@ -10,13 +10,42 @@ export default defineConfig({
     ],
     // 导航栏
     nav: [
-      { text:"作品", link: "/guide/work/work" },
+      { text:"工作", link: "/guide/work/work" },
       { text:"文章", link: "/guide/article/test_article1" },
       { text:"资料", link: "/guide/material/regularExpression" }
     ],
     // 侧边栏
     sidebar: {
       // 作品
+      "/guide/work/": [
+        {
+          text: "Coupon",
+          items: [
+            {
+              text: "测试文章1",
+              link: "/guide/wrok/work.md",
+            },
+          ],
+        },
+        {
+          text: "Hiappo",
+          items: [
+            {
+              text: "测试文章1",
+              link: "/guide/wrok/work.md",
+            },
+          ],
+        },
+        {
+          text: "Astro",
+          items: [
+            {
+              text: "测试文章1",
+              link: "/guide/wrok/work.md",
+            },
+          ],
+        },
+      ],
       // 文章
       "/guide/article/": [
         {
