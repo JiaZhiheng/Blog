@@ -971,7 +971,10 @@
           stroke-linecap: round;
           stroke-linejoin: round;
         "></rect>
-            <rect x="146.86" y="146.7" width="78.33" height="49.77" style="
+            <rect x="146.86" y="146.7" width="78.33" height="49.77"
+            id="gear" 
+            class="picture"
+            style="
           fill: #fff;
           stroke: #263238;
           stroke-linecap: round;
@@ -1144,7 +1147,7 @@
     export default defineComponent({
         setup() {
             onMounted(() => {
-                let gear = document.getElementById("freepik--speech-bubble--inject-2");
+                let gear = document.getElementById("gear");
                 let gearInfo = gear.getBBox();
                 let originX = gearInfo.x + (gearInfo.width/2) + "px";
                 let originY = gearInfo.y + (gearInfo.height/2) + "px";
@@ -1388,6 +1391,11 @@
     .content:hover {
         box-shadow: 0px 0px 30px rgba(204, 204, 204, 0.5);
     }
+}
+
+/* 图片 */
+.picture {
+    /* transform-origin:  */
 }
 </style>
 
