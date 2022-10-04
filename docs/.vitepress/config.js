@@ -3,7 +3,7 @@ import { defineConfig } from 'vitepress'
 export default defineConfig({
   title: 'Vitepress-Blog', // 网站标题
   themeConfig: {
-    logo: '/avatar.svg', // 头像
+    logo: '/avatar.png', // 头像
     siteTitle: '爱搞事的跳跳虎', // 站点标题
     socialLinks: [ // 链接
       { icon: 'github', link: 'https://github.com/JiaZhiheng' }
@@ -147,7 +147,7 @@ export default defineConfig({
     footer: {
       message: 'Released under the MIT License.',
       copyright: 'Copyright © 2019-present Evan You'
-    }
+    },   
   },
 })
 

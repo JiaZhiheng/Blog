@@ -1138,7 +1138,7 @@
     </div>
 </template>
 <script>
-    import { defineComponent, onMounted } from 'vue'
+    import { defineComponent, onMounted, nextTick } from 'vue'
     
     export default defineComponent({
         setup() {
@@ -1147,6 +1147,20 @@
                 let url = window.location.href;
                 url = url + "guide/article/" + param + "/test_article.html";
                 window.location.href = url;
+            }
+
+            // 监听页面宽度变化
+            window.onresize = () => {
+              window.screenWidths = document.body.clientWidth
+              let image = document.getElementsByClassName('image');
+              image = Array.from(image)[0];
+              if(window.screenWidths < 640) {
+                image.setAttribute('style', 'margin: -56px 0 -18px');
+              } else if(window.screenWidths < 960) {
+                image.setAttribute('style', 'margin: -88px 0 -18px');
+              } else {
+                image.setAttribute('style', 'margin: 0; min-width: 100px');
+              }
             }
 
             onMounted(() => {
@@ -1158,10 +1172,6 @@
                 picture = Array.from(picture)[0];
                 parentNode.replaceChild(svg, picture);
                 parentNode.setAttribute('style', 'transform: translate(0, 0)');
-
-                // let button = document.getElementsByClassName('VPButton medium brand');
-                // button = Array.from(button)[0];
-                // button.setAttribute('style', 'color: #fff; border-color:transparent');
             })
 
             return {
@@ -1237,7 +1247,6 @@
 .svg {
     width: 320px;
     height: 320px;
-    padding: 20px 0;
 }
 
 /* 云 */
