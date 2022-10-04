@@ -3,27 +3,27 @@ import { defineConfig } from 'vitepress'
 export default defineConfig({
   title: 'Vitepress-Blog', // 网站标题
   themeConfig: {
-    logo: '/avatar.png', // 头像
-    siteTitle: 'JiaZhiheng', // 站点标题
+    logo: '/avatar.svg', // 头像
+    siteTitle: '爱搞事的跳跳虎', // 站点标题
     socialLinks: [ // 链接
       { icon: 'github', link: 'https://github.com/JiaZhiheng' }
     ],
     // 导航栏
     nav: [
       { text:"工作", link: "/guide/work/work" },
-      { text:"文章", link: "/guide/article/test_article1" },
-      { text:"资料", link: "/guide/material/regularExpression" }
+      { text:"文章", link: "/guide/article/article" },
+      { text:"资料", link: "/guide/material/material" },
     ],
     // 侧边栏
     sidebar: {
-      // 作品
+      // 工作
       "/guide/work/": [
         {
           text: "Coupon",
           items: [
             {
-              text: "测试文章1",
-              link: "/guide/wrok/work.md",
+              text: "Coupon",
+              link: "/guide/work/coupon/Coupon",
             },
           ],
         },
@@ -31,8 +31,8 @@ export default defineConfig({
           text: "Hiappo",
           items: [
             {
-              text: "测试文章1",
-              link: "/guide/wrok/work.md",
+              text: "Hiappo",
+              link: "/guide/work/hiappo/Hiappo",
             },
           ],
         },
@@ -40,8 +40,8 @@ export default defineConfig({
           text: "Astro",
           items: [
             {
-              text: "测试文章1",
-              link: "/guide/wrok/work.md",
+              text: "Astro",
+              link: "/guide/work/astro/Astro",
             },
           ],
         },
@@ -52,8 +52,8 @@ export default defineConfig({
           text: "HTML",
           items: [
             {
-              text: "测试文章1",
-              link: "/guide/article/test_article1",
+              text: "HTML",
+              link: "/guide/article/html/test_article",
             },
           ],
         },
@@ -61,8 +61,8 @@ export default defineConfig({
           text: "CSS",
           items: [
             {
-              text: "测试文章2",
-              link: "/guide/article/test_article2",
+              text: "CSS",
+              link: "/guide/article/css/test_article",
             },
           ],
         },
@@ -70,8 +70,8 @@ export default defineConfig({
           text: "JavaScript",
           items: [
             {
-              text: "测试文章3",
-              link: "/guide/article/test_article3",
+              text: "JavaScript",
+              link: "/guide/article/javascript/test_article",
             },
           ],
         },
@@ -79,8 +79,8 @@ export default defineConfig({
           text: "Vue",
           items: [
             {
-              text: "测试文章4",
-              link: "/guide/article/test_article4",
+              text: "Vue",
+              link: "/guide/article/vue/test_article",
             },
           ],
         },
@@ -88,8 +88,8 @@ export default defineConfig({
           text: "前端工程化",
           items: [
             {
-              text: "测试文章5",
-              link: "/guide/article/test_article5",
+              text: "前端工程化",
+              link: "/guide/article/webpack/test_article",
             },
           ],
         },
@@ -97,8 +97,8 @@ export default defineConfig({
           text: "浏览器原理",
           items: [
             {
-              text: "测试文章6",
-              link: "/guide/article/test_article6",
+              text: "浏览器原理",
+              link: "/guide/article/chrome/test_article",
             },
           ],
         },
@@ -106,8 +106,8 @@ export default defineConfig({
           text: "计算机网络",
           items: [
             {
-              text: "测试文章7",
-              link: "/guide/article/test_article7",
+              text: "计算机网络",
+              link: "/guide/article/network/test_article",
             },
           ],
         },
@@ -115,8 +115,8 @@ export default defineConfig({
           text: "数据结构与算法",
           items: [
             {
-              text: "测试文章8",
-              link: "/guide/article/test_article8",
+              text: "数据结构与算法",
+              link: "/guide/article/datastructure/test_article",
             },
           ],
         },

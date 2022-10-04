@@ -1,6 +1,5 @@
 <template>
-    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 500 500">
-    
+    <svg class="svg" id="svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 500 500">
         <defs>
             <clipPath id="freepik--clip-path--inject-2">
                 <path
@@ -971,10 +970,7 @@
           stroke-linecap: round;
           stroke-linejoin: round;
         "></rect>
-            <rect x="146.86" y="146.7" width="78.33" height="49.77"
-            id="gear" 
-            class="picture"
-            style="
+            <rect x="146.86" y="146.7" width="78.33" height="49.77" style="
           fill: #fff;
           stroke: #263238;
           stroke-linecap: round;
@@ -1062,12 +1058,11 @@
         "></line>
         </g>
     </svg>
-
     <div class="wrap">
         <div class="container">
             <div class="items">
                 <div class="item">
-                    <div class="content">
+                    <div class="content" @click="link('html')">
                         <div class="icon">
                             <img src="/html.svg" alt="html" />
                         </div>
@@ -1076,7 +1071,7 @@
                     </div>
                 </div>
                 <div class="item">
-                    <div class="content">
+                    <div class="content" @click="link('css')">
                         <div class="icon">
                             <img src="/css.svg" alt="css" />
                         </div>
@@ -1085,7 +1080,7 @@
                     </div>
                 </div>
                 <div class="item">
-                    <div class="content">
+                    <div class="content" @click="link('javascript')">
                         <div class="icon">
                             <img src="/javascript.svg" alt="javascript" />
                         </div>
@@ -1094,7 +1089,7 @@
                     </div>
                 </div>
                 <div class="item">
-                    <div class="content">
+                    <div class="content" @click="link('vue')">
                         <div class="icon">
                             <img src="/vue.svg" alt="vue" />
                         </div>
@@ -1103,7 +1098,7 @@
                     </div>
                 </div>
                 <div class="item">
-                    <div class="content">
+                    <div class="content" @click="link('webpack')">
                         <div class="icon">
                             <img src="/webpack.svg" alt="webpack" />
                         </div>
@@ -1112,7 +1107,7 @@
                     </div>
                 </div>
                 <div class="item">
-                    <div class="content">
+                    <div class="content" @click="link('chrome')">
                         <div class="icon">
                             <img src="/chrome.svg" alt="chrome" />
                         </div>
@@ -1121,7 +1116,7 @@
                     </div>
                 </div>
                 <div class="item">
-                    <div class="content">
+                    <div class="content" @click="link('network')">
                         <div class="icon">
                             <img src="/network.svg" alt="network" />
                         </div>
@@ -1130,7 +1125,7 @@
                     </div>
                 </div>
                 <div class="item">
-                    <div class="content">
+                    <div class="content" @click="link('datastructure')">
                         <div class="icon">
                             <img src="/datastructure.svg" alt="datastructure" />
                         </div>
@@ -1144,17 +1139,34 @@
 </template>
 <script>
     import { defineComponent, onMounted } from 'vue'
+    
     export default defineComponent({
         setup() {
+            // 控制路径跳转
+            const link = (param) => {
+                let url = window.location.href;
+                url = url + "guide/article/" + param + "/test_article.html";
+                window.location.href = url;
+            }
+
             onMounted(() => {
-                let gear = document.getElementById("gear");
-                let gearInfo = gear.getBBox();
-                let originX = gearInfo.x + (gearInfo.width/2) + "px";
-                let originY = gearInfo.y + (gearInfo.height/2) + "px";
-                // 旋转中心
-                console.log(originX);
-                console.log(originY);
+                /* 将图片替换为动画svg */
+                let parentNode = document.getElementsByClassName('image-container');
+                parentNode = Array.from(parentNode)[0];
+                let svg = document.getElementById('svg');
+                let picture = document.getElementsByClassName('VPImage image-src');
+                picture = Array.from(picture)[0];
+                parentNode.replaceChild(svg, picture);
+                parentNode.setAttribute('style', 'transform: translate(0, 0)');
+
+                // let button = document.getElementsByClassName('VPButton medium brand');
+                // button = Array.from(button)[0];
+                // button.setAttribute('style', 'color: #fff; border-color:transparent');
             })
+
+            return {
+                link
+            };
         }
     })
     
@@ -1188,11 +1200,11 @@
 }
 
 .content {
-    border: 1px solid #f9f9f9;
+    border: 1px solid var(--vp-c-bg-soft);
     border-radius: 12px;
     padding: 24px;
     height: 100%;
-    background-color: #f9f9f9;
+    background-color: var(--vp-c-bg-soft);
 }
 
 .icon {
@@ -1219,7 +1231,13 @@
     line-height: 24px;
     font-size: 14px;
     font-weight: 500;
-    color: rgba(60, 60, 60, 0.7);
+    color: var(--vp-c-text-2);
+}
+
+.svg {
+    width: 320px;
+    height: 320px;
+    padding: 20px 0;
 }
 
 /* 云 */
@@ -1377,6 +1395,11 @@
     .item {
         width: 50%;
     }
+
+    .svg {
+        width: 392px;
+        height: 392px;
+    }
 }
 
 @media screen and (min-width: 960px) {
@@ -1391,11 +1414,12 @@
     .content:hover {
         box-shadow: 0px 0px 30px rgba(204, 204, 204, 0.5);
     }
-}
 
-/* 图片 */
-.picture {
-    /* transform-origin:  */
+    .svg {
+        width: 420px;
+        height: 420px;
+        padding: 0;
+    }
 }
 </style>
 
