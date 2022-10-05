@@ -1,5 +1,6 @@
 <template>
-    <svg class="svg" id="svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 500 500">
+
+      <svg class="svg" id="svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 500 500">
         <defs>
             <clipPath id="freepik--clip-path--inject-2">
                 <path
@@ -1057,88 +1058,89 @@
           stroke-linejoin: round;
         "></line>
         </g>
-    </svg>
-    <div class="wrap">
-        <div class="container">
-            <div class="items">
-                <div class="item">
-                    <div class="content" @click="link('html')">
-                        <div class="icon">
-                            <img src="/html.svg" alt="html" />
-                        </div>
-                        <h2 class="title">HTML</h2>
-                        <p class="details">超文本标记语言</p>
-                    </div>
-                </div>
-                <div class="item">
-                    <div class="content" @click="link('css')">
-                        <div class="icon">
-                            <img src="/css.svg" alt="css" />
-                        </div>
-                        <h2 class="title">CSS</h2>
-                        <p class="details">层叠样式表</p>
-                    </div>
-                </div>
-                <div class="item">
-                    <div class="content" @click="link('javascript')">
-                        <div class="icon">
-                            <img src="/javascript.svg" alt="javascript" />
-                        </div>
-                        <h2 class="title">JavaScript</h2>
-                        <p class="details">基于原型和头等函数的多范式高级解释型编程语言</p>
-                    </div>
-                </div>
-                <div class="item">
-                    <div class="content" @click="link('vue')">
-                        <div class="icon">
-                            <img src="/vue.svg" alt="vue" />
-                        </div>
-                        <h2 class="title">Vue</h2>
-                        <p class="details">渐进式 JavaScript 框架</p>
-                    </div>
-                </div>
-                <div class="item">
-                    <div class="content" @click="link('webpack')">
-                        <div class="icon">
-                            <img src="/webpack.svg" alt="webpack" />
-                        </div>
-                        <h2 class="title">构建工具</h2>
-                        <p class="details">敬请期待...</p>
-                    </div>
-                </div>
-                <div class="item">
-                    <div class="content" @click="link('chrome')">
-                        <div class="icon">
-                            <img src="/chrome.svg" alt="chrome" />
-                        </div>
-                        <h2 class="title">浏览器原理</h2>
-                        <p class="details">敬请期待...</p>
-                    </div>
-                </div>
-                <div class="item">
-                    <div class="content" @click="link('network')">
-                        <div class="icon">
-                            <img src="/network.svg" alt="network" />
-                        </div>
-                        <h2 class="title">计算机网络</h2>
-                        <p class="details">敬请期待...</p>
-                    </div>
-                </div>
-                <div class="item">
-                    <div class="content" @click="link('datastructure')">
-                        <div class="icon">
-                            <img src="/datastructure.svg" alt="datastructure" />
-                        </div>
-                        <h2 class="title">数据结构与算法</h2>
-                        <p class="details">敬请期待...</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+      </svg>
+      <div class="wrap">
+          <div class="container">
+              <div class="items">
+                  <div class="item">
+                      <div class="content" @click="link('html')">
+                          <div class="icon">
+                              <img src="/html.svg" alt="html" />
+                          </div>
+                          <h2 class="title">HTML</h2>
+                          <p class="details">超文本标记语言</p>
+                      </div>
+                  </div>
+                  <div class="item">
+                      <div class="content" @click="link('css')">
+                          <div class="icon">
+                              <img src="/css.svg" alt="css" />
+                          </div>
+                          <h2 class="title">CSS</h2>
+                          <p class="details">层叠样式表</p>
+                      </div>
+                  </div>
+                  <div class="item">
+                      <div class="content" @click="link('javascript')">
+                          <div class="icon">
+                              <img src="/javascript.svg" alt="javascript" />
+                          </div>
+                          <h2 class="title">JavaScript</h2>
+                          <p class="details">基于原型和头等函数的多范式高级解释型编程语言</p>
+                      </div>
+                  </div>
+                  <div class="item">
+                      <div class="content" @click="link('vue')">
+                          <div class="icon">
+                              <img src="/vue.svg" alt="vue" />
+                          </div>
+                          <h2 class="title">Vue</h2>
+                          <p class="details">渐进式 JavaScript 框架</p>
+                      </div>
+                  </div>
+                  <div class="item">
+                      <div class="content" @click="link('webpack')">
+                          <div class="icon">
+                              <img src="/webpack.svg" alt="webpack" />
+                          </div>
+                          <h2 class="title">构建工具</h2>
+                          <p class="details">敬请期待...</p>
+                      </div>
+                  </div>
+                  <div class="item">
+                      <div class="content" @click="link('chrome')">
+                          <div class="icon">
+                              <img src="/chrome.svg" alt="chrome" />
+                          </div>
+                          <h2 class="title">浏览器原理</h2>
+                          <p class="details">敬请期待...</p>
+                      </div>
+                  </div>
+                  <div class="item">
+                      <div class="content" @click="link('network')">
+                          <div class="icon">
+                              <img src="/network.svg" alt="network" />
+                          </div>
+                          <h2 class="title">计算机网络</h2>
+                          <p class="details">敬请期待...</p>
+                      </div>
+                  </div>
+                  <div class="item">
+                      <div class="content" @click="link('datastructure')">
+                          <div class="icon">
+                              <img src="/datastructure.svg" alt="datastructure" />
+                          </div>
+                          <h2 class="title">数据结构与算法</h2>
+                          <p class="details">敬请期待...</p>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+
 </template>
 <script>
-    import { defineComponent, onMounted, nextTick } from 'vue'
+    import { defineComponent, onMounted } from 'vue'
     
     export default defineComponent({
         setup() {
@@ -1172,6 +1174,16 @@
                 picture = Array.from(picture)[0];
                 parentNode.replaceChild(svg, picture);
                 parentNode.setAttribute('style', 'transform: translate(0, 0)');
+                /* 监听页面宽度变化 */
+                let image = document.getElementsByClassName('image');
+                image = Array.from(image)[0];
+                if(window.screen.width < 640) {
+                  image.setAttribute('style', 'margin: -56px 0 -18px');
+                } else if(window.screen.width < 960) {
+                  image.setAttribute('style', 'margin: -88px 0 -18px');
+                } else {
+                  image.setAttribute('style', 'margin: 0; min-width: 100px');
+                }
             })
 
             return {

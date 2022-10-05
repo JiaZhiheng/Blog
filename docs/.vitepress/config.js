@@ -13,6 +13,7 @@ export default defineConfig({
       { text:"工作", link: "/guide/work/work" },
       { text:"文章", link: "/guide/article/article" },
       { text:"资料", link: "/guide/material/material" },
+      { text:"项目", link: "/" },
     ],
     // 侧边栏
     sidebar: {

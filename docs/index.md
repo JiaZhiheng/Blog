@@ -12,10 +12,10 @@ hero:
     alt: Vitepress
   actions:
     - theme: brand
-      text: Get Started
+      text: 我的项目
       link: /guide/article/article
     - theme: alt
-      text: View on GitHub
+      text: GitHub
       link: https://github.com/JiaZhiheng
 ---
 
