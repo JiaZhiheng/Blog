@@ -13,7 +13,7 @@ export default defineConfig({
       { text:"工作", link: "/guide/work/work" },
       { text:"文章", link: "/guide/article/article" },
       { text:"资料", link: "/guide/material/material" },
-      { text:"项目", link: "/" },
+      { text:"项目", link: "/guide/project/project" },
     ],
     // 侧边栏
     sidebar: {
@@ -142,13 +142,25 @@ export default defineConfig({
             },
           ],
         },
-      ]
+      ],
+      // 项目
+      "/guide/project/": [
+        {
+          text: "项目",
+          items: [
+            {
+              text: "项目",
+              link: "/guide/project/project",
+            },
+          ],
+        },
+      ],
     },
     /* 页脚 */
-    footer: {
-      message: 'Released under the MIT License.',
-      copyright: 'Copyright © 2019-present Evan You'
-    },   
+    // footer: {
+    //   message: 'Released under the MIT License.',
+    //   copyright: 'Copyright © 2019-present Evan You'
+    // },   
   },
 })
 

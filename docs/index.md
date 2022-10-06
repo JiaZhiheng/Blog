@@ -13,7 +13,10 @@ hero:
   actions:
     - theme: brand
       text: 我的项目
-      link: /guide/article/article
+      link: 
+    - theme: alt
+      text: 关于作者
+      link: 
     - theme: alt
       text: GitHub
       link: https://github.com/JiaZhiheng
