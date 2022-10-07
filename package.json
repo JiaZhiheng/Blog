@@ -11,11 +11,11 @@
     "docs:serve": "vitepress serve docs"
   },
   "devDependencies": {
+    "naive-ui": "^2.33.4",
     "vitepress": "^1.0.0-alpha.13",
     "vue": "^3.2.38"
   },
   "dependencies": {
-    "animate.css": "^4.1.1",
-    "tdesign-vue-next": "^0.23.1"
+    "animate.css": "^4.1.1"
   }
 }
