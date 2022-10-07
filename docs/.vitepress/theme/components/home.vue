@@ -1051,8 +1051,8 @@
     </g>
   </svg>
   <div class="wrap">
-    <div class="container">
-      <div class="items">
+    <div id="container" class="container">
+      <div id="items" class="items">
         <div class="item">
           <div class="content" @click="link('html')">
             <div class="icon">
@@ -1144,22 +1144,22 @@
           </n-carousel>
         </div>
         <div class="swiper-vertical">
-          <div class="in">
-            <div class="roll" id="roll">
-            <ul>
+          <div class="carousel">
+            <div class="roll">
+            <ul id="vertical">
               <li>
                 <div class="li">
-                    <p style="color:#4285f4">项目A</p>
+                  <p style="color:#4285f4">项目A</p>
                 </div>
               </li>
               <li>
                 <div class="li">
-                    <p style="color:#34a853">项目B</p>
+                  <p style="color:#34a853">项目B</p>
                 </div>
               </li>
               <li>
                 <div class="li">               
-                    <p style="color:#fbbc05">项目C</p>
+                  <p style="color:#fbbc05">项目C</p>
                 </div>
               </li>
               <li>
@@ -1196,7 +1196,7 @@ export default defineComponent({
 
   setup() {
     const data = reactive({
-      show: false,
+      
     })
 
     /* 控制路径跳转 */
@@ -1228,30 +1228,23 @@ export default defineComponent({
     }
 
     onMounted(() => {
-      let name = document.getElementsByClassName('name');
-      let text = document.getElementsByClassName('text');
-      let tagline = document.getElementsByClassName('tagline');
-      let actions = document.getElementsByClassName('actions');
-      let parentNode = document.getElementsByClassName('image-container');
-      let picture = document.getElementsByClassName('VPImage image-src');
-      let image = document.getElementsByClassName('image');
-      let container = document.getElementsByClassName('container');
-      let items = document.getElementsByClassName('items');
-      let project = document.getElementsByClassName('VPButton medium brand');
-      let VPHome = document.getElementsByClassName('VPHome');
+      let name = Array.from(document.getElementsByClassName('name'))[0];
+      let text = Array.from(document.getElementsByClassName('text'))[0];
+      let tagline = Array.from(document.getElementsByClassName('tagline'))[0];
+      let actions = Array.from(document.getElementsByClassName('actions'))[0];
+      let parentNode = Array.from(document.getElementsByClassName('image-container'))[0];
+      let picture = Array.from(document.getElementsByClassName('VPImage image-src'))[0];
+      let image = Array.from(document.getElementsByClassName('image'))[0];
+      let project = Array.from(document.getElementsByClassName('VPButton medium brand'))[0];
+      let VPHome = Array.from(document.getElementsByClassName('VPHome'))[0];
+
+      
+      
+      let container = document.getElementById('container');
+      let items = document.getElementById('items');
       let svg = document.getElementById('svg');
 
-      name = Array.from(name)[0];
-      text = Array.from(text)[0];
-      tagline = Array.from(tagline)[0];
-      actions = Array.from(actions)[0];
-      parentNode = Array.from(parentNode)[0];
-      picture = Array.from(picture)[0];
-      image = Array.from(image)[0];
-      container = Array.from(container)[3];
-      items = Array.from(items)[0];
-      project = Array.from(project)[0];
-      VPHome = Array.from(VPHome)[0];
+
 
       /* 展示我的项目 */
       project.onclick = function () {
@@ -1268,6 +1261,12 @@ export default defineComponent({
           }
         }
       }
+
+
+
+
+
+
 
       /* 移入效果动画 */
       text.style.display = "none";
@@ -1706,7 +1705,7 @@ export default defineComponent({
     align-items: center;
   }
 
-  .in {
+  .carousel {
     height: 100%;
     width: calc(100% - 10px);
     margin-left: 10px;
@@ -1718,20 +1717,25 @@ export default defineComponent({
     width: 100%;
     height: 100%;
     overflow:hidden;
+    position: relative;
   }
   .roll ul{
     list-style: none;
-    animation: ani 10s  linear infinite;  
+    animation: ani 10s  linear infinite;
+    height: 100%;
+    position: relative;  
     /*动画ani，5s，循环匀速播放*/
   }
   .roll li{
     line-height:20px;
     font-size:14px;
     text-align:center;
+    height: calc(50% - 8px);
+    margin-bottom: 16px;
 }
   .li {
     width: 100%;
-    height: 198px;
+    height: 100%;
     margin-bottom: 16px;
     background-color: #eee;
     border-radius: 12px;
@@ -1774,4 +1778,5 @@ export default defineComponent({
 
 }
 </style>
+
 
