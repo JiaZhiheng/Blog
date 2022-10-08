@@ -1167,16 +1167,6 @@
                   <p style="color:#ea4335">项目D</p>
                 </div>
               </li>
-              <li>
-                <div class="li">
-                  <p style="color:#4285f4">项目A</p>
-                </div>
-              </li>
-              <li>
-                <div class="li">
-                  <p style="color:#34a853">项目B</p>
-                </div>
-              </li>
             </ul>
           </div>
           </div>
@@ -1238,14 +1228,42 @@ export default defineComponent({
       let project = Array.from(document.getElementsByClassName('VPButton medium brand'))[0];
       let VPHome = Array.from(document.getElementsByClassName('VPHome'))[0];
 
-      
-      
       let container = document.getElementById('container');
       let items = document.getElementById('items');
       let svg = document.getElementById('svg');
 
-
-
+      /* 垂直轮播图 */
+      let vertical = document.getElementById('vertical');
+      let verticalArray = Array.from(vertical.getElementsByTagName("li"));
+      vertical.append(verticalArray[0].cloneNode(true), verticalArray[1].cloneNode(true));
+      let time = 3200                             // 静止时长       3200ms
+      let step = vertical.offsetHeight / 2 + 8;   // 垂直移动像素数  214px
+      let moveTime = 20 / verticalArray.length;   // 移动时间百分比  5%
+      let staticTime = 80 / verticalArray.length; // 静止时间百分比  20%  
+      let percentage = 0;                         // 动画进度百分比
+      let keyframes = `@keyframes vertical{`;     // 生成 @keyframes 动画
+      for(let i = 0; i <= verticalArray.length * 2; i++ ){
+        keyframes+=`
+          ${percentage}%{
+              top: ${i % 2 == 0 ? -i * step / 2 : -(i - 1) * step / 2}px;
+          }`;
+        if(i % 2 == 0) {
+          percentage = percentage + staticTime;
+        } else {
+          percentage = percentage + moveTime;
+        }
+      }
+      keyframes+='}';
+      const verticalSwiper = (time) => {
+        time = time * (verticalArray.length + 1) / 1000;                                         // 换算动画总时长
+        vertical.style.animation = `vertical ${time}s linear infinite`  // 改变 css
+        let style = document.createElement('style');        
+        style.type = 'text/css'; 
+        style.innerHTML=`${keyframes}`;
+        document.getElementsByTagName('head').item(0).appendChild(style);
+      }
+      verticalSwiper(time); 
+      
       /* 展示我的项目 */
       project.onclick = function () {
         if (window.screen.width < 960) {
@@ -1261,12 +1279,6 @@ export default defineComponent({
           }
         }
       }
-
-
-
-
-
-
 
       /* 移入效果动画 */
       text.style.display = "none";
@@ -1719,20 +1731,21 @@ export default defineComponent({
     overflow:hidden;
     position: relative;
   }
+
   .roll ul{
     list-style: none;
-    animation: ani 10s  linear infinite;
     height: 100%;
-    position: relative;  
-    /*动画ani，5s，循环匀速播放*/
+    position: relative; 
   }
+
   .roll li{
     line-height:20px;
     font-size:14px;
     text-align:center;
     height: calc(50% - 8px);
     margin-bottom: 16px;
-}
+  }
+
   .li {
     width: 100%;
     height: 100%;
@@ -1745,37 +1758,6 @@ export default defineComponent({
     font-size: 26px;
     font-weight: bold;
   }
-
-  @keyframes ani{  
-    0%{
-        margin-top: 0;
-    }
-    12.5%{
-        margin-top: 0;
-    }
-    25%{
-        margin-top: -214px;
-    }
-    37.5%{
-        margin-top: -214px;
-    }
-    50%{
-        margin-top: -428px;
-    }
-    62.5%{
-        margin-top: -428px;
-    }
-    75%{
-        margin-top: -642px;
-    }
-    87.5%{
-        margin-top: -642px;
-    }
-    100%{
-        margin-top: -856px; /*最后是一个，这样可以打断动画*/
-    }
-}
-
 }
 </style>
 
