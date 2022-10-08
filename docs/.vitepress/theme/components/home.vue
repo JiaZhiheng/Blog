@@ -1128,7 +1128,7 @@
       </div>
       <div class="swiper">
         <div class="swiper-horizontal">
-          <n-carousel effect="fade" dot-type="line" :interval="3000" autoplay show-arrow>
+          <!-- <n-carousel effect="fade" dot-type="line" :interval="3000" autoplay show-arrow>
             <div class="demo-item" style="color:#4285f4">
               <h1 style="font-size:38px;font-weight:bold">项目一</h1>
             </div>
@@ -1141,29 +1141,38 @@
             <div class="demo-item" style="color:#ea4335">
               <h1 style="font-size:38px;font-weight:bold">项目四</h1>
             </div>
-          </n-carousel>
+          </n-carousel> -->
+          
         </div>
         <div class="swiper-vertical">
           <div class="roll">
             <ul class="vertical" id="vertical">
               <li class="vertical-li">
                 <div class="vertical-item">
-                  <p style="color:#4285f4">项目A</p>
+                  <a href="/" class="coverlink">
+                    <p style="color:#4285f4">项目A</p>
+                  </a>
                 </div>
               </li>
               <li class="vertical-li">
                 <div class="vertical-item">
-                  <p style="color:#34a853">项目B</p>
-                </div>
-              </li>
-              <li class="vertical-li">
-                <div class="vertical-item">               
-                  <p style="color:#fbbc05">项目C</p>
+                  <a href="/" class="coverlink">
+                    <p style="color:#34a853">项目B</p>
+                  </a>
                 </div>
               </li>
               <li class="vertical-li">
                 <div class="vertical-item">
-                  <p style="color:#ea4335">项目D</p>
+                  <a href="/" class="coverlink">
+                    <p style="color:#fbbc05">项目C</p>
+                  </a>               
+                </div>
+              </li>
+              <li class="vertical-li">
+                <div class="vertical-item">
+                  <a href="/" class="coverlink">
+                    <p style="color:#ea4335">项目D</p>
+                  </a>
                 </div>
               </li>
             </ul>
@@ -1236,19 +1245,16 @@ export default defineComponent({
       let vertical = document.getElementById('vertical');
       let verticalArray = Array.from(vertical.getElementsByTagName("li"));
       vertical.append(verticalArray[0].cloneNode(true), verticalArray[1].cloneNode(true));
-      let time = 4                                // 单步时长       4s
-      let moveTime = 10 / verticalArray.length;   // 移动时间百分比  15%
-      let staticTime = 90 / verticalArray.length; // 静止时间百分比  85%
-      let step = vertical.offsetHeight / 2 + 8;   // 垂直移动像素数  214px  
-      let percentage = 0;                         // 动画进度百分比
-      let keyframes = `@keyframes vertical{`;     // 生成 @keyframes 动画
+      let time = 4                                  // 单步时长       4s
+      let moveTime = 12.5 / verticalArray.length;   // 移动时间百分比  12.5%
+      let staticTime = 87.5 / verticalArray.length; // 静止时间百分比  87.5%
+      let step = vertical.offsetHeight / 2 + 8;     // 垂直移动像素数  214px  
+      let percentage = 0;                           // 动画进度百分比
+      let keyframes = `@keyframes vertical{`;       // 生成 @keyframes 动画
       for(let i = 0; i <= verticalArray.length * 2; i++ ){
         percentage > 100 ? percentage = 100 : percentage = percentage; // 保证进度百分比不超出100%
         console.log(percentage);
-        keyframes+=`
-          ${percentage}%{
-              top: ${i % 2 == 0 ? -i * step / 2 : -(i - 1) * step / 2}px;
-          }`;
+        keyframes+=`${percentage}%{top: ${i % 2 == 0 ? -i * step / 2 : -(i - 1) * step / 2}px;}`;
         if(i % 2 == 0) {
           percentage = percentage + staticTime;
         } else {
@@ -1344,6 +1350,10 @@ export default defineComponent({
 .item {
   width: 100%;
   padding: 8px;
+}
+
+.swiper {
+  display: none;
 }
 
 .content {
@@ -1751,11 +1761,17 @@ export default defineComponent({
     margin-bottom: 16px;
     background-color: #eee;
     border-radius: 12px;
+    font-size: 26px;
+    font-weight: bold;
+    position:relative
+  }
+
+  .coverlink {
+    height: 100%;
+    width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 26px;
-    font-weight: bold;
   }
 }
 </style>
