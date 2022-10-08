@@ -16,9 +16,6 @@ hero:
       link: 
     - theme: alt
       text: 关于作者
-      link: 
-    - theme: alt
-      text: GitHub
       link: https://github.com/JiaZhiheng
 ---
 

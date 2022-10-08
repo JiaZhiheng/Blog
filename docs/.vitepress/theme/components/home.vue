@@ -1144,32 +1144,30 @@
           </n-carousel>
         </div>
         <div class="swiper-vertical">
-          <div class="carousel">
-            <div class="roll">
-            <ul id="vertical">
-              <li>
-                <div class="li">
+          <div class="roll">
+            <ul class="vertical" id="vertical">
+              <li class="vertical-li">
+                <div class="vertical-item">
                   <p style="color:#4285f4">项目A</p>
                 </div>
               </li>
-              <li>
-                <div class="li">
+              <li class="vertical-li">
+                <div class="vertical-item">
                   <p style="color:#34a853">项目B</p>
                 </div>
               </li>
-              <li>
-                <div class="li">               
+              <li class="vertical-li">
+                <div class="vertical-item">               
                   <p style="color:#fbbc05">项目C</p>
                 </div>
               </li>
-              <li>
-                <div class="li">
+              <li class="vertical-li">
+                <div class="vertical-item">
                   <p style="color:#ea4335">项目D</p>
                 </div>
               </li>
             </ul>
-          </div>
-          </div>
+          </div> 
         </div>
       </div>
     </div>
@@ -1232,17 +1230,21 @@ export default defineComponent({
       let items = document.getElementById('items');
       let svg = document.getElementById('svg');
 
+      /* 水平轮播图 */
+
       /* 垂直轮播图 */
       let vertical = document.getElementById('vertical');
       let verticalArray = Array.from(vertical.getElementsByTagName("li"));
       vertical.append(verticalArray[0].cloneNode(true), verticalArray[1].cloneNode(true));
-      let time = 3200                             // 静止时长       3200ms
-      let step = vertical.offsetHeight / 2 + 8;   // 垂直移动像素数  214px
-      let moveTime = 20 / verticalArray.length;   // 移动时间百分比  5%
-      let staticTime = 80 / verticalArray.length; // 静止时间百分比  20%  
+      let time = 4                                // 单步时长       4s
+      let moveTime = 10 / verticalArray.length;   // 移动时间百分比  15%
+      let staticTime = 90 / verticalArray.length; // 静止时间百分比  85%
+      let step = vertical.offsetHeight / 2 + 8;   // 垂直移动像素数  214px  
       let percentage = 0;                         // 动画进度百分比
       let keyframes = `@keyframes vertical{`;     // 生成 @keyframes 动画
       for(let i = 0; i <= verticalArray.length * 2; i++ ){
+        percentage > 100 ? percentage = 100 : percentage = percentage; // 保证进度百分比不超出100%
+        console.log(percentage);
         keyframes+=`
           ${percentage}%{
               top: ${i % 2 == 0 ? -i * step / 2 : -(i - 1) * step / 2}px;
@@ -1255,7 +1257,7 @@ export default defineComponent({
       }
       keyframes+='}';
       const verticalSwiper = (time) => {
-        time = time * (verticalArray.length + 1) / 1000;                                         // 换算动画总时长
+        time = time * verticalArray.length;
         vertical.style.animation = `vertical ${time}s linear infinite`  // 改变 css
         let style = document.createElement('style');        
         style.type = 'text/css'; 
@@ -1703,11 +1705,6 @@ export default defineComponent({
     padding: 8px 0px 8px 8px;
   }
 
-  .swiper-vertical {
-    flex: 1;
-    padding: 8px 8px 8px 4px;
-  }
-
   .demo-item {
     height: 100%;
     border-radius: 12px;
@@ -1717,7 +1714,9 @@ export default defineComponent({
     align-items: center;
   }
 
-  .carousel {
+  .swiper-vertical {
+    flex: 1;
+    padding: 8px 8px 8px 4px;
     height: 100%;
     width: calc(100% - 10px);
     margin-left: 10px;
@@ -1732,13 +1731,13 @@ export default defineComponent({
     position: relative;
   }
 
-  .roll ul{
+  .vertical {
     list-style: none;
     height: 100%;
     position: relative; 
   }
 
-  .roll li{
+  .vertical-li {
     line-height:20px;
     font-size:14px;
     text-align:center;
@@ -1746,7 +1745,7 @@ export default defineComponent({
     margin-bottom: 16px;
   }
 
-  .li {
+  .vertical-item {
     width: 100%;
     height: 100%;
     margin-bottom: 16px;
