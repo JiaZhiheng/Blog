@@ -1075,6 +1075,25 @@ export default defineComponent({
   setup() {
     const data = reactive({});
 
+    /* 页面宽度发生变化时触发如下事件 */
+    const displayWindowSize = () => {
+      let VPHome = Array.from(document.getElementsByClassName("VPHome"))[0];
+      let image = Array.from(document.getElementsByClassName("image"))[0]; 
+      if (document.body.clientWidth < 640) {
+        image.setAttribute("style", "margin: -56px 0 -18px");
+        VPHome.setAttribute("style", "padding-bottom: 96px");
+      } else if (document.body.clientWidth < 960) {
+        image.setAttribute("style", "margin: -88px 0 -18px");
+        VPHome.setAttribute("style", "padding-bottom: 128px");
+      } else {
+        image.setAttribute("style", "margin: 0; min-width: 100px");
+        VPHome.setAttribute("style", "padding-bottom: 0");
+      }
+    };
+
+    /* 监听页面宽度变化 */
+    window.addEventListener("resize", displayWindowSize);
+
     onMounted(() => {
       let name = Array.from(document.getElementsByClassName("name"))[0];
       let text = Array.from(document.getElementsByClassName("text"))[0];
@@ -1085,6 +1104,7 @@ export default defineComponent({
       let image = Array.from(document.getElementsByClassName("image"))[0];
       let project = Array.from(document.getElementsByClassName("VPButton medium brand"))[0];
       let VPHome = Array.from(document.getElementsByClassName("VPHome"))[0];
+      // let svg = document.getElementById('svg');
 
       /* 展示我的项目 */
       project.onclick = function () {
@@ -1119,10 +1139,12 @@ export default defineComponent({
       /* 将图片替换为动画svg */
       parentNode.replaceChild(svg, picture);
       parentNode.setAttribute("style", "transform: translate(0, 0)");
-      if (window.screen.width < 640) {
+      if (document.body.clientWidth < 640) {
         image.setAttribute("style", "margin: -56px 0 -18px");
-      } else if (window.screen.width < 960) {
+        VPHome.setAttribute("style", "padding-bottom: 96px");
+      } else if (document.body.clientWidth < 960) {
         image.setAttribute("style", "margin: -88px 0 -18px");
+        VPHome.setAttribute("style", "padding-bottom: 128px");
       } else {
         image.setAttribute("style", "margin: 0; min-width: 100px");
         VPHome.setAttribute("style", "padding-bottom: 0");

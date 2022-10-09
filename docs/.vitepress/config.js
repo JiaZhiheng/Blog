@@ -6,7 +6,7 @@ export default defineConfig({
     logo: '/avatar.png', // 头像
     siteTitle: '爱搞事的跳跳虎', // 站点标题
     socialLinks: [ // 链接
-      { icon: 'github', link: 'https://github.com/JiaZhiheng' }
+      { icon: 'github', link: 'https://github.com/JiaZhiheng' },      
     ],
     // 导航栏
     nav: [
