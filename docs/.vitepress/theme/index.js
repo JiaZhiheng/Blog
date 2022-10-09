@@ -1,6 +1,6 @@
 import Theme from 'vitepress/theme'
-import './style/index.css'
-import Home from './components/home.vue'
+import './index.css'
+import Home from './home.vue'
 
 export default ({
   ...Theme,

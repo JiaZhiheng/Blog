@@ -16,7 +16,6 @@
     "vue": "^3.2.38"
   },
   "dependencies": {
-    "animate.css": "^4.1.1",
-    "tdesign-vue-next": "^0.23.1"
+    "animate.css": "^4.1.1"
   }
 }
