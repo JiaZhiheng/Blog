@@ -33,36 +33,55 @@
   </div>
 </template>
 <script>
-import { defineComponent, onMounted } from "vue";
+import { defineComponent, onMounted, reactive, toRefs } from "vue";
 export default defineComponent({
   naem: "vertical",
   setup() {
-    onMounted(() => {
-      let vertical = document.getElementById('vertical');
-      let verticalArray = Array.from(vertical.getElementsByTagName("li"));
-      vertical.append(verticalArray[0].cloneNode(true), verticalArray[1].cloneNode(true));
-      let time = 4 * verticalArray.length;          // 单步时长       4s
-      let moveTime = 12.5 / verticalArray.length;   // 移动时间百分比  12.5%
-      let staticTime = 87.5 / verticalArray.length; // 静止时间百分比  87.5%
-      let step = vertical.offsetHeight / 2 + 8;     // 垂直移动像素数  214px  
-      let percentage = 0;                           // 动画进度百分比
-      let keyframes = `@keyframes vertical{`;       // 生成 @keyframes 动画
-      for(let i = 0; i <= verticalArray.length * 2; i++ ){
-        percentage > 100 ? percentage = 100 : percentage = percentage; // 保证进度百分比不超出100%
-        keyframes+=`${percentage}%{top: ${i % 2 == 0 ? -i * step / 2 : -(i - 1) * step / 2}px;}`;
+    const data = reactive({
+      time: 4,            // 单步时长 4s
+      moveTime: 12.5,     // 移动时间占比 12.5%  0.5s
+      staticTime: 87.5,   // 静止时间占比 87.5%  3.5s
+      verticalArray: [],  // 内容数量
+      percentage: 0,      // 动画进度百分比
+      keyframes: "",      // 动画内容
+      style: {},          // 样式
+    });
+
+    const animation = () => { // 生成 @keyframes 动画并更新
+      data.percentage = 0;   
+      data.keyframes = `@keyframes vertical{`;                  
+      for(let i = 0; i <= data.verticalArray.length * 2; i++ ){
+        data.percentage > 100 ? data.percentage = 100 : data.percentage = data.percentage; // 保证进度百分比不超出100%
+        data.keyframes+=`${data.percentage}%{top: ${i % 2 == 0 ? -i * (data.vertical.offsetHeight / 2 + 8) / 2 : -(i - 1) * (data.vertical.offsetHeight / 2 + 8) / 2}px;}`;
         if(i % 2 == 0) {
-          percentage = percentage + staticTime;
+          data.percentage = data.percentage + data.staticTime / data.verticalArray.length;
         } else {
-          percentage = percentage + moveTime;
+          data.percentage = data.percentage + data.moveTime / data.verticalArray.length;
         }
       }
-      keyframes+='}';
-      vertical.style.animation = `vertical ${time}s linear infinite`;  // 改变 css
-      let style = document.createElement('style');        
-      style.type = 'text/css'; 
-      style.innerHTML=`${keyframes}`;
-      document.getElementsByTagName('head').item(0).appendChild(style);
+      data.keyframes+='}';
+      data.style.innerHTML = `${data.keyframes}`;
+      data.vertical.style.animation = `vertical ${data.time * data.verticalArray.length}s linear infinite`;  // 改变 css
+    }
+
+    /* 监听页面变化 */
+    window.onresize = () => { // 监听页面变化                                 
+      animation();
+    },
+
+    onMounted(() => {
+      data.vertical = document.getElementById('vertical');
+      data.verticalArray = Array.from(vertical.getElementsByTagName("li"));
+      data.vertical.append(data.verticalArray[0].cloneNode(true), data.verticalArray[1].cloneNode(true));
+      data.style = document.createElement('style');   
+      data.style.type = 'text/css'; 
+      animation();
+      document.getElementsByTagName('head').item(0).appendChild(data.style);
     });
+
+    return {
+      ...toRefs(data),
+    }
   }
 });
 </script>
