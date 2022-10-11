@@ -65,9 +65,7 @@ export default defineComponent({
     }
 
     /* 监听页面变化 */
-    window.onresize = () => { // 监听页面变化         
-      animation();
-    },
+    window.addEventListener("resize", animation);
 
     onMounted(() => {
       data.vertical = document.getElementById('vertical');

@@ -87,7 +87,7 @@
   </div>
 </template>
 <script>
-import { defineComponent, onMounted, reactive, toRefs } from "vue";
+import { defineComponent } from "vue";
 import vertical from "./vertical.vue";
 export default defineComponent({
   name: "horizontal",
