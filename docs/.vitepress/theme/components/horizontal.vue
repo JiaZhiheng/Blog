@@ -31,7 +31,7 @@ export default defineComponent({
             height: 0,
             index: 0,
             autoplay: true,
-            interval: 3000,
+            interval: 4000,
           };
           this.options = Object.assign({}, defaultOptions, options);
           this.initCarousel();
@@ -39,13 +39,15 @@ export default defineComponent({
           this.playCarousel();
         }
 
+        /* 初始化轮播图 */
         initCarousel() {
           this.timer = null;
-          this.initCarouselContainer();
-          this.initCarouselPanelsAndDots();
-          this.initCarouselArrows();
+          this.initCarouselContainer();    // 初始化轮播容器
+          this.initCarouselPanelsAndDots();// 初始化轮播面板和轮播点
+          this.initCarouselArrows();       // 初始化轮播箭头
         }
 
+        /* 初始化轮播容器 */
         initCarouselContainer() {
           this.$container = this.options.element;
           this.$container.classList.add("tiny-carousel");
@@ -59,6 +61,7 @@ export default defineComponent({
           this.$dotsContainer = $dotsContainer;
         }
 
+        /* 初始化轮播图面板和轮播点面板 */
         initCarouselPanelsAndDots() {
           this.$$panels = this.$container.querySelectorAll(".carousel-panel");
           this.$$panels[this.options.index].classList.add("active");
@@ -72,13 +75,12 @@ export default defineComponent({
           this.$$dots[this.options.index].classList.add("active");
         }
 
+        /* 初始化轮播箭头 */
         initCarouselArrows() {
           const $arrowContainer = document.createElement("div");
           $arrowContainer.setAttribute("class", "carousel-arrows");
-          // 左箭头
           const $arrowPrev = document.createElement("button");
           $arrowPrev.setAttribute("class", "carousel-arrow arrow-prev");
-          // 右箭头
           const $arrowNext = document.createElement("button");
           $arrowNext.setAttribute("class", "carousel-arrow arrow-next");
           $arrowPrev.innerHTML = `<svg width="2em" height="2em" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M9.5397 3.53998L10.4589 4.45922L6.91856 7.9996L10.4589 11.54L9.5397 12.4592L5.08008 7.9996L9.5397 3.53998Z" fill="#fff" fill-opacity="0.9"></path></svg>`;
@@ -88,18 +90,21 @@ export default defineComponent({
           this.$container.appendChild($arrowContainer);
         }
 
+        /* 初始化轮播点 */
         initCarouselDot() {
           const $dot = document.createElement("li");
           $dot.setAttribute("class", "carousel-dot");
           return $dot;
         }
 
+        /* 绑定轮播图 */
         bindCarousel() {
-          this.bindCarouselArrow();
-          this.bindCarouselDots();
-          // this.bindCarouselContainer()
+          this.bindCarouselArrow();       // 绑定轮播箭头
+          this.bindCarouselDots();        // 绑定轮播点面板
+          // this.bindCarouselContainer() // 绑定鼠标事件
         }
 
+        /* 绑定轮播箭头 */
         bindCarouselArrow() {
           const $arrowPrev = this.$container.querySelector(".arrow-prev");
           const $arrowNext = this.$container.querySelector(".arrow-next");
@@ -119,6 +124,7 @@ export default defineComponent({
           });
         }
 
+        /* 绑定轮播点面板 */
         bindCarouselDots() {
           this.$$dots.forEach(($carouselDot) => {
             $carouselDot.addEventListener("click", (e) => {
@@ -132,7 +138,7 @@ export default defineComponent({
           });
         }
 
-        /* 鼠标移入暂停轮播/鼠标移出开始轮播 */
+        /* 鼠标移入/移出轮播容器暂停/开始轮播 */
         // bindCarouselContainer() {
         //     if (this.options.autoplay) {
         //         this.$container.addEventListener('mouseenter', () => {
@@ -144,6 +150,7 @@ export default defineComponent({
         //     }
         // }
 
+        // 设置轮播图
         setCarousel(fromIndex, toIndex, direction) {
           if (!this.isAnimate) {
             this.isAnimate = true;
@@ -155,12 +162,14 @@ export default defineComponent({
           }
         }
 
+        // 获取当前索引
         getCurrentIndex() {
           return [...this.$$dots].indexOf(
             this.$container.querySelector(".carousel-dot.active")
           );
         }
 
+        // 获取上一个索引
         getPrevIndex() {
           return (
             (this.getCurrentIndex() - 1 + this.$$dots.length) %
@@ -168,10 +177,12 @@ export default defineComponent({
           );
         }
 
+        // 获取下一个索引
         getNextIndex() {
           return (this.getCurrentIndex() + 1) % this.$$dots.length;
         }
 
+        // 设置轮播面板
         setCarouselPanel() {
           const type = this.direction === "left" ? "next" : "prev";
           this.$to.setAttribute("class", `carousel-panel ${type}`);
@@ -187,6 +198,7 @@ export default defineComponent({
           this.resetCarouselPanel();
         }
 
+        // 重置轮播面板
         resetCarouselPanel() {
           const callback = () => {
             this.$from.setAttribute("class", "carousel-panel");
@@ -197,6 +209,7 @@ export default defineComponent({
           this.$from.addEventListener("transitionend", callback, false);
         }
 
+        // 设置轮播点
         setCarouselDot(index) {
           this.$$dots.forEach(($carouselDot) =>
             $carouselDot.classList.remove("active")
@@ -204,6 +217,7 @@ export default defineComponent({
           this.$$dots[index].classList.add("active");
         }
 
+        // 暂停轮播
         pauseCarousel() {
           if (this.timer) {
             clearInterval(this.timer);
@@ -211,6 +225,7 @@ export default defineComponent({
           }
         }
 
+        // 开始轮播
         playCarousel() {
           if (this.options.autoplay && !this.timer) {
             this.timer = setInterval(() => {
@@ -224,11 +239,12 @@ export default defineComponent({
         }
       }
 
+      // 声明轮播图
       new Carousel({
         element: document.querySelector(".carousel"),
         height: "100%",
         index: 1,
-        interval: 3000,
+        interval: 4000,
         autoplay: true,
       });
     });
