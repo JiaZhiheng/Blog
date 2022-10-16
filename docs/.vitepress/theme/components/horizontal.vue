@@ -23,7 +23,6 @@ export default defineComponent({
   setup() {
     onMounted(() => {
       const reflow = (element) => element.offsetHeight;
-
       class Carousel {
         constructor(options) {
           const defaultOptions = {
@@ -42,32 +41,40 @@ export default defineComponent({
         /* 初始化轮播图 */
         initCarousel() {
           this.timer = null;
-          this.initCarouselContainer();    // 初始化轮播容器
-          this.initCarouselPanelsAndDots();// 初始化轮播面板和轮播点
-          this.initCarouselArrows();       // 初始化轮播箭头
+          let vFlag = null;
+          this.options.element.getAttributeNames().forEach((ele)=>{
+            if(ele.indexOf("data-v") != -1){
+              vFlag = ele;
+            };
+          });
+          console.log(vFlag);
+          this.initCarouselContainer(vFlag);    // 初始化轮播容器
+          this.initCarouselPanelsAndDots(vFlag);// 初始化轮播面板和轮播点
+          this.initCarouselArrows(vFlag);       // 初始化轮播箭头
         }
 
         /* 初始化轮播容器 */
-        initCarouselContainer() {
+        initCarouselContainer(vFlag) {
           this.$container = this.options.element;
           this.$container.classList.add("tiny-carousel");
-          console.log(this.$container.classList);
           this.$container.style.height = this.options.height;
           const $panelContainer = document.createElement("div");
           $panelContainer.setAttribute("class", "carousel-panels");
+          $panelContainer.setAttribute(vFlag, "");
           this.$panelContainer = $panelContainer;
           const $dotsContainer = document.createElement("ul");
           $dotsContainer.setAttribute("class", "carousel-dots");
+          $dotsContainer.setAttribute(vFlag, "");
           this.$dotsContainer = $dotsContainer;
         }
 
         /* 初始化轮播图面板和轮播点面板 */
-        initCarouselPanelsAndDots() {
+        initCarouselPanelsAndDots(vFlag) {
           this.$$panels = this.$container.querySelectorAll(".carousel-panel");
           this.$$panels[this.options.index].classList.add("active");
           this.$$panels.forEach(($panel) => {
             this.$panelContainer.appendChild($panel);
-            this.$dotsContainer.appendChild(this.initCarouselDot());
+            this.$dotsContainer.appendChild(this.initCarouselDot(vFlag));
           });
           this.$container.appendChild(this.$panelContainer);
           this.$container.appendChild(this.$dotsContainer);
@@ -76,13 +83,16 @@ export default defineComponent({
         }
 
         /* 初始化轮播箭头 */
-        initCarouselArrows() {
+        initCarouselArrows(vFlag) {
           const $arrowContainer = document.createElement("div");
           $arrowContainer.setAttribute("class", "carousel-arrows");
+          $arrowContainer.setAttribute(vFlag, "");
           const $arrowPrev = document.createElement("button");
           $arrowPrev.setAttribute("class", "carousel-arrow arrow-prev");
+          $arrowPrev.setAttribute(vFlag, "");
           const $arrowNext = document.createElement("button");
           $arrowNext.setAttribute("class", "carousel-arrow arrow-next");
+          $arrowNext.setAttribute(vFlag, "");
           $arrowPrev.innerHTML = `<svg width="2em" height="2em" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M9.5397 3.53998L10.4589 4.45922L6.91856 7.9996L10.4589 11.54L9.5397 12.4592L5.08008 7.9996L9.5397 3.53998Z" fill="#fff" fill-opacity="0.9"></path></svg>`;
           $arrowNext.innerHTML = `<svg width="2em" height="2em" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M6.4603 12.4592L5.54106 11.54L9.08144 7.99961L5.54106 4.45923L6.4603 3.53999L10.9199 7.99961L6.4603 12.4592Z" fill="#fff" fill-opacity="0.9"></path></svg>`;
           $arrowContainer.appendChild($arrowPrev);
@@ -91,9 +101,10 @@ export default defineComponent({
         }
 
         /* 初始化轮播点 */
-        initCarouselDot() {
+        initCarouselDot(vFlag) {
           const $dot = document.createElement("li");
           $dot.setAttribute("class", "carousel-dot");
+          $dot.setAttribute(vFlag, "");
           return $dot;
         }
 
@@ -251,7 +262,7 @@ export default defineComponent({
   },
 });
 </script>
-<style>
+<style scoped>
 .swiper-horizontal {
   flex: 3;
   padding: 8px 0px 8px 8px;
