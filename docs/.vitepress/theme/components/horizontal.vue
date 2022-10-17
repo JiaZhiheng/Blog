@@ -1,17 +1,17 @@
 <template>
   <div class="swiper-horizontal">
-    <div class="carousel">
-      <div class="carousel-panel">
-        <div class="demo-panel" style="background: #4586f3"></div>
+    <div class="horizontal">
+      <div class="horizontal-item">
+        <div class="demo-item" style="background: #4586f3"></div>
       </div>
-      <div class="carousel-panel">
-        <div class="demo-panel" style="background: #eb4334"></div>
+      <div class="horizontal-item">
+        <div class="demo-item" style="background: #eb4334"></div>
       </div>
-      <div class="carousel-panel">
-        <div class="demo-panel" style="background: #fbbd06"></div>
+      <div class="horizontal-item">
+        <div class="demo-item" style="background: #fbbd06"></div>
       </div>
-      <div class="carousel-panel">
-        <div class="demo-panel" style="background: #35aa53"></div>
+      <div class="horizontal-item">
+        <div class="demo-item" style="background: #35aa53"></div>
       </div>
     </div>
   </div>
@@ -23,7 +23,7 @@ export default defineComponent({
   setup() {
     onMounted(() => {
       const reflow = (element) => element.offsetHeight;
-      class Carousel {
+      class Horizontal {
         constructor(options) {
           const defaultOptions = {
             element: null,
@@ -33,96 +33,95 @@ export default defineComponent({
             interval: 4000,
           };
           this.options = Object.assign({}, defaultOptions, options);
-          this.initCarousel(); // 初始化轮播图
-          this.bindCarousel(); // 绑定轮播图
-          this.playCarousel(); // 播放轮播图
+          this.initHorizontal(); // 初始化轮播图
+          this.bindHorizontal(); // 绑定轮播图
+          this.playHorizontal(); // 播放轮播图
         }
 
         /* 初始化轮播图 */
-        initCarousel() {
+        initHorizontal() {
           this.timer = null;
           let key = null;
           this.options.element.getAttributeNames().forEach((attrbute)=>{if(attrbute.indexOf("data-v") != -1){key = attrbute;}}); // 使新增的 dom 全部添加 data-v 属性
-          this.initCarouselContainer(key);     // 初始化轮播容器
-          this.initCarouselPanelsAndDots(key); // 初始化轮播面板和轮播点
-          this.initCarouselArrows(key);        // 初始化轮播箭头
+          this.initHorizontalContainer(key);     // 初始化轮播容器
+          this.initHorizontalItemsAndDots(key); // 初始化轮播面板和轮播点
+          this.initHorizontalArrows(key);        // 初始化轮播箭头
         }
 
         /* 初始化轮播容器 */
-        initCarouselContainer(key) {
-          this.$container = this.options.element;
-          this.$container.classList.add("tiny-carousel");
-          this.$container.style.height = this.options.height;
-          const $panelContainer = document.createElement("div");
-          $panelContainer.setAttribute("class", "carousel-panels");
-          $panelContainer.setAttribute(key, "");
-          this.$panelContainer = $panelContainer;
-          const $dotsContainer = document.createElement("ul");
-          $dotsContainer.setAttribute("class", "carousel-dots");
-          $dotsContainer.setAttribute(key, "");
-          this.$dotsContainer = $dotsContainer;
+        initHorizontalContainer(key) {
+          this.container = this.options.element;
+          this.container.style.height = this.options.height;
+          const itemContainer = document.createElement("div");
+          itemContainer.setAttribute("class", "horizontal-items");
+          itemContainer.setAttribute(key, "");
+          this.itemContainer = itemContainer;
+          const dotsContainer = document.createElement("ul");
+          dotsContainer.setAttribute("class", "horizontal-dots");
+          dotsContainer.setAttribute(key, "");
+          this.dotsContainer = dotsContainer;
         }
 
         /* 初始化轮播图面板和轮播点面板 */
-        initCarouselPanelsAndDots(key) {
-          this.$$panels = this.$container.querySelectorAll(".carousel-panel");
-          this.$$panels[this.options.index].classList.add("active");
-          this.$$panels.forEach(($panel) => {
-            this.$panelContainer.appendChild($panel);
-            this.$dotsContainer.appendChild(this.initCarouselDot(key));
+        initHorizontalItemsAndDots(key) {
+          this.items = this.container.querySelectorAll(".horizontal-item");
+          this.items[this.options.index].classList.add("active");
+          this.items.forEach((item) => {
+            this.itemContainer.appendChild(item);
+            this.dotsContainer.appendChild(this.initHorizontalDot(key));
           });
-          this.$container.appendChild(this.$panelContainer);
-          this.$container.appendChild(this.$dotsContainer);
-          this.$$dots = this.$container.querySelectorAll(".carousel-dot");
-          this.$$dots[this.options.index].classList.add("active");
+          this.container.appendChild(this.itemContainer);
+          this.container.appendChild(this.dotsContainer);
+          this.dots = this.container.querySelectorAll(".horizontal-dot");
+          this.dots[this.options.index].classList.add("active");
         }
 
         /* 初始化轮播箭头 */
-        initCarouselArrows(key) {
-          const $arrowContainer = document.createElement("div");
-          $arrowContainer.setAttribute("class", "carousel-arrows");
-          $arrowContainer.setAttribute(key, "");
-          const $arrowPrev = document.createElement("button");
-          const $arrowNext = document.createElement("button");
-          $arrowPrev.setAttribute("class", "carousel-arrow arrow-prev");
-          $arrowPrev.setAttribute(key, "");
-          $arrowNext.setAttribute("class", "carousel-arrow arrow-next");
-          $arrowNext.setAttribute(key, "");
-          $arrowPrev.innerHTML = `<svg width="2em" height="2em" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M9.5397 3.53998L10.4589 4.45922L6.91856 7.9996L10.4589 11.54L9.5397 12.4592L5.08008 7.9996L9.5397 3.53998Z" fill="#fff" fill-opacity="0.9"></path></svg>`;
-          $arrowNext.innerHTML = `<svg width="2em" height="2em" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M6.4603 12.4592L5.54106 11.54L9.08144 7.99961L5.54106 4.45923L6.4603 3.53999L10.9199 7.99961L6.4603 12.4592Z" fill="#fff" fill-opacity="0.9"></path></svg>`;
-          $arrowContainer.appendChild($arrowPrev);
-          $arrowContainer.appendChild($arrowNext);
-          this.$container.appendChild($arrowContainer);
+        initHorizontalArrows(key) {
+          const arrowContainer = document.createElement("div");
+          arrowContainer.setAttribute("class", "horizontal-arrows");
+          arrowContainer.setAttribute(key, "");
+          const arrowPrev = document.createElement("button");
+          const arrowNext = document.createElement("button");
+          arrowPrev.setAttribute("class", "horizontal-arrow arrow-prev");
+          arrowPrev.setAttribute(key, "");
+          arrowNext.setAttribute("class", "horizontal-arrow arrow-next");
+          arrowNext.setAttribute(key, "");
+          arrowPrev.innerHTML = `<svg width="2em" height="2em" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M9.5397 3.53998L10.4589 4.45922L6.91856 7.9996L10.4589 11.54L9.5397 12.4592L5.08008 7.9996L9.5397 3.53998Z" fill="#fff" fill-opacity="0.9"></path></svg>`;
+          arrowNext.innerHTML = `<svg width="2em" height="2em" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M6.4603 12.4592L5.54106 11.54L9.08144 7.99961L5.54106 4.45923L6.4603 3.53999L10.9199 7.99961L6.4603 12.4592Z" fill="#fff" fill-opacity="0.9"></path></svg>`;
+          arrowContainer.appendChild(arrowPrev);
+          arrowContainer.appendChild(arrowNext);
+          this.container.appendChild(arrowContainer);
         }
 
         /* 初始化轮播点 */
-        initCarouselDot(key) {
-          const $dot = document.createElement("li");
-          $dot.setAttribute("class", "carousel-dot");
-          $dot.setAttribute(key, "");
-          return $dot;
+        initHorizontalDot(key) {
+          const dot = document.createElement("li");
+          dot.setAttribute("class", "horizontal-dot");
+          dot.setAttribute(key, "");
+          return dot;
         }
 
         /* 绑定轮播图 */
-        bindCarousel() {
-          this.bindCarouselArrow(); // 绑定轮播箭头
-          this.bindCarouselDots(); // 绑定轮播点面板
-          // this.bindCarouselContainer() // 绑定鼠标事件
+        bindHorizontal() {
+          this.bindHorizontalArrow(); // 绑定轮播箭头
+          this.bindHorizontalDots(); // 绑定轮播点面板
+          // this.bindHorizontalContainer() // 绑定鼠标事件
         }
 
         /* 绑定轮播箭头 */
-        bindCarouselArrow() {
-          const $arrowPrev = this.$container.querySelector(".arrow-prev");
-          const $arrowNext = this.$container.querySelector(".arrow-next");
-          $arrowPrev.addEventListener("click", () => {
-            this.setCarousel(
+        bindHorizontalArrow() {
+          const arrowPrev = this.container.querySelector(".arrow-prev");
+          const arrowNext = this.container.querySelector(".arrow-next");
+          arrowPrev.addEventListener("click", () => {
+            this.setHorizontal(
               this.getCurrentIndex(),
               this.getPrevIndex(),
               "right"
             );
           });
-          $arrowNext.addEventListener("click", () => {
-            this.setCarousel(
+          arrowNext.addEventListener("click", () => {
+            this.setHorizontal(
               this.getCurrentIndex(),
               this.getNextIndex(),
               "left"
@@ -131,101 +130,100 @@ export default defineComponent({
         }
 
         /* 绑定轮播点面板 */
-        bindCarouselDots() {
-          this.$$dots.forEach(($carouselDot) => {
-            $carouselDot.addEventListener("click", (e) => {
+        bindHorizontalDots() {
+          this.dots.forEach((horizontalDot) => {
+            horizontalDot.addEventListener("click", (e) => {
               const fromIndex = this.getCurrentIndex();
-              const toIndex = [...this.$$dots].indexOf(e.target);
+              const toIndex = [...this.dots].indexOf(e.target);
               if (fromIndex !== toIndex) {
                 const direction = fromIndex > toIndex ? "right" : "left";
-                this.setCarousel(fromIndex, toIndex, direction);
+                this.setHorizontal(fromIndex, toIndex, direction);
               }
             });
           });
         }
 
         /* 鼠标移入/移出轮播容器暂停/开始轮播 */
-        // bindCarouselContainer() {
+        // bindHorizontalContainer() {
         //     if (this.options.autoplay) {
-        //         this.$container.addEventListener('mouseenter', () => {
-        //             this.pauseCarousel()
+        //         this.container.addEventListener('mouseenter', () => {
+        //             this.pauseHorizontal()
         //         })
-        //         this.$container.addEventListener('mouseleave', () => {
-        //             this.playCarousel()
+        //         this.container.addEventListener('mouseleave', () => {
+        //             this.playHorizontal()
         //         })
         //     }
         // }
         
         // 设置轮播图
-        setCarousel(fromIndex, toIndex, direction) {
+        setHorizontal(fromIndex, toIndex, direction) {
           if (!this.isAnimate) {
             this.isAnimate = true;
-            this.$from = this.$$panels[fromIndex];
-            this.$to = this.$$panels[toIndex];
+            this.from = this.items[fromIndex];
+            this.to = this.items[toIndex];
             this.direction = direction;
-            this.setCarouselDot(toIndex);
-            this.setCarouselPanel();
+            this.setHorizontalDot(toIndex);
+            this.setHorizontalItem();
           }
         }
 
         // 获取当前索引
         getCurrentIndex() {
-          return [...this.$$dots].indexOf(
-            this.$container.querySelector(".carousel-dot.active")
+          return [...this.dots].indexOf(
+            this.container.querySelector(".horizontal-dot.active")
           );
         }
 
         // 获取上一个索引
         getPrevIndex() {
           return (
-            (this.getCurrentIndex() - 1 + this.$$dots.length) %
-            this.$$dots.length
+            (this.getCurrentIndex() - 1 + this.dots.length) %
+            this.dots.length
           );
         }
 
         // 获取下一个索引
         getNextIndex() {
-          return (this.getCurrentIndex() + 1) % this.$$dots.length;
+          return (this.getCurrentIndex() + 1) % this.dots.length;
         }
 
         // 设置轮播面板
-        setCarouselPanel() {
+        setHorizontalItem() {
           const type = this.direction === "left" ? "next" : "prev";
-          this.$to.setAttribute("class", `carousel-panel ${type}`);
-          reflow(this.$to);
-          this.$from.setAttribute(
+          this.to.setAttribute("class", `horizontal-item ${type}`);
+          reflow(this.to);
+          this.from.setAttribute(
             "class",
-            `carousel-panel active ${this.direction}`
+            `horizontal-item active ${this.direction}`
           );
-          this.$to.setAttribute(
+          this.to.setAttribute(
             "class",
-            `carousel-panel ${type} ${this.direction}`
+            `horizontal-item ${type} ${this.direction}`
           );
-          this.resetCarouselPanel();
+          this.resetHorizontalItem();
         }
 
         // 重置轮播面板
-        resetCarouselPanel() {
+        resetHorizontalItem() {
           const callback = () => {
-            this.$from.setAttribute("class", "carousel-panel");
-
-            this.$to.setAttribute("class", "carousel-panel active");
-            this.$from.removeEventListener("transitionend", callback, false);
+            this.from.setAttribute("class", "horizontal-item");
+            this.to.setAttribute("class", "horizontal-item active");
+            this.from.removeEventListener("transitionend", callback, false);
             this.isAnimate = false;
           };
-          this.$from.addEventListener("transitionend", callback, false);
+          this.from.addEventListener("transitionend", callback, false);
         }
 
         // 设置轮播点
-        setCarouselDot(index) {
-          this.$$dots.forEach(($carouselDot) =>
-            $carouselDot.classList.remove("active")
+        setHorizontalDot(index) {
+          this.dots.forEach((horizontalDot) =>
+            horizontalDot.classList.remove("active")
           );
-          this.$$dots[index].classList.add("active");
+          this.dots[index].classList.add("active");
         }
         
         // 暂停轮播
-        pauseCarousel() {
+        pauseHorizontal() {
           if (this.timer) {
             clearInterval(this.timer);
             this.timer = null;
@@ -233,10 +231,10 @@ export default defineComponent({
         }
 
         // 开始轮播
-        playCarousel() {
+        playHorizontal() {
           if (this.options.autoplay && !this.timer) {
             this.timer = setInterval(() => {
-              this.setCarousel(
+              this.setHorizontal(
                 this.getCurrentIndex(),
                 this.getNextIndex(),
                 "left"
@@ -247,8 +245,8 @@ export default defineComponent({
       }
 
       // 声明轮播图
-      new Carousel({
-        element: document.querySelector(".carousel"),
+      new Horizontal({
+        element: document.querySelector(".horizontal"),
         height: "100%",
         index: 1,
         interval: 4000,
@@ -263,7 +261,7 @@ export default defineComponent({
   flex: 3;
   padding: 8px 0px 8px 8px;
 }
-.demo-panel {
+.demo-item {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -271,49 +269,49 @@ export default defineComponent({
   height: 100%;
   border-radius: 12px;
 }
-.tiny-carousel {
+.horizontal {
   position: relative;
   overflow: hidden;
 }
-.tiny-carousel .carousel-panels {
+.horizontal .horizontal-items {
   height: 100%;
 }
-.tiny-carousel .carousel-panels .carousel-panel {
+.horizontal .horizontal-items .horizontal-item {
   display: none;
   position: absolute;
   width: 100%;
   height: 100%;
   transition: all 0.4s;
 }
-.tiny-carousel .carousel-panels .carousel-panel.active,
-.tiny-carousel .carousel-panels .carousel-panel.next,
-.tiny-carousel .carousel-panels .carousel-panel.prev {
+.horizontal .horizontal-items .horizontal-item.active,
+.horizontal .horizontal-items .horizontal-item.next,
+.horizontal .horizontal-items .horizontal-item.prev {
   display: block;
 }
 /* 滑动轮播图/渐隐轮播图 */
-.tiny-carousel .carousel-panels .carousel-panel.active.right,
-.tiny-carousel .carousel-panels .carousel-panel.next {
+.horizontal .horizontal-items .horizontal-item.active.right,
+.horizontal .horizontal-items .horizontal-item.next {
   /* transform: translateX(100%); */
   opacity: 0;
 }
-.tiny-carousel .carousel-panels .carousel-panel.active.left,
-.tiny-carousel .carousel-panels .carousel-panel.prev {
+.horizontal .horizontal-items .horizontal-item.active.left,
+.horizontal .horizontal-items .horizontal-item.prev {
   /* transform: translateX(-100%); */
   opacity: 0;
 }
-.tiny-carousel .carousel-panels .carousel-panel.active,
-.tiny-carousel .carousel-panels .carousel-panel.next.left,
-.tiny-carousel .carousel-panels .carousel-panel.prev.right {
+.horizontal .horizontal-items .horizontal-item.active,
+.horizontal .horizontal-items .horizontal-item.next.left,
+.horizontal .horizontal-items .horizontal-item.prev.right {
   /* transform: translateX(0); */
   opacity: 1;
 }
-.tiny-carousel .carousel-panels .carousel-panel:nth-child(even) {
+.horizontal .horizontal-items .horizontal-item:nth-child(even) {
   background-color: transparent;
 }
-.tiny-carousel .carousel-panels .carousel-panel:nth-child(odd) {
+.horizontal .horizontal-items .horizontal-item:nth-child(odd) {
   background-color: transparent;
 }
-.tiny-carousel .carousel-arrows .carousel-arrow {
+.horizontal .horizontal-arrows .horizontal-arrow {
   position: absolute;
   top: 50%;
   z-index: 1;
@@ -330,26 +328,26 @@ export default defineComponent({
   outline: none;
   cursor: pointer;
 }
-.tiny-carousel .carousel-arrows .carousel-arrow.arrow-prev {
+.horizontal .horizontal-arrows .horizontal-arrow.arrow-prev {
   left: 10px;
   transform: translateX(-10px) translateY(-50%);
 }
-.tiny-carousel .carousel-arrows .carousel-arrow.arrow-next {
+.horizontal .horizontal-arrows .horizontal-arrow.arrow-next {
   right: 10px;
   transform: translateX(10px) translateY(-50%);
 }
-.tiny-carousel .carousel-arrows .carousel-arrow:hover {
+.horizontal .horizontal-arrows .horizontal-arrow:hover {
   background: rgba(255, 255, 255, 0.3);
 }
-.tiny-carousel:hover .carousel-arrows .carousel-arrow.arrow-prev {
+.horizontal:hover .horizontal-arrows .horizontal-arrow.arrow-prev {
   transform: translateX(0) translateY(-50%);
   opacity: 1;
 }
-.tiny-carousel:hover .carousel-arrows .carousel-arrow.arrow-next {
+.horizontal:hover .horizontal-arrows .horizontal-arrow.arrow-next {
   transform: translateX(0) translateY(-50%);
   opacity: 1;
 }
-.tiny-carousel .carousel-dots {
+.horizontal .horizontal-dots {
   position: absolute;
   display: flex;
   z-index: 1;
@@ -362,14 +360,14 @@ export default defineComponent({
   opacity: 0;
   transition: all 0.3s;
 }
-.tiny-carousel:hover .carousel-dots {
+.horizontal:hover .horizontal-dots {
   opacity: 1;
 }
-.tiny-carousel .carousel-dots .carousel-dot {
+.horizontal .horizontal-dots .horizontal-dot {
   margin: 0 4px;
   cursor: pointer;
 }
-.tiny-carousel .carousel-dots .carousel-dot::before {
+.horizontal .horizontal-dots .horizontal-dot::before {
   content: "";
   display: block;
   width: 16px;
@@ -378,7 +376,7 @@ export default defineComponent({
   background: rgba(255, 255, 255, 0.3);
   transition: all 0.3s;
 }
-.tiny-carousel .carousel-dots .carousel-dot.active::before {
+.horizontal .horizontal-dots .horizontal-dot.active::before {
   width: 24px;
   background: rgba(255, 255, 255, 1);
 }
