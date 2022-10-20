@@ -43,9 +43,9 @@ export default defineComponent({
           this.timer = null;
           let key = null;
           this.options.element.getAttributeNames().forEach((attrbute)=>{if(attrbute.indexOf("data-v") != -1){key = attrbute;}}); // 使新增的 dom 全部添加 data-v 属性
-          this.initHorizontalContainer(key);     // 初始化轮播容器
+          this.initHorizontalContainer(key);    // 初始化轮播容器
           this.initHorizontalItemsAndDots(key); // 初始化轮播面板和轮播点
-          this.initHorizontalArrows(key);        // 初始化轮播箭头
+          this.initHorizontalArrows(key);       // 初始化轮播箭头
         }
 
         /* 初始化轮播容器 */

@@ -1,6 +1,6 @@
 <template>
   <div id="cards" class="items">
-    <div class="item">
+    <div class="card-item">
       <div class="content" @click="link('html')">
         <div class="icon">
           <img src="/html.svg" alt="html" />
@@ -9,7 +9,7 @@
         <p class="details">超文本标记语言是一种用于创建网页的标准标记语言</p>
       </div>
     </div>
-    <div class="item">
+    <div class="card-item">
       <div class="content" @click="link('css')">
         <div class="icon">
           <img src="/css.svg" alt="css" />
@@ -20,7 +20,7 @@
         </p>
       </div>
     </div>
-    <div class="item">
+    <div class="card-item">
       <div class="content" @click="link('javascript')">
         <div class="icon">
           <img src="/javascript.svg" alt="javascript" />
@@ -31,7 +31,7 @@
         </p>
       </div>
     </div>
-    <div class="item">
+    <div class="card-item">
       <div class="content" @click="link('vue')">
         <div class="icon">
           <img src="/vue.svg" alt="vue" />
@@ -40,7 +40,7 @@
         <p class="details">Vue是一款用于构建用户界面的 JavaScript 框架</p>
       </div>
     </div>
-    <div class="item">
+    <div class="card-item">
       <div class="content" @click="link('webpack')">
         <div class="icon">
           <img src="/webpack.svg" alt="webpack" />
@@ -51,7 +51,7 @@
         </p>
       </div>
     </div>
-    <div class="item">
+    <div class="card-item">
       <div class="content" @click="link('chrome')">
         <div class="icon">
           <img src="/chrome.svg" alt="chrome" />
@@ -62,7 +62,7 @@
         </p>
       </div>
     </div>
-    <div class="item">
+    <div class="card-item">
       <div class="content" @click="link('network')">
         <div class="icon">
           <img src="/network.svg" alt="network" />
@@ -73,7 +73,7 @@
         </p>
       </div>
     </div>
-    <div class="item">
+    <div class="card-item">
       <div class="content" @click="link('datastructure')">
         <div class="icon">
           <img src="/datastructure.svg" alt="datastructure" />
@@ -112,7 +112,7 @@ export default defineComponent({
   margin: -8px;
 }
 
-.item {
+.card-item {
   width: 100%;
   padding: 8px;
 }
@@ -153,7 +153,7 @@ export default defineComponent({
 }
 
 @media screen and (min-width: 640px) {
-  .item {
+  .card-item {
     width: 50%;
   }
 }
@@ -163,7 +163,7 @@ export default defineComponent({
     backface-visibility: hidden;
   }
 
-  .item {
+  .card-item {
     width: 25%;
   }
 
