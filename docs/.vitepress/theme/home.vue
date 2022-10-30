@@ -13,41 +13,30 @@
     </div>
   </div>
 </template>
-<script>
-import { defineComponent, onMounted } from "vue";
+<script setup>
+import { onMounted } from "vue";
 import hero from "./components/hero.vue";
 import card from "./components/card.vue";
 import horizontal from "./components/horizontal.vue";
 import vertical from "./components/vertical.vue";
-export default defineComponent({
-  name: "home",
-  components: {
-    hero,
-    card,
-    horizontal,
-    vertical,
-  },
-
-  setup() {
-    onMounted(() => {  
-      let project = Array.from(document.getElementsByClassName("VPButton medium brand"))[0];
-      /* 展示我的项目 */
-      project.onclick = function () {
-        if (document.body.clientWidth < 960) {
-          let url = window.location.href;
-          url = url + "guide/project/project.html";
-          window.location.href = url;
-        } else {
-          // 桌面端
-          if (container.style.transform == "rotateX(180deg)") {
-            container.style.transform = "rotateX(360deg)";
-          } else {
-            container.style.transform = "rotateX(180deg)";
-          }
-        }
-      };
-    });
-  },
+// 生命周期钩子 
+onMounted(() => {  
+  let project = Array.from(document.getElementsByClassName("VPButton medium brand"))[0];
+  /* 展示我的项目 */
+  project.onclick = function () {
+    if (document.body.clientWidth < 960) {
+      let url = window.location.href;
+      url = url + "guide/project/project.html";
+      window.location.href = url;
+    } else {
+      // 桌面端
+      if (container.style.transform == "rotateX(180deg)") {
+        container.style.transform = "rotateX(360deg)";
+      } else {
+        container.style.transform = "rotateX(180deg)";
+      }
+    }
+  };
 });
 </script>
 <style scoped>
@@ -102,13 +91,12 @@ export default defineComponent({
 
   .swiper {
     position: absolute;
-    left: 0;
-    top: 0;
+    left: -8px;
+    top: -8px;
     transform: rotateX(180deg);
     backface-visibility: hidden;
     width: calc(100% + 16px);
-    height: 100%;
-    margin: 0 -8px;
+    height: calc(100% + 16px);
     display: flex;
   }
 }

@@ -1,109 +1,72 @@
 <template>
-  <div id="cards" class="items">
-    <div class="card-item">
-      <div class="content" @click="link('html')">
-        <div class="icon">
-          <img src="/html.svg" alt="html" />
+  <div class="items">
+    <div class="item" v-for="item in list" :key="item.id">
+      <div class="content" @click="link((item.logo))">
+        <div class="logo">
+          <img :src="'/'+(item.logo)+'.svg'" :alt="item.logo" />
         </div>
-        <h2 class="title">HTML</h2>
-        <p class="details">超文本标记语言是一种用于创建网页的标准标记语言</p>
-      </div>
-    </div>
-    <div class="card-item">
-      <div class="content" @click="link('css')">
-        <div class="icon">
-          <img src="/css.svg" alt="css" />
-        </div>
-        <h2 class="title">CSS</h2>
-        <p class="details">
-          层叠样式表是一种用来为结构化文档添加样式的计算机语言
-        </p>
-      </div>
-    </div>
-    <div class="card-item">
-      <div class="content" @click="link('javascript')">
-        <div class="icon">
-          <img src="/javascript.svg" alt="javascript" />
-        </div>
-        <h2 class="title">JavaScript</h2>
-        <p class="details">
-          JavaScript 是一种基于原型、多范式、单线程的动态语言
-        </p>
-      </div>
-    </div>
-    <div class="card-item">
-      <div class="content" @click="link('vue')">
-        <div class="icon">
-          <img src="/vue.svg" alt="vue" />
-        </div>
-        <h2 class="title">Vue</h2>
-        <p class="details">Vue是一款用于构建用户界面的 JavaScript 框架</p>
-      </div>
-    </div>
-    <div class="card-item">
-      <div class="content" @click="link('webpack')">
-        <div class="icon">
-          <img src="/webpack.svg" alt="webpack" />
-        </div>
-        <h2 class="title">构建工具</h2>
-        <p class="details">
-          构建工具是一个把源代码生成可执行应用程序的过程自动化的程序
-        </p>
-      </div>
-    </div>
-    <div class="card-item">
-      <div class="content" @click="link('chrome')">
-        <div class="icon">
-          <img src="/chrome.svg" alt="chrome" />
-        </div>
-        <h2 class="title">浏览器原理</h2>
-        <p class="details">
-          网页浏览器是一种用于检索并展示万维网信息资源的应用程序
-        </p>
-      </div>
-    </div>
-    <div class="card-item">
-      <div class="content" @click="link('network')">
-        <div class="icon">
-          <img src="/network.svg" alt="network" />
-        </div>
-        <h2 class="title">计算机网络</h2>
-        <p class="details">
-          TCP/IP 是指能够在多个不同网络间实现信息传输的协议簇。
-        </p>
-      </div>
-    </div>
-    <div class="card-item">
-      <div class="content" @click="link('datastructure')">
-        <div class="icon">
-          <img src="/datastructure.svg" alt="datastructure" />
-        </div>
-        <h2 class="title">数据结构与算法</h2>
-        <p class="details">
-          在计算机科学中，数据结构是计算机中存储、组织数据的方式
-        </p>
+        <h2 class="name">{{item.name}}</h2>
+        <p class="info">{{item.info}}</p>
       </div>
     </div>
   </div>
 </template>
-<script>
-import { defineComponent } from "vue";
-import vertical from "./vertical.vue";
-export default defineComponent({
-  name: "horizontal",
-  setup() {
-    /* 控制路径跳转 */
-    const link = (param) => {
-      let url = window.location.href;
-      url = url + "guide/article/" + param + "/test_article.html";
-      window.location.href = url;
-    };
-
-    return {
-      link,
-    };
+<script setup>
+import { reactive } from 'vue';
+const list = reactive([
+  {
+    index: 0,
+    logo: "html",
+    name: "HTML",
+    info: "超文本标记语言是一种用于创建网页的标准标记语言"
   },
-});
+  {
+    index: 1,
+    logo: "css",
+    name: "CSS",
+    info: "层叠样式表是一种用来为结构化文档添加样式的计算机语言"
+  },
+  {
+    index: 2,
+    logo: "javascript",
+    name: "JavaScript",
+    info: "JavaScript 是一种基于原型、多范式、单线程的动态语言"
+  },
+  {
+    index: 3,
+    logo: "vue",
+    name: "Vue",
+    info: "Vue是一款用于构建用户界面的 JavaScript 框架"
+  },
+  {
+    index: 4,
+    logo: "webpack",
+    name: "构建工具",
+    info: "构建工具是一个把源代码生成可执行应用程序的过程自动化的程序"
+  },
+  {
+    index: 5,
+    logo: "chrome",
+    name: "浏览器原理",
+    info: "网页浏览器是一种用于检索并展示万维网信息资源的应用程序"
+  },
+  {
+    index: 6,
+    logo: "network",
+    name: "计算机网络",
+    info: "TCP/IP 是指能够在多个不同网络间实现信息传输的协议簇"
+  },
+  {
+    index: 7,
+    logo: "datastructure",
+    name: "数据结构与算法",
+    info: "在计算机科学中，数据结构是计算机中存储、组织数据的方式"
+  },
+])
+/* 控制路径跳转 */
+const link = (param) => {
+  window.location.href = window.location.href + "guide/article/" + param + "/test_article.html";;
+};
 </script>
 <style scoped>
 .items {
@@ -112,7 +75,7 @@ export default defineComponent({
   margin: -8px;
 }
 
-.card-item {
+.item {
   width: 100%;
   padding: 8px;
 }
@@ -125,7 +88,7 @@ export default defineComponent({
   background-color: var(--vp-c-bg-soft);
 }
 
-.icon {
+.logo {
   background-color: transparent;
   display: flex;
   justify-content: center;
@@ -137,14 +100,14 @@ export default defineComponent({
   font-size: 24px;
 }
 
-.title {
+.name {
   line-height: 24px;
   font-size: 16px;
   font-weight: 600;
   margin: 0;
 }
 
-.details {
+.info {
   padding-top: 8px;
   line-height: 24px;
   font-size: 14px;
@@ -153,7 +116,7 @@ export default defineComponent({
 }
 
 @media screen and (min-width: 640px) {
-  .card-item {
+  .item {
     width: 50%;
   }
 }
@@ -163,7 +126,7 @@ export default defineComponent({
     backface-visibility: hidden;
   }
 
-  .card-item {
+  .item {
     width: 25%;
   }
 

@@ -1,130 +1,224 @@
 <template>
-  <div class="swiper-vertical">
-    <ul class="vertical" id="vertical">
-      <li class="vertical-li">
-        <div class="vertical-item">
-          <a href="/" class="coverlink">
-            <p style="color: #4285f4">项目A</p>
-          </a>
+  <div class="ver">
+    <div class="vertical">
+      <div class="item" v-for="item in data.list" :key="item.index">
+        <div class="background" style="background: #888">
+          <h1 class="name">{{item.name}}</h1>
+          <p class="info">{{item.info}}</p>
+          <a class="url" :href="(item.url)" target="_blank">在线预览</a>
+          <a class="source" :href="(item.source)" target="_blank">查看源码</a>
         </div>
-      </li>
-      <li class="vertical-li">
-        <div class="vertical-item">
-          <a href="/" class="coverlink">
-            <p style="color: #34a853">项目B</p>
-          </a>
-        </div>
-      </li>
-      <li class="vertical-li">
-        <div class="vertical-item">
-          <a href="/" class="coverlink">
-            <p style="color: #fbbc05">项目C</p>
-          </a>
-        </div>
-      </li>
-      <li class="vertical-li">
-        <div class="vertical-item">
-          <a href="/" class="coverlink">
-            <p style="color: #ea4335">项目D</p>
-          </a>
-        </div>
-      </li>
-    </ul>
+      </div>
+    </div>
   </div>
 </template>
-<script>
-import { defineComponent, onMounted, reactive, toRefs } from "vue";
-export default defineComponent({
-  naem: "vertical",
-  setup() {
-    const data = reactive({
-      time: 4,            // 单步时长 4s
-      moveTime: 12.5,     // 移动时间占比 12.5%  0.5s
-      staticTime: 87.5,   // 静止时间占比 87.5%  3.5s
-      verticalArray: [],  // 内容数量
-      percentage: 0,      // 动画进度百分比
-      keyframes: "",      // 动画内容
-      style: {},          // 样式
-    });
+<script setup>
+import { reactive, onMounted, onUnmounted } from "vue";
 
-    const animation = () => { // 生成 @keyframes 动画并更新
-      data.percentage = 0;   
-      data.keyframes = `@keyframes vertical{`;                  
-      for(let i = 0; i <= data.verticalArray.length * 2; i++ ){
-        data.percentage > 100 ? data.percentage = 100 : data.percentage = data.percentage; // 保证进度百分比不超出100%
-        data.keyframes+=`${data.percentage}%{top: ${i % 2 == 0 ? -i * (data.vertical.offsetHeight / 2 + 8) / 2 : -(i - 1) * (data.vertical.offsetHeight / 2 + 8) / 2}px;}`;
-        if(i % 2 == 0) {
-          data.percentage = data.percentage + data.staticTime / data.verticalArray.length;
-        } else {
-          data.percentage = data.percentage + data.moveTime / data.verticalArray.length;
-        }
-      }
-      data.keyframes+='}';
-      data.style.innerHTML = `${data.keyframes}`;
-      data.vertical.style.animation = `vertical ${data.time * data.verticalArray.length}s linear infinite`;  // 改变 css
+const data = reactive({
+  list: [
+    {
+      idnex: 0,
+      name:"项目A",
+      info:"前端开发工程师",
+      url:"http://101.43.140.74:64/",
+      source:"https://github.com/JiaZhiheng",
+    },
+    {
+      idnex: 0,
+      name:"项目B",
+      info:"后端开发工程师",
+      url:"http://101.43.140.74:64/",
+      source:"https://github.com/JiaZhiheng",
+    },
+    {
+      idnex: 0,
+      name:"项目C",
+      info:"测试工程师",
+      url:"http://101.43.140.74:64/",
+      source:"https://github.com/JiaZhiheng",
+    },
+    {
+      idnex: 0,
+      name:"项目D",
+      info:"数据分析工程师",
+      url:"http://101.43.140.74:64/",
+      source:"https://github.com/JiaZhiheng",
+    },
+  ],
+  timeInter: null
+})
+// 组件挂载
+onMounted(() => {
+  const reflow = (element) => element.offsetHeight; // 返回元素的像素高度
+  class vertical {
+    /* 构造函数 */
+    constructor(options) {
+      const defaultOptions = {
+        element: document.querySelector(".vertical"),
+        height: "100%",
+        index: 0,
+        interval: 4000000,
+      };
+      this.options = Object.assign({}, defaultOptions, options); // 同名属性替换
+      this.initHorizontal(); 
+      this.playHorizontal(); 
     }
 
-    /* 监听页面变化 */
-    window.addEventListener("resize", animation);
+    /* 初始化轮播图 */
+    initHorizontal() {
+      this.initHorizontalContainer();    
+      this.initHorizontalItemsAndDots(); 
+    }
 
-    onMounted(() => {
-      data.vertical = document.getElementById('vertical');
-      data.verticalArray = Array.from(vertical.getElementsByTagName("li"));
-      data.vertical.append(data.verticalArray[0].cloneNode(true), data.verticalArray[1].cloneNode(true));
-      data.style = document.createElement('style');   
-      data.style.type = 'text/css'; 
-      animation();
-      document.getElementsByTagName('head').item(0).appendChild(data.style);
-    });
+    /* 初始化轮播容器 */
+    initHorizontalContainer() {
+      this.container = this.options.element;
+      this.container.style.height = this.options.height;
+      const itemContainer = document.createElement("div");
+      itemContainer.setAttribute("class", "items");
+      this.itemContainer = itemContainer;
+    }
 
-    return {
-      ...toRefs(data),
+    /* 初始化轮播图面板和轮播点面板 */
+    initHorizontalItemsAndDots() {
+      this.items = this.container.querySelectorAll(".item");
+      this.items[this.options.index].classList.add("active-x");
+      this.items[(this.options.index + 1) % this.items.length].classList.add("active-y");          
+      this.items.forEach((item) => {
+        this.itemContainer.appendChild(item);
+      });         
+      this.container.appendChild(this.itemContainer);          
+    }
+
+    /* 获取 上一项/当前项(X)/当前项(Y)/下一项 索引 */
+    getPrevIndex() { return ((this.getCurrentXIndex() - 1 + this.items.length) % this.items.length)};
+    getCurrentXIndex() { return [...this.items].indexOf(this.container.querySelector(".item.active-x"))};
+    getCurrentYIndex() { return [...this.items].indexOf(this.container.querySelector(".item.active-y"))};
+    getNextIndex() { return (this.getCurrentYIndex() + 1) % this.items.length};
+
+    /* 开始轮播 */
+    playHorizontal() {
+      data.timeInter = setInterval(() => {
+        this.setHorizontal(
+          this.getPrevIndex(),     
+          this.getCurrentXIndex(), 
+          this.getCurrentYIndex(),
+          this.getNextIndex(),    
+        );
+      }, this.options.interval);
+    }
+    
+    /* 设置轮播图 */
+    setHorizontal(fromIndex, currentXIndex, currentYIndex, toIndex) { 
+      if (!this.isAnimate) {
+        this.isAnimate = true;
+        this.from = this.items[fromIndex];       
+        this.currentX = this.items[currentXIndex]; 
+        this.currentY = this.items[currentYIndex]; 
+        this.to = this.items[toIndex];           
+        this.setHorizontalItem();
+      }
+    }
+
+    /* 设置轮播面板 */
+    setHorizontalItem() {
+      this.to.setAttribute("class", `item next`); // 这两行代码可以使页面平滑过渡
+      reflow(this.to);                                     // 这两行代码可以使页面平滑过渡(尚不知道原因)
+      this.from.setAttribute("class",`item prev`);
+      this.currentX.setAttribute("class",`item active-x`);
+      this.currentY.setAttribute("class",`item active-y`);
+      this.to.setAttribute("class",`item next`);
+      this.resetHorizontalItem();
+    }
+
+    /* 重置轮播面板 */
+    resetHorizontalItem() {
+      const callback = () => {
+        this.from.setAttribute("class", "item");
+        this.currentX.setAttribute("class", "item prev");
+        this.currentY.setAttribute("class", "item active-x");
+        this.to.setAttribute("class", "item active-y");
+        this.from.removeEventListener("transitionend", callback, false); // 移除监听过渡事件
+        this.isAnimate = false; // 防抖，没有这个变量的话会反复触发setHorizontal()函数
+      };
+      this.from.addEventListener("transitionend", callback(), false); // 设置监听过渡事件
     }
   }
+
+  /* 声明轮播图 */
+  new vertical();
 });
+
+// 组件卸载
+onUnmounted(() => {
+  clearInterval(data.timeInter);
+  data.timeInter = null
+});
+ 
 </script>
 <style scoped>
-.swiper-vertical {
+.ver {
   flex: 1;
-  padding: 8px 8px 8px 4px;
   height: 100%;
-  width: calc(100% - 10px);
-  margin-left: 10px;
   border-radius: 12px;
+  position: relative;
   overflow: hidden;
-  position: relative;
 }
-
 .vertical {
-  list-style: none;
-  height: 100%;
+  padding: 8px;
   position: relative;
 }
-
-.vertical-li {
-  line-height: 20px;
-  font-size: 14px;
-  text-align: center;
-  height: calc(50% - 8px);
-  margin-bottom: 16px;
-}
-
-.vertical-item {
+.background {
+  position: relative;
   width: 100%;
   height: 100%;
-  margin-bottom: 16px;
-  background-color: #eee;
   border-radius: 12px;
-  font-size: 26px;
-  font-weight: bold;
-  position: relative;
 }
 
-.coverlink {
+.url {
+  color: #409EFF
+}
+.source {
+  color: #409EFF
+}
+.name {
+  color: #fff
+}
+.info {
+  color: #fff
+}
+.items {
   height: 100%;
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  overflow: hidden;
+}
+.item {
+  display: none;
+  position: absolute;
+  width: calc(100% - 16px);
+  height: calc(50% - 4px);
+  transition: all .3s;
+  background-color: transparent;
+}
+.item.active-x,
+.item.active-y,
+.item.next,
+.item.prev {
+  display: block;
+}
+/* 上一页 */
+.item.prev {   
+  transform: translateY(calc(-100% - 16px));
+}
+/* 当前页 */
+.item.active-x {
+  transform: translateY(0);
+}
+.item.active-y {
+  transform: translateY(calc(100% + 16px));
+}
+/* 下一页 */
+.item.next {
+  transform: translateY(calc(200% + 32px));
 }
 </style>
