@@ -10,22 +10,25 @@
 </template>
 <script setup>
 	import DefaultTheme from "vitepress/theme";
-	import horizontal from "./horizontal.vue";
-	import vertical from "./vertical.vue";
+	import horizontal from "./components/horizontal.vue";
+	import vertical from "./components/vertical.vue";
 	const { Layout } = DefaultTheme;
 </script>
 <style scoped>
 	.swiper {
 		display: none;
 	}
-	.swiper {
-		position: absolute;
-		left: -8px;
-		top: -8px;
-		transform: rotateX(180deg);
-		backface-visibility: hidden;
-		width: calc(100% + 16px);
-		height: calc(100% + 16px);
-		display: flex;
+
+	@media screen and (min-width: 960px) {
+		.swiper {
+			position: absolute;
+			left: -8px;
+			top: -8px;
+			transform: rotateX(180deg);
+			backface-visibility: hidden;
+			width: calc(100% + 16px);
+			height: calc(100% + 16px);
+			display: flex;
+		}
 	}
 </style>

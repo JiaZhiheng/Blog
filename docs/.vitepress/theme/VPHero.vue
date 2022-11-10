@@ -1743,9 +1743,34 @@
 </template>
 <script setup>
 	import { onMounted } from "vue";
-
-	/* 生命周期钩子 */
+	// import hero from "./components/hero.vue";
+	// 生命周期钩子
 	onMounted(() => {
+		let container = Array.from(document.getElementsByClassName("container"))[3];
+		let swiper = document.getElementById("swiper");
+		container.appendChild(swiper);
+		/* 展示我的项目 */
+		container.setAttribute(
+			"style",
+			"display: flex;margin: 0 auto;max-width: 1152px;position: relative;transform-style: preserve-3d;transition: 0.8s;backface-visibility: hidden;"
+		);
+		Array.from(
+			document.getElementsByClassName("VPButton medium brand")
+		)[0].onclick = function () {
+			if (document.body.clientWidth < 960) {
+				let url = window.location.href;
+				url = url + "guide/project/project.html";
+				window.location.href = url;
+			} else {
+				// 桌面端
+				if (container.style.transform == "rotateX(180deg)") {
+					container.style.transform = "rotateX(360deg)";
+				} else {
+					container.style.transform = "rotateX(180deg)";
+				}
+			}
+		};
+
 		// 将 features 的 icon 替换为图片
 		let icon = [];
 		Array.from(document.querySelectorAll(".box")).forEach((item) => {
@@ -1772,12 +1797,36 @@
 	});
 </script>
 <style scoped>
+	*,
+	::before,
+	::after {
+		box-sizing: border-box;
+	}
+
+	.wrap {
+		width: 100%;
+		padding: 0 24px;
+	}
+
+	.mobile {
+		margin: 0 auto;
+		max-width: 1152px;
+	}
+
+	.laptop {
+		display: none;
+	}
+
 	.svg {
 		width: 320px;
 		height: 320px;
 	}
 
 	@media screen and (min-width: 640px) {
+		.wrap {
+			padding: 0 48px;
+		}
+
 		.svg {
 			width: 392px;
 			height: 392px;
@@ -1785,6 +1834,14 @@
 	}
 
 	@media screen and (min-width: 960px) {
+		.wrap {
+			padding: 0 64px;
+		}
+
+		.mobile {
+			display: none;
+		}
+
 		.svg {
 			width: 420px;
 			height: 420px;
