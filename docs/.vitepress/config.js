@@ -1,19 +1,24 @@
 import { defineConfig } from 'vitepress'
-
 export default defineConfig({
-  title: 'Vitepress-Blog', // 网站标题
+  lang: 'zh-CN',
+  title: '前端工程师博客', // 网站标题
+  description: 'Vite 和 Vue 支持的静态站点生成器', // 描述
+  titleTemplate: 'Vite & Vue powered static site generator', // 标题的后缀
+  outDir: "../dist",
+  head: [ // head标签
+    ['link', { rel: 'icon', href: '/avatar.ico' }],
+    ['link', { rel: 'apple-touch-icon-precomposed', href: '/logo.png' }],
+  ],
+  ignoreDeadLinks: true, // 忽略死链接
   themeConfig: {
     logo: '/avatar.png', // 头像
     siteTitle: '爱搞事的跳跳虎', // 站点标题
-    socialLinks: [ // 链接
-      { icon: 'github', link: 'https://github.com/JiaZhiheng' },      
-    ],
     // 导航栏
     nav: [
-      { text:"工作", link: "/guide/work/work" },
-      { text:"文章", link: "/guide/article/article" },
-      { text:"资料", link: "/guide/material/material" },
-      { text:"项目", link: "/guide/project/project" },
+      { text: "工作", link: "/guide/work/work" },
+      { text: "文章", link: "/guide/article/article" },
+      { text: "资料", link: "/guide/material/material" },
+      { text: "项目", link: "/guide/project/project" },
     ],
     // 侧边栏
     sidebar: {
@@ -156,11 +161,17 @@ export default defineConfig({
         },
       ],
     },
-    /* 页脚 */
-    // footer: {
-    //   message: 'Released under the MIT License.',
-    //   copyright: 'Copyright © 2019-present Evan You'
-    // },   
+    /* 大纲标题 */
+    outlineTitle: '大纲',
+    /* 社交链接 */
+    socialLinks: [
+      { icon: 'github', link: 'https://github.com/JiaZhiheng' },
+    ],
+    /* 文档页脚 */
+    docFooter: {
+      prev: '上一篇',
+      next: '下一篇'
+    }
   },
 })
 

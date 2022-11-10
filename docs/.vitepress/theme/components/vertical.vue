@@ -3,6 +3,7 @@
 		<div class="vertical">
 			<figure class="item" v-for="item in data.list" :key="item.id">
 				<img class="background" :style="item.styleObject" alt="" />
+				<div class="hover"></div>
 				<div class="title">
 					<div>
 						<h2>{{ item.name }}</h2>
@@ -23,7 +24,7 @@
 		list: [
 			{
 				id: 0,
-				name: "游戏速报",
+				name: "项目A",
 				info: "前端开发工程师",
 				url: "http://101.43.140.74:64/",
 				source: "https://github.com/JiaZhiheng",
@@ -33,7 +34,7 @@
 			},
 			{
 				id: 0,
-				name: "公司首页",
+				name: "项目B",
 				info: "后端开发工程师",
 				url: "http://101.43.140.74:64/",
 				source: "https://github.com/JiaZhiheng",
@@ -73,7 +74,7 @@
 					element: document.querySelector(".vertical"),
 					height: "100%",
 					index: 0,
-					interval: 400000,
+					interval: 4000,
 				};
 				this.options = Object.assign({}, defaultOptions, options); // 同名属性替换
 				this.initHorizontal();
@@ -183,6 +184,22 @@
 	});
 </script>
 <style scoped>
+	.hover {
+		width: 100%;
+		height: 100%;
+		position: absolute;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		background-color: rgba(0, 0, 0, 0.5);
+		opacity: 0;
+	}
+
+	.item:hover .hover {
+		opacity: 1;
+	}
+
 	*,
 	*::after,
 	*::before {

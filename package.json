@@ -1,20 +1,17 @@
 {
-  "name": "blog",
-  "version": "1.0.0",
-  "main": "index.js",
-  "repository": "https://github.com/JiaZhiheng/Blog.git",
-  "author": "JiaZhiheng <99702914+JiaZhiheng@users.noreply.github.com>",
-  "license": "MIT",
-  "scripts": {
-    "docs:dev": "vitepress dev docs",
-    "docs:build": "vitepress build docs",
-    "docs:serve": "vitepress serve docs"
-  },
-  "devDependencies": {
-    "vitepress": "^1.0.0-alpha.13",
-    "vue": "^3.2.38"
-  },
-  "dependencies": {
-    "animate.css": "^4.1.1"
-  }
+	"name": "blog",
+	"version": "1.0.0",
+	"main": "index.js",
+	"repository": "https://github.com/JiaZhiheng/Blog.git",
+	"author": "JiaZhiheng <99702914+JiaZhiheng@users.noreply.github.com>",
+	"license": "MIT",
+	"scripts": {
+		"docs:dev": "vitepress dev docs",
+		"docs:build": "vitepress build docs",
+		"docs:serve": "vitepress serve docs"
+	},
+	"devDependencies": {
+		"vitepress": "^1.0.0-alpha.28",
+		"vue": "^3.2.38"
+	}
 }

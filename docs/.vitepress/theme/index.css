@@ -1,6 +1,6 @@
 :root {
     --vp-home-hero-name-color: transparent;
-    --vp-home-hero-name-background: linear-gradient( 135deg, #00CAFD 50%, #00B0FF 100%);
+    --vp-home-hero-name-background: linear-gradient(135deg, #00CAFD 50%, #00B0FF 100%);
     --vp-button-brand-bg: #00B0FF;
     --vp-button-brand-hover-bg: #66C1FF;
     --vp-button-brand-border: #008CD8;
@@ -14,11 +14,140 @@
     margin-bottom: 4px;
 }
 
+.VPHero .image {
+    margin: -56px 0 -18px
+}
+
+.VPContent .VPHome {
+    padding-bottom: 48px;
+}
+
+/* 移入效果动画 */
+@keyframes bounceInLeft {
+
+    from,
+    60%,
+    75%,
+    90%,
+    to {
+        -webkit-animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+        animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+    }
+
+    0% {
+        opacity: 0;
+        -webkit-transform: translate3d(-3000px, 0, 0) scaleX(3);
+        transform: translate3d(-3000px, 0, 0) scaleX(3);
+    }
+
+    60% {
+        opacity: 1;
+        -webkit-transform: translate3d(25px, 0, 0) scaleX(1);
+        transform: translate3d(25px, 0, 0) scaleX(1);
+    }
+
+    75% {
+        -webkit-transform: translate3d(-10px, 0, 0) scaleX(0.98);
+        transform: translate3d(-10px, 0, 0) scaleX(0.98);
+    }
+
+    90% {
+        -webkit-transform: translate3d(5px, 0, 0) scaleX(0.995);
+        transform: translate3d(5px, 0, 0) scaleX(0.995);
+    }
+
+    to {
+        -webkit-transform: translate3d(0, 0, 0);
+        transform: translate3d(0, 0, 0);
+    }
+}
+
+@keyframes bounceInUp {
+
+    from,
+    60%,
+    75%,
+    90%,
+    to {
+        -webkit-animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+        animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+    }
+
+    from {
+        opacity: 0;
+        -webkit-transform: translate3d(0, 3000px, 0) scaleY(5);
+        transform: translate3d(0, 3000px, 0) scaleY(5);
+    }
+
+    60% {
+        opacity: 1;
+        -webkit-transform: translate3d(0, -20px, 0) scaleY(0.9);
+        transform: translate3d(0, -20px, 0) scaleY(0.9);
+    }
+
+    75% {
+        -webkit-transform: translate3d(0, 10px, 0) scaleY(0.95);
+        transform: translate3d(0, 10px, 0) scaleY(0.95);
+    }
+
+    90% {
+        -webkit-transform: translate3d(0, -5px, 0) scaleY(0.985);
+        transform: translate3d(0, -5px, 0) scaleY(0.985);
+    }
+
+    to {
+        -webkit-transform: translate3d(0, 0, 0);
+        transform: translate3d(0, 0, 0);
+    }
+}
+
+.main .name {
+    animation-duration: 1s;
+    animation-fill-mode: both;
+    animation-name: bounceInLeft;
+}
+
+.main .text {
+    animation-duration: 1s;
+    animation-fill-mode: both;
+    animation-name: bounceInLeft;
+    animation-delay: 0.2s;
+}
+
+.main .tagline {
+    animation-duration: 1s;
+    animation-fill-mode: both;
+    animation-name: bounceInLeft;
+    animation-delay: 0.4s;
+}
+
+.main .actions {
+    animation-duration: 1s;
+    animation-fill-mode: both;
+    animation-name: bounceInUp;
+}
+
+@media screen and (min-width: 640px) {
+    .VPHero .image {
+        margin: -88px 0 -18px
+    }
+
+    .VPContent .VPHome {
+        padding-bottom: 64px;
+    }
+}
+
 @media screen and (min-width: 960px) {
+    .VPHero .image {
+        margin: 0;
+        min-width: 100px;
+    }
+
+    .VPContent .VPHome {
+        padding-bottom: 0;
+    }
+
     .image {
         height: 248px;
     }
 }
-
-
-

@@ -2,7 +2,7 @@
 	<div class="swiper-horizontal">
 		<div class="horizontal">
 			<div class="horizontal-item" v-for="item in data.list" :key="item.id">
-				<div class="demo-item" style="background: #666">
+				<div class="demo-item" :style="item.styleObject">
 					<h1 class="item-name">{{ item.name }}</h1>
 					<p class="item-info">{{ item.info }}</p>
 					<a class="item-url" :href="item.url" target="_blank">在线预览</a>
@@ -25,6 +25,9 @@
 				info: "前端开发工程师",
 				url: "http://101.43.140.74:64/",
 				source: "https://github.com/JiaZhiheng",
+				styleObject: {
+					backgroundColor: "#4586f3",
+				},
 			},
 			{
 				id: 0,
@@ -32,6 +35,9 @@
 				info: "后端开发工程师",
 				url: "http://101.43.140.74:64/",
 				source: "https://github.com/JiaZhiheng",
+				styleObject: {
+					backgroundColor: "#eb4334",
+				},
 			},
 			{
 				id: 0,
@@ -39,6 +45,9 @@
 				info: "测试工程师",
 				url: "http://101.43.140.74:64/",
 				source: "https://github.com/JiaZhiheng",
+				styleObject: {
+					backgroundColor: "#fbbd06",
+				},
 			},
 			{
 				id: 0,
@@ -46,6 +55,9 @@
 				info: "数据分析工程师",
 				url: "http://101.43.140.74:64/",
 				source: "https://github.com/JiaZhiheng",
+				styleObject: {
+					backgroundColor: "#35aa53",
+				},
 			},
 		],
 		timeInter: null,
