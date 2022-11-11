@@ -1743,9 +1743,10 @@
 </template>
 <script setup>
 	import { onMounted } from "vue";
-	// import hero from "./components/hero.vue";
+
 	// 生命周期钩子
 	onMounted(() => {
+		/* 载入轮播图 */
 		let container = Array.from(document.getElementsByClassName("container"))[3];
 		let swiper = document.getElementById("swiper");
 		container.appendChild(swiper);
@@ -1779,13 +1780,11 @@
 		icon.forEach((item) => {
 			let img = document.createElement("img");
 			img.src = item.innerHTML;
-			item.setAttribute("style", "background-color:transparent");
 			item.innerHTML = "";
 			item.appendChild(img);
 		});
 
 		/* 将图片替换为动画svg */
-		// 在将来的版本可改用插槽写法
 		let parentNode = Array.from(
 			document.getElementsByClassName("image-container")
 		)[0];
@@ -1793,7 +1792,6 @@
 			document.getElementsByClassName("VPImage image-src")
 		)[0];
 		parentNode.replaceChild(svg, picture);
-		parentNode.setAttribute("style", "transform: translate(0, 0)");
 	});
 </script>
 <style scoped>

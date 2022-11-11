@@ -14,12 +14,23 @@
     margin-bottom: 4px;
 }
 
+
+/* 主页图片 */
+.image .image-container {
+    transform: translate(0, 0);
+}
+
 .VPHero .image {
     margin: -56px 0 -18px
 }
 
 .VPContent .VPHome {
     padding-bottom: 48px;
+}
+
+/* 主页标签icon */
+.box .icon {
+    background-color: transparent;
 }
 
 /* 移入效果动画 */
@@ -135,6 +146,10 @@
     .VPContent .VPHome {
         padding-bottom: 64px;
     }
+
+    .image .image-container {
+        transform: translate(0, 0);
+    }
 }
 
 @media screen and (min-width: 960px) {
@@ -145,6 +160,10 @@
 
     .VPContent .VPHome {
         padding-bottom: 0;
+    }
+
+    .image .image-container {
+        transform: translate(0, 0);
     }
 
     .image {

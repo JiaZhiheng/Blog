@@ -61,4 +61,4 @@ features:
     linkText: 点击查看
 ---
 
-<Home/>
+<VPHero/>
