@@ -15,7 +15,7 @@ hero:
       text: 我的项目
       link:
     - theme: alt
-      text: 关于作者
+      text: 个人简历
       link: /guide/author
 
 features:

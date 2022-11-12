@@ -4,7 +4,11 @@
 		class="iframe"
 		src="/贾志恒-塔里木大学-网络工程.pdf"
 	></iframe>
-	<div id="aaa">打印简历</div>
+	<a id="aaa">打印简历</a>
+	<a
+		href="/贾志恒-塔里木大学-网络工程.pdf" target="_blank"
+		>预览简历</a
+	>
 	<a
 		href="/贾志恒-塔里木大学-网络工程.pdf"
 		download="贾志恒-塔里木大学-网络工程"
@@ -23,8 +27,8 @@
 		};
 
 		// 调整大小
-		// printIframe.style.height = window.innerHeight + "px";
-		// printIframe.style.width = window.innerWidth + "px";
+		printIframe.style.height = window.innerHeight + "px";
+		printIframe.style.width = window.innerWidth + "px";
 	});
 </script>
 <style scoped>
