@@ -12,7 +12,7 @@ export default defineConfig({
   ignoreDeadLinks: true, // 忽略死链接
   themeConfig: {
     logo: '/avatar.png', // 头像
-    siteTitle: '爱搞事的跳跳虎', // 站点标题
+    siteTitle: '贾志恒', // 站点标题
     // 导航栏
     nav: [
       { text: "工作", link: "/guide/work/work" },
