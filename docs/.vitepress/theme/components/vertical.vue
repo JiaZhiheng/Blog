@@ -2,17 +2,19 @@
 	<div class="ver">
 		<div class="vertical">
 			<figure class="item" v-for="item in data.list" :key="item.id">
-				<img class="background" :style="item.styleObject" alt="" />
-				<div class="hover"></div>
-				<div class="title">
-					<div>
-						<h2>{{ item.name }}</h2>
-						<h4>在线预览</h4>
+				<a :href="item.url" target="_blank">
+					<img class="background" :src="item.src" alt="" />
+					<div class="hover"></div>
+					<div class="title">
+						<div>
+							<h2>{{ item.name }}</h2>
+							<h4>在线预览</h4>
+						</div>
 					</div>
-				</div>
-				<figcaption>
-					<p>{{ item.info }}</p>
-				</figcaption>
+					<figcaption>
+						<p>{{ item.info }}</p>
+					</figcaption>
+				</a>
 			</figure>
 		</div>
 	</div>
@@ -24,47 +26,40 @@
 		list: [
 			{
 				id: 0,
-				name: "项目A",
-				info: "前端开发工程师",
-				url: "http://101.43.140.74:64/",
+				name: "游戏速报",
+				info: "游戏内容前沿资讯",
+				url: "http://101.43.140.74:51/",
 				source: "https://github.com/JiaZhiheng",
-				styleObject: {
-					backgroundColor: "#4586f3",
-				},
+				src: "/1.png",
 			},
 			{
 				id: 0,
-				name: "项目B",
-				info: "后端开发工程师",
+				name: "企业官网",
+				info: "科技公司响应式首页",
 				url: "http://101.43.140.74:64/",
 				source: "https://github.com/JiaZhiheng",
-				styleObject: {
-					backgroundColor: "#eb4334",
-				},
+				src: "/2.png",
 			},
 			{
 				id: 0,
-				name: "项目C",
-				info: "测试工程师",
-				url: "http://101.43.140.74:64/",
+				name: "漫游太阳系",
+				info: "带你探索神秘宇宙",
+				url: "http://101.43.140.74:73/",
 				source: "https://github.com/JiaZhiheng",
-				styleObject: {
-					backgroundColor: "#fbbd06",
-				},
+				src: "/3.png",
 			},
 			{
 				id: 0,
-				name: "项目D",
-				info: "数据分析工程师",
-				url: "http://101.43.140.74:64/",
+				name: "求职平台",
+				info: "助您找到满意工作",
+				url: "http://101.43.140.74:56/",
 				source: "https://github.com/JiaZhiheng",
-				styleObject: {
-					backgroundColor: "#35aa53",
-				},
+				src: "/4.png",
 			},
 		],
 		timeInter: null,
 	});
+
 	// 组件挂载
 	onMounted(() => {
 		class vertical {

@@ -1,19 +1,26 @@
 :root {
     --vp-home-hero-name-color: transparent;
     --vp-home-hero-name-background: linear-gradient(135deg, #00CAFD 50%, #00B0FF 100%);
-    --vp-button-brand-bg: #00B0FF;
+    --vp-button-brand-bg: #00CAFD;
     --vp-button-brand-hover-bg: #66C1FF;
     --vp-button-brand-border: #008CD8;
     --vp-button-brand-hover-border: #008CD8;
     --vp-button-brand-active-border: #008CD8;
     --vp-c-green: #00B0FF;
     --vp-c-brand-dark: #0070B9;
+    --vp-c-green-darker: #00B0FF;
 }
 
 .logo {
     margin-bottom: 4px;
 }
 
+.VPHome .container {
+    position: relative;
+    transform-style: preserve-3d;
+    transition: 0.8s;
+    backface-visibility: hidden;
+}
 
 /* 主页图片 */
 .image .image-container {

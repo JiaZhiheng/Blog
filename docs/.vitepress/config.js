@@ -4,6 +4,7 @@ export default defineConfig({
   title: '前端工程师博客', // 网站标题
   description: 'Vite 和 Vue 支持的静态站点生成器', // 描述
   titleTemplate: 'Vite & Vue powered static site generator', // 标题的后缀
+  // base: '/Blog/',
   outDir: "../dist",
   head: [ // head标签
     ['link', { rel: 'icon', href: '/avatar.ico' }],
@@ -15,39 +16,87 @@ export default defineConfig({
     siteTitle: '贾志恒', // 站点标题
     // 导航栏
     nav: [
-      { text: "工作", link: "/guide/work/work" },
-      { text: "文章", link: "/guide/article/article" },
-      { text: "资料", link: "/guide/material/material" },
-      { text: "项目", link: "/guide/project/project" },
+      // { text: "工作", link: "/guide/work/a" },
+      {
+        text: "文章",
+        items: [
+          {
+            text: 'HTML', link: "/guide/article/html/test_article"
+          },
+          {
+            text: 'CSS', link: "/guide/article/css/test_article"
+          }
+        ]
+      },
+      {
+        text: "项目", link: "/guide/project/project",
+
+      },
+      { text: "资料", link: "/guide/material/regularExpression" },
+
     ],
     // 侧边栏
     sidebar: {
       // 工作
       "/guide/work/": [
         {
-          text: "Coupon",
+          text: "工作中遇到的问题和对应解决方案",
           items: [
             {
-              text: "Coupon",
-              link: "/guide/work/coupon/Coupon",
+              text: "MP3 转 M4A 的动画效果",
+              link: "/guide/work/a",
             },
-          ],
-        },
-        {
-          text: "Hiappo",
-          items: [
             {
-              text: "Hiappo",
-              link: "/guide/work/hiappo/Hiappo",
+              text: "揭开优惠券的动画效果",
+              link: "/guide/work/b",
             },
-          ],
-        },
-        {
-          text: "Astro",
-          items: [
             {
-              text: "Astro",
-              link: "/guide/work/astro/Astro",
+              text: "揭开优惠券的动画效果(第二种)",
+              link: "/guide/work/c",
+            },
+            {
+              text: "回到顶部的方法",
+              link: "/guide/work/d",
+            },
+            {
+              text: "涟漪效果",
+              link: "/guide/work/e",
+            },
+            {
+              text: "翻转效果",
+              link: "/guide/work/f",
+            },
+            {
+              text: "带进度条的音乐播放器",
+              link: "/guide/work/g",
+            },
+            {
+              text: "简易音乐播放器",
+              link: "/guide/work/h",
+            },
+            {
+              text: "英文邮件(邮件必须用行内样式)",
+              link: "/guide/work/i",
+            },
+            {
+              text: "日文邮件(邮件必须用行内样式)",
+              link: "/guide/work/j",
+            },
+            {
+              text: "使用 webp 格式的图片优化加载速度",
+              link: "/guide/work/k",
+            },
+            {
+              text: "好看的 hover 样式",
+              link: "/guide/work/l",
+            },
+            {
+              text: "实现打印功能",
+              link: "/guide/work/m",
+            },
+            {
+              text: "测试在 html 中引入 pdf 文件",
+              link: "/guide/work/n",
             },
           ],
         },
@@ -171,7 +220,8 @@ export default defineConfig({
     docFooter: {
       prev: '上一篇',
       next: '下一篇'
-    }
+    },
+    lastUpdated: true
   },
 })
 

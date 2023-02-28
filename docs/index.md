@@ -13,52 +13,58 @@ hero:
   actions:
     - theme: brand
       text: 我的项目
-      link:
+      link: /guide/project
     - theme: alt
       text: 个人简历
       link: /guide/author
 
 features:
-  - icon: html.svg
+  - icon:
+      src: /html.svg
     title: HTML
     details: 超文本标记语言是一种用于创建网页的标准标记语言
     link: /guide/article/html/test_article.html
     linkText: 点击查看
-  - icon: css.svg
+  - icon:
+      src: /css.svg
     title: CSS
     details: 层叠样式表是一种用来为结构化文档添加样式的计算机语言
     link: /guide/article/css/test_article.html
     linkText: 点击查看
-  - icon: javascript.svg
+  - icon:
+      src: /javascript.svg
     title: JavaScript
     details: JavaScript 是一种基于原型、多范式、单线程的动态语言
     link: /guide/article/javascript/test_article.html
     linkText: 点击查看
-  - icon: vue.svg
+  - icon:
+      src: /vue.svg
     title: Vue
     details: Vue是一款用于构建用户界面的 JavaScript 框架
     link: /guide/article/vue/test_article.html
     linkText: 点击查看
-  - icon: webpack.svg
+  - icon:
+      src: /webpack.svg
     title: 构建工具
     details: 构建工具是一个把源代码生成可执行应用程序的过程自动化的程序
     link: /guide/article/webpack/test_article.html
     linkText: 点击查看
-  - icon: chrome.svg
+  - icon:
+      src: /chrome.svg
     title: 浏览器原理
     details: 网页浏览器是一种用于检索并展示万维网信息资源的应用程序
     link: /guide/article/chrome/test_article.html
     linkText: 点击查看
-  - icon: network.svg
+  - icon:
+      src: /network.svg
     title: 计算机网络
     details: TCP/IP 是指能够在多个不同网络间实现信息传输的协议簇
     link: /guide/article/network/test_article.html
     linkText: 点击查看
-  - icon: datastructure.svg
+  - icon:
+      src: /datastructure.svg
     title: 数据结构与算法
     details: 在计算机科学中，数据结构是计算机中存储、组织数据的方式
     link: /guide/article/datastructure/test_article.html
     linkText: 点击查看
 ---
-
-<VPHero/>

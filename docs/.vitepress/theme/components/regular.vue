@@ -2,12 +2,12 @@
 	<iframe
 		id="iframe"
 		class="iframe"
-		src="/贾志恒-塔里木大学-网络工程.pdf"
+		src="/正则表达式速查备忘手册.pdf"
 		style="width: 720px; height: 1000px"
 	></iframe>
 	<div class="buttons">
 		<a class="button print" id="print"
-			><span>打印简历</span>
+			><span>打印手册</span>
 			<svg
 				t="1668945635946"
 				class="icon"
@@ -29,7 +29,7 @@
 			class="button review"
 			href="/贾志恒-塔里木大学-网络工程.pdf"
 			target="_blank"
-			><span>预览简历</span>
+			><span>预览手册</span>
 			<svg
 				t="1668945656358"
 				class="icon"
@@ -53,9 +53,9 @@
 		</a>
 		<a
 			class="button download"
-			href="/贾志恒-塔里木大学-网络工程.pdf"
-			download="贾志恒-塔里木大学-网络工程"
-			><span>下载简历</span>
+			href="/正则表达式速查备忘手册.pdf"
+			download="正则表达式速查备忘手册"
+			><span>下载手册</span>
 			<svg
 				t="1668945673111"
 				class="icon"
@@ -85,7 +85,7 @@
 		// Array.from(document.getElementsByClassName("aside"))[0].style.display =
 		// 	"none";
 
-		// 打印简历
+		// 打印手册
 		let print = document.getElementById("print");
 		let printIframe = document.getElementById("iframe");
 		print.onclick = function () {

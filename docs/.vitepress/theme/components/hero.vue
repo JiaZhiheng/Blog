@@ -1741,32 +1741,6 @@
 		</g>
 	</svg>
 </template>
-<script setup>
-	import { onMounted } from "vue";
-	// 生命周期钩子
-	onMounted(() => {
-		// 将 features 的 icon 替换为图片
-		let icon = [];
-		Array.from(document.querySelectorAll(".box")).forEach((item) => {
-			icon.push(item.children[0]);
-		});
-		icon.forEach((item) => {
-			let img = document.createElement("img");
-			img.src = item.innerHTML;
-			item.innerHTML = "";
-			item.appendChild(img);
-		});
-
-		/* 将图片替换为动画svg */
-		let parentNode = Array.from(
-			document.getElementsByClassName("image-container")
-		)[0];
-		let picture = Array.from(
-			document.getElementsByClassName("VPImage image-src")
-		)[0];
-		parentNode.replaceChild(svg, picture);
-	});
-</script>
 <style scoped>
 	*,
 	::before,
