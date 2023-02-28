@@ -4,7 +4,7 @@ export default defineConfig({
   title: '前端工程师博客', // 网站标题
   description: 'Vite 和 Vue 支持的静态站点生成器', // 描述
   titleTemplate: 'Vite & Vue powered static site generator', // 标题的后缀
-  // base: '/Blog/',
+  base: '/Blog/',
   outDir: "../dist",
   head: [ // head标签
     ['link', { rel: 'icon', href: '/avatar.ico' }],
