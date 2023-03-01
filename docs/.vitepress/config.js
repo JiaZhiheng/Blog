@@ -8,7 +8,7 @@ export default defineConfig({
   outDir: "../dist",
   head: [ // head标签
     ['link', { rel: 'icon', href: '/avatar.ico' }],
-    ['link', { rel: 'apple-touch-icon-precomposed', href: '/logo.png' }],
+    ['link', { rel: 'apple-touch-icon-precomposed', href: '/logo.png', type: 'image/png' }],
   ],
   ignoreDeadLinks: true, // 忽略死链接
   themeConfig: {
