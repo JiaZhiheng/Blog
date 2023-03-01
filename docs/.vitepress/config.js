@@ -5,7 +5,8 @@ export default defineConfig({
   description: 'Vite 和 Vue 支持的静态站点生成器', // 描述
   titleTemplate: 'Vite & Vue powered static site generator', // 标题的后缀
   base: '/Blog/',
-  outDir: "../dist",
+  outDir: '../dist',
+  // srcDir: '.docs/guide',
   head: [ // head标签
     ['link', { rel: 'icon', href: '/avatar.ico' }],
     ['link', { rel: 'apple-touch-icon-precomposed', href: '/logo.png', type: 'image/png' }],

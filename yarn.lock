@@ -517,10 +517,10 @@
   optionalDependencies:
     "fsevents" "~2.3.2"
 
-"vitepress@^1.0.0-alpha.48":
-  "integrity" "sha512-vu9J6Eg1l+o33lfDAMD9+cxomMNQGNQEW/GPu32tkffagMBxoBqhzxfqjaOqtTQ2VdS+dauOdROtrWQrElyivw=="
-  "resolved" "https://registry.npmmirror.com/vitepress/-/vitepress-1.0.0-alpha.48.tgz"
-  "version" "1.0.0-alpha.48"
+"vitepress@^1.0.0-alpha.49":
+  "integrity" "sha512-3nUZJow4qL8NHRWYatqqVj45AJDxWst/TuOj+IbQRhxesEswa+Fpwayj9/FxzRzBl665fuiG5y+QeVhOeUm0OA=="
+  "resolved" "https://registry.npmmirror.com/vitepress/-/vitepress-1.0.0-alpha.49.tgz"
+  "version" "1.0.0-alpha.49"
   dependencies:
     "@docsearch/css" "^3.3.3"
     "@docsearch/js" "^3.3.3"
