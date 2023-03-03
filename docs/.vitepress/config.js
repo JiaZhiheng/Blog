@@ -1,23 +1,48 @@
 import { defineConfig } from 'vitepress'
 export default defineConfig({
-  lang: 'zh-CN',
+  lang: 'zh-CN', // 语言
   title: '前端工程师博客', // 网站标题
   description: 'Vite 和 Vue 支持的静态站点生成器', // 描述
   titleTemplate: 'Vite & Vue powered static site generator', // 标题的后缀
-  base: '/Blog/',
-  outDir: '../dist',
-  // srcDir: '.docs/guide',
-  head: [ // head标签
-    ['link', { rel: 'icon', href: '/avatar.ico' }],
-    ['link', { rel: 'apple-touch-icon-precomposed', href: '/logo.png', type: 'image/png' }],
-  ],
+  base: '/Blog/', // GitHub部署配置
+  cleanUrls: true, // 清洁网址
   ignoreDeadLinks: true, // 忽略死链接
+  appearance: true, // 是否开启深色模式
+  lastUpdated: true, // 最近更新时间
+  outDir: '../dist', // 输出目录
+  cacheDir: './.vitepress/cache', // 缓存目录
+  srcDir: './', // 源目录
+  head: [ // head标签
+    ['link', { rel: 'icon', href: '../public/avatar.ico' }],
+    ['link', { rel: 'apple-touch-icon-precomposed', href: '../public/logo.png', type: 'image/png' }],
+  ],
+  // rewrites: { // URL 映射
+  //   'source/:page': 'destination/:page'
+  // },
+  async buildEnd(siteConfig) { // 构建结束
+    // ...
+  },
+  async postRender(context) { // 渲染后
+    // ...
+  },
+  async transformHead(context) { // 变形头
+    // ...
+  },
+  async transformHtml(code, id, context) { // 转换HTML
+    // ...
+  },
+  async transformPageData(pageData) { // 转换页面数据
+    // ...
+  },
+  markdown: { // 配置 Markdown 解析器选项
+    theme: 'material-theme-palenight',
+    lineNumbers: true
+  },
   themeConfig: {
     logo: '/avatar.png', // 头像
     siteTitle: '贾志恒', // 站点标题
     // 导航栏
     nav: [
-      // { text: "工作", link: "/guide/work/a" },
       {
         text: "文章",
         items: [
@@ -211,8 +236,6 @@ export default defineConfig({
         },
       ],
     },
-    /* 大纲标题 */
-    outlineTitle: '大纲',
     /* 社交链接 */
     socialLinks: [
       { icon: 'github', link: 'https://github.com/JiaZhiheng' },
@@ -222,7 +245,75 @@ export default defineConfig({
       prev: '上一篇',
       next: '下一篇'
     },
-    lastUpdated: true
+    footer: {  // 页脚
+      message: 'Released under the MIT License.',
+      copyright: 'Copyright © 2019-present Evan You'
+    },
+    lastUpdated: true,
+    aside: true,
+    outline: 2,
+    outlineBadges: true,
+    outlineTitle: '大纲', // 大纲标题
+    lastUpdatedText: 'Updated Date', // 最后更新文本
+    editLink: {
+      pattern: 'https://github.com/vuejs/vitepress/edit/main/docs/:path',
+      text: 'Edit this page on GitHub'
+    },
+    carbonAds: { // 广告
+      code: 'your-carbon-code',
+      placement: 'your-carbon-placement'
+    },
+    // algolia: {
+    //   appId: '...',
+    //   apiKey: '...',
+    //   indexName: '...',
+    //   locales: {
+    //     zh: {
+    //       placeholder: '搜索文档',
+    //       translations: {
+    //         button: {
+    //           buttonText: '搜索文档',
+    //           buttonAriaLabel: '搜索文档'
+    //         },
+    //         modal: {
+    //           searchBox: {
+    //             resetButtonTitle: '清除查询条件',
+    //             resetButtonAriaLabel: '清除查询条件',
+    //             cancelButtonText: '取消',
+    //             cancelButtonAriaLabel: '取消'
+    //           },
+    //           startScreen: {
+    //             recentSearchesTitle: '搜索历史',
+    //             noRecentSearchesText: '没有搜索历史',
+    //             saveRecentSearchButtonTitle: '保存至搜索历史',
+    //             removeRecentSearchButtonTitle: '从搜索历史中移除',
+    //             favoriteSearchesTitle: '收藏',
+    //             removeFavoriteSearchButtonTitle: '从收藏中移除'
+    //           },
+    //           errorScreen: {
+    //             titleText: '无法获取结果',
+    //             helpText: '你可能需要检查你的网络连接'
+    //           },
+    //           footer: {
+    //             selectText: '选择',
+    //             navigateText: '切换',
+    //             closeText: '关闭',
+    //             searchByText: '搜索提供者'
+    //           },
+    //           noResultsScreen: {
+    //             noResultsText: '无法找到相关结果',
+    //             suggestedQueryText: '你可以尝试查询',
+    //             reportMissingResultsText: '你认为该查询应该有结果？',
+    //             reportMissingResultsLinkText: '点击反馈'
+    //           }
+    //         }
+    //       }
+    //     }
+    //   }
+    // },
+    darkModeSwitchLabel: 'Appearance',
+    sidebarMenuLabel: 'Menu',
+    returnToTopLabel: 'Return to top',
   },
 })
 
