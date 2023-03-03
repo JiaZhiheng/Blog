@@ -13,8 +13,8 @@ export default defineConfig({
   cacheDir: './.vitepress/cache', // 缓存目录
   srcDir: './', // 源目录
   head: [ // head标签
-    ['link', { rel: 'icon', href: '../public/avatar.ico' }],
-    ['link', { rel: 'apple-touch-icon-precomposed', href: '../public/logo.png', type: 'image/png' }],
+    ['link', { rel: 'icon', href: '/Blog/avatar.ico' }],
+    ['link', { rel: 'apple-touch-icon-precomposed', href: '/Blog/logo.png', type: 'image/png' }],
   ],
   // rewrites: { // URL 映射
   //   'source/:page': 'destination/:page'
