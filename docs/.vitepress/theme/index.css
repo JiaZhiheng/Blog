@@ -165,9 +165,9 @@
         min-width: 100px;
     }
 
-    .VPContent .VPHome {
+    /* .VPContent .VPHome {
         padding-bottom: 0;
-    }
+    } */
 
     .image .image-container {
         transform: translate(0, 0);
@@ -175,5 +175,11 @@
 
     .image {
         height: 248px;
+    }
+}
+
+@media screen and (min-width: 1024px) {
+    .items .item.grid-6 {
+        width: calc(100% / 4);
     }
 }

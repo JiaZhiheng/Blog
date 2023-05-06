@@ -23,13 +23,13 @@ features:
       src: /html.svg
     title: HTML
     details: 超文本标记语言是一种用于创建网页的标准标记语言
-    link: /guide/article/html/test_article.html
+    link: /guide/article/01-HTML/test_article.html
     linkText: 点击查看
   - icon:
       src: /css.svg
     title: CSS
     details: 层叠样式表是一种用来为结构化文档添加样式的计算机语言
-    link: /guide/article/css/test_article.html
+    link: /guide/article/02-CSS/01-CSS 命名规则.html
     linkText: 点击查看
   - icon:
       src: /javascript.svg
@@ -38,8 +38,26 @@ features:
     link: /guide/article/javascript/test_article.html
     linkText: 点击查看
   - icon:
+      src: /chrome.svg
+    title: 浏览器原理
+    details: 网页浏览器是一种用于检索并展示万维网信息资源的应用程序
+    link: /guide/article/浏览器原理/01-Window 对象的用法.html
+    linkText: 点击查看
+  - icon:
       src: /vue.svg
     title: Vue
+    details: Vue是一款用于构建用户界面的 JavaScript 框架
+    link: /guide/article/vue/test_article.html
+    linkText: 点击查看
+  - icon:
+      src: /react.svg
+    title: React
+    details: Vue是一款用于构建用户界面的 JavaScript 框架
+    link: /guide/article/vue/test_article.html
+    linkText: 点击查看
+  - icon:
+      src: /node.svg
+    title: Node.js
     details: Vue是一款用于构建用户界面的 JavaScript 框架
     link: /guide/article/vue/test_article.html
     linkText: 点击查看
@@ -50,20 +68,26 @@ features:
     link: /guide/article/webpack/test_article.html
     linkText: 点击查看
   - icon:
-      src: /chrome.svg
-    title: 浏览器原理
-    details: 网页浏览器是一种用于检索并展示万维网信息资源的应用程序
-    link: /guide/article/chrome/test_article.html
-    linkText: 点击查看
-  - icon:
       src: /network.svg
     title: 计算机网络
     details: TCP/IP 是指能够在多个不同网络间实现信息传输的协议簇
     link: /guide/article/network/test_article.html
     linkText: 点击查看
   - icon:
-      src: /datastructure.svg
-    title: 数据结构与算法
+      src: /design_pattern.svg
+    title: 设计模式
+    details: 在计算机科学中，数据结构是计算机中存储、组织数据的方式
+    link: /guide/article/datastructure/test_article.html
+    linkText: 点击查看
+  - icon:
+      src: /data_structure.svg
+    title: 数据结构
+    details: 在计算机科学中，数据结构是计算机中存储、组织数据的方式
+    link: /guide/article/datastructure/test_article.html
+    linkText: 点击查看
+  - icon:
+      src: /algorithm.svg
+    title: 算法
     details: 在计算机科学中，数据结构是计算机中存储、组织数据的方式
     link: /guide/article/datastructure/test_article.html
     linkText: 点击查看
