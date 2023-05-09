@@ -1,5 +1,6 @@
 const fs = require("fs");
 const path = require("path");
+const docsDirectory = "./docs/guide/article/"; // 文章所在文件夹
 
 // 定义一个函数，从项目名中提取排序序号和名称
 function extractOrderAndName(item) {
@@ -65,7 +66,8 @@ function generateSidebar(directoryPath, basePath = "/") {
 	// 返回生成的侧边栏数组
 	return sidebar;
 }
-// 导出generateSidebar函数，以便在其他模块中使用
+
+// 导出generateSidebar函数生成的sidebar，以便在其他模块中使用
 module.exports = {
-	generateSidebar,
+	sidebar: generateSidebar(docsDirectory, "/guide/article/"),
 };

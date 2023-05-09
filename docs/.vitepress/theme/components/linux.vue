@@ -2,7 +2,7 @@
 	<iframe
 		id="iframe"
 		class="iframe"
-		src="/Linux速查备忘手册.pdf"
+		src="/Blog/Linux速查备忘手册.pdf"
 		style="width: 720px; height: 1000px"
 	></iframe>
 	<div class="buttons">

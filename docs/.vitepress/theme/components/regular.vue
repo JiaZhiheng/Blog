@@ -2,7 +2,7 @@
 	<iframe
 		id="iframe"
 		class="iframe"
-		src="/正则表达式速查备忘手册.pdf"
+		src="/Blog/正则表达式速查备忘手册.pdf"
 		style="width: 720px; height: 1000px"
 	></iframe>
 	<div class="buttons">

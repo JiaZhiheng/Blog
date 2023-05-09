@@ -35,60 +35,60 @@ features:
       src: /javascript.svg
     title: JavaScript
     details: JavaScript 是一种基于原型、多范式、单线程的动态语言
-    link: /guide/article/javascript/test_article.html
+    link: /guide/article/03-JavaScript/test_article.html
     linkText: 点击查看
   - icon:
       src: /chrome.svg
     title: 浏览器原理
     details: 网页浏览器是一种用于检索并展示万维网信息资源的应用程序
-    link: /guide/article/浏览器原理/01-Window 对象的用法.html
+    link: /guide/article/09-浏览器原理/01-Window 对象的用法.html
     linkText: 点击查看
   - icon:
       src: /vue.svg
     title: Vue
     details: Vue是一款用于构建用户界面的 JavaScript 框架
-    link: /guide/article/vue/test_article.html
+    link: /guide/article/04-Vue/test_article.html
     linkText: 点击查看
   - icon:
       src: /react.svg
     title: React
     details: Vue是一款用于构建用户界面的 JavaScript 框架
-    link: /guide/article/vue/test_article.html
+    link: /guide/article/05-React/test_article.html
     linkText: 点击查看
   - icon:
       src: /node.svg
     title: Node.js
     details: Vue是一款用于构建用户界面的 JavaScript 框架
-    link: /guide/article/vue/test_article.html
+    link: /guide/article/06-Node.js/test_article.html
     linkText: 点击查看
   - icon:
       src: /webpack.svg
     title: 构建工具
     details: 构建工具是一个把源代码生成可执行应用程序的过程自动化的程序
-    link: /guide/article/webpack/test_article.html
+    link: /guide/article/07-构建工具/test_article.html
     linkText: 点击查看
   - icon:
       src: /network.svg
     title: 计算机网络
     details: TCP/IP 是指能够在多个不同网络间实现信息传输的协议簇
-    link: /guide/article/network/test_article.html
+    link: /guide/article/08-计算机网络/test_article.html
     linkText: 点击查看
   - icon:
       src: /design_pattern.svg
     title: 设计模式
     details: 在计算机科学中，数据结构是计算机中存储、组织数据的方式
-    link: /guide/article/datastructure/test_article.html
+    link: /guide/article/12-设计模式/test_article.html
     linkText: 点击查看
   - icon:
       src: /data_structure.svg
     title: 数据结构
     details: 在计算机科学中，数据结构是计算机中存储、组织数据的方式
-    link: /guide/article/datastructure/test_article.html
+    link: /guide/article/10-数据结构/test_article.html
     linkText: 点击查看
   - icon:
       src: /algorithm.svg
     title: 算法
     details: 在计算机科学中，数据结构是计算机中存储、组织数据的方式
-    link: /guide/article/datastructure/test_article.html
+    link: /guide/article/11-算法/test_article.html
     linkText: 点击查看
 ---

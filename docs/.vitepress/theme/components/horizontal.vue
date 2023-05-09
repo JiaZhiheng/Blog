@@ -3,13 +3,23 @@
 		<div class="horizontal">
 			<div class="horizontal-item" v-for="item in data.list" :key="item.id">
 				<div class="demo-item" :style="item.styleObject">
-					<h1 class="item-name">{{ item.name }}</h1>
-					<p class="item-info">{{ item.info }}</p>
-					<a class="item-url" :href="item.url" target="_blank">在线预览</a>
-					<a class="item-source" :href="item.source" target="_blank"
+					<h1 class="item-name" :style="item.infoStyle">{{ item.name }}</h1>
+					<p class="item-info" :style="item.infoStyle">{{ item.info }}</p>
+					<a
+						class="item-url"
+						:style="item.infoStyle"
+						:href="item.url"
+						target="_blank"
+						>在线预览</a
+					>
+					<a
+						class="item-source"
+						:style="item.infoStyle"
+						:href="item.source"
+						target="_blank"
 						>查看源码</a
 					>
-					<div style="font-size: 20px; color: #fff">敬请期待...</div>
+					<div :style="item.infoStyle">敬请期待...</div>
 				</div>
 			</div>
 		</div>
@@ -27,7 +37,10 @@
 				url: "http://101.43.140.74:64/",
 				source: "https://github.com/JiaZhiheng",
 				styleObject: {
-					backgroundColor: "#4586f3",
+					backgroundColor: "rgba(47, 205, 100, 0.2)",
+				},
+				infoStyle: {
+					color: "rgb(47, 205, 100)",
 				},
 			},
 			{
@@ -37,7 +50,10 @@
 				url: "http://101.43.140.74:64/",
 				source: "https://github.com/JiaZhiheng",
 				styleObject: {
-					backgroundColor: "#eb4334",
+					backgroundColor: "rgba(80, 190, 250, 0.2)",
+				},
+				infoStyle: {
+					color: "rgb(80, 190, 250)",
 				},
 			},
 			{
@@ -47,7 +63,10 @@
 				url: "http://101.43.140.74:64/",
 				source: "https://github.com/JiaZhiheng",
 				styleObject: {
-					backgroundColor: "#fbbd06",
+					backgroundColor: "rgba(146, 102, 214, 0.2)",
+				},
+				infoStyle: {
+					color: "rgb(146, 102, 214)",
 				},
 			},
 			{
@@ -57,7 +76,10 @@
 				url: "http://101.43.140.74:64/",
 				source: "https://github.com/JiaZhiheng",
 				styleObject: {
-					backgroundColor: "#35aa53",
+					backgroundColor: "rgba(254, 141, 85, 0.2)",
+				},
+				infoStyle: {
+					color: "rgb(254, 141, 85)",
 				},
 			},
 		],

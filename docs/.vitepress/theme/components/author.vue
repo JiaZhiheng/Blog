@@ -2,7 +2,7 @@
 	<iframe
 		id="iframe"
 		class="iframe"
-		src="/贾志恒-塔里木大学-网络工程.pdf"
+		src="/Blog/贾志恒-塔里木大学-网络工程.pdf"
 		style="width: 720px; height: 1000px"
 	></iframe>
 	<div class="buttons">
@@ -27,7 +27,7 @@
 		</a>
 		<a
 			class="button review"
-			href="/贾志恒-塔里木大学-网络工程.pdf"
+			href="/Blog/贾志恒-塔里木大学-网络工程.pdf"
 			target="_blank"
 			><span>预览简历</span>
 			<svg
@@ -53,7 +53,7 @@
 		</a>
 		<a
 			class="button download"
-			href="/贾志恒-塔里木大学-网络工程.pdf"
+			href="/Blog/贾志恒-塔里木大学-网络工程.pdf"
 			download="贾志恒-塔里木大学-网络工程"
 			><span>下载简历</span>
 			<svg
