@@ -1,5 +1,5 @@
 import { defineConfig } from "vitepress";
-const { sidebar } = require("./theme/util/sidebarGenerator"); // 基于文件目录生成 sidebar
+const { generateSidebar } = require("./theme/util/sidebarGenerator"); // 基于文件目录生成 sidebar
 
 export default defineConfig({
 	lang: "zh-CN", // 语言
@@ -84,7 +84,13 @@ export default defineConfig({
 			{ text: "资料", link: "/guide/material/regularExpression" },
 		],
 		// 侧边栏
-		sidebar: sidebar,
+		// sidebar: sidebar,
+		sidebar: {
+			"/guide/article/": generateSidebar(
+				"./docs/guide/article/",
+				"/guide/article/"
+			),
+		},
 		// sidebar: {
 		// 	// 工作
 		// 	"/guide/work/": [

@@ -68,27 +68,27 @@ features:
     link: /guide/article/07-构建工具/test_article.html
     linkText: 点击查看
   - icon:
-      src: /network.svg
-    title: 计算机网络
-    details: TCP/IP 是指能够在多个不同网络间实现信息传输的协议簇
-    link: /guide/article/08-计算机网络/test_article.html
+      src: /unit-testing.png
+    title: 单元测试
+    details: 在计算机科学中，数据结构是计算机中存储、组织数据的方式
+    link: /guide/article/11-算法/test_article.html
     linkText: 点击查看
   - icon:
-      src: /design_pattern.svg
+      src: /design-pattern.png
     title: 设计模式
     details: 在计算机科学中，数据结构是计算机中存储、组织数据的方式
     link: /guide/article/12-设计模式/test_article.html
     linkText: 点击查看
   - icon:
-      src: /data_structure.svg
-    title: 数据结构
-    details: 在计算机科学中，数据结构是计算机中存储、组织数据的方式
-    link: /guide/article/10-数据结构/test_article.html
+      src: /computer-network.png
+    title: 计算机网络
+    details: TCP/IP 是指能够在多个不同网络间实现信息传输的协议簇
+    link: /guide/article/08-计算机网络/test_article.html
     linkText: 点击查看
   - icon:
-      src: /algorithm.svg
-    title: 算法
+      src: /data-structure.png
+    title: 数据结构与算法
     details: 在计算机科学中，数据结构是计算机中存储、组织数据的方式
-    link: /guide/article/11-算法/test_article.html
+    link: /guide/article/10-数据结构/test_article.html
     linkText: 点击查看
 ---
