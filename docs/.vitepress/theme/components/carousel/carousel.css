@@ -15,19 +15,25 @@
   transition: all 0.4s;
 }
 
-.tiny-carousel .carousel-panels .carousel-panel.active, .tiny-carousel .carousel-panels .carousel-panel.next, .tiny-carousel .carousel-panels .carousel-panel.prev {
+.tiny-carousel .carousel-panels .carousel-panel.active,
+.tiny-carousel .carousel-panels .carousel-panel.next,
+.tiny-carousel .carousel-panels .carousel-panel.prev {
   display: block;
 }
 
-.tiny-carousel .carousel-panels .carousel-panel.active.right, .tiny-carousel .carousel-panels .carousel-panel.next {
+.tiny-carousel .carousel-panels .carousel-panel.active.right,
+.tiny-carousel .carousel-panels .carousel-panel.next {
   transform: translateX(100%);
 }
 
-.tiny-carousel .carousel-panels .carousel-panel.active.left, .tiny-carousel .carousel-panels .carousel-panel.prev {
+.tiny-carousel .carousel-panels .carousel-panel.active.left,
+.tiny-carousel .carousel-panels .carousel-panel.prev {
   transform: translateX(-100%);
 }
 
-.tiny-carousel .carousel-panels .carousel-panel.active, .tiny-carousel .carousel-panels .carousel-panel.next.left, .tiny-carousel .carousel-panels .carousel-panel.prev.right {
+.tiny-carousel .carousel-panels .carousel-panel.active,
+.tiny-carousel .carousel-panels .carousel-panel.next.left,
+.tiny-carousel .carousel-panels .carousel-panel.prev.right {
   transform: translateX(0);
 }
 

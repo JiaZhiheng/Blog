@@ -5,7 +5,7 @@ import Project from "@/page/Project.vue"; // 我的项目
 import Author from "@/page/Author.vue"; // 关于作者
 import Linux from "@/page/Linux.vue";
 import Regular from "@/page/Regular.vue";
-import Hero from "@/components/Hero.vue";
+import Hero from "@/components/hero.vue";
 
 export default {
 	...DefaultTheme,
