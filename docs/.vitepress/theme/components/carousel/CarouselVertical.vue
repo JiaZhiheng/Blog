@@ -176,11 +176,11 @@
 		flex: 1;
 		height: 100%;
 		border-radius: 12px;
+		padding: 8px;
 		position: relative;
 		overflow: hidden;
 	}
 	.vertical {
-		padding: 8px;
 		position: relative;
 	}
 	.background {

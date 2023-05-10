@@ -38,11 +38,22 @@
 	}
 	.fade {
 		grid-area: 1/1/2/2;
+		animation-duration: 1s;
+		animation-fill-mode: both;
+		animation-name: bounceInLeft;
 	}
 	.vertical {
 		grid-area: 1/2/2/3;
+		animation-duration: 1s;
+		animation-fill-mode: both;
+		animation-name: bounceInRight;
+		animation-delay: 0.2s;
 	}
 	.horizontal {
 		grid-area: 2/1/3/3;
+		animation-duration: 1s;
+		animation-fill-mode: both;
+		animation-name: bounceInUp;
+		animation-delay: 0.4s;
 	}
 </style>

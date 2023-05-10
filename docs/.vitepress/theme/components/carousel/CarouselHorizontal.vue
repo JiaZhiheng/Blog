@@ -1,10 +1,8 @@
 <template>
 	<div class="box">
-		<div
-			class="box-item"
-			:style="item.style"
-			v-for="item in horizontalConfig"
-		></div>
+		<div class="box-item" v-for="item in horizontalConfig">
+			<div class="item" :style="item.style"></div>
+		</div>
 	</div>
 </template>
 <script setup>
@@ -20,5 +18,10 @@
 	}
 	.box-item {
 		width: 25%;
+		padding: 8px;
+	}
+	.item {
+		height: 100%;
+		border-radius: 8px;
 	}
 </style>

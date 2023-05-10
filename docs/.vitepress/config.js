@@ -254,11 +254,11 @@ export default defineConfig({
 			pattern: "https://github.com/vuejs/vitepress/edit/main/docs/:path",
 			text: "Edit this page on GitHub",
 		},
-		// carbonAds: {
-		// 	// 广告
-		// 	code: "your-carbon-code",
-		// 	placement: "your-carbon-placement",
-		// },
+		carbonAds: {
+			// 广告
+			code: "",
+			placement: "",
+		},
 		algolia: {
 			appId: "80GWMAOJY7",
 			apiKey: "38a0f8063ac54c4d32636029c465e6ad",

@@ -1,18 +1,18 @@
 import DefaultTheme from "vitepress/theme";
 import { h } from "vue";
-import "./index.css";
-import Project from "./page/Project.vue"; // 我的项目
-import Author from "./components/author.vue"; // 关于作者
-import Linux from "./components/linux.vue";
-import Regular from "./components/regular.vue";
-import hero from "./components/hero.vue";
+import "@/index.css";
+import Project from "@/page/Project.vue"; // 我的项目
+import Author from "@/page/Author.vue"; // 关于作者
+import Linux from "@/page/Linux.vue";
+import Regular from "@/page/Regular.vue";
+import Hero from "@/components/Hero.vue";
 
 export default {
 	...DefaultTheme,
 	Layout() {
 		// 首页插槽
 		return h(DefaultTheme.Layout, null, {
-			"home-hero-image": () => h(hero),
+			"home-hero-image": () => h(Hero),
 			// "home-hero-after": () => h(SocialLink), // 为社交链接预留的插槽
 		});
 	},
