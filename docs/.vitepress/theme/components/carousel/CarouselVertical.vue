@@ -1,9 +1,14 @@
 <template>
 	<div class="ver">
 		<div class="vertical">
-			<figure class="item" v-for="item in data.list" :key="item.id">
+			<figure
+				class="item"
+				:style="item.style"
+				v-for="item in verticalConfig"
+				:key="item.id"
+			>
 				<a :href="item.url" target="_blank">
-					<img class="background" :src="item.src" alt="" />
+					<!-- <img class="background" :src="item.src" alt="" /> -->
 					<div class="hover"></div>
 					<div class="title">
 						<div>
@@ -21,42 +26,8 @@
 </template>
 <script setup>
 	import { reactive, onMounted, onUnmounted } from "vue";
-
+	import { verticalConfig } from "@/components/carousel/carousel.config";
 	const data = reactive({
-		list: [
-			{
-				id: 0,
-				name: "游戏速报",
-				info: "游戏内容前沿资讯",
-				url: "http://101.43.140.74:51/",
-				source: "https://github.com/JiaZhiheng",
-				src: "/1.png",
-			},
-			{
-				id: 0,
-				name: "企业官网",
-				info: "科技公司响应式首页",
-				url: "http://101.43.140.74:64/",
-				source: "https://github.com/JiaZhiheng",
-				src: "/2.png",
-			},
-			{
-				id: 0,
-				name: "漫游太阳系",
-				info: "带你探索神秘宇宙",
-				url: "http://101.43.140.74:73/",
-				source: "https://github.com/JiaZhiheng",
-				src: "/3.png",
-			},
-			{
-				id: 0,
-				name: "求职平台",
-				info: "助您找到满意工作",
-				url: "http://101.43.140.74:56/",
-				source: "https://github.com/JiaZhiheng",
-				src: "/4.png",
-			},
-		],
 		timeInter: null,
 	});
 

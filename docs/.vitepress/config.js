@@ -1,3 +1,4 @@
+import path from "path";
 import { defineConfig } from "vitepress";
 const { generateSidebar } = require("./theme/util/sidebarGenerator"); // 基于文件目录生成 sidebar
 
@@ -26,6 +27,16 @@ export default defineConfig({
 			},
 		],
 	],
+	vite: {
+		resolve: {
+			alias: {
+				"@": path.resolve(__dirname, "theme"),
+			},
+		},
+	},
+	vue: {
+		// @vitejs/plugin-vue options
+	},
 	// rewrites: { // URL 映射
 	//   'source/:page': 'destination/:page'
 	// },
@@ -90,6 +101,39 @@ export default defineConfig({
 				"./docs/guide/article/",
 				"/guide/article/"
 			),
+			// 项目
+			"/guide/project/": [
+				{
+					text: "项目",
+					items: [
+						{
+							text: "项目",
+							link: "/guide/project/project",
+						},
+					],
+				},
+			],
+			// 资料
+			"/guide/material/": [
+				{
+					text: "正则表达式",
+					items: [
+						{
+							text: "正则表达式",
+							link: "/guide/material/regularExpression",
+						},
+					],
+				},
+				{
+					text: "Linux",
+					items: [
+						{
+							text: "Linux",
+							link: "/guide/material/Linux",
+						},
+					],
+				},
+			],
 		},
 		// sidebar: {
 		// 	// 工作
@@ -156,40 +200,7 @@ export default defineConfig({
 		// 			],
 		// 		},
 		// 	],
-		// 	// 资料
-		// 	"/guide/material/": [
-		// 		{
-		// 			text: "正则表达式",
-		// 			items: [
-		// 				{
-		// 					text: "正则表达式",
-		// 					link: "/guide/material/regularExpression",
-		// 				},
-		// 			],
-		// 		},
-		// 		{
-		// 			text: "Linux",
-		// 			items: [
-		// 				{
-		// 					text: "Linux",
-		// 					link: "/guide/material/Linux",
-		// 				},
-		// 			],
-		// 		},
-		// 	],
-		// 	// 项目
-		// 	"/guide/project/": [
-		// 		{
-		// 			text: "项目",
-		// 			items: [
-		// 				{
-		// 					text: "项目",
-		// 					link: "/guide/project/project",
-		// 				},
-		// 			],
-		// 		},
-		// 	],
-		// },
+		// }
 		/* 社交链接 */
 		socialLinks: [
 			{ icon: "github", link: "https://github.com/JiaZhiheng" },

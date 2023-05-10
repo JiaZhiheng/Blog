@@ -1,6 +1,6 @@
 ---
 aside: false
-layout: home
+layout: page
 ---
 
 <Project/>
