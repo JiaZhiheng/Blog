@@ -44,7 +44,7 @@
 				itemContainer.setAttribute("class", "items");
 				itemContainer.setAttribute(
 					"style",
-					"height: 100%;width: 100%;overflow: hidden;display: flex;flex-direction: row;"
+					"width: 100%;overflow: hidden;display: flex"
 				);
 				this.itemContainer = itemContainer;
 			}
@@ -52,9 +52,6 @@
 			/* 初始化轮播图面板和轮播点面板 */
 			initHorizontalItemsAndDots() {
 				this.items = this.container.querySelectorAll(".item");
-				this.items[
-					(this.options.index - 1 + this.items.length) % this.items.length
-				].classList.add("prev");
 				this.items[(this.options.index + 0) % this.items.length].classList.add(
 					"active-A"
 				);
@@ -66,9 +63,6 @@
 				);
 				this.items[(this.options.index + 3) % this.items.length].classList.add(
 					"active-D"
-				);
-				this.items[(this.options.index + 4) % this.items.length].classList.add(
-					"next"
 				);
 				this.items.forEach((item) => {
 					this.itemContainer.appendChild(item);
@@ -108,7 +102,7 @@
 
 			/* 开始轮播 */
 			playHorizontal() {
-				const test = () => {
+				setTimeout(() => {
 					this.setHorizontal(
 						this.getPrevIndex(),
 						this.getCurrentAIndex(),
@@ -117,11 +111,15 @@
 						this.getCurrentDIndex(),
 						this.getNextIndex()
 					);
-				};
-				setTimeout(() => {
-					test();
 					data.timeInter = setInterval(() => {
-						test();
+						this.setHorizontal(
+							this.getPrevIndex(),
+							this.getCurrentAIndex(),
+							this.getCurrentBIndex(),
+							this.getCurrentCIndex(),
+							this.getCurrentDIndex(),
+							this.getNextIndex()
+						);
 					}, this.options.interval);
 				}, 1400);
 			}
@@ -140,9 +138,7 @@
 				this.currentB = this.items[currentBIndex];
 				this.currentC = this.items[currentCIndex];
 				this.currentD = this.items[currentDIndex];
-				console.log(this.next);
 				this.next = this.items[nextIndex];
-				console.log(this.next);
 				this.setHorizontalItem();
 			}
 

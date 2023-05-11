@@ -147,8 +147,8 @@
 
 	// 组件卸载
 	onUnmounted(() => {
-		clearInterval(data.timeInter);
-		data.timeInter = null;
+		// clearInterval(data.timeInter);
+		// data.timeInter = null;
 	});
 </script>
 <style scoped>

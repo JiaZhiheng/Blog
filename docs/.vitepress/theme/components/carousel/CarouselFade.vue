@@ -56,7 +56,9 @@
 				 */
 				this.initHorizontal(); // 初始化轮播图
 				this.bindHorizontal(); // 绑定轮播图
-				this.playHorizontal(); // 播放轮播图
+				setTimeout(() => {
+					this.playHorizontal(); // 播放轮播图
+				}, 1400);
 			}
 
 			/** 初始化轮播图
@@ -252,15 +254,13 @@
 			// 开始轮播
 			playHorizontal() {
 				if (this.options.autoplay && !data.timeInter) {
-					setTimeout(() => {
-						data.timeInter = setInterval(() => {
-							this.setHorizontal(
-								this.getCurrentIndex(),
-								this.getNextIndex(),
-								"left"
-							);
-						}, this.options.interval);
-					}, 1400);
+					data.timeInter = setInterval(() => {
+						this.setHorizontal(
+							this.getCurrentIndex(),
+							this.getNextIndex(),
+							"left"
+						);
+					}, this.options.interval);
 				}
 			}
 		}
@@ -270,8 +270,8 @@
 	});
 
 	onUnmounted(() => {
-		clearInterval(data.timeInter);
-		data.timeInter = null;
+		// clearInterval(data.timeInter);
+		// data.timeInter = null;
 	});
 </script>
 <style scoped>
