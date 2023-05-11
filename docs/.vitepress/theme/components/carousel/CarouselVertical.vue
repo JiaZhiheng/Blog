@@ -97,14 +97,16 @@
 
 			/* 开始轮播 */
 			playHorizontal() {
-				data.timeInter = setInterval(() => {
-					this.setHorizontal(
-						this.getPrevIndex(),
-						this.getCurrentXIndex(),
-						this.getCurrentYIndex(),
-						this.getNextIndex()
-					);
-				}, this.options.interval);
+				setTimeout(() => {
+					data.timeInter = setInterval(() => {
+						this.setHorizontal(
+							this.getPrevIndex(),
+							this.getCurrentXIndex(),
+							this.getCurrentYIndex(),
+							this.getNextIndex()
+						);
+					}, this.options.interval);
+				}, 1400);
 			}
 
 			/* 设置轮播图 */

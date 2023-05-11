@@ -77,30 +77,30 @@ export const horizontalConfig = [
 		info: "数据分析工程师",
 		style: "background-color:#2FCD64",
 	},
-	// {
-	// 	id: 0,
-	// 	name: "项目A",
-	// 	info: "前端开发工程师",
-	// 	style: "background-color:#A9D71A",
-	// },
-	// {
-	// 	id: 0,
-	// 	name: "项目B",
-	// 	info: "后端开发工程师",
-	// 	style: "background-color:#50BEFA",
-	// },
-	// {
-	// 	id: 0,
-	// 	name: "项目C",
-	// 	info: "测试工程师",
-	// 	style: "background-color:#EAAA71",
-	// },
-	// {
-	// 	id: 0,
-	// 	name: "项目D",
-	// 	info: "数据分析工程师",
-	// 	style: "background-color:#F7C41E",
-	// },
+	{
+		id: 0,
+		name: "项目A",
+		info: "前端开发工程师",
+		style: "background-color:#A9D71A",
+	},
+	{
+		id: 0,
+		name: "项目B",
+		info: "后端开发工程师",
+		style: "background-color:#50BEFA",
+	},
+	{
+		id: 0,
+		name: "项目C",
+		info: "测试工程师",
+		style: "background-color:#EAAA71",
+	},
+	{
+		id: 0,
+		name: "项目D",
+		info: "数据分析工程师",
+		style: "background-color:#F7C41E",
+	},
 ];
 // export const verticalConfig = [
 // 	{

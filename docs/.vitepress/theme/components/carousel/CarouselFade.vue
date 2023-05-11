@@ -252,13 +252,15 @@
 			// 开始轮播
 			playHorizontal() {
 				if (this.options.autoplay && !data.timeInter) {
-					data.timeInter = setInterval(() => {
-						this.setHorizontal(
-							this.getCurrentIndex(),
-							this.getNextIndex(),
-							"left"
-						);
-					}, this.options.interval);
+					setTimeout(() => {
+						data.timeInter = setInterval(() => {
+							this.setHorizontal(
+								this.getCurrentIndex(),
+								this.getNextIndex(),
+								"left"
+							);
+						}, this.options.interval);
+					}, 1400);
 				}
 			}
 		}
