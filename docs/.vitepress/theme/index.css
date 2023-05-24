@@ -1,10 +1,10 @@
 :root {
     --vp-home-hero-name-color: transparent;
     --vp-home-hero-name-background: linear-gradient(135deg, #00CAFD 50%, #00B0FF 100%);
-    --vp-button-brand-bg: #009AF0;
-    --vp-button-brand-hover-bg: #007CC2;
-    --vp-button-brand-border: #009AF0;
-    --vp-button-brand-hover-border: #007CC2;
+    --vp-button-brand-bg: #007CC2;
+    --vp-button-brand-hover-bg: #009AF0;
+    --vp-button-brand-border: #007CC2;
+    --vp-button-brand-hover-border: #009AF0;
     --vp-button-brand-active-border: #00B0FF;
     --vp-c-green: #0076B8;
     --vp-c-brand-dark: #0070B9;

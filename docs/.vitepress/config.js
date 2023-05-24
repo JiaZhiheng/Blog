@@ -80,11 +80,11 @@ export default defineConfig({
 				items: [
 					{
 						text: "HTML",
-						link: "/guide/article/html/test_article",
+						link: "/guide/article/01-HTML/test_article",
 					},
 					{
 						text: "CSS",
-						link: "/guide/article/css/test_article",
+						link: "/guide/article/02-CSS/01-CSS 命名规则",
 					},
 				],
 			},
