@@ -41,7 +41,7 @@ features:
       src: /chrome.svg
     title: 浏览器原理
     details: 网页浏览器是一种用于检索并展示万维网信息资源的应用程序
-    link: /guide/article/09-浏览器原理/01-Window 对象的用法.html
+    link: /guide/article/11-浏览器原理/01-Window 对象的用法.html
     linkText: 点击查看
   - icon:
       src: /vue.svg
@@ -71,24 +71,24 @@ features:
       src: /unit-testing.svg
     title: 单元测试
     details: 在计算机科学中，数据结构是计算机中存储、组织数据的方式
-    link: /guide/article/11-算法/test_article.html
+    link: /guide/article/08-单元测试/test_article.html
     linkText: 点击查看
   - icon:
       src: /design-pattern.svg
     title: 设计模式
     details: 在计算机科学中，数据结构是计算机中存储、组织数据的方式
-    link: /guide/article/12-设计模式/test_article.html
+    link: /guide/article/09-设计模式/test_article.html
     linkText: 点击查看
   - icon:
       src: /computer-network.svg
     title: 计算机网络
     details: TCP/IP 是指能够在多个不同网络间实现信息传输的协议簇
-    link: /guide/article/08-计算机网络/test_article.html
+    link: /guide/article/10-计算机网络/test_article.html
     linkText: 点击查看
   - icon:
       src: /data-structure.svg
     title: 数据结构与算法
     details: 在计算机科学中，数据结构是计算机中存储、组织数据的方式
-    link: /guide/article/10-数据结构/test_article.html
+    link: /guide/article/12-数据结构与算法/test_article.html
     linkText: 点击查看
 ---
