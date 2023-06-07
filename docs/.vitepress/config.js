@@ -77,16 +77,17 @@ export default defineConfig({
 		nav: [
 			{
 				text: "文章",
-				items: [
-					{
-						text: "HTML",
-						link: "/guide/article/01-HTML/test_article",
-					},
-					{
-						text: "CSS",
-						link: "/guide/article/02-CSS/01-CSS 命名规则",
-					},
-				],
+				link: "/guide/article/01-HTML/01-Dialog标签",
+				// items: [
+				// 	{
+				// 		text: "HTML",
+				// 		link: "/guide/article/01-HTML/test_article",
+				// 	},
+				// 	{
+				// 		text: "CSS",
+				// 		link: "/guide/article/02-CSS/01-CSS 命名规则",
+				// 	},
+				// ],
 			},
 			{
 				text: "项目",
@@ -254,11 +255,10 @@ export default defineConfig({
 			pattern: "https://github.com/vuejs/vitepress/edit/main/docs/:path",
 			text: "Edit this page on GitHub",
 		},
-		carbonAds: {
-			// 广告
-			code: "",
-			placement: "",
-		},
+		// carbonAds: { // 广告
+		// 	code: "",
+		// 	placement: "",
+		// },
 		algolia: {
 			appId: "80GWMAOJY7",
 			apiKey: "38a0f8063ac54c4d32636029c465e6ad",
