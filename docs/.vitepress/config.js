@@ -11,7 +11,6 @@ export default defineConfig({
 	cleanUrls: true, // 清洁网址
 	ignoreDeadLinks: true, // 忽略死链接
 	appearance: true, // 是否开启深色模式
-	lastUpdated: true, // 最近更新时间
 	outDir: "../dist", // 输出目录
 	cacheDir: "./.vitepress/cache", // 缓存目录
 	srcDir: "./", // 源目录
@@ -77,7 +76,7 @@ export default defineConfig({
 		nav: [
 			{
 				text: "文章",
-				link: "/guide/article/01-HTML/01-Dialog标签",
+				link: "/guide/article/01-HTML/01-Dialog 标签",
 				// items: [
 				// 	{
 				// 		text: "HTML",
@@ -245,9 +244,9 @@ export default defineConfig({
 		// 	message: "Released under the MIT License.",
 		// 	copyright: "Copyright © 2019-present Evan You",
 		// },
-		lastUpdated: true,
+		lastUpdated: false, // 最近更新时间
 		aside: true,
-		outline: 2,
+		outline: [2, 3],
 		outlineBadges: true,
 		outlineTitle: "大纲", // 大纲标题
 		lastUpdatedText: "Updated Date", // 最后更新文本
