@@ -16,6 +16,7 @@ export const fadeConfig = [
 		id: 0,
 		name: "项目B",
 		info: "后端开发工程师",
+		description: "",
 		url: "http://101.43.140.74:64/",
 		source: "https://github.com/JiaZhiheng",
 		styleObject: {
@@ -29,6 +30,7 @@ export const fadeConfig = [
 		id: 0,
 		name: "项目C",
 		info: "测试工程师",
+		description: "",
 		url: "http://101.43.140.74:64/",
 		source: "https://github.com/JiaZhiheng",
 		styleObject: {
@@ -42,6 +44,7 @@ export const fadeConfig = [
 		id: 0,
 		name: "项目D",
 		info: "数据分析工程师",
+		description: "",
 		url: "http://101.43.140.74:64/",
 		source: "https://github.com/JiaZhiheng",
 		styleObject: {
@@ -55,49 +58,49 @@ export const fadeConfig = [
 export const horizontalConfig = [
 	{
 		id: 0,
-		name: "项目A",
+		name: "敬",
 		info: "前端开发工程师",
 		style: "background-color:#5E95FA",
 	},
 	{
 		id: 0,
-		name: "项目B",
+		name: "请",
 		info: "后端开发工程师",
 		style: "background-color:#FE8D55",
 	},
 	{
 		id: 0,
-		name: "项目C",
+		name: "期",
 		info: "测试工程师",
 		style: "background-color:#9266D6",
 	},
 	{
 		id: 0,
-		name: "项目D",
+		name: "待",
 		info: "数据分析工程师",
 		style: "background-color:#2FCD64",
 	},
 	{
 		id: 0,
-		name: "项目A",
+		name: "尚",
 		info: "前端开发工程师",
 		style: "background-color:#A9D71A",
 	},
 	{
 		id: 0,
-		name: "项目B",
+		name: "未",
 		info: "后端开发工程师",
 		style: "background-color:#50BEFA",
 	},
 	{
 		id: 0,
-		name: "项目C",
+		name: "完",
 		info: "测试工程师",
 		style: "background-color:#EAAA71",
 	},
 	{
 		id: 0,
-		name: "项目D",
+		name: "成",
 		info: "数据分析工程师",
 		style: "background-color:#F7C41E",
 	},

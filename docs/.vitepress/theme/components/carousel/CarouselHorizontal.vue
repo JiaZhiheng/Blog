@@ -2,7 +2,9 @@
 	<div class="ver">
 		<div class="horizon">
 			<div class="item" v-for="item in horizontalConfig">
-				<div class="item-in" :style="item.style"></div>
+				<div class="item-in" :style="item.style">
+					<span>{{ item.name }}</span>
+				</div>
 			</div>
 		</div>
 	</div>
@@ -190,6 +192,12 @@
 	.item-in {
 		height: 100%;
 		border-radius: 12px;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		font-size: 40px;
+		font-weight: bold;
+		color: #333;
 	}
 
 	.ver {

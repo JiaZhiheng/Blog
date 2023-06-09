@@ -8,7 +8,7 @@ hero:
   text: 前端开发工程师的博客
   tagline: 程序和我有一个能跑就行...
   image:
-    src: /logo.svg
+    src: /home-hero-image.svg
     alt: Vitepress
   actions:
     - theme: brand
