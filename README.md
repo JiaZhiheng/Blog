@@ -32,6 +32,7 @@ immediate：true ｜ false 立即执行<br/>
 | iPhone 12 Pro | iPad Pro 12.9 | MacBook Air M2 13.6 |iMac M1|
 | :--: | :--: | :--: |:--:|
 | 390 \* 844 | 1366 \* 1024 | 1710 \* 1112 |2240 \* 1260|
+
 加社交链接 icon // 暂时搁置<br/>
 
 #### 浏览器适配

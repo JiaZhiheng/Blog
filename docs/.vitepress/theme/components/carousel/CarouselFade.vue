@@ -289,6 +289,7 @@
 	}
 	.item-info {
 		color: #fff;
+		font-size: 30px;
 	}
 	.item-url {
 		color: #409eff;

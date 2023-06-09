@@ -8,7 +8,7 @@
 				:key="item.id"
 			>
 				<a :href="item.url" target="_blank">
-					<!-- <img class="background" :src="item.src" alt="" /> -->
+					<img class="background" :src="item.src" alt="" />
 					<div class="hover"></div>
 					<div class="title">
 						<div>
