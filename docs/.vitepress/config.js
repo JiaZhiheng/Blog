@@ -78,14 +78,14 @@ export default defineConfig({
 				text: "文章",
 				link: "/guide/article/01-HTML/01-Dialog 标签",
 			},
-			{
-				text: "项目",
-				link: "/guide/project/project",
-			},
 			// {
-			// 	text: "工作",
-			// 	link: "/guide/work/a",
+			// 	text: "项目",
+			// 	link: "/guide/project/project",
 			// },
+			{
+				text: "工作",
+				link: "/guide/work/a",
+			},
 			{ text: "资料", link: "/guide/material/regularExpression" },
 		],
 		// 侧边栏
@@ -129,69 +129,69 @@ export default defineConfig({
 				},
 			],
 			// 工作
-			// "/guide/work/": [
-			// 	{
-			// 		text: "工作中遇到的问题和对应解决方案",
-			// 		items: [
-			// 			{
-			// 				text: "MP3 转 M4A 的动画效果",
-			// 				link: "/guide/work/a",
-			// 			},
-			// 			{
-			// 				text: "揭开优惠券的动画效果",
-			// 				link: "/guide/work/b",
-			// 			},
-			// 			{
-			// 				text: "揭开优惠券的动画效果(第二种)",
-			// 				link: "/guide/work/c",
-			// 			},
-			// 			{
-			// 				text: "回到顶部的方法",
-			// 				link: "/guide/work/d",
-			// 			},
-			// 			{
-			// 				text: "涟漪效果",
-			// 				link: "/guide/work/e",
-			// 			},
-			// 			{
-			// 				text: "翻转效果",
-			// 				link: "/guide/work/f",
-			// 			},
-			// 			{
-			// 				text: "带进度条的音乐播放器",
-			// 				link: "/guide/work/g",
-			// 			},
-			// 			{
-			// 				text: "简易音乐播放器",
-			// 				link: "/guide/work/h",
-			// 			},
-			// 			{
-			// 				text: "英文邮件(邮件必须用行内样式)",
-			// 				link: "/guide/work/i",
-			// 			},
-			// 			{
-			// 				text: "日文邮件(邮件必须用行内样式)",
-			// 				link: "/guide/work/j",
-			// 			},
-			// 			{
-			// 				text: "使用 webp 格式的图片优化加载速度",
-			// 				link: "/guide/work/k",
-			// 			},
-			// 			{
-			// 				text: "好看的 hover 样式",
-			// 				link: "/guide/work/l",
-			// 			},
-			// 			{
-			// 				text: "实现打印功能",
-			// 				link: "/guide/work/m",
-			// 			},
-			// 			{
-			// 				text: "测试在 html 中引入 pdf 文件",
-			// 				link: "/guide/work/n",
-			// 			},
-			// 		],
-			// 	},
-			// ],
+			"/guide/work/": [
+				{
+					text: "工作中遇到的问题和对应解决方案",
+					items: [
+						{
+							text: "MP3 转 M4A 的动画效果",
+							link: "/guide/work/a",
+						},
+						{
+							text: "揭开优惠券的动画效果",
+							link: "/guide/work/b",
+						},
+						{
+							text: "揭开优惠券的动画效果(第二种)",
+							link: "/guide/work/c",
+						},
+						{
+							text: "回到顶部的方法",
+							link: "/guide/work/d",
+						},
+						{
+							text: "涟漪效果",
+							link: "/guide/work/e",
+						},
+						{
+							text: "翻转效果",
+							link: "/guide/work/f",
+						},
+						{
+							text: "带进度条的音乐播放器",
+							link: "/guide/work/g",
+						},
+						{
+							text: "简易音乐播放器",
+							link: "/guide/work/h",
+						},
+						{
+							text: "英文邮件(邮件必须用行内样式)",
+							link: "/guide/work/i",
+						},
+						{
+							text: "日文邮件(邮件必须用行内样式)",
+							link: "/guide/work/j",
+						},
+						{
+							text: "使用 webp 格式的图片优化加载速度",
+							link: "/guide/work/k",
+						},
+						{
+							text: "好看的 hover 样式",
+							link: "/guide/work/l",
+						},
+						{
+							text: "实现打印功能",
+							link: "/guide/work/m",
+						},
+						{
+							text: "测试在 html 中引入 pdf 文件",
+							link: "/guide/work/n",
+						},
+					],
+				},
+			],
 		},
 		/* 社交链接 */
 		socialLinks: [{ icon: "github", link: "https://github.com/JiaZhiheng" }],
