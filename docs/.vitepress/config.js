@@ -59,10 +59,10 @@ export default defineConfig({
 		// 转换页面数据
 		// ...
 	},
+	// 配置 Markdown 解析器选项
 	markdown: {
-		// 配置 Markdown 解析器选项
 		theme: "material-theme-palenight",
-		lineNumbers: true,
+		lineNumbers: false,
 		anchors: {
 			slugify(str) {
 				return encodeURIComponent(str);
@@ -89,7 +89,6 @@ export default defineConfig({
 			{ text: "资料", link: "/guide/material/regularExpression" },
 		],
 		// 侧边栏
-		// sidebar: sidebar,
 		sidebar: {
 			"/guide/article/": generateSidebar(
 				"./docs/guide/article/",
@@ -205,70 +204,77 @@ export default defineConfig({
 		// 	message: "Released under the MIT License.",
 		// 	copyright: "Copyright © 2019-present Evan You",
 		// },
-		lastUpdated: false, // 最近更新时间
+
 		aside: true,
-		outline: [2, 3],
+		outline: [2, 4],
 		outlineBadges: true,
 		outlineTitle: "大纲", // 大纲标题
 		lastUpdatedText: "Updated Date", // 最后更新文本
+		darkModeSwitchLabel: "Appearance",
+		sidebarMenuLabel: "Menu",
+		returnToTopLabel: "Return to top",
+		// 编辑链接
 		editLink: {
 			pattern: "https://github.com/vuejs/vitepress/edit/main/docs/:path",
 			text: "Edit this page on GitHub",
 		},
-		// carbonAds: { // 广告
-		// 	code: "",
-		// 	placement: "",
-		// },
-		algolia: {
-			appId: "80GWMAOJY7",
-			apiKey: "38a0f8063ac54c4d32636029c465e6ad",
-			indexName: "jiazhihengio",
-			locales: {
-				zh: {
-					placeholder: "搜索文档",
-					translations: {
-						button: {
-							buttonText: "搜索文档",
-							buttonAriaLabel: "搜索文档",
-						},
-						modal: {
-							searchBox: {
-								resetButtonTitle: "清除查询条件",
-								resetButtonAriaLabel: "清除查询条件",
-								cancelButtonText: "取消",
-								cancelButtonAriaLabel: "取消",
+		lastUpdated: false, // 上次更新时间戳
+		// 搜索
+		search: {
+			provider: "algolia",
+			options: {
+				appId: "80GWMAOJY7",
+				apiKey: "38a0f8063ac54c4d32636029c465e6ad",
+				indexName: "jiazhihengio",
+				locales: {
+					zh: {
+						placeholder: "搜索文档",
+						translations: {
+							button: {
+								buttonText: "搜索文档",
+								buttonAriaLabel: "搜索文档",
 							},
-							startScreen: {
-								recentSearchesTitle: "搜索历史",
-								noRecentSearchesText: "没有搜索历史",
-								saveRecentSearchButtonTitle: "保存至搜索历史",
-								removeRecentSearchButtonTitle: "从搜索历史中移除",
-								favoriteSearchesTitle: "收藏",
-								removeFavoriteSearchButtonTitle: "从收藏中移除",
-							},
-							errorScreen: {
-								titleText: "无法获取结果",
-								helpText: "你可能需要检查你的网络连接",
-							},
-							footer: {
-								selectText: "选择",
-								navigateText: "切换",
-								closeText: "关闭",
-								searchByText: "搜索提供者",
-							},
-							noResultsScreen: {
-								noResultsText: "无法找到相关结果",
-								suggestedQueryText: "你可以尝试查询",
-								reportMissingResultsText: "你认为该查询应该有结果？",
-								reportMissingResultsLinkText: "点击反馈",
+							modal: {
+								searchBox: {
+									resetButtonTitle: "清除查询条件",
+									resetButtonAriaLabel: "清除查询条件",
+									cancelButtonText: "取消",
+									cancelButtonAriaLabel: "取消",
+								},
+								startScreen: {
+									recentSearchesTitle: "搜索历史",
+									noRecentSearchesText: "没有搜索历史",
+									saveRecentSearchButtonTitle: "保存至搜索历史",
+									removeRecentSearchButtonTitle: "从搜索历史中移除",
+									favoriteSearchesTitle: "收藏",
+									removeFavoriteSearchButtonTitle: "从收藏中移除",
+								},
+								errorScreen: {
+									titleText: "无法获取结果",
+									helpText: "你可能需要检查你的网络连接",
+								},
+								footer: {
+									selectText: "选择",
+									navigateText: "切换",
+									closeText: "关闭",
+									searchByText: "搜索提供者",
+								},
+								noResultsScreen: {
+									noResultsText: "无法找到相关结果",
+									suggestedQueryText: "你可以尝试查询",
+									reportMissingResultsText: "你认为该查询应该有结果？",
+									reportMissingResultsLinkText: "点击反馈",
+								},
 							},
 						},
 					},
 				},
 			},
 		},
-		darkModeSwitchLabel: "Appearance",
-		sidebarMenuLabel: "Menu",
-		returnToTopLabel: "Return to top",
+		// 广告
+		// carbonAds: {
+		// 	code: "",
+		// 	placement: "",
+		// }
 	},
 });

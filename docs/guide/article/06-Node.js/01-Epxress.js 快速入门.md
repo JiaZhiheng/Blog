@@ -2,8 +2,6 @@
 
 Express 是 Node.js 的 web 开发框架。它是 unopinionated 意思是框架本身只提供最小 web 应用开发 API，不限制应用设计模式（比如 MVC，MVP)、代码规范以及功能的选择（例如是否有视图层生成 html 页面）。
 
-这个视频将演示使用 Express 处理 GET、POST、PUT、DELETE 请求，使用 Router 定义子路由。这个视频不涉及数据库。
-
 ## 创建 Express 项目
 
 要创建 Express 项目，只需要初始化一个 Node.js 项目然后添加 express 依赖：
