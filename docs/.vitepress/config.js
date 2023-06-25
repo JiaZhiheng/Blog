@@ -218,7 +218,7 @@ export default defineConfig({
 			pattern: "https://github.com/vuejs/vitepress/edit/main/docs/:path",
 			text: "Edit this page on GitHub",
 		},
-		lastUpdated: false, // 上次更新时间戳
+		lastUpdated: true, // 上次更新时间戳
 		// 搜索
 		search: {
 			provider: "algolia",
