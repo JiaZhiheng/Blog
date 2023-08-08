@@ -67,3 +67,8 @@ iOS 版<br/>
 Android 版<br/>
 小程序版<br/>
 网页版<br/>
+
+### 更新到最新版本
+```sh [yarn]
+yarn add vitepress@latest
+```

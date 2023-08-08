@@ -576,7 +576,7 @@ vite@^4.4.9:
   optionalDependencies:
     fsevents "~2.3.2"
 
-vitepress@1.0.0-rc.4:
+vitepress@^1.0.0-rc.4:
   version "1.0.0-rc.4"
   resolved "https://registry.npmmirror.com/vitepress/-/vitepress-1.0.0-rc.4.tgz#2422aaf9b43d65045495056f72ba22c810b979a0"
   integrity sha512-JCQ89Bm6ECUTnyzyas3JENo00UDJeK8q1SUQyJYou+4Yz5BKEc/F3O21cu++DnUT2zXc0kvQ2Aj4BZCc/nioXQ==

@@ -1,6 +1,5 @@
 import path from "path";
-// import { defineConfig } from "vitepress";
-const { generateSidebar } = require("./theme/util/sidebarGenerator"); // 基于文件目录生成 sidebar
+import { generateSidebar } from "./theme/util/sidebarGenerator"; // 基于文件目录生成 sidebar
 
 export default {
 	lang: "zh-CN", // 语言
