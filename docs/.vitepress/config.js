@@ -1,8 +1,8 @@
 import path from "path";
-import { defineConfig } from "vitepress";
+// import { defineConfig } from "vitepress";
 const { generateSidebar } = require("./theme/util/sidebarGenerator"); // 基于文件目录生成 sidebar
 
-export default defineConfig({
+export default {
 	lang: "zh-CN", // 语言
 	title: "前端工程师博客", // 网站标题
 	description: "Vite 和 Vue 支持的静态站点生成器", // 描述
@@ -277,4 +277,4 @@ export default defineConfig({
 		// 	placement: "",
 		// }
 	},
-});
+};
