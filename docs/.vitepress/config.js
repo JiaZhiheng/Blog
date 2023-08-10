@@ -6,12 +6,12 @@ export default {
 	title: "前端工程师博客", // 网站标题
 	description: "Vite 和 Vue 支持的静态站点生成器", // 描述
 	titleTemplate: "Vite & Vue powered static site generator", // 标题的后缀
-	base: "/blog/", // GitHub部署配置
+	base: "/Blog/", // GitHub部署配置
 	cleanUrls: true, // 清洁网址
 	ignoreDeadLinks: true, // 忽略死链接
 	appearance: true, // 是否开启深色模式
 	outDir: "../dist", // 输出目录
-	cacheDir: "./.vitepress/cache", // 缓存目录
+	cacheDir: "../../cache", // 缓存目录
 	srcDir: "./", // 源目录
 	head: [
 		// head标签
