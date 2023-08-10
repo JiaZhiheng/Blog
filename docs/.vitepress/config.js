@@ -2,19 +2,11 @@ import path from "path";
 import { generateSidebar } from "./theme/util/sidebarGenerator"; // 基于文件目录生成 sidebar
 
 export default {
-	lang: "zh-CN", // 语言
+	/* Site Metadata 站点元数据 */
 	title: "前端工程师博客", // 网站标题
-	description: "Vite 和 Vue 支持的静态站点生成器", // 描述
 	titleTemplate: "Vite & Vue powered static site generator", // 标题的后缀
-	base: "/Blog/", // GitHub部署配置
-	cleanUrls: true, // 清洁网址
-	ignoreDeadLinks: true, // 忽略死链接
-	appearance: true, // 是否开启深色模式
-	outDir: "../dist", // 输出目录
-	cacheDir: "../../cache", // 缓存目录
-	srcDir: "./", // 源目录
-	head: [
-		// head标签
+	description: "Vite 和 Vue 支持的静态站点生成器", // 描述
+	head: [ // head 标签
 		["link", { rel: "icon", href: "/Blog/avatar.ico" }],
 		[
 			"link",
@@ -25,41 +17,30 @@ export default {
 			},
 		],
 	],
-	vite: {
-		resolve: {
-			alias: {
-				"@": path.resolve(__dirname, "theme"),
-			},
-		},
+	lang: "zh-CN", // 语言
+	base: "/Blog/", // GitHub部署配置
+
+	/* Routing 路由 */
+	cleanUrls: true, // 清洁网址
+	rewrites: { // URL 映射
+	  // 'source/:page': 'destination/:page'
 	},
-	vue: {
-		// @vitejs/plugin-vue options
-	},
-	// rewrites: { // URL 映射
-	//   'source/:page': 'destination/:page'
-	// },
-	async buildEnd(siteConfig) {
-		// 构建结束
-		// ...
-	},
-	async postRender(context) {
-		// 渲染后
-		// ...
-	},
-	async transformHead(context) {
-		// 变形头
-		// ...
-	},
-	async transformHtml(code, id, context) {
-		// 转换HTML
-		// ...
-	},
-	async transformPageData(pageData) {
-		// 转换页面数据
-		// ...
-	},
-	// 配置 Markdown 解析器选项
-	markdown: {
+
+	/* Build 构建 */
+	srcDir: "./", // 源目录
+	srcExclude: undefined, // 源目录排除
+	outDir: "../dist", // 输出目录
+	assetsDir: "assets", // 静态资源目录
+	cacheDir: ".././cache", // 缓存目录
+	ignoreDeadLinks: true, // 忽略死链接
+	mpa: false, // 多页面应用
+
+	/* Theming 主题化 */
+	appearance: true, // 是否开启深色模式
+	lastUpdated: true, // 上次更新时间戳
+
+	/* Customization 定制化 */
+	markdown: { // 配置 Markdown 解析器选项
 		theme: "material-theme-palenight",
 		lineNumbers: false,
 		anchors: {
@@ -68,6 +49,40 @@ export default {
 			},
 		},
 	},
+	vite: { // 配置 Vite
+		resolve: {
+			alias: {
+				"@": path.resolve(__dirname, "theme"),
+			},
+		},
+	},
+	vue: { // 配置 Vue
+		// @vitejs/plugin-vue options
+	},
+
+	/* Build Hooks 构建钩子 */
+	// 构建结束
+	async buildEnd(siteConfig) {
+
+	},
+	// 渲染后
+	async postRender(context) {
+		
+	},
+	// 转换头
+	async transformHead(context) {
+		
+	},
+	// 转换 HTML
+	async transformHtml(code, id, context) {
+
+	},
+	// 转换页面数据
+	async transformPageData(pageData) {
+
+	},
+	
+	/* 默认主题配置 */
 	themeConfig: {
 		logo: "/avatar.png", // 头像
 		siteTitle: "贾志恒", // 站点标题
@@ -217,7 +232,7 @@ export default {
 			pattern: "https://github.com/vuejs/vitepress/edit/main/docs/:path",
 			text: "Edit this page on GitHub",
 		},
-		lastUpdated: true, // 上次更新时间戳
+
 		// 搜索
 		search: {
 			provider: "algolia",

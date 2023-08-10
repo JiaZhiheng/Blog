@@ -2,7 +2,7 @@
 	<iframe
 		id="iframe"
 		class="iframe"
-		src="/Blog/正则表达式速查备忘手册.pdf"
+		src="/Blog/document/正则表达式速查备忘手册.pdf"
 		style="width: 720px; height: 1000px"
 	></iframe>
 	<div class="buttons">
@@ -53,7 +53,7 @@
 		</a>
 		<a
 			class="button download"
-			href="/正则表达式速查备忘手册.pdf"
+			href="/document/正则表达式速查备忘手册.pdf"
 			download="正则表达式速查备忘手册"
 			><span>下载手册</span>
 			<svg

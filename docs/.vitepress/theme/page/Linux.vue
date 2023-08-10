@@ -2,7 +2,7 @@
 	<iframe
 		id="iframe"
 		class="iframe"
-		src="/Blog/Linux速查备忘手册.pdf"
+		src="/Blog/document/Linux速查备忘手册.pdf"
 		style="width: 720px; height: 1000px"
 	></iframe>
 	<div class="buttons">
@@ -53,7 +53,7 @@
 		</a>
 		<a
 			class="button download"
-			href="/Linux速查备忘手册.pdf"
+			href="/document/Linux速查备忘手册.pdf"
 			download="Linux速查备忘手册"
 			><span>下载手册</span>
 			<svg
