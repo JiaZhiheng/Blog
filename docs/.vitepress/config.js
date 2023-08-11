@@ -1,7 +1,8 @@
 import path from "path";
+import { defineConfig } from 'vitepress'
 import { generateSidebar } from "./theme/util/sidebarGenerator"; // 基于文件目录生成 sidebar
 
-export default {
+export default defineConfig({
 	/* Site Metadata 站点元数据 */
 	title: "前端工程师博客", // 网站标题
 	titleTemplate: "Vite & Vue powered static site generator", // 标题的后缀
@@ -84,10 +85,10 @@ export default {
 	
 	/* 默认主题配置 */
 	themeConfig: {
+		i18nRouting: false, // 国际化路由
 		logo: "/avatar.png", // 头像
-		siteTitle: "贾志恒", // 站点标题
-		// 导航栏
-		nav: [
+		siteTitle: "贾志恒", // 网站标题
+		nav: [ // 导航栏
 			{
 				text: "文章",
 				link: "/guide/article/01-HTML/01-Dialog 标签",
@@ -102,8 +103,7 @@ export default {
 			},
 			{ text: "资料", link: "/guide/material/regularExpression" },
 		],
-		// 侧边栏
-		sidebar: {
+		sidebar: { // 侧边栏
 			"/guide/article/": generateSidebar(
 				"./docs/guide/article/",
 				"/guide/article/"
@@ -206,35 +206,28 @@ export default {
 				},
 			],
 		},
-		/* 社交链接 */
-		socialLinks: [{ icon: "github", link: "https://github.com/JiaZhiheng" }],
-		/* 文档页脚 */
-		docFooter: {
-			prev: "上一篇",
-			next: "下一篇",
-		},
-		// footer: {
-		// 	// 页脚
+		aside: true, // 是否开启侧边栏
+		outline: [2, 4], // 大纲
+		outlineTitle: "大纲", // 大纲标题
+		socialLinks: [ // 社交链接
+			{ icon: "github", link: "https://github.com/JiaZhiheng" }
+		],
+		// footer: { // 页脚
 		// 	message: "Released under the MIT License.",
 		// 	copyright: "Copyright © 2019-present Evan You",
 		// },
-
-		aside: true,
-		outline: [2, 4],
-		outlineBadges: true,
-		outlineTitle: "大纲", // 大纲标题
-		lastUpdatedText: "Updated Date", // 最后更新文本
-		darkModeSwitchLabel: "Appearance",
-		sidebarMenuLabel: "Menu",
-		returnToTopLabel: "Return to top",
-		// 编辑链接
-		editLink: {
+		editLink: { // 编辑链接
 			pattern: "https://github.com/vuejs/vitepress/edit/main/docs/:path",
 			text: "Edit this page on GitHub",
 		},
-
-		// 搜索
-		search: {
+		lastUpdated: { // 最近更新时间
+      text: 'Updated at',
+      formatOptions: {
+        dateStyle: 'full',
+        timeStyle: 'medium'
+      }
+    },
+		search: { // 搜索
 			provider: "algolia",
 			options: {
 				appId: "80GWMAOJY7",
@@ -285,10 +278,18 @@ export default {
 				},
 			},
 		},
-		// 广告
-		// carbonAds: {
+		// carbonAds: { // 广告
 		// 	code: "",
 		// 	placement: "",
-		// }
+		// },
+		docFooter: { // 文档页脚
+			prev: "上一篇",
+			next: "下一篇",
+		},
+		darkModeSwitchLabel: "Appearance", // 暗模式开关标签
+		sidebarMenuLabel: "Menu", // 侧边栏菜单标签
+		returnToTopLabel: "Return to top", // 返回顶部标签
+		langMenuLabel:"Change language", // 语言菜单标签
+		externalLinkIcon: false, // 外部链接图标
 	},
-};
+});
