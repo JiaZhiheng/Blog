@@ -44,11 +44,9 @@
 				this.container.style.height = this.options.height;
 				const itemContainer = document.createElement("div");
 				itemContainer.setAttribute("class", "items");
-				itemContainer.setAttribute(
-					"style",
-					"width: 100%;overflow: hidden;display: flex"
-				);
+				itemContainer.setAttribute("style", "width: 100%;height: calc(100% - 16px);overflow: hidden;display: flex;flex-direction: row;border-radius:12px");
 				this.itemContainer = itemContainer;
+				
 			}
 
 			/* 初始化轮播图面板和轮播点面板 */
@@ -176,10 +174,14 @@
 </script>
 <style scoped>
 	.horizon {
+		height: 100%;
+		width: calc(100% - 16px);
 		display: flex;
+		align-items: center;
+		justify-content: center;
 		margin: 0 auto;
-		width: 100%;
 		border-radius: 12px;
+    overflow: hidden;  
 	}
 	.item {
 		display: none;
@@ -212,11 +214,13 @@
 	}
 
 	.items {
-		height: 100%;
+		display: flex;
 		width: 100%;
+		height: calc(100% - 16px);
 		overflow: hidden;
 		display: flex;
 		flex-direction: row;
+		overflow: hidden;
 	}
 
 	.item.active-A,
@@ -229,23 +233,23 @@
 	}
 	/* 上一页 */
 	.item.prev {
-		transform: translateX(calc(-100% - 0px));
+		transform: translate(-100%, -8px);
 	}
 	/* 当前页 */
 	.item.active-A {
-		transform: translateX(0);
+		transform: translate(0, -8px);
 	}
 	.item.active-B {
-		transform: translateX(calc(100% + 0px));
+		transform: translate(calc(100% + 0px), -8px);
 	}
 	.item.active-C {
-		transform: translateX(calc(200% + 0px));
+		transform: translate(calc(200% + 0px), -8px);
 	}
 	.item.active-D {
-		transform: translateX(calc(300% + 0px));
+		transform: translate(calc(300% + 0px), -8px);
 	}
 	/* 下一页 */
 	.item.next {
-		transform: translateX(calc(400% + 0px));
+		transform: translate(calc(400% + 0px), -8px);
 	}
 </style>

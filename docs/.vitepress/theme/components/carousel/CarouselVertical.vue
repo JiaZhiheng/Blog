@@ -1,6 +1,6 @@
 <template>
 	<div class="ver">
-		<div class="vertical">
+		<div class="vert">
 			<figure
 				class="item"
 				:style="item.style"
@@ -8,7 +8,7 @@
 				:key="item.id"
 			>
 				<a :href="item.url" target="_blank">
-					<img class="background" :src="item.src" alt="" />
+					<img v-if="false" class="background" :src="item.src" alt="" />
 					<div class="hover"></div>
 					<div class="title">
 						<div>
@@ -37,8 +37,8 @@
 			/* 构造函数 */
 			constructor(options) {
 				const defaultOptions = {
-					element: document.querySelector(".vertical"),
-					height: "100%",
+					element: document.querySelector(".vert"),
+					height: "calc(100% - 16px)",
 					index: 0,
 					interval: 4000,
 				};
@@ -59,6 +59,7 @@
 				this.container.style.height = this.options.height;
 				const itemContainer = document.createElement("div");
 				itemContainer.setAttribute("class", "items");
+				itemContainer.setAttribute("style", "height: 100%");
 				this.itemContainer = itemContainer;
 			}
 
@@ -178,12 +179,14 @@
 		flex: 1;
 		height: 100%;
 		border-radius: 12px;
-		padding: 8px;
+		padding: 0 8px;
 		position: relative;
 		overflow: hidden;
 	}
-	.vertical {
+	.vert {
 		position: relative;
+		margin: 8px 0;
+		overflow: hidden;
 	}
 	.background {
 		position: relative;
@@ -196,11 +199,11 @@
 		display: none;
 		position: absolute;
 		width: calc(100% - 16px);
-		height: calc(50% - 16px);
-		transition: all 0.3s;
+		height: calc(50% - 8px);
+		transition: all 0.3s linear;
 		background-color: transparent;
 		overflow: hidden;
-		color: #ffffff;
+		color: #fff;
 		text-align: center;
 		font-size: 16px;
 		border-radius: 12px;
@@ -227,7 +230,7 @@
 		width: 400px;
 		position: absolute;
 		content: "";
-		background-color: #ffffff;
+		background-color: #fff;
 	}
 
 	.item .title:before {
@@ -248,7 +251,7 @@
 		height: 300px;
 		position: absolute;
 		content: "";
-		background-color: #ffffff;
+		background-color: #fff;
 	}
 
 	.item .title div:before {
