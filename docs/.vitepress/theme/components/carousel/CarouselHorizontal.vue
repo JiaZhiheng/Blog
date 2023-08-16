@@ -20,14 +20,7 @@
 	onMounted(() => {
 		class vertical {
 			/* 构造函数 */
-			constructor(options) {
-				const defaultOptions = {
-					element: document.querySelector(".horizon"),
-					height: "100%",
-					index: 0,
-					interval: 4000,
-				};
-				this.options = Object.assign({}, defaultOptions, options); // 同名属性替换
+			constructor() {
 				this.initHorizontal();
 				this.playHorizontal();
 			}
@@ -40,30 +33,24 @@
 
 			/* 初始化轮播容器 */
 			initHorizontalContainer() {
-				this.container = this.options.element;
-				this.container.style.height = this.options.height;
+				this.container = document.querySelector(".horizon");
+				this.container.style.height = "calc(100% - 16px)";
 				const itemContainer = document.createElement("div");
 				itemContainer.setAttribute("class", "items");
-				itemContainer.setAttribute("style", "width: 100%;height: calc(100% - 16px);overflow: hidden;display: flex;flex-direction: row;border-radius:12px");
+				itemContainer.setAttribute(
+					"style",
+					"width: 1280px;height: 100%;position:absolute;transform:translateX(-8px);"
+				);
 				this.itemContainer = itemContainer;
-				
 			}
 
 			/* 初始化轮播图面板和轮播点面板 */
 			initHorizontalItemsAndDots() {
 				this.items = this.container.querySelectorAll(".item");
-				this.items[(this.options.index + 0) % this.items.length].classList.add(
-					"active-A"
-				);
-				this.items[(this.options.index + 1) % this.items.length].classList.add(
-					"active-B"
-				);
-				this.items[(this.options.index + 2) % this.items.length].classList.add(
-					"active-C"
-				);
-				this.items[(this.options.index + 3) % this.items.length].classList.add(
-					"active-D"
-				);
+				this.items[0 % this.items.length].classList.add("active-A");
+				this.items[1 % this.items.length].classList.add("active-B");
+				this.items[2 % this.items.length].classList.add("active-C");
+				this.items[3 % this.items.length].classList.add("active-D");
 				this.items.forEach((item) => {
 					this.itemContainer.appendChild(item);
 				});
@@ -102,7 +89,7 @@
 
 			/* 开始轮播 */
 			playHorizontal() {
-				setTimeout(() => {
+				const playInterval = () => {
 					this.setHorizontal(
 						this.getPrevIndex(),
 						this.getCurrentAIndex(),
@@ -111,16 +98,34 @@
 						this.getCurrentDIndex(),
 						this.getNextIndex()
 					);
-					data.timeInter = setInterval(() => {
-						this.setHorizontal(
-							this.getPrevIndex(),
-							this.getCurrentAIndex(),
-							this.getCurrentBIndex(),
-							this.getCurrentCIndex(),
-							this.getCurrentDIndex(),
-							this.getNextIndex()
-						);
-					}, this.options.interval);
+				};
+
+				const startPlay = () => {
+					playInterval(); // 立即执行一次
+					this.playIntervalId = setInterval(playInterval, 4000);
+				};
+
+				const stopPlay = () => {
+					clearInterval(this.playIntervalId);
+				};
+
+				// 页面可见性状态改变时触发的回调函数
+				const handleVisibilityChange = () => {
+					if (document.hidden) {
+						// 页面切出，暂停播放
+						stopPlay();
+					} else {
+						// 页面切回，继续播放
+						startPlay();
+					}
+				};
+
+				// 添加可见性状态改变事件监听器
+				document.addEventListener("visibilitychange", handleVisibilityChange);
+
+				// 初始化时调用一次，根据初始页面状态执行操作
+				setTimeout(() => {
+					handleVisibilityChange();
 				}, 1400);
 			}
 
@@ -139,11 +144,6 @@
 				this.currentC = this.items[currentCIndex];
 				this.currentD = this.items[currentDIndex];
 				this.next = this.items[nextIndex];
-				this.setHorizontalItem();
-			}
-
-			/* 设置轮播面板 */
-			setHorizontalItem() {
 				this.prev.setAttribute("class", `item prev`);
 				this.currentA.setAttribute("class", `item active-A`);
 				this.currentB.setAttribute("class", `item active-B`);
@@ -151,20 +151,12 @@
 				this.currentD.setAttribute("class", `item active-D`);
 				this.next.setAttribute("class", `item next`);
 				this.container.offsetHeight; // 原因：触发回流使轮播图流畅
-				this.resetHorizontalItem();
-			}
-
-			/* 重置轮播面板 */
-			resetHorizontalItem() {
-				const callback = () => {
-					this.prev.setAttribute("class", "item");
-					this.currentA.setAttribute("class", "item prev");
-					this.currentB.setAttribute("class", "item active-A");
-					this.currentC.setAttribute("class", "item active-B");
-					this.currentD.setAttribute("class", "item active-C");
-					this.next.setAttribute("class", "item active-D");
-				};
-				callback();
+				this.prev.setAttribute("class", "item");
+				this.currentA.setAttribute("class", "item prev");
+				this.currentB.setAttribute("class", "item active-A");
+				this.currentC.setAttribute("class", "item active-B");
+				this.currentD.setAttribute("class", "item active-C");
+				this.next.setAttribute("class", "item active-D");
 			}
 		}
 
@@ -173,24 +165,25 @@
 	});
 </script>
 <style scoped>
-	.horizon {
+	.ver {
+		flex: 1;
 		height: 100%;
+		border-radius: 12px;
+		position: relative;
+		overflow: hidden;
+		margin-top: 8px;
+	}
+	.horizon {
+		height: calc(100% - 16px);
 		width: calc(100% - 16px);
-		display: flex;
-		align-items: center;
-		justify-content: center;
 		margin: 0 auto;
 		border-radius: 12px;
-    overflow: hidden;  
+		overflow: hidden;
+		position: relative;
+		transform: rotate(0deg);
+		-webkit-transform: rotate(0deg);
 	}
-	.item {
-		display: none;
-		width: 25%;
-		height: 100%;
-		padding: 8px;
-		position: absolute;
-		transition: all 4s linear;
-	}
+
 	.item-in {
 		height: 100%;
 		border-radius: 12px;
@@ -202,25 +195,22 @@
 		color: #333;
 	}
 
-	.ver {
-		flex: 1;
-		height: 100%;
-		border-radius: 12px;
-		position: relative;
-		overflow: hidden;
-	}
-	.horizon {
-		position: relative;
-	}
-
 	.items {
-		display: flex;
 		width: 100%;
 		height: calc(100% - 16px);
 		overflow: hidden;
-		display: flex;
-		flex-direction: row;
-		overflow: hidden;
+		border-radius: 12px;
+		transform: rotate(0deg);
+		-webkit-transform: rotate(0deg);
+	}
+
+	.item {
+		display: none;
+		width: 25%;
+		height: 100%;
+		padding: 0 8px;
+		position: absolute;
+		transition: all 4s linear;
 	}
 
 	.item.active-A,
@@ -233,23 +223,23 @@
 	}
 	/* 上一页 */
 	.item.prev {
-		transform: translate(-100%, -8px);
+		transform: translate(calc(-100% - 0px), -0px);
 	}
 	/* 当前页 */
 	.item.active-A {
-		transform: translate(0, -8px);
+		transform: translate(calc(0% - 0px), -0px);
 	}
 	.item.active-B {
-		transform: translate(calc(100% + 0px), -8px);
+		transform: translate(calc(100% - 0px), -0px);
 	}
 	.item.active-C {
-		transform: translate(calc(200% + 0px), -8px);
+		transform: translate(calc(200% - 0px), -0px);
 	}
 	.item.active-D {
-		transform: translate(calc(300% + 0px), -8px);
+		transform: translate(calc(300% - 0px), -0px);
 	}
 	/* 下一页 */
 	.item.next {
-		transform: translate(calc(400% + 0px), -8px);
+		transform: translate(calc(400% - 0px), -0px);
 	}
 </style>

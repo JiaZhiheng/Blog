@@ -198,7 +198,7 @@
 	.item {
 		display: none;
 		position: absolute;
-		width: calc(100% - 16px);
+		width: 100%;
 		height: calc(50% - 8px);
 		transition: all 0.3s linear;
 		background-color: transparent;
