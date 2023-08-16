@@ -98,15 +98,40 @@
 
 			/* 开始轮播 */
 			playHorizontal() {
+				const playInterval = () => {
+					this.setHorizontal(
+						this.getPrevIndex(),
+						this.getCurrentXIndex(),
+						this.getCurrentYIndex(),
+						this.getNextIndex()
+					);
+				};
+
+				const startPlay = () => {
+					this.playIntervalId = setInterval(playInterval, 4000);
+				};
+
+				const stopPlay = () => {
+					clearInterval(this.playIntervalId);
+				};
+
+				// 页面可见性状态改变时触发的回调函数
+				const handleVisibilityChange = () => {
+					if (document.hidden) {
+						// 页面切出，暂停播放
+						stopPlay();
+					} else {
+						// 页面切回，继续播放
+						startPlay();
+					}
+				};
+
+				// 添加可见性状态改变事件监听器
+				document.addEventListener("visibilitychange", handleVisibilityChange);
+
+				// 初始化时调用一次，根据初始页面状态执行操作
 				setTimeout(() => {
-					data.timeInter = setInterval(() => {
-						this.setHorizontal(
-							this.getPrevIndex(),
-							this.getCurrentXIndex(),
-							this.getCurrentYIndex(),
-							this.getNextIndex()
-						);
-					}, this.options.interval);
+					handleVisibilityChange();
 				}, 1400);
 			}
 
@@ -187,6 +212,9 @@
 		position: relative;
 		margin: 8px 0;
 		overflow: hidden;
+		border-radius: 12px;
+		transform: rotate(0);
+		-webkit-transform: rotate(0);
 	}
 	.background {
 		position: relative;

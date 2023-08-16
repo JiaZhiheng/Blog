@@ -56,6 +56,8 @@
 				 */
 				this.initHorizontal(); // 初始化轮播图
 				this.bindHorizontal(); // 绑定轮播图
+				// 添加可见性状态改变事件监听器
+				document.addEventListener("visibilitychange", this.handleVisibilityChange);
 				setTimeout(() => {
 					this.playHorizontal(); // 播放轮播图
 				}, 1400);
@@ -263,6 +265,23 @@
 					}, this.options.interval);
 				}
 			}
+
+			// 暂停轮播
+			pauseHorizontal() {
+				clearInterval(data.timeInter); // 清除定时器
+				data.timeInter = null; // 将定时器引用置为 null
+			}
+
+			// 页面可见性状态改变时触发的回调函数
+			handleVisibilityChange = () => {
+				if (document.hidden) {
+					// 页面切出，暂停播放
+					this.pauseHorizontal();
+				} else {
+					// 页面切回，继续播放
+					this.playHorizontal();
+				}
+			};
 		}
 
 		// 声明轮播图
