@@ -171,12 +171,11 @@
 		border-radius: 12px;
 		position: relative;
 		overflow: hidden;
-		margin-top: 8px;
 	}
 	.horizon {
 		height: calc(100% - 16px);
 		width: calc(100% - 16px);
-		margin: 0 auto;
+		margin: 8px auto;
 		border-radius: 12px;
 		overflow: hidden;
 		position: relative;
