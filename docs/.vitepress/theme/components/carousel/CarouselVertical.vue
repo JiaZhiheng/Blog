@@ -27,6 +27,7 @@
 <script setup>
 	import { reactive, onMounted, onUnmounted } from "vue";
 	import { verticalConfig } from "@/components/carousel/carousel.config";
+
 	const data = reactive({
 		timeInter: null,
 	});
@@ -82,16 +83,19 @@
 					(this.getCurrentXIndex() - 1 + this.items.length) % this.items.length
 				);
 			}
+			
 			getCurrentXIndex() {
 				return [...this.items].indexOf(
 					this.container.querySelector(".item.active-x")
 				);
 			}
+
 			getCurrentYIndex() {
 				return [...this.items].indexOf(
 					this.container.querySelector(".item.active-y")
 				);
 			}
+
 			getNextIndex() {
 				return (this.getCurrentYIndex() + 1) % this.items.length;
 			}

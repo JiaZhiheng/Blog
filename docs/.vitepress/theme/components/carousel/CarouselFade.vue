@@ -29,7 +29,7 @@
 	import { reactive, onMounted, onUnmounted } from "vue";
 	import { fadeConfig } from "@/components/carousel/carousel.config";
 	const data = reactive({
-		timeInter: null,
+		timer: null,
 	});
 
 	onMounted(() => {
@@ -70,7 +70,7 @@
 			 * 将新增的 dom 全部添加 data-v 属性
 			 */
 			initHorizontal() {
-				data.timeInter = null; // 用于控制轮播图播放/暂停
+				data.timer = null; // 用于控制轮播图播放/暂停
 				let key = null;
 				this.options.element.getAttributeNames().forEach((attrbute) => {
 					if (attrbute.indexOf("data-v") != -1) {
@@ -193,8 +193,8 @@
 					this.direction = direction;
 					this.setHorizontalDot(toIndex);
 					this.setHorizontalItem();
-					clearInterval(data.timeInter);
-					data.timeInter = null;
+					clearInterval(data.timer);
+					data.timer = null;
 					this.playHorizontal();
 				}
 			}
@@ -253,10 +253,18 @@
 				this.dots[index].classList.add("active");
 			}
 
+			// 暂停轮播
+			pauseHorizontal() {
+				if (this.timer) {
+					clearInterval(data.timer);
+					data.timer = null;
+				}
+			}
+
 			// 开始轮播
 			playHorizontal() {
-				if (this.options.autoplay && !data.timeInter) {
-					data.timeInter = setInterval(() => {
+				if (this.options.autoplay && !data.timer) {
+					data.timer = setInterval(() => {
 						this.setHorizontal(
 							this.getCurrentIndex(),
 							this.getNextIndex(),
@@ -264,12 +272,6 @@
 						);
 					}, this.options.interval);
 				}
-			}
-
-			// 暂停轮播
-			pauseHorizontal() {
-				clearInterval(data.timeInter); // 清除定时器
-				data.timeInter = null; // 将定时器引用置为 null
 			}
 
 			// 页面可见性状态改变时触发的回调函数
@@ -289,8 +291,8 @@
 	});
 
 	onUnmounted(() => {
-		// clearInterval(data.timeInter);
-		// data.timeInter = null;
+		// clearInterval(data.timer);
+		// data.timer = null;
 	});
 </script>
 <style scoped>

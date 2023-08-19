@@ -57,49 +57,49 @@ export const fadeConfig = [
 ];
 export const horizontalConfig = [
 	{
-		id: 0,
+		id: 1,
 		name: "敬",
 		info: "前端开发工程师",
 		style: "background-color:#5E95FA",
 	},
 	{
-		id: 0,
+		id: 2,
 		name: "请",
 		info: "后端开发工程师",
 		style: "background-color:#FE8D55",
 	},
 	{
-		id: 0,
+		id: 3,
 		name: "期",
 		info: "测试工程师",
 		style: "background-color:#9266D6",
 	},
 	{
-		id: 0,
+		id: 4,
 		name: "待",
 		info: "数据分析工程师",
 		style: "background-color:#2FCD64",
 	},
 	{
-		id: 0,
+		id: 5,
 		name: "尚",
 		info: "前端开发工程师",
 		style: "background-color:#A9D71A",
 	},
 	{
-		id: 0,
+		id: 6,
 		name: "未",
 		info: "后端开发工程师",
 		style: "background-color:#50BEFA",
 	},
 	{
-		id: 0,
+		id: 7,
 		name: "完",
 		info: "测试工程师",
 		style: "background-color:#EAAA71",
 	},
 	{
-		id: 0,
+		id: 8,
 		name: "成",
 		info: "数据分析工程师",
 		style: "background-color:#F7C41E",
