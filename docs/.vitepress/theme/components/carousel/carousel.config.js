@@ -141,7 +141,7 @@ export const horizontalConfig = [
 // ];
 export const verticalConfig = [
 	{
-		id: 0,
+		id: 1,
 		name: "游戏速报",
 		info: "游戏内容前沿资讯",
 		url: "http://101.43.140.74:51/",
@@ -149,7 +149,7 @@ export const verticalConfig = [
 		style: "background-color:#F5E5F4",
 	},
 	{
-		id: 0,
+		id: 2,
 		name: "企业官网",
 		info: "科技公司响应式首页",
 		url: "http://101.43.140.74:64/",
@@ -157,7 +157,7 @@ export const verticalConfig = [
 		style: "background-color:#E5E4F6",
 	},
 	{
-		id: 0,
+		id: 3,
 		name: "太空漫游",
 		info: "带你探索神秘宇宙",
 		url: "http://101.43.140.74:73/",
@@ -165,7 +165,7 @@ export const verticalConfig = [
 		style: "background-color:#E1ECF8",
 	},
 	{
-		id: 0,
+		id: 4,
 		name: "求职平台",
 		info: "助您找到满意工作",
 		url: "http://101.43.140.74:56/",
@@ -173,7 +173,7 @@ export const verticalConfig = [
 		style: "background-color:#DDF0F1",
 	},
 	{
-		id: 0,
+		id: 5,
 		name: "游戏速报",
 		info: "游戏内容前沿资讯",
 		url: "http://101.43.140.74:51/",
@@ -181,7 +181,7 @@ export const verticalConfig = [
 		style: "background-color:#DEF1E3",
 	},
 	{
-		id: 0,
+		id: 6,
 		name: "企业官网",
 		info: "科技公司响应式首页",
 		url: "http://101.43.140.74:64/",
@@ -189,7 +189,7 @@ export const verticalConfig = [
 		style: "background-color:#E5EED6",
 	},
 	{
-		id: 0,
+		id: 7,
 		name: "漫游太阳系",
 		info: "带你探索神秘宇宙",
 		url: "http://101.43.140.74:73/",
@@ -197,7 +197,7 @@ export const verticalConfig = [
 		style: "background-color:#F7F1DB",
 	},
 	{
-		id: 0,
+		id: 8,
 		name: "求职平台",
 		info: "助您找到满意工作",
 		url: "http://101.43.140.74:56/",

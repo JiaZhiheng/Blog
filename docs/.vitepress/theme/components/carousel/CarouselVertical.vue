@@ -1,11 +1,13 @@
 <template>
-	<div class="ver">
+	<div class="ver" ref="vertical">
 		<div class="vert">
+			<div class="itmes" ref="items"></div>
 			<figure
-				class="item"
-				:style="item.style"
-				v-for="item in verticalConfig"
+				:class="getItemClasses(index)"
+				v-for="(item, index) in verticalConfig"
 				:key="item.id"
+				:style="item.style"
+				ref="carousel"
 			>
 				<a :href="item.url" target="_blank">
 					<img v-if="false" class="background" :src="item.src" alt="" />
@@ -25,160 +27,57 @@
 	</div>
 </template>
 <script setup>
-	import { reactive, onMounted, onUnmounted } from "vue";
+	import { ref, onMounted } from "vue";
 	import { verticalConfig } from "@/components/carousel/carousel.config";
 
-	const data = reactive({
-		timeInter: null,
-	});
+	const vertical = ref(null);
+	const items = ref(null);
+	const carousel = ref([]);
+	const classNames = [
+		"item active-x",
+		"item active-y",
+		"item next",
+		"item",
+		"item",
+		"item",
+		"item",
+		"item",
+		"item prev",
+	];
+	const playIntervalId = ref(null);
+
+	// 获取项目的类名
+	function getItemClasses(index) {
+		return [classNames[index]];
+	}
+
+	// 移动数组中的项目
+	function shiftArrayItems() {
+		classNames.unshift(classNames.pop());
+	}
+
+	// 为给定的项目设置类名
+	function setItemClass(item, index) {
+		item.setAttribute("class", classNames[index]);
+	}
+
+	// 播放垂直轮播
+	function playVertical() {
+		shiftArrayItems();
+		carousel.value.forEach(setItemClass);
+	}
+
+	// 开始播放轮播
+	function startPlay() {
+		playVertical();
+		playIntervalId.value = setInterval(playVertical, 4000);
+	}
 
 	// 组件挂载
 	onMounted(() => {
-		class vertical {
-			/* 构造函数 */
-			constructor(options) {
-				const defaultOptions = {
-					element: document.querySelector(".vert"),
-					height: "calc(100% - 16px)",
-					index: 0,
-					interval: 4000,
-				};
-				this.options = Object.assign({}, defaultOptions, options); // 同名属性替换
-				this.initHorizontal();
-				this.playHorizontal();
-			}
-
-			/* 初始化轮播图 */
-			initHorizontal() {
-				this.initHorizontalContainer();
-				this.initHorizontalItemsAndDots();
-			}
-
-			/* 初始化轮播容器 */
-			initHorizontalContainer() {
-				this.container = this.options.element;
-				this.container.style.height = this.options.height;
-				const itemContainer = document.createElement("div");
-				itemContainer.setAttribute("class", "items");
-				itemContainer.setAttribute("style", "height: 100%");
-				this.itemContainer = itemContainer;
-			}
-
-			/* 初始化轮播图面板和轮播点面板 */
-			initHorizontalItemsAndDots() {
-				this.items = this.container.querySelectorAll(".item");
-				this.items[this.options.index].classList.add("active-x");
-				this.items[(this.options.index + 1) % this.items.length].classList.add(
-					"active-y"
-				);
-				this.items.forEach((item) => {
-					this.itemContainer.appendChild(item);
-				});
-				this.container.appendChild(this.itemContainer);
-			}
-
-			/* 获取 上一项/当前项(X)/当前项(Y)/下一项 索引 */
-			getPrevIndex() {
-				return (
-					(this.getCurrentXIndex() - 1 + this.items.length) % this.items.length
-				);
-			}
-			
-			getCurrentXIndex() {
-				return [...this.items].indexOf(
-					this.container.querySelector(".item.active-x")
-				);
-			}
-
-			getCurrentYIndex() {
-				return [...this.items].indexOf(
-					this.container.querySelector(".item.active-y")
-				);
-			}
-
-			getNextIndex() {
-				return (this.getCurrentYIndex() + 1) % this.items.length;
-			}
-
-			/* 开始轮播 */
-			playHorizontal() {
-				const playInterval = () => {
-					this.setHorizontal(
-						this.getPrevIndex(),
-						this.getCurrentXIndex(),
-						this.getCurrentYIndex(),
-						this.getNextIndex()
-					);
-				};
-
-				const startPlay = () => {
-					this.playIntervalId = setInterval(playInterval, 4000);
-				};
-
-				const stopPlay = () => {
-					clearInterval(this.playIntervalId);
-				};
-
-				// 页面可见性状态改变时触发的回调函数
-				const handleVisibilityChange = () => {
-					if (document.hidden) {
-						// 页面切出，暂停播放
-						stopPlay();
-					} else {
-						// 页面切回，继续播放
-						startPlay();
-					}
-				};
-
-				// 添加可见性状态改变事件监听器
-				document.addEventListener("visibilitychange", handleVisibilityChange);
-
-				// 初始化时调用一次，根据初始页面状态执行操作
-				setTimeout(() => {
-					handleVisibilityChange();
-				}, 1400);
-			}
-
-			/* 设置轮播图 */
-			setHorizontal(fromIndex, currentXIndex, currentYIndex, toIndex) {
-				this.from = this.items[fromIndex];
-				this.currentX = this.items[currentXIndex];
-				this.currentY = this.items[currentYIndex];
-				this.to = this.items[toIndex];
-				this.setHorizontalItem();
-			}
-
-			/* 设置轮播面板 */
-			setHorizontalItem() {
-				this.to.setAttribute("class", `item next`);
-				this.from.setAttribute("class", `item prev`);
-				this.currentX.setAttribute("class", `item active-x`);
-				this.currentY.setAttribute("class", `item active-y`);
-
-				this.container.offsetHeight; // 原因：触发回流使轮播图流畅
-				this.resetHorizontalItem();
-			}
-
-			/* 重置轮播面板 */
-			resetHorizontalItem() {
-				const callback = () => {
-					this.from.setAttribute("class", "item");
-					this.currentX.setAttribute("class", "item prev");
-					this.currentY.setAttribute("class", "item active-x");
-					this.to.setAttribute("class", "item active-y");
-				};
-				callback();
-			}
-		}
-
-		/* 声明轮播图 */
-		new vertical();
-	});
-
-	// 组件卸载
-	onUnmounted(() => {
-		// clearInterval(data.timeInter);
-		// data.timeInter = null;
+		setTimeout(() => {
+			startPlay();
+		}, 1400); // 入场效果需要 1400ms
 	});
 </script>
 <style scoped>
@@ -219,6 +118,7 @@
 		border-radius: 12px;
 		transform: rotate(0);
 		-webkit-transform: rotate(0);
+		height: calc(100% - 16px);
 	}
 	.background {
 		position: relative;
