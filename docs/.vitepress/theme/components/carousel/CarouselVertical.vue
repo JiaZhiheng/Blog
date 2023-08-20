@@ -1,28 +1,29 @@
 <template>
 	<div class="ver" ref="vertical">
 		<div class="vert">
-			<div class="itmes" ref="items"></div>
-			<figure
-				:class="getItemClasses(index)"
-				v-for="(item, index) in verticalConfig"
-				:key="item.id"
-				:style="item.style"
-				ref="carousel"
-			>
-				<a :href="item.url" target="_blank">
-					<img v-if="false" class="background" :src="item.src" alt="" />
-					<div class="hover"></div>
-					<div class="title">
-						<div>
-							<h2>{{ item.name }}</h2>
-							<h4>在线预览</h4>
+			<div class="itmes">
+				<figure
+					:class="getItemClasses(index)"
+					v-for="(item, index) in verticalConfig"
+					:key="item.id"
+					:style="item.style"
+					ref="carousel"
+				>
+					<a :href="item.url" target="_blank">
+						<img v-if="false" class="background" :src="item.src" alt="" />
+						<div class="hover"></div>
+						<div class="title">
+							<div>
+								<h2>{{ item.name }}</h2>
+								<h4>在线预览</h4>
+							</div>
 						</div>
-					</div>
-					<figcaption>
-						<p>{{ item.info }}</p>
-					</figcaption>
-				</a>
-			</figure>
+						<figcaption>
+							<p>{{ item.info }}</p>
+						</figcaption>
+					</a>
+				</figure>
+			</div>
 		</div>
 	</div>
 </template>
@@ -31,13 +32,11 @@
 	import { verticalConfig } from "@/components/carousel/carousel.config";
 
 	const vertical = ref(null);
-	const items = ref(null);
 	const carousel = ref([]);
 	const classNames = [
 		"item active-x",
 		"item active-y",
 		"item next",
-		"item",
 		"item",
 		"item",
 		"item",
@@ -69,7 +68,6 @@
 
 	// 开始播放轮播
 	function startPlay() {
-		playVertical();
 		playIntervalId.value = setInterval(playVertical, 4000);
 	}
 

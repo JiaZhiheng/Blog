@@ -1,7 +1,7 @@
 <template>
 	<div class="ver">
 		<div class="horizon" ref="horizon">
-			<div class="items" ref="items">
+			<div class="items">
 				<div
 					:class="getItemClasses(index)"
 					v-for="(item, index) in horizontalConfig"
@@ -22,7 +22,6 @@
 	import { horizontalConfig } from "@/components/carousel/carousel.config";
 
 	const horizon = ref(null);
-	const items = ref(null);
 	const carousel = ref([]);
 	const classNames = [
 		"item active-A",
