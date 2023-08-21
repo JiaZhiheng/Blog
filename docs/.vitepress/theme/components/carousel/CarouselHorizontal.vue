@@ -1,12 +1,11 @@
 <template>
 	<div class="ver">
-		<div class="horizon" ref="horizon">
+		<div class="horizon">
 			<div class="items">
 				<div
-					:class="getItemClasses(index)"
+					:class="itemClass(index)"
 					v-for="(item, index) in horizontalConfig"
 					:key="item.id"
-					ref="carousel"
 				>
 					<div class="item-in" :style="item.style">
 						<span>{{ item.name }}</span>
@@ -18,11 +17,9 @@
 </template>
 
 <script setup>
-	import { ref, onMounted } from "vue";
+	import { ref, computed, onMounted, onUnmounted } from "vue";
 	import { horizontalConfig } from "@/components/carousel/carousel.config";
 
-	const horizon = ref(null);
-	const carousel = ref([]);
 	const classNames = [
 		"item active-A",
 		"item active-B",
@@ -33,40 +30,38 @@
 		"item",
 		"item prev",
 	];
+
+	const indexCounter = ref(0);
 	const playIntervalId = ref(null);
 
-	// 获取项目的类名
-	function getItemClasses(index) {
-		return [classNames[index]];
-	}
-
-	// 移动数组中的项目
-	function shiftArrayItems() {
-		classNames.unshift(classNames.pop());
-	}
-
-	// 为给定的项目设置类名
-	function setItemClass(item, index) {
-		item.setAttribute("class", classNames[index]);
-	}
+	// 计算属性，为给定的项目设置类名
+	const itemClass = computed(() => {
+		return (index) => {
+			const adjustedIndex = (index + indexCounter.value) % classNames.length;
+			return classNames[adjustedIndex];
+		};
+	});
 
 	// 播放水平轮播
-	function playHorizontal() {
-		shiftArrayItems();
-		carousel.value.forEach(setItemClass);
+	function next() {
+		indexCounter.value = (indexCounter.value - 1 + classNames.length) % classNames.length;
 	}
 
 	// 开始播放轮播
 	function startPlay() {
-		playHorizontal();
-		playIntervalId.value = setInterval(playHorizontal, 4000);
+		next();
+		playIntervalId.value = setInterval(next, 4000);
 	}
 
 	// 组件生命周期钩子
 	onMounted(() => {
 		setTimeout(() => {
-			startPlay()
+			startPlay();
 		}, 1400); // 入场效果需要 1400ms
+	});
+
+	onUnmounted(() => {
+		clearInterval(playIntervalId.value);
 	});
 </script>
 
@@ -126,23 +121,23 @@
 	}
 	/* 上一页 */
 	.item.prev {
-		transform: translate(calc(-100% - 0px), -0px);
+		transform: translateX(-100%);
 	}
 	/* 当前页 */
 	.item.active-A {
-		transform: translate(calc(0% - 0px), -0px);
+		transform: translateX(0);
 	}
 	.item.active-B {
-		transform: translate(calc(100% - 0px), -0px);
+		transform: translateX(100%);
 	}
 	.item.active-C {
-		transform: translate(calc(200% - 0px), -0px);
+		transform: translateX(200%);
 	}
 	.item.active-D {
-		transform: translate(calc(300% - 0px), -0px);
+		transform: translateX(300%);
 	}
 	/* 下一页 */
 	.item.next {
-		transform: translate(calc(400% - 0px), -0px);
+		transform: translateX(400%);
 	}
 </style>

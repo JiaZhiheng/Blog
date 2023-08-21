@@ -1,13 +1,12 @@
 <template>
 	<div class="swiper-horizontal">
-		<div class="horizontal" ref="horizontal">
+		<div class="horizontal">
 			<div class="horizontal-items">
 				<div
 					class="horizontal-item"
-					:class="getItemClasses(index)"
+					:class="itemClass(index)"
 					v-for="(item, index) in fadeConfig"
 					:key="item.id"
-					ref="carousel"
 				>
 					<div class="demo-item" :style="item.styleObject">
 						<h1 class="item-name" :style="item.infoStyle">{{ item.name }}</h1>
@@ -33,11 +32,10 @@
 			<ul class="horizontal-dots">
 				<li
 					class="horizontal-dot"
-					:class="getItemClasses(index)"
+					:class="itemClass(index)"
 					v-for="(item, index) in fadeConfig"
 					:key="item.id"
-					@click="setHorizontal(index)"
-					ref="dot"
+					@click="to(index)"
 				></li>
 			</ul>
 			<div class="horizontal-arrows">
@@ -76,38 +74,33 @@
 	</div>
 </template>
 <script setup>
-	import { ref, onMounted } from "vue";
+	import { ref, computed, onMounted, onUnmounted } from "vue";
 	import { fadeConfig } from "@/components/carousel/carousel.config";
-
-	const carousel = ref([]);
-	const dot = ref([]);
-	const playIntervalId = ref(null);
+	
 	const classNames = ["active", "next", "", "prev"];
-	let currentIndex = 0;
 
-	// 获取项目的类名
-	function getItemClasses(index) {
-		return [classNames[index]];
-	}
+	const indexCounter = ref(0);
+	const playIntervalId = ref(null);
 
-	function updateItemClasses() {
-		carousel.value.forEach((item, index) => {
-			item.setAttribute("class", `horizontal-item ${classNames[(index + currentIndex) % 4]}`);
-		});
-
-		dot.value.forEach((item, index) => {
-			item.setAttribute("class", `horizontal-dot ${classNames[(index + currentIndex) % 4]}`);
-		});
-	}
+	const itemClass = computed(() => {
+		return (index) => {
+			const adjustedIndex = (index + indexCounter.value) % classNames.length;
+			return classNames[adjustedIndex];
+		};
+	});
 
 	function prev() {
-		currentIndex = (currentIndex + 1) % 4;
-		updateItemClasses();
+		indexCounter.value = (indexCounter.value + 1) % classNames.length;
 	}
 
 	function next() {
-		currentIndex = (currentIndex + 3) % 4;
-		updateItemClasses();
+		indexCounter.value = (indexCounter.value - 1 + classNames.length) % classNames.length;
+	}
+
+	function to(index) {
+		indexCounter.value = classNames.length - index
+		clearInterval(playIntervalId.value);
+		startPlay();
 	}
 
 	function startPlay() {
@@ -118,6 +111,10 @@
 		setTimeout(() => {
 			startPlay();
 		}, 1400);
+	});
+
+	onUnmounted(() => {
+		clearInterval(playIntervalId.value);
 	});
 </script>
 

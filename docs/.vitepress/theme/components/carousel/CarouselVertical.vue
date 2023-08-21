@@ -1,13 +1,12 @@
 <template>
-	<div class="ver" ref="vertical">
+	<div class="ver">
 		<div class="vert">
-			<div class="itmes">
+			<div class="items">
 				<figure
-					:class="getItemClasses(index)"
+					:class="itemClass(index)"
 					v-for="(item, index) in verticalConfig"
 					:key="item.id"
 					:style="item.style"
-					ref="carousel"
 				>
 					<a :href="item.url" target="_blank">
 						<img v-if="false" class="background" :src="item.src" alt="" />
@@ -28,11 +27,9 @@
 	</div>
 </template>
 <script setup>
-	import { ref, onMounted } from "vue";
+	import { ref, computed, onMounted, onUnmounted } from "vue";
 	import { verticalConfig } from "@/components/carousel/carousel.config";
 
-	const vertical = ref(null);
-	const carousel = ref([]);
 	const classNames = [
 		"item active-x",
 		"item active-y",
@@ -43,42 +40,62 @@
 		"item",
 		"item prev",
 	];
+
+	const indexCounter = ref(0);
 	const playIntervalId = ref(null);
 
-	// 获取项目的类名
-	function getItemClasses(index) {
-		return [classNames[index]];
-	}
+	// 计算属性，为给定的项目设置类名
+	const itemClass = computed(() => {
+		return (index) => {
+			const adjustedIndex = (index + indexCounter.value) % classNames.length;
+			return classNames[adjustedIndex];
+		};
+	});
 
-	// 移动数组中的项目
-	function shiftArrayItems() {
-		classNames.unshift(classNames.pop());
-	}
-
-	// 为给定的项目设置类名
-	function setItemClass(item, index) {
-		item.setAttribute("class", classNames[index]);
-	}
-
-	// 播放垂直轮播
-	function playVertical() {
-		shiftArrayItems();
-		carousel.value.forEach(setItemClass);
+	// 播放水平轮播
+	function next() {
+		indexCounter.value = (indexCounter.value - 1 + classNames.length) % classNames.length;
 	}
 
 	// 开始播放轮播
 	function startPlay() {
-		playIntervalId.value = setInterval(playVertical, 4000);
+		playIntervalId.value = setInterval(next, 4000);
 	}
 
-	// 组件挂载
+	// 组件生命周期钩子
 	onMounted(() => {
 		setTimeout(() => {
 			startPlay();
 		}, 1400); // 入场效果需要 1400ms
 	});
+
+	onUnmounted(() => {
+		clearInterval(playIntervalId.value);
+	});
 </script>
 <style scoped>
+	.ver {
+		flex: 1;
+		height: 100%;
+		border-radius: 12px;
+		padding: 0 8px;
+		position: relative;
+		overflow: hidden;
+	}
+	.vert {
+		position: relative;
+		margin: 8px 0;
+		overflow: hidden;
+		border-radius: 12px;
+		transform: rotate(0);
+		-webkit-transform: rotate(0);
+		height: calc(100% - 16px);
+	}
+	.items {
+		height: 100%;
+		overflow: hidden;
+	}
+
 	.hover {
 		width: 100%;
 		height: 100%;
@@ -101,23 +118,6 @@
 		transition: all 0.25s ease;
 	}
 
-	.ver {
-		flex: 1;
-		height: 100%;
-		border-radius: 12px;
-		padding: 0 8px;
-		position: relative;
-		overflow: hidden;
-	}
-	.vert {
-		position: relative;
-		margin: 8px 0;
-		overflow: hidden;
-		border-radius: 12px;
-		transform: rotate(0);
-		-webkit-transform: rotate(0);
-		height: calc(100% - 16px);
-	}
 	.background {
 		position: relative;
 		width: 100%;
@@ -252,11 +252,6 @@
 	.item:hover figcaption {
 		opacity: 1;
 		transition-delay: 0.1s;
-	}
-
-	.items {
-		height: 100%;
-		overflow: hidden;
 	}
 
 	.item.active-x,
