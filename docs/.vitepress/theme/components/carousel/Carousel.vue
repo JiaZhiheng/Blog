@@ -1,45 +1,20 @@
 <template>
-	<div class="swiper-horizontal">
-		<div class="horizontal">
-			<div class="horizontal-items">
-				<div
-					class="horizontal-item"
-					:class="itemClass(index)"
-					v-for="(item, index) in fadeConfig"
-					:key="item.id"
-				>
-					<div class="demo-item" :style="item.styleObject">
-						<h1 class="item-name" :style="item.infoStyle">{{ item.name }}</h1>
-						<p class="item-info" :style="item.infoStyle">{{ item.info }}</p>
-						<a
-							class="item-url"
-							:style="item.infoStyle"
-							:href="item.url"
-							target="_blank"
-							>在线预览</a
-						>
-						<a
-							class="item-source"
-							:style="item.infoStyle"
-							:href="item.source"
-							target="_blank"
-							>查看源码</a
-						>
-						<div :style="item.infoStyle">敬请期待...</div>
-					</div>
-				</div>
+	<div :class="wrapper">
+		<div :class="container">
+			<div :class="content">
+				<slot :computedItemClass="itemClass"></slot>
 			</div>
-			<ul class="horizontal-dots">
+			<ul class="dots" v-if="showDots">
 				<li
-					class="horizontal-dot"
+					class="dot"
 					:class="itemClass(index)"
-					v-for="(item, index) in fadeConfig"
+					v-for="(item, index) in config"
 					:key="item.id"
 					@click="to(index)"
 				></li>
 			</ul>
-			<div class="horizontal-arrows">
-				<div class="horizontal-arrow arrow-prev" @click="prev">
+			<div v-if="showArrow">
+				<div class="arrow arrow-prev" @click="prev">
 					<svg
 						width="2em"
 						height="2em"
@@ -54,7 +29,7 @@
 						></path>
 					</svg>
 				</div>
-				<div class="horizontal-arrow arrow-next" @click="next">
+				<div class="arrow arrow-next" @click="next">
 					<svg
 						width="2em"
 						height="2em"
@@ -75,9 +50,45 @@
 </template>
 <script setup>
 	import { ref, computed, onMounted, onUnmounted } from "vue";
-	import { fadeConfig } from "@/components/carousel/carousel.config";
-	
-	const classNames = ["active", "next", "", "prev"];
+
+	const props = defineProps({
+		type: String,
+		showDots: Boolean,
+		showArrow: Boolean,
+		config: Array,
+	});
+
+	const classMappings = {
+		fade: {
+			wrapper: "fade-carousel-wrapper",
+			container: "fade-carousel-container",
+			content: "fade-carousel-content",
+			classNames: ["active", "next", "", "prev"],
+		},
+		vertical: {
+			wrapper: "vertical-carousel-wrapper",
+			container: "vertical-carousel-container",
+			content: "vertical-carousel-content",
+			classNames: ["active-x", "active-y", "next", "", "", "", "", "prev"],
+		},
+		horizontal: {
+			wrapper: "horizontal-carousel-wrapper",
+			container: "horizontal-carousel-container",
+			content: "horizontal-carousel-content",
+			classNames: [
+				"active-A",
+				"active-B",
+				"active-C",
+				"active-D",
+				"next",
+				"",
+				"",
+				"prev",
+			],
+		},
+	};
+
+	const { wrapper, container, content, classNames } = classMappings[props.type];
 
 	const indexCounter = ref(0);
 	const playIntervalId = ref(null);
@@ -94,11 +105,12 @@
 	}
 
 	function next() {
-		indexCounter.value = (indexCounter.value - 1 + classNames.length) % classNames.length;
+		indexCounter.value =
+			(indexCounter.value - 1 + classNames.length) % classNames.length;
 	}
 
 	function to(index) {
-		indexCounter.value = classNames.length - index
+		indexCounter.value = classNames.length - index;
 		clearInterval(playIntervalId.value);
 		startPlay();
 	}
@@ -119,48 +131,78 @@
 </script>
 
 <style scoped>
-	.swiper-horizontal {
+	/* 渐隐轮播图 */
+	.fade-carousel-wrapper {
 		flex: 3;
 	}
 
-	.horizontal {
+	.fade-carousel-container {
+		height: 100%;
+		padding: 8px;
+		border-radius: 12px;
 		position: relative;
 		overflow: hidden;
-		border-radius: 12px;
-		padding: 8px;
-		height: 100%;
 	}
 
-	.horizontal-items {
+	.fade-carousel-content {
 		height: 100%;
 		position: relative;
 	}
 
-	.horizontal-item {
-		display: none;
-		position: absolute;
-		width: 100%;
+	/* 垂直轮播图 */
+	.vertical-carousel-wrapper {
+		flex: 1;
 		height: 100%;
-		transition: all 0.4s;
 		border-radius: 12px;
+		padding: 0 8px;
+		position: relative;
+		overflow: hidden;
 	}
 
-	.horizontal-item.active,
-	.horizontal-item.prev,
-	.horizontal-item.next {
-		display: block;
+	.vertical-carousel-container {
+		position: relative;
+		margin: 8px 0;
+		overflow: hidden;
+		border-radius: 12px;
+		transform: rotate(0);
+		-webkit-transform: rotate(0);
+		height: calc(100% - 16px);
 	}
 
-	.horizontal-item.active {
-		opacity: 1;
+	.vertical-carousel-content {
+		height: 100%;
+		overflow: hidden;
+	}
+	
+	/* 水平轮播图 */
+	.horizontal-carousel-wrapper {
+		flex: 1;
+		height: 100%;
+		border-radius: 12px;
+		position: relative;
+		overflow: hidden;
 	}
 
-	.horizontal-item.prev,
-	.horizontal-item.next {
-		opacity: 0;
+	.horizontal-carousel-container {
+		height: calc(100% - 16px);
+		width: calc(100% - 16px);
+		margin: 8px auto;
+		border-radius: 12px;
+		overflow: hidden;
+		position: relative;
+		transform: rotate(0deg);
+		-webkit-transform: rotate(0deg);
 	}
 
-	.horizontal-dots {
+	.horizontal-carousel-content {
+		width: 1280px;
+		height: 100%;
+		position: absolute;
+		transform: translateX(-8px);
+	}
+
+	/* 轮播点 */
+	.dots {
 		position: absolute;
 		display: flex;
 		z-index: 1;
@@ -173,14 +215,14 @@
 		opacity: 0;
 		transition: all 0.3s;
 	}
-	.horizontal:hover .horizontal-dots {
+	.fade-carousel-container:hover .dots {
 		opacity: 1;
 	}
-	.horizontal-dot {
+	.dot {
 		margin: 0 4px;
 		cursor: pointer;
 	}
-	.horizontal-dot::before {
+	.dot::before {
 		content: "";
 		display: block;
 		width: 16px;
@@ -189,32 +231,13 @@
 		background: rgba(255, 255, 255, 0.3);
 		transition: all 0.3s;
 	}
-	.horizontal-dot.active::before {
+	.dot.active::before {
 		width: 24px;
 		background: rgba(255, 255, 255, 1);
 	}
 
-	.demo-item {
-		width: 100%;
-		height: 100%;
-		border-radius: 12px;
-		padding: 20px;
-	}
-	.item-name {
-		color: #fff;
-	}
-	.item-info {
-		color: #fff;
-		font-size: 30px;
-	}
-	.item-url {
-		color: #409eff;
-	}
-	.item-source {
-		color: #409eff;
-	}
-
-	.horizontal-arrow {
+	/* 轮播箭头 */
+	.arrow {
 		position: absolute;
 		top: 50%;
 		z-index: 1;
@@ -231,22 +254,19 @@
 		outline: none;
 		cursor: pointer;
 	}
-	.horizontal-arrow.arrow-prev {
+	.arrow-prev {
 		left: 10px;
 		transform: translateX(-10px) translateY(-50%);
 	}
-	.horizontal-arrow.arrow-next {
+	.arrow-next {
 		right: 10px;
 		transform: translateX(10px) translateY(-50%);
 	}
-	.horizontal-arrow:hover {
+	.arrow:hover {
 		background: rgba(255, 255, 255, 0.3);
 	}
-	.horizontal:hover .horizontal-arrow.arrow-prev {
-		transform: translateX(0) translateY(-50%);
-		opacity: 1;
-	}
-	.horizontal:hover .horizontal-arrow.arrow-next {
+	.fade-carousel-container:hover .arrow-prev,
+	.fade-carousel-container:hover .arrow-next {
 		transform: translateX(0) translateY(-50%);
 		opacity: 1;
 	}
