@@ -9,7 +9,6 @@
 					class="dot"
 					:class="itemClass(index)"
 					v-for="(item, index) in config"
-					:key="item.id"
 					@click="to(index)"
 				></li>
 			</ul>
@@ -55,7 +54,8 @@
 		type: String,
 		showDots: Boolean,
 		showArrow: Boolean,
-		config: Array,
+		cardNum: Number,
+		showCardNum: Number,
 	});
 
 	const classMappings = {
@@ -63,35 +63,24 @@
 			wrapper: "fade-carousel-wrapper",
 			container: "fade-carousel-container",
 			content: "fade-carousel-content",
-			classNames: ["active", "next", "", "prev"],
 		},
 		vertical: {
 			wrapper: "vertical-carousel-wrapper",
 			container: "vertical-carousel-container",
 			content: "vertical-carousel-content",
-			classNames: ["active-x", "active-y", "next", "", "", "", "", "prev"],
 		},
 		horizontal: {
 			wrapper: "horizontal-carousel-wrapper",
 			container: "horizontal-carousel-container",
 			content: "horizontal-carousel-content",
-			classNames: [
-				"active-A",
-				"active-B",
-				"active-C",
-				"active-D",
-				"next",
-				"",
-				"",
-				"prev",
-			],
 		},
 	};
-
-	const { wrapper, container, content, classNames } = classMappings[props.type];
+	const { wrapper, container, content } = classMappings[props.type];
+	const classNames = generateCardArray(props.cardNum, props.showCardNum);
 
 	const indexCounter = ref(0);
 	const playIntervalId = ref(null);
+	const config = ref(generateCardArray(props.cardNum, props.showCardNum));
 
 	const itemClass = computed(() => {
 		return (index) => {
@@ -100,11 +89,27 @@
 		};
 	});
 
-	function prev() {
+	function generateCardArray(cardNum, showCardNum) {
+		const cardArray = [];
+		for (let i = 0; i < cardNum; i++) {
+			if (i < showCardNum) {
+				cardArray.push(`active-${String.fromCharCode(65 + i)}`);
+			} else if (i === showCardNum) {
+				cardArray.push("next");
+			} else if (i < cardNum - 1) {
+				cardArray.push("");
+			} else {
+				cardArray.push("prev");
+			}
+		}
+		return cardArray;
+	}
+
+	function toPrev() {
 		indexCounter.value = (indexCounter.value + 1) % classNames.length;
 	}
 
-	function next() {
+	function toNext() {
 		indexCounter.value =
 			(indexCounter.value - 1 + classNames.length) % classNames.length;
 	}
@@ -115,8 +120,20 @@
 		startPlay();
 	}
 
+	function prev() {
+		toPrev();
+		clearInterval(playIntervalId.value);
+		startPlay();
+	}
+
+	function next() {
+		toNext();
+		clearInterval(playIntervalId.value);
+		startPlay();
+	}
+
 	function startPlay() {
-		playIntervalId.value = setInterval(next, 4000);
+		playIntervalId.value = setInterval(toNext, 4000);
 	}
 
 	onMounted(() => {
@@ -173,7 +190,7 @@
 		height: 100%;
 		overflow: hidden;
 	}
-	
+
 	/* 水平轮播图 */
 	.horizontal-carousel-wrapper {
 		flex: 1;
@@ -231,7 +248,7 @@
 		background: rgba(255, 255, 255, 0.3);
 		transition: all 0.3s;
 	}
-	.dot.active::before {
+	.dot.active-A::before {
 		width: 24px;
 		background: rgba(255, 255, 255, 1);
 	}

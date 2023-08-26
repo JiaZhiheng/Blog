@@ -27,6 +27,28 @@
 		transition: all 0.25s ease;
 	}
 
+	.item {
+		display: none;
+		position: absolute;
+		width: 100%;
+		height: calc(50% - 8px);
+		transition: all 0.3s linear;
+		background-color: transparent;
+		overflow: hidden;
+		color: #fff;
+		text-align: center;
+		font-size: 16px;
+		border-radius: 12px;
+		cursor: pointer;
+	}
+
+	.background {
+		position: relative;
+		width: 100%;
+		height: 100%;
+		border-radius: 12px;
+	}
+
 	.hover {
 		width: 100%;
 		height: 100%;
@@ -41,28 +63,6 @@
 
 	.item:hover .hover {
 		opacity: 1;
-	}
-
-	.background {
-		position: relative;
-		width: 100%;
-		height: 100%;
-		border-radius: 12px;
-	}
-
-	.item {
-		display: none;
-		position: absolute;
-		width: 100%;
-		height: calc(50% - 8px);
-		transition: all 0.3s linear;
-		background-color: transparent;
-		overflow: hidden;
-		color: #fff;
-		text-align: center;
-		font-size: 16px;
-		border-radius: 12px;
-		cursor: pointer;
 	}
 
 	.item img {

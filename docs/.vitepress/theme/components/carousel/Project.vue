@@ -7,38 +7,40 @@
 					type="fade"
 					show-arrow
 					show-dots
+					:show-card-num="1"
+					:card-num="4"
 					:config="fadeConfig"
 				>
 					<template #default="{ computedItemClass }">
 						<fade-carousel
 							class="fade-item"
-							:class="computedItemClass(index)"
 							v-for="(item, index) in fadeConfig"
-							:item="item"
+							:class="computedItemClass(index)"
 							:key="item.id"
+							:item="item"
 						>
 						</fade-carousel>
 					</template>
 				</carousel>
-				<carousel class="vertical" type="vertical">
+				<carousel class="vertical" type="vertical" :show-card-num="2" :card-num="8">
 					<template #default="{ computedItemClass }">
 						<vertical-carousel
 							class="vertical-item"
-							:class="computedItemClass(index)"
 							v-for="(item, index) in verticalConfig"
-							:item="item"
+							:class="computedItemClass(index)"
 							:key="item.id"
+							:item="item"
 						></vertical-carousel>
 					</template>
 				</carousel>
-				<carousel class="horizontal" type="horizontal">
+				<carousel class="horizontal" type="horizontal" :show-card-num="4" :card-num="8">
 					<template #default="{ computedItemClass }">
 						<horizontal-carousel
 							class="horizontal-item"
-							:class="computedItemClass(index)"
 							v-for="(item, index) in horizontalConfig"
-							:item="item"
+							:class="computedItemClass(index)"
 							:key="item.id"
+							:item="item"
 						>
 						</horizontal-carousel>
 					</template>
@@ -96,7 +98,7 @@
 		transition: all 0.4s;
 		border-radius: 12px;
 	}
-	.fade-item.active,
+	.fade-item.active-A,
 	.fade-item.prev,
 	.fade-item.next {
 		display: block;
@@ -134,22 +136,8 @@
 		border-radius: 12px;
 		cursor: pointer;
 	}
-	.vertical-item {
-		display: none;
-		position: absolute;
-		width: 100%;
-		height: calc(50% - 8px);
-		transition: all 0.3s linear;
-		background-color: transparent;
-		overflow: hidden;
-		color: #fff;
-		text-align: center;
-		font-size: 16px;
-		border-radius: 12px;
-		cursor: pointer;
-	}
-	.vertical-item.active-x,
-	.vertical-item.active-y,
+	.vertical-item.active-A,
+	.vertical-item.active-B,
 	.vertical-item.next,
 	.vertical-item.prev {
 		display: block;
@@ -157,10 +145,10 @@
 	.vertical-item.prev {
 		transform: translateY(calc(-100% - 16px));
 	}
-	.vertical-item.active-x {
+	.vertical-item.active-A {
 		transform: translateY(0);
 	}
-	.vertical-item.active-y {
+	.vertical-item.active-B {
 		transform: translateY(calc(100% + 16px));
 	}
 	.vertical-item.next {
@@ -173,14 +161,6 @@
 		animation-fill-mode: both;
 		animation-name: bounceInUp;
 		animation-delay: 0.4s;
-	}
-	.horizontal-item {
-		display: none;
-		width: 25%;
-		height: 100%;
-		padding: 0 8px;
-		position: absolute;
-		transition: all 4s linear;
 	}
 	.horizontal-item {
 		display: none;
