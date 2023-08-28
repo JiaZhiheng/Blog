@@ -10,6 +10,8 @@
 					:show-card-num="1"
 					:card-num="4"
 					:config="fadeConfig"
+					:interval="4000"
+					:transition-duration="400"
 				>
 					<fade-carousel v-for="item in fadeConfig" :key="item.id" :item="item">
 					</fade-carousel>
@@ -19,6 +21,8 @@
 					type="vertical"
 					:show-card-num="2"
 					:card-num="8"
+					:interval="4000"
+					:transition-duration="400"
 				>
 					<vertical-carousel
 						v-for="item in verticalConfig"
@@ -31,6 +35,9 @@
 					type="horizontal"
 					:show-card-num="4"
 					:card-num="8"
+					:interval="4000"
+					:transition-duration="4000"
+					:immediate="true"
 				>
 					<horizontal-carousel
 						v-for="item in horizontalConfig"

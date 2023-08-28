@@ -1,7 +1,6 @@
 <template>
-	<div :class="wrapper">
 		<div :class="container">
-			<div :class="content" ref="slots">
+			<div class="content" ref="slots">
 				<slot></slot>
 			</div>
 			<ul class="dots" v-if="showDots">
@@ -46,7 +45,6 @@
 				</div>
 			</div>
 		</div>
-	</div>
 </template>
 <script setup>
 	import { ref, watch, computed, onMounted, onUnmounted } from "vue";
@@ -57,26 +55,26 @@
 		showArrow: Boolean,
 		cardNum: Number,
 		showCardNum: Number,
+		interval: Number,
+		transitionDuration: Number,
+		immediate: Boolean,
 	});
 
 	const classMappings = {
 		fade: {
-			wrapper: "fade-carousel-wrapper",
 			container: "fade-carousel-container",
 			content: "fade-carousel-content",
 		},
 		vertical: {
-			wrapper: "vertical-carousel-wrapper",
 			container: "vertical-carousel-container",
 			content: "vertical-carousel-content",
 		},
 		horizontal: {
-			wrapper: "horizontal-carousel-wrapper",
 			container: "horizontal-carousel-container",
 			content: "horizontal-carousel-content",
 		},
 	};
-	const { wrapper, container, content } = classMappings[props.type];
+	const { container, content } = classMappings[props.type];
 
 	const indexCounter = ref(0);
 	const playIntervalId = ref(null);
@@ -158,12 +156,15 @@
 	}
 
 	function startPlay() {
-		playIntervalId.value = setInterval(toNext, 4000);
+		playIntervalId.value = setInterval(toNext, props.interval);
 	}
 
 	onMounted(() => {
 		updateCarouselItems();
 		setTimeout(() => {
+			if (props.immediate) {
+				toNext();
+			}
 			startPlay();
 		}, 1400);
 	});
@@ -175,73 +176,36 @@
 
 <style scoped>
 	/* 渐隐轮播图 */
-	.fade-carousel-wrapper {
-		flex: 3;
-	}
-
 	.fade-carousel-container {
 		height: 100%;
+		width: 100%;
 		padding: 8px;
-		border-radius: 12px;
-		position: relative;
-		overflow: hidden;
-	}
-
-	.fade-carousel-content {
-		height: 100%;
-		position: relative;
+		margin: 0;
 	}
 
 	/* 垂直轮播图 */
-	.vertical-carousel-wrapper {
-		flex: 1;
-		height: 100%;
-		border-radius: 12px;
-		padding: 0 8px;
-		position: relative;
-		overflow: hidden;
-	}
-
 	.vertical-carousel-container {
-		position: relative;
-		margin: 8px 0;
-		overflow: hidden;
-		border-radius: 12px;
-		transform: rotate(0);
-		-webkit-transform: rotate(0);
 		height: calc(100% - 16px);
-	}
-
-	.vertical-carousel-content {
-		height: 100%;
-		overflow: hidden;
+		width: 100%;
+		padding: 0 8px;
+		margin: 8px 0;
 	}
 
 	/* 水平轮播图 */
-	.horizontal-carousel-wrapper {
-		flex: 1;
-		height: 100%;
-		border-radius: 12px;
-		position: relative;
-		overflow: hidden;
-	}
-
 	.horizontal-carousel-container {
-		height: calc(100% - 16px);
+		height: 100%;
+		padding: 8px 0;
+		margin: 0 8px;
 		width: calc(100% - 16px);
-		margin: 8px auto;
-		border-radius: 12px;
-		overflow: hidden;
-		position: relative;
-		transform: rotate(0deg);
-		-webkit-transform: rotate(0deg);
 	}
 
-	.horizontal-carousel-content {
-		width: 1280px;
+	.content {
+		width: 100%;
 		height: 100%;
-		position: absolute;
-		transform: translateX(-8px);
+		overflow: hidden;
+		position: relative;
+		border-radius: 12px;
+		transform: rotate(0);
 	}
 
 	/* 轮播点 */

@@ -15,9 +15,8 @@
 <style scoped>
 	.item {
 		display: none;
-		width: 25%;
+		width: calc(25% - 12px);
 		height: 100%;
-		padding: 0 8px;
 		position: absolute;
 		transition: all 4s linear;
 		border-radius: 12px;
@@ -34,22 +33,22 @@
 		display: block;
 	}
 	.item.prev {
-		transform: translateX(-100%);
+		transform: translateX(calc(-100% - 16px));
 	}
 	.item.active-A {
 		transform: translateX(0);
 	}
 	.item.active-B {
-		transform: translateX(100%);
+		transform: translateX(calc(100% + 16px));
 	}
 	.item.active-C {
-		transform: translateX(200%);
+		transform: translateX(calc(200% + 32px));
 	}
 	.item.active-D {
-		transform: translateX(300%);
+		transform: translateX(calc(300% + 48px));
 	}
 	.item.next {
-		transform: translateX(400%);
+		transform: translateX(calc(400% + 64px));
 	}
 	.item-in {
 		height: 100%;
