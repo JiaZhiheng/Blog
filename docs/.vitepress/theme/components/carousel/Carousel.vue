@@ -1,14 +1,15 @@
 <template>
 	<div :class="wrapper">
 		<div :class="container">
-			<div :class="content">
-				<slot :computedItemClass="itemClass"></slot>
+			<div :class="content" ref="slots">
+				<slot></slot>
 			</div>
 			<ul class="dots" v-if="showDots">
 				<li
 					class="dot"
 					:class="itemClass(index)"
 					v-for="(item, index) in config"
+					:key="item.id"
 					@click="to(index)"
 				></li>
 			</ul>
@@ -48,7 +49,7 @@
 	</div>
 </template>
 <script setup>
-	import { ref, computed, onMounted, onUnmounted } from "vue";
+	import { ref, watch, computed, onMounted, onUnmounted } from "vue";
 
 	const props = defineProps({
 		type: String,
@@ -76,46 +77,70 @@
 		},
 	};
 	const { wrapper, container, content } = classMappings[props.type];
-	const classNames = generateCardArray(props.cardNum, props.showCardNum);
 
 	const indexCounter = ref(0);
 	const playIntervalId = ref(null);
 	const config = ref(generateCardArray(props.cardNum, props.showCardNum));
+	const slots = ref(null);
+
+	watch(() => indexCounter.value, updateCarouselItems);
 
 	const itemClass = computed(() => {
 		return (index) => {
-			const adjustedIndex = (index + indexCounter.value) % classNames.length;
-			return classNames[adjustedIndex];
+			const adjustedIndex = (index + indexCounter.value) % config.value.length;
+			return config.value[adjustedIndex].className;
 		};
 	});
 
 	function generateCardArray(cardNum, showCardNum) {
 		const cardArray = [];
+		let id = 1;
 		for (let i = 0; i < cardNum; i++) {
+			const item = {
+				id: id,
+				className: "",
+			};
 			if (i < showCardNum) {
-				cardArray.push(`active-${String.fromCharCode(65 + i)}`);
+				item.className = `item active-${String.fromCharCode(65 + i)}`;
 			} else if (i === showCardNum) {
-				cardArray.push("next");
+				item.className = "item next";
 			} else if (i < cardNum - 1) {
-				cardArray.push("");
+				item.className = "item";
 			} else {
-				cardArray.push("prev");
+				item.className = "item prev";
 			}
+			cardArray.push(item);
+			id++;
 		}
 		return cardArray;
 	}
 
+	function updateCarouselItems() {
+		const slotElements = Array.from(slots.value.children);
+		slotElements.forEach((slotElement, slotIndex) => {
+			config.value.forEach((configItem) => {
+				if (
+					slotIndex ===
+					(configItem.id - indexCounter.value + config.value.length) %
+						config.value.length
+				) {
+					slotElement.className = configItem.className;
+				}
+			});
+		});
+	}
+
 	function toPrev() {
-		indexCounter.value = (indexCounter.value + 1) % classNames.length;
+		indexCounter.value = (indexCounter.value + 1) % config.value.length;
 	}
 
 	function toNext() {
 		indexCounter.value =
-			(indexCounter.value - 1 + classNames.length) % classNames.length;
+			(indexCounter.value - 1 + config.value.length) % config.value.length;
 	}
 
 	function to(index) {
-		indexCounter.value = classNames.length - index;
+		indexCounter.value = config.value.length - index;
 		clearInterval(playIntervalId.value);
 		startPlay();
 	}
@@ -137,6 +162,7 @@
 	}
 
 	onMounted(() => {
+		updateCarouselItems();
 		setTimeout(() => {
 			startPlay();
 		}, 1400);

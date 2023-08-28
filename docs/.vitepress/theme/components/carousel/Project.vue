@@ -11,36 +11,33 @@
 					:card-num="4"
 					:config="fadeConfig"
 				>
-					<template #default="{ computedItemClass }">
-						<fade-carousel
-							v-for="(item, index) in fadeConfig"
-							:class="computedItemClass(index)"
-							:key="item.id"
-							:item="item"
-						>
-						</fade-carousel>
-					</template>
+					<fade-carousel v-for="item in fadeConfig" :key="item.id" :item="item">
+					</fade-carousel>
 				</carousel>
-				<carousel class="vertical" type="vertical" :show-card-num="2" :card-num="8">
-					<template #default="{ computedItemClass }">
-						<vertical-carousel
-							v-for="(item, index) in verticalConfig"
-							:class="computedItemClass(index)"
-							:key="item.id"
-							:item="item"
-						></vertical-carousel>
-					</template>
+				<carousel
+					class="vertical"
+					type="vertical"
+					:show-card-num="2"
+					:card-num="8"
+				>
+					<vertical-carousel
+						v-for="item in verticalConfig"
+						:key="item.id"
+						:item="item"
+					></vertical-carousel>
 				</carousel>
-				<carousel class="horizontal" type="horizontal" :show-card-num="4" :card-num="8">
-					<template #default="{ computedItemClass }">
-						<horizontal-carousel
-							v-for="(item, index) in horizontalConfig"
-							:class="computedItemClass(index)"
-							:key="item.id"
-							:item="item"
-						>
-						</horizontal-carousel>
-					</template>
+				<carousel
+					class="horizontal"
+					type="horizontal"
+					:show-card-num="4"
+					:card-num="8"
+				>
+					<horizontal-carousel
+						v-for="item in horizontalConfig"
+						:key="item.id"
+						:item="item"
+					>
+					</horizontal-carousel>
 				</carousel>
 			</div>
 		</div>
