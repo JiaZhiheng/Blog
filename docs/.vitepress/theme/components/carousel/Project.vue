@@ -13,7 +13,6 @@
 				>
 					<template #default="{ computedItemClass }">
 						<fade-carousel
-							class="fade-item"
 							v-for="(item, index) in fadeConfig"
 							:class="computedItemClass(index)"
 							:key="item.id"
@@ -25,7 +24,6 @@
 				<carousel class="vertical" type="vertical" :show-card-num="2" :card-num="8">
 					<template #default="{ computedItemClass }">
 						<vertical-carousel
-							class="vertical-item"
 							v-for="(item, index) in verticalConfig"
 							:class="computedItemClass(index)"
 							:key="item.id"
@@ -36,7 +34,6 @@
 				<carousel class="horizontal" type="horizontal" :show-card-num="4" :card-num="8">
 					<template #default="{ computedItemClass }">
 						<horizontal-carousel
-							class="horizontal-item"
 							v-for="(item, index) in horizontalConfig"
 							:class="computedItemClass(index)"
 							:key="item.id"
@@ -90,29 +87,6 @@
 		animation-fill-mode: both;
 		animation-name: bounceInLeft;
 	}
-	.fade-item {
-		display: none;
-		position: absolute;
-		width: 100%;
-		height: 100%;
-		transition: all 0.4s;
-		border-radius: 12px;
-	}
-	.fade-item.active-A,
-	.fade-item.prev,
-	.fade-item.next {
-		display: block;
-	}
-	.fade-item.prev,
-	.fade-item.next {
-		opacity: 0;
-	}
-	.fade-item-container {
-		width: 100%;
-		height: 100%;
-		border-radius: 12px;
-		padding: 20px;
-	}
 
 	/* 垂直轮播图 */
 	.vertical {
@@ -122,38 +96,7 @@
 		animation-name: bounceInRight;
 		animation-delay: 0.2s;
 	}
-	.vertical-item {
-		display: none;
-		position: absolute;
-		width: 100%;
-		height: calc(50% - 8px);
-		transition: all 0.3s linear;
-		background-color: transparent;
-		overflow: hidden;
-		color: #fff;
-		text-align: center;
-		font-size: 16px;
-		border-radius: 12px;
-		cursor: pointer;
-	}
-	.vertical-item.active-A,
-	.vertical-item.active-B,
-	.vertical-item.next,
-	.vertical-item.prev {
-		display: block;
-	}
-	.vertical-item.prev {
-		transform: translateY(calc(-100% - 16px));
-	}
-	.vertical-item.active-A {
-		transform: translateY(0);
-	}
-	.vertical-item.active-B {
-		transform: translateY(calc(100% + 16px));
-	}
-	.vertical-item.next {
-		transform: translateY(calc(200% + 32px));
-	}
+
 	/* 水平轮播图 */
 	.horizontal {
 		grid-area: 2/1/3/3;
@@ -161,39 +104,5 @@
 		animation-fill-mode: both;
 		animation-name: bounceInUp;
 		animation-delay: 0.4s;
-	}
-	.horizontal-item {
-		display: none;
-		width: 25%;
-		height: 100%;
-		padding: 0 8px;
-		position: absolute;
-		transition: all 4s linear;
-	}
-	.horizontal-item.active-A,
-	.horizontal-item.active-B,
-	.horizontal-item.active-C,
-	.horizontal-item.active-D,
-	.horizontal-item.next,
-	.horizontal-item.prev {
-		display: block;
-	}
-	.horizontal-item.prev {
-		transform: translateX(-100%);
-	}
-	.horizontal-item.active-A {
-		transform: translateX(0);
-	}
-	.horizontal-item.active-B {
-		transform: translateX(100%);
-	}
-	.horizontal-item.active-C {
-		transform: translateX(200%);
-	}
-	.horizontal-item.active-D {
-		transform: translateX(300%);
-	}
-	.horizontal-item.next {
-		transform: translateX(400%);
 	}
 </style>

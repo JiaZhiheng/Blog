@@ -42,6 +42,25 @@
 		cursor: pointer;
 	}
 
+	.item.active-A,
+	.item.active-B,
+	.item.next,
+	.item.prev {
+		display: block;
+	}
+	.item.prev {
+		transform: translateY(calc(-100% - 16px));
+	}
+	.item.active-A {
+		transform: translateY(0);
+	}
+	.item.active-B {
+		transform: translateY(calc(100% + 16px));
+	}
+	.item.next {
+		transform: translateY(calc(200% + 32px));
+	}
+
 	.background {
 		position: relative;
 		width: 100%;

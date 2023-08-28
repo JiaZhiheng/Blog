@@ -1,5 +1,5 @@
 <template>
-	<div class="demo-item" :style="item.styleObject">
+	<div class="item" :style="item.styleObject">
 		<h1 class="item-name" :style="item.infoStyle">{{ item.name }}</h1>
 		<p class="item-info" :style="item.infoStyle">{{ item.info }}</p>
 		<a class="item-url" :style="item.infoStyle" :href="item.url" target="_blank"
@@ -22,11 +22,23 @@
 </script>
 
 <style scoped>
-	.demo-item {
+	.item {
+		display: none;
+		position: absolute;
 		width: 100%;
 		height: 100%;
+		transition: all 0.4s;
 		border-radius: 12px;
 		padding: 20px;
+	}
+	.item.active-A,
+	.item.prev,
+	.item.next {
+		display: block;
+	}
+	.item.prev,
+	.item.next {
+		opacity: 0;
 	}
 	.item-name {
 		color: #fff;
