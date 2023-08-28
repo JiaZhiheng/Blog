@@ -528,7 +528,7 @@ preact@^10.0.0:
   resolved "https://registry.npmmirror.com/preact/-/preact-10.16.0.tgz#68a06d70b191b8a313ea722d61e09c6b2a79a37e"
   integrity sha512-XTSj3dJ4roKIC93pald6rWuB2qQJO9gO2iLLyTe87MrjQN+HklueLsmskbywEWqCHlclgz3/M4YLL2iBr9UmMA==
 
-rollup@^3.28.0:
+rollup@^3.27.1:
   version "3.28.1"
   resolved "https://registry.npmmirror.com/rollup/-/rollup-3.28.1.tgz#fb44aa6d5e65c7e13fd5bcfff266d0c4ea9ba433"
   integrity sha512-R9OMQmIHJm9znrU3m3cpE8uhN0fGdXiawME7aZIpQqvpS/85+Vt1Hq1/yVIcYfOmaQiHjvXkQAoJukvLpau6Yw==
@@ -555,21 +555,21 @@ tabbable@^6.2.0:
   resolved "https://registry.npmmirror.com/tabbable/-/tabbable-6.2.0.tgz#732fb62bc0175cfcec257330be187dcfba1f3b97"
   integrity sha512-Cat63mxsVJlzYvN51JmVXIgNoUokrIaT2zLclCXjRd8boZ0004U4KCs/sToJ75C6sdlByWxpYnb5Boif1VSFew==
 
-vite@5.0.0-beta.0:
-  version "5.0.0-beta.0"
-  resolved "https://registry.npmmirror.com/vite/-/vite-5.0.0-beta.0.tgz#cdff42a70c2b6a2f8fb25577faa53730069daa99"
-  integrity sha512-r1JPQ3TTO1icQZEU6KJJKv3Qlz8XXvymqlfH8XVws4JIUszbhBkbwnyWgV+h2+e2Iylsi8mVxCD5/977Hc0Fsw==
+vite@^4.4.9:
+  version "4.4.9"
+  resolved "https://registry.npmmirror.com/vite/-/vite-4.4.9.tgz#1402423f1a2f8d66fd8d15e351127c7236d29d3d"
+  integrity sha512-2mbUn2LlUmNASWwSCNSJ/EG2HuSRTnVNaydp6vMCm5VIqJsjMfbIWtbH2kDuwUVW5mMUKKZvGPX/rqeqVvv1XA==
   dependencies:
     esbuild "^0.18.10"
     postcss "^8.4.27"
-    rollup "^3.28.0"
+    rollup "^3.27.1"
   optionalDependencies:
     fsevents "~2.3.2"
 
-vitepress@^1.0.0-rc.7:
-  version "1.0.0-rc.7"
-  resolved "https://registry.npmmirror.com/vitepress/-/vitepress-1.0.0-rc.7.tgz#33a93cf8e26b1ac952b8fff54cfa3df877948d8e"
-  integrity sha512-cuWPNoYzD9U9L/aouFrJ95dNQS99QKFo/vlF8ajOeqQKywOYhmHklnMB5bHH4k/x9VvUNZoLMevEOj/I8AGKiA==
+vitepress@^1.0.0-rc.9:
+  version "1.0.0-rc.9"
+  resolved "https://registry.npmmirror.com/vitepress/-/vitepress-1.0.0-rc.9.tgz#dcb3ad4be8f44967daa11a08787829d251319b9b"
+  integrity sha512-HqMcWqJnxk/8aIN9LqhvEbKkBYop8qGs3/qw3Tt1AwdIRoTGOw5sk7g84J5j1H0p9Axvk87c9xrtMum4G/VVjQ==
   dependencies:
     "@docsearch/css" "^3.5.2"
     "@docsearch/js" "^3.5.2"
@@ -580,7 +580,7 @@ vitepress@^1.0.0-rc.7:
     mark.js "8.11.1"
     minisearch "^6.1.0"
     shiki "^0.14.3"
-    vite "5.0.0-beta.0"
+    vite "^4.4.9"
     vue "^3.3.4"
 
 vscode-oniguruma@^1.7.0:
