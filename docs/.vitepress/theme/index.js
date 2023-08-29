@@ -1,8 +1,7 @@
 import DefaultTheme from "vitepress/theme";
 import { h } from "vue";
 import "@/index.css";
-// import Project from "@/page/Project.vue"; // 我的项目
-import Project from "@/components/carousel/Project.vue"; // 我的项目
+import Project from "@/page/Project.vue"; // 我的项目
 import Author from "@/page/Author.vue"; // 关于作者
 import Linux from "@/page/Linux.vue";
 import Regular from "@/page/Regular.vue";

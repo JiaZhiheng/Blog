@@ -12,6 +12,7 @@
     "docs:serve": "vitepress serve docs"
   },
   "devDependencies": {
+    "sass": "^1.66.1",
     "vitepress": "^1.0.0-rc.9"
   }
 }
