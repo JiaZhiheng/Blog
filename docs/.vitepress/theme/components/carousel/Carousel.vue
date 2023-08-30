@@ -49,35 +49,25 @@
 <script setup>
 	import { ref, watch, computed, onMounted, onUnmounted } from "vue";
 
-	// const props = {
-	// 	type = "defaultType",
-	// 	showDots = true,
-	// 	showArrow = true,
-	// 	cardNum = 3,
-	// 	showCardNum = 1,
-	// 	interval = 5000,
-	// 	transitionDuration = 300,
-	// 	immediate = true,
-	// } = defineProps({
-	// 	type: String,
-	// 	showDots: Boolean,
-	// 	showArrow: Boolean,
-	// 	cardNum: Number,
-	// 	showCardNum: Number,
-	// 	interval: Number,
-	// 	transitionDuration: Number,
-	// 	immediate: Boolean,
-	// });
-
 	const props = defineProps({
-		type: String,
-		showDots: Boolean,
-		showArrow: Boolean,
-		cardNum: Number,
-		showCardNum: Number,
-		interval: Number,
-		transitionDuration: Number,
-		immediate: Boolean,
+		type: {
+			type: String, // 轮播图类型
+			required: true,
+			validator: (value) => {
+				return ["fade", "vertical", "horizontal"].includes(value); // 使用validator来限制取值
+			},
+		},
+		showDots: Boolean, // 是否显示轮播点
+		showArrow: Boolean, // 是否显示轮播箭头
+		cardNum: Number, // 卡片数量
+		showCardNum: Number, // 显示卡片数量
+		interval: {
+			// 轮播间隔
+			type: Number,
+			default: 4000,
+		},
+		transitionDuration: Number, // 轮播动画时长
+		immediate: Boolean, // 是否立即开始轮播
 	});
 
 	const indexCounter = ref(0);
@@ -125,7 +115,7 @@
 			config.value.forEach((configItem) => {
 				if (
 					slotIndex ===
-					(configItem.id + config.value.length - indexCounter.value) %
+					(configItem.id + config.value.length - indexCounter.value - 1) %
 						config.value.length
 				) {
 					slotElement.className = configItem.className;
@@ -136,37 +126,37 @@
 
 	// 滑动至前一页 (自动)
 	function toPrev() {
-		indexCounter.value = (indexCounter.value + 1) % config.value.length;
+		indexCounter.value =
+			(config.value.length - getCurrentIndex() + 1) % config.value.length;
 	}
 
 	// 滑动至后一页 (自动)
 	function toNext() {
-		indexCounter.value =
-			(indexCounter.value - 1 + config.value.length) % config.value.length;
+		indexCounter.value = config.value.length - getCurrentIndex() - 1;
 	}
 
 	// 滑动至某一页
 	function to(index) {
 		indexCounter.value = config.value.length - index;
-		clearInterval(playIntervalId.value);
+		stopPlay();
 		startPlay();
 	}
 
 	// 滑动至前一页 (手动)
 	function prev() {
 		toPrev();
-		clearInterval(playIntervalId.value);
+		stopPlay();
 		startPlay();
 	}
 
 	// 滑动至后一页 (手动)
 	function next() {
 		toNext();
-		clearInterval(playIntervalId.value);
+		stopPlay();
 		startPlay();
 	}
 
-	// 获取当前页	
+	// 获取当前页
 	function getCurrentIndex() {
 		return (config.value.length - indexCounter.value) % config.value.length;
 	}
@@ -174,6 +164,11 @@
 	// 开始播放
 	function startPlay() {
 		playIntervalId.value = setInterval(toNext, props.interval);
+	}
+
+	// 暂停播放
+	function stopPlay() {
+		clearInterval(playIntervalId.value);
 	}
 
 	onMounted(() => {
@@ -187,7 +182,7 @@
 	});
 
 	onUnmounted(() => {
-		clearInterval(playIntervalId.value);
+		stopPlay();
 	});
 </script>
 

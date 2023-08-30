@@ -12,6 +12,8 @@
           :interval="carouselItem.interval"
           :transition-duration="carouselItem.transitionDuration"
           :immediate="carouselItem.immediate"
+					:show-arrow="carouselItem.showArrow"
+					:show-dots="carouselItem.showDots"
         >
           <component
             v-for="item in carouselItem.config"
