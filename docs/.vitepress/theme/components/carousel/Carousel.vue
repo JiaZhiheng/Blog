@@ -57,12 +57,21 @@
 				return ["fade", "vertical", "horizontal"].includes(value); // 使用validator来限制取值
 			},
 		},
-		showDots: Boolean, // 是否显示轮播点
-		showArrow: Boolean, // 是否显示轮播箭头
+		direction: {
+			type: Boolean,
+			default: true,
+		}, // 轮播方向
+		showDots: {	// 是否显示轮播点
+			type: Boolean,
+			default: false,
+		},
+		showArrow: { // 是否显示轮播箭头
+			type: Boolean,
+			default: false,
+		},
 		cardNum: Number, // 卡片数量
 		showCardNum: Number, // 显示卡片数量
-		interval: {
-			// 轮播间隔
+		interval: {	// 轮播间隔
 			type: Number,
 			default: 4000,
 		},
@@ -163,7 +172,11 @@
 
 	// 开始播放
 	function startPlay() {
-		playIntervalId.value = setInterval(toNext, props.interval);
+		if (props.direction) {
+			playIntervalId.value = setInterval(toNext, props.interval);
+		} else {
+			playIntervalId.value = setInterval(toPrev, props.interval);
+		}
 	}
 
 	// 暂停播放

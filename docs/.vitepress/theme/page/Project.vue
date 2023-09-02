@@ -7,6 +7,7 @@
           :key="carouselItem.id"
           :class="`carousel carousel--${carouselItem.type}`"
           :type="carouselItem.type"
+          :direction="carouselItem.direction"
           :show-card-num="carouselItem.showCardNum"
           :card-num="carouselItem.cardNum"
           :interval="carouselItem.interval"
@@ -53,8 +54,6 @@ const config = ref([
     config: verticalConfig,
     class: 'vertical',
     type: 'vertical',
-    showArrow: false,
-    showDots: false,
     showCardNum: 2,
     cardNum: 8,
     interval: 4000,
@@ -65,8 +64,6 @@ const config = ref([
     config: horizontalConfig,
     class: 'horizontal',
     type: 'horizontal',
-    showArrow: false,
-    showDots: false,
     showCardNum: 4,
     cardNum: 8,
     interval: 4000,
