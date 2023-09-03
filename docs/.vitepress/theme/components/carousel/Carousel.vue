@@ -54,24 +54,27 @@
 			type: String, // 轮播图类型
 			required: true,
 			validator: (value) => {
-				return ["fade", "vertical", "horizontal"].includes(value); // 使用validator来限制取值
+				return ["fade", "vertical", "horizontal"].includes(value);
 			},
 		},
 		direction: {
 			type: Boolean,
 			default: true,
 		}, // 轮播方向
-		showDots: {	// 是否显示轮播点
+		showDots: {
+			// 是否显示轮播点
 			type: Boolean,
 			default: false,
 		},
-		showArrow: { // 是否显示轮播箭头
+		showArrow: {
+			// 是否显示轮播箭头
 			type: Boolean,
 			default: false,
 		},
 		cardNum: Number, // 卡片数量
 		showCardNum: Number, // 显示卡片数量
-		interval: {	// 轮播间隔
+		interval: {
+			// 轮播间隔
 			type: Number,
 			default: 4000,
 		},
@@ -81,10 +84,11 @@
 
 	const indexCounter = ref(0);
 	const playIntervalId = ref(null);
-	const config = ref(generateCardArray(props.cardNum, props.showCardNum));
 	const slots = ref(null);
 
-	watch(() => indexCounter.value, updateCardItems);
+	const config = computed(() => {
+		return generateCardArray(props.cardNum, props.showCardNum);
+	});
 
 	const itemClass = computed(() => {
 		return (index) => {
@@ -92,6 +96,8 @@
 			return config.value[adjustedIndex].className;
 		};
 	});
+	
+	watch(indexCounter, updateCardItems);
 
 	// 生成卡片数组
 	function generateCardArray(cardNum, showCardNum) {
@@ -145,25 +151,21 @@
 	}
 
 	// 滑动至某一页
-	function to(index) {
-		indexCounter.value = config.value.length - index;
+	function to (index) {
+		indexCounter.value = (config.value.length - index) % config.value.length;
 		stopPlay();
 		startPlay();
-	}
+	};
 
 	// 滑动至前一页 (手动)
 	function prev() {
-		toPrev();
-		stopPlay();
-		startPlay();
-	}
+		to(getCurrentIndex() - 1);
+	};
 
 	// 滑动至后一页 (手动)
 	function next() {
-		toNext();
-		stopPlay();
-		startPlay();
-	}
+		to(getCurrentIndex() + 1);
+	};
 
 	// 获取当前页
 	function getCurrentIndex() {
@@ -188,7 +190,11 @@
 		updateCardItems();
 		setTimeout(() => {
 			if (props.immediate) {
-				toNext();
+				if (props.direction) {
+					toNext();
+				} else {
+					toPrev();
+				}
 			}
 			startPlay();
 		}, 1400);

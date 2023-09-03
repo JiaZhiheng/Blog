@@ -42,7 +42,7 @@ export default defineConfig({
 
 	/* Customization 定制化 */
 	markdown: { // 配置 Markdown 解析器选项
-		theme: "material-theme-palenight",
+		theme: { light: 'github-light', dark: 'github-dark' }, // https://github.com/shikijs/shiki/blob/main/docs/themes.md
 		lineNumbers: false,
 		anchors: {
 			slugify(str) {
