@@ -7,7 +7,7 @@
           :key="carouselItem.id"
           :class="`carousel carousel--${carouselItem.type}`"
           :type="carouselItem.type"
-          :direction="carouselItem.direction"
+          :turn-direction="carouselItem.turnDirection"
           :show-card-num="carouselItem.showCardNum"
           :card-num="carouselItem.cardNum"
           :interval="carouselItem.interval"
