@@ -2,5 +2,6 @@ node_modules
 package-lock.json
 .gitignore
 .vscode
+.DS_Store
 dist
 cache
