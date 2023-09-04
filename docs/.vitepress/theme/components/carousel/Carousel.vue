@@ -1,16 +1,30 @@
 <template>
-	<div :class="type" class="container">
-		<div class="content" ref="slots">
+	<div class="container">
+		<carousel-context
+			:config="config"
+			:index-counter="indexCounter"
+			:transition-style="transitionStyle"
+			ref="slots"
+		>
 			<slot></slot>
-		</div>
-		<!-- <carousel-context></carousel-context> -->
-		<carousel-dots v-if="showDots" @to="to" :config="config" :index-counter="indexCounter"></carousel-dots>
-		<carousel-arrow v-if="showArrow" @prev="prev" @next="next"></carousel-arrow>
+		</carousel-context>
+		<carousel-dots
+			v-if="showDots"
+			@to="to"
+			:config="config"
+			:index-counter="indexCounter"
+		>
+		</carousel-dots>
+		<carousel-arrow 
+			v-if="showArrow" 
+			@prev="prev" 
+			@next="next">
+		</carousel-arrow>
 	</div>
 </template>
 <script setup>
-	import { ref, watch, computed, onMounted, onUnmounted } from "vue";
-	import carouselContext from "./CarouselContext.vue";
+	import { ref, computed, onMounted, onUnmounted } from "vue";
+	import CarouselContext from "./CarouselContext.vue";
 	import CarouselArrow from "./CarouselArrow.vue";
 	import CarouselDots from "./CarouselDots.vue";
 
@@ -28,13 +42,6 @@
 	 * @prop {Boolean} immediate - 是否立即开始轮播，默认为 false。
 	 */
 	const props = defineProps({
-		type: {
-			type: String,
-			required: true,
-			validator: (value) => {
-				return ["fade", "vertical", "horizontal"].includes(value);
-			},
-		},
 		turnDirection: {
 			type: Boolean,
 			default: true,
@@ -77,8 +84,6 @@
 		return generateCardArray(props.cardNum, props.showCardNum);
 	});
 
-	watch(indexCounter, updateCardItems);
-
 	// 生成卡片数组
 	function generateCardArray(cardNum, showCardNum) {
 		const cardArray = [];
@@ -101,29 +106,6 @@
 			id++;
 		}
 		return cardArray;
-	}
-
-	// 更新卡片项目
-	function updateCardItems() {
-		const slotElements = Array.from(slots.value.children);
-		slotElements.forEach((slotElement, slotIndex) => {
-			config.value.forEach((configItem) => {
-				if (
-					slotIndex ===
-					(configItem.id + config.value.length - indexCounter.value - 1) %
-						config.value.length
-				) {
-					slotElement.className = configItem.className;
-				}
-			});
-		});
-	}
-
-	function applyTransitionStyleToElements() {
-		const slotElements = Array.from(slots.value.children);
-		slotElements.forEach((slotElement) => {
-			slotElement.style.transition = props.transitionStyle;
-		});
 	}
 
 	// 滑动至前一页 (自动)
@@ -174,8 +156,6 @@
 	}
 
 	onMounted(() => {
-		applyTransitionStyleToElements();
-		updateCardItems();
 		setTimeout(() => {
 			if (props.immediate) {
 				if (props.turnDirection) {
@@ -194,30 +174,6 @@
 </script>
 
 <style scoped lang="scss">
-	/* 渐隐轮播图 */
-	.fade {
-		height: 100%;
-		width: 100%;
-		padding: 8px;
-		margin: 0;
-	}
-
-	/* 垂直轮播图 */
-	.vertical {
-		height: calc(100% - 16px);
-		width: 100%;
-		padding: 0 8px;
-		margin: 8px 0;
-	}
-
-	/* 水平轮播图 */
-	.horizontal {
-		height: 100%;
-		width: calc(100% - 16px);
-		padding: 8px 0;
-		margin: 0 8px;
-	}
-
 	.content {
 		width: 100%;
 		height: 100%;

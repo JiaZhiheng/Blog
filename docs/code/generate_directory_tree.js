@@ -1,6 +1,7 @@
 import fs from "fs";
 import path from "path";
 
+// 该文件夹下的文件夹和文件不输出
 const IGNORED_DIRECTORIES = [
   '.git',
   '.github',
