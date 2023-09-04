@@ -49,9 +49,22 @@
 <script setup>
 	import { ref, watch, computed, onMounted, onUnmounted } from "vue";
 
+	/**
+	 * Props定义，用于接收父组件传递的属性值
+	 *
+	 * @prop {String} type - 轮播图类型，可选值包括 "fade"、"vertical"、"horizontal"。
+	 * @prop {Boolean} direction - 轮播方向，默认为 true。
+	 * @prop {Boolean} showDots - 是否显示轮播点，默认为 false。
+	 * @prop {Boolean} showArrow - 是否显示轮播箭头，默认为 false。
+	 * @prop {Number} cardNum - 卡片数量，必需属性。
+	 * @prop {Number} showCardNum - 显示卡片数量，必需属性。
+	 * @prop {Number} interval - 轮播间隔，单位毫秒，默认为 4000。
+	 * @prop {String} transitionStyle - 过渡效果的样式，单位秒，必需属性。
+	 * @prop {Boolean} immediate - 是否立即开始轮播，默认为 false。
+	 */
 	const props = defineProps({
 		type: {
-			type: String, // 轮播图类型
+			type: String,
 			required: true,
 			validator: (value) => {
 				return ["fade", "vertical", "horizontal"].includes(value);
@@ -60,26 +73,35 @@
 		direction: {
 			type: Boolean,
 			default: true,
-		}, // 轮播方向
+		},
 		showDots: {
-			// 是否显示轮播点
 			type: Boolean,
 			default: false,
 		},
 		showArrow: {
-			// 是否显示轮播箭头
 			type: Boolean,
 			default: false,
 		},
-		cardNum: Number, // 卡片数量
-		showCardNum: Number, // 显示卡片数量
+		cardNum: {
+			type: Number,
+			required: true,
+		},
+		showCardNum: {
+			type: Number,
+			required: true,
+		},
 		interval: {
-			// 轮播间隔
 			type: Number,
 			default: 4000,
 		},
-		transitionDuration: Number, // 轮播动画时长
-		immediate: Boolean, // 是否立即开始轮播
+		transitionStyle: {
+			type: String,
+			required: true,
+		},
+		immediate: {
+			type: Boolean,
+			default: false,
+		},
 	});
 
 	const indexCounter = ref(0);
@@ -96,7 +118,7 @@
 			return config.value[adjustedIndex].className;
 		};
 	});
-	
+
 	watch(indexCounter, updateCardItems);
 
 	// 生成卡片数组
@@ -139,6 +161,13 @@
 		});
 	}
 
+	function applyTransitionStyleToElements() {
+		const slotElements = Array.from(slots.value.children);
+		slotElements.forEach((slotElement) => {
+			slotElement.style.transition = props.transitionStyle;
+		});
+	}
+
 	// 滑动至前一页 (自动)
 	function toPrev() {
 		indexCounter.value =
@@ -151,21 +180,21 @@
 	}
 
 	// 滑动至某一页
-	function to (index) {
+	function to(index) {
 		indexCounter.value = (config.value.length - index) % config.value.length;
 		stopPlay();
 		startPlay();
-	};
+	}
 
 	// 滑动至前一页 (手动)
 	function prev() {
 		to(getCurrentIndex() - 1);
-	};
+	}
 
 	// 滑动至后一页 (手动)
 	function next() {
 		to(getCurrentIndex() + 1);
-	};
+	}
 
 	// 获取当前页
 	function getCurrentIndex() {
@@ -187,6 +216,7 @@
 	}
 
 	onMounted(() => {
+		applyTransitionStyleToElements()
 		updateCardItems();
 		setTimeout(() => {
 			if (props.immediate) {
@@ -205,7 +235,7 @@
 	});
 </script>
 
-<style scoped>
+<style scoped lang="scss">
 	/* 渐隐轮播图 */
 	.fade {
 		height: 100%;
@@ -252,26 +282,30 @@
 		padding: 0;
 		opacity: 0;
 		transition: all 0.3s;
-	}
-	.container:hover .dots {
-		opacity: 1;
-	}
-	.dot {
-		margin: 0 4px;
-		cursor: pointer;
-	}
-	.dot::before {
-		content: "";
-		display: block;
-		width: 16px;
-		height: 4px;
-		border-radius: 2px;
-		background: rgba(255, 255, 255, 0.3);
-		transition: all 0.3s;
-	}
-	.dot.active-A::before {
-		width: 24px;
-		background: rgba(255, 255, 255, 1);
+
+		.container:hover & {
+			opacity: 1;
+		}
+
+		.dot {
+			margin: 0 4px;
+			cursor: pointer;
+
+			&::before {
+				content: "";
+				display: block;
+				width: 16px;
+				height: 4px;
+				border-radius: 2px;
+				background: rgba(255, 255, 255, 0.3);
+				transition: all 0.3s;
+			}
+
+			&.active-A::before {
+				width: 24px;
+				background: rgba(255, 255, 255, 1);
+			}
+		}
 	}
 
 	/* 轮播箭头 */
@@ -291,21 +325,25 @@
 		transition: all 0.3s;
 		outline: none;
 		cursor: pointer;
-	}
-	.arrow-prev {
-		left: 10px;
-		transform: translateX(-10px) translateY(-50%);
-	}
-	.arrow-next {
-		right: 10px;
-		transform: translateX(10px) translateY(-50%);
-	}
-	.arrow:hover {
-		background: rgba(255, 255, 255, 0.3);
-	}
-	.container:hover .arrow-prev,
-	.container:hover .arrow-next {
-		transform: translateX(0) translateY(-50%);
-		opacity: 1;
+
+		&-prev {
+			left: 10px;
+			transform: translateX(-10px) translateY(-50%);
+		}
+
+		&-next {
+			right: 10px;
+			transform: translateX(10px) translateY(-50%);
+		}
+
+		&:hover {
+			background: rgba(255, 255, 255, 0.3);
+		}
+
+		.container:hover &-prev,
+		.container:hover &-next {
+			transform: translateX(0) translateY(-50%);
+			opacity: 1;
+		}
 	}
 </style>

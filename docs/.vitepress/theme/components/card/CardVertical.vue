@@ -32,7 +32,6 @@
 		position: absolute;
 		width: 100%;
 		height: calc(50% - 8px);
-		transition: all 0.3s linear;
 		background-color: transparent;
 		overflow: hidden;
 		color: #fff;

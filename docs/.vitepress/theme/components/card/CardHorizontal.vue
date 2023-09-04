@@ -1,6 +1,6 @@
 <template>
-	<div class="item">
-		<div class="item-in" :style="item.style">
+	<div class="item" :style="item.style">
+		<div class="item-in">
 			<span>{{ item.name }}</span>
 		</div>
 	</div>
@@ -18,7 +18,6 @@
 		width: calc(25% - 12px);
 		height: 100%;
 		position: absolute;
-		transition: all 4s linear;
 		border-radius: 12px;
 		font-size: 40px;
 		font-weight: bold;

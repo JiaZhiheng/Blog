@@ -11,7 +11,7 @@
           :show-card-num="carouselItem.showCardNum"
           :card-num="carouselItem.cardNum"
           :interval="carouselItem.interval"
-          :transition-duration="carouselItem.transitionDuration"
+          :transition-style="carouselItem.transitionStyle"
           :immediate="carouselItem.immediate"
 					:show-arrow="carouselItem.showArrow"
 					:show-dots="carouselItem.showDots"
@@ -31,43 +31,37 @@
 <script setup>
 import { ref } from 'vue';
 import Carousel from '@/components/carousel/Carousel.vue';
-import CardFade from '@/components/carousel/CardFade.vue';
-import CardVertical from '@/components/carousel/CardVertical.vue';
-import CardHorizontal from '@/components/carousel/CardHorizontal.vue';
-import { fadeConfig, horizontalConfig, verticalConfig } from '@/components/carousel/carousel.config';
+import CardFade from '@/components/card/CardFade.vue';
+import CardVertical from '@/components/card/CardVertical.vue';
+import CardHorizontal from '@/components/card/CardHorizontal.vue';
+import { fadeConfig, horizontalConfig, verticalConfig } from '@/components/card/card.config';
 
 const config = ref([
   {
     id: 1,
     config: fadeConfig,
-    class: 'fade',
     type: 'fade',
     showArrow: true,
     showDots: true,
     showCardNum: 1,
     cardNum: 4,
-    interval: 4000,
-    transitionDuration: 400,
+    transitionStyle: 'all 300ms linear',
   },
   {
     id: 2,
     config: verticalConfig,
-    class: 'vertical',
     type: 'vertical',
     showCardNum: 2,
     cardNum: 8,
-    interval: 4000,
-    transitionDuration: 400,
+    transitionStyle: 'all 300ms linear',
   },
   {
     id: 3,
     config: horizontalConfig,
-    class: 'horizontal',
     type: 'horizontal',
     showCardNum: 4,
     cardNum: 8,
-    interval: 4000,
-    transitionDuration: 4000,
+    transitionStyle: 'all 4000ms linear',
     immediate: true,
   },
 ]);

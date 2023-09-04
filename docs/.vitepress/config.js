@@ -227,9 +227,9 @@ export default defineConfig({
         timeStyle: 'medium'
       }
     },
-		search: { // 搜索
+		search: { // 搜索 
 			provider: "algolia",
-			options: {
+			options: { // https://docsearch.algolia.com/docs/what-is-docsearch/
 				appId: "80GWMAOJY7",
 				apiKey: "38a0f8063ac54c4d32636029c465e6ad",
 				indexName: "jiazhihengio",
