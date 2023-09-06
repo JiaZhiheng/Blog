@@ -26,6 +26,7 @@
 		height: 100%;
 		width: 100%;
 		border-radius: 12px;
+		padding: 20px;
 	}
 	.item-name {
 		color: #fff;

@@ -1,16 +1,12 @@
 <template>
 	<div class="container">
-		<carousel-context :type="type">
-			<template v-for="(slotContent, index) in $slots.default()[0].children">
-				<Transition>
-					<div
-						:class="itemClass(index)"
-						:style="{ transition: transitionStyle }"
-					>
-						<component :is="slotContent"> </component>
-					</div>
-				</Transition>
-			</template>
+		<carousel-context 
+			:type="type"
+			:config="config"
+			:index-counter="indexCounter"
+			:transition-style="transitionStyle"
+		>
+			<slot></slot>
 		</carousel-context>
 		<carousel-dots
 			v-if="showDots"
@@ -86,17 +82,9 @@
 
 	const indexCounter = ref(0);
 	const playIntervalId = ref(null);
-	const slots = ref(null);
 
 	const config = computed(() => {
 		return generateCardArray(props.cardNum, props.showCardNum);
-	});
-
-	const itemClass = computed(() => {
-		return (index) => {
-			const adjustedIndex = (index + indexCounter.value) % config.value.length;
-			return config.value[adjustedIndex].className;
-		};
 	});
 
 	// 生成卡片数组
@@ -189,96 +177,4 @@
 </script>
 
 <style scoped lang="scss">
-	.fade {
-		.item {
-			display: none;
-			position: absolute;
-			width: 100%;
-			height: 100%;
-			border-radius: 12px;
-		}
-		.item.active-A,
-		.item.prev,
-		.item.next {
-			display: block;
-		}
-		.item.prev,
-		.item.next {
-			opacity: 0;
-		}
-	}
-
-	.horizontal {
-		.item {
-			display: none;
-			position: absolute;
-			width: calc(25% - 12px);
-			height: 100%;
-			border-radius: 12px;
-			font-size: 40px;
-			font-weight: bold;
-			color: #333;
-		}
-		.item.active-A,
-		.item.active-B,
-		.item.active-C,
-		.item.active-D,
-		.item.next,
-		.item.prev {
-			display: block;
-		}
-		.item.prev {
-			transform: translateX(calc(-100% - 16px));
-		}
-		.item.active-A {
-			transform: translateX(0);
-		}
-		.item.active-B {
-			transform: translateX(calc(100% + 16px));
-		}
-		.item.active-C {
-			transform: translateX(calc(200% + 32px));
-		}
-		.item.active-D {
-			transform: translateX(calc(300% + 48px));
-		}
-		.item.next {
-			transform: translateX(calc(400% + 64px));
-		}
-	}
-
-	.vertical {
-		.item {
-			display: none;
-			position: absolute;
-			width: 100%;
-			height: calc(50% - 8px);
-			background-color: transparent;
-			overflow: hidden;
-			color: #fff;
-			text-align: center;
-			font-size: 16px;
-			border-radius: 12px;
-			cursor: pointer;
-		}
-
-		.item.active-A,
-		.item.active-B,
-		.item.next,
-		.item.prev {
-			display: block;
-		}
-		.item.prev {
-			transform: translateY(calc(-100% - 16px));
-		}
-		.item.active-A {
-			transform: translateY(0);
-		}
-		.item.active-B {
-			transform: translateY(calc(100% + 16px));
-		}
-		.item.next {
-			transform: translateY(calc(200% + 32px));
-		}
-	}
 </style>

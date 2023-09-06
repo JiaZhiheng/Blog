@@ -17,6 +17,9 @@
 		height: 100%;
 		width: 100%;
 		border-radius: 12px;
+		font-size: 40px;
+		font-weight: bold;
+		color: #333;
 	}
 	.item-in {
 		height: 100%;

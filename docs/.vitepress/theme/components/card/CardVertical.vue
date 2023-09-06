@@ -1,5 +1,5 @@
 <template>
-	<div :style="item.style" class="item">
+		<div :style="item.style" class="item">
 		<a :href="item.url" target="_blank">
 			<img v-if="false" class="background" :src="item.src" alt="" />
 			<div class="hover"></div>
@@ -21,16 +21,23 @@
 	});
 </script>
 <style scoped>
-	.item {
-		height: 100%;
-		width: 100%;
-		border-radius: 12px;
-	}
-	
 	*,
 	*::after,
 	*::before {
 		transition: all 0.25s ease;
+	}
+
+	.item {
+		height: 100%;
+		width: 100%;
+		border-radius: 12px;
+		position: absolute;
+		background-color: transparent;
+		overflow: hidden;
+		color: #fff;
+		text-align: center;
+		font-size: 16px;
+		border-radius: 12px;
 	}
 
 	.background {
