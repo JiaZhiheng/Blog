@@ -1,18 +1,15 @@
 <template>
 	<div class="container">
-		<carousel-context
-			:type="type"
-			:card-num="cardNum"
-			:show-card-num="showCardNum"
-			:config="config"
-			:index-counter="indexCounter"
-			:transition-style="transitionStyle"
-			ref="slots"
-		>
-			<template v-for="slotContent in $slots.default()[0].children">
-				<div>
-					<component :is="slotContent"></component>
-				</div>
+		<carousel-context :type="type">
+			<template v-for="(slotContent, index) in $slots.default()[0].children">
+				<Transition>
+					<div
+						:class="itemClass(index)"
+						:style="{ transition: transitionStyle }"
+					>
+						<component :is="slotContent"> </component>
+					</div>
+				</Transition>
 			</template>
 		</carousel-context>
 		<carousel-dots
@@ -93,6 +90,13 @@
 
 	const config = computed(() => {
 		return generateCardArray(props.cardNum, props.showCardNum);
+	});
+
+	const itemClass = computed(() => {
+		return (index) => {
+			const adjustedIndex = (index + indexCounter.value) % config.value.length;
+			return config.value[adjustedIndex].className;
+		};
 	});
 
 	// 生成卡片数组
