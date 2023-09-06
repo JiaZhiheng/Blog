@@ -1,12 +1,19 @@
 <template>
 	<div class="container">
 		<carousel-context
+			:type="type"
+			:card-num="cardNum"
+			:show-card-num="showCardNum"
 			:config="config"
 			:index-counter="indexCounter"
 			:transition-style="transitionStyle"
 			ref="slots"
 		>
-			<slot></slot>
+			<template v-for="slotContent in $slots.default()[0].children">
+				<div>
+					<component :is="slotContent"></component>
+				</div>
+			</template>
 		</carousel-context>
 		<carousel-dots
 			v-if="showDots"
@@ -15,10 +22,7 @@
 			:index-counter="indexCounter"
 		>
 		</carousel-dots>
-		<carousel-arrow 
-			v-if="showArrow" 
-			@prev="prev" 
-			@next="next">
+		<carousel-arrow v-if="showArrow" @prev="prev" @next="next">
 		</carousel-arrow>
 	</div>
 </template>
@@ -42,6 +46,13 @@
 	 * @prop {Boolean} immediate - 是否立即开始轮播，默认为 false。
 	 */
 	const props = defineProps({
+		type: {
+			type: String,
+			required: true,
+			validator: (value) => {
+				return ["fade", "vertical", "horizontal"].includes(value);
+			},
+		},
 		turnDirection: {
 			type: Boolean,
 			default: true,
@@ -174,12 +185,96 @@
 </script>
 
 <style scoped lang="scss">
-	.content {
-		width: 100%;
-		height: 100%;
-		overflow: hidden;
-		position: relative;
-		border-radius: 12px;
-		transform: rotate(0);
+	.fade {
+		.item {
+			display: none;
+			position: absolute;
+			width: 100%;
+			height: 100%;
+			border-radius: 12px;
+		}
+		.item.active-A,
+		.item.prev,
+		.item.next {
+			display: block;
+		}
+		.item.prev,
+		.item.next {
+			opacity: 0;
+		}
+	}
+
+	.horizontal {
+		.item {
+			display: none;
+			position: absolute;
+			width: calc(25% - 12px);
+			height: 100%;
+			border-radius: 12px;
+			font-size: 40px;
+			font-weight: bold;
+			color: #333;
+		}
+		.item.active-A,
+		.item.active-B,
+		.item.active-C,
+		.item.active-D,
+		.item.next,
+		.item.prev {
+			display: block;
+		}
+		.item.prev {
+			transform: translateX(calc(-100% - 16px));
+		}
+		.item.active-A {
+			transform: translateX(0);
+		}
+		.item.active-B {
+			transform: translateX(calc(100% + 16px));
+		}
+		.item.active-C {
+			transform: translateX(calc(200% + 32px));
+		}
+		.item.active-D {
+			transform: translateX(calc(300% + 48px));
+		}
+		.item.next {
+			transform: translateX(calc(400% + 64px));
+		}
+	}
+
+	.vertical {
+		.item {
+			display: none;
+			position: absolute;
+			width: 100%;
+			height: calc(50% - 8px);
+			background-color: transparent;
+			overflow: hidden;
+			color: #fff;
+			text-align: center;
+			font-size: 16px;
+			border-radius: 12px;
+			cursor: pointer;
+		}
+
+		.item.active-A,
+		.item.active-B,
+		.item.next,
+		.item.prev {
+			display: block;
+		}
+		.item.prev {
+			transform: translateY(calc(-100% - 16px));
+		}
+		.item.active-A {
+			transform: translateY(0);
+		}
+		.item.active-B {
+			transform: translateY(calc(100% + 16px));
+		}
+		.item.next {
+			transform: translateY(calc(200% + 32px));
+		}
 	}
 </style>

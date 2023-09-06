@@ -6,6 +6,7 @@
 					v-for="carouselItem in config"
 					:key="carouselItem.id"
 					:class="`carousel carousel--${carouselItem.type}`"
+					:type="carouselItem.type"
 					:turn-direction="carouselItem.turnDirection"
 					:show-card-num="carouselItem.showCardNum"
 					:card-num="carouselItem.cardNum"
@@ -15,12 +16,12 @@
 					:show-arrow="carouselItem.showArrow"
 					:show-dots="carouselItem.showDots"
 				>
-					<component
-						v-for="item in carouselItem.config"
-						:key="item.id"
-						:is="getCarouselComponent(carouselItem.type)"
-						:item="item"
-					/>
+						<component
+							v-for="item in carouselItem.config"
+							:key="item.id"
+							:is="getCarouselComponent(carouselItem.type)"
+							:item="item"
+						/>
 				</carousel>
 			</div>
 		</div>
@@ -105,7 +106,7 @@
 			&--fade {
 				grid-area: 1/1/2/2;
 				animation: bounceInLeft 1s both;
-        animation-delay: 0s;
+				animation-delay: 0s;
 				height: 100%;
 				width: 100%;
 				padding: 8px;

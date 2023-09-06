@@ -14,40 +14,9 @@
 
 <style scoped>
 	.item {
-		display: none;
-		width: calc(25% - 12px);
 		height: 100%;
-		position: absolute;
+		width: 100%;
 		border-radius: 12px;
-		font-size: 40px;
-		font-weight: bold;
-		color: #333;
-	}
-	.item.active-A,
-	.item.active-B,
-	.item.active-C,
-	.item.active-D,
-	.item.next,
-	.item.prev {
-		display: block;
-	}
-	.item.prev {
-		transform: translateX(calc(-100% - 16px));
-	}
-	.item.active-A {
-		transform: translateX(0);
-	}
-	.item.active-B {
-		transform: translateX(calc(100% + 16px));
-	}
-	.item.active-C {
-		transform: translateX(calc(200% + 32px));
-	}
-	.item.active-D {
-		transform: translateX(calc(300% + 48px));
-	}
-	.item.next {
-		transform: translateX(calc(400% + 64px));
 	}
 	.item-in {
 		height: 100%;

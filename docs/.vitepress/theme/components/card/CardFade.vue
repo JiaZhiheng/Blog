@@ -23,21 +23,9 @@
 
 <style scoped>
 	.item {
-		display: none;
-		position: absolute;
-		width: 100%;
 		height: 100%;
+		width: 100%;
 		border-radius: 12px;
-		padding: 20px;
-	}
-	.item.active-A,
-	.item.prev,
-	.item.next {
-		display: block;
-	}
-	.item.prev,
-	.item.next {
-		opacity: 0;
 	}
 	.item-name {
 		color: #fff;

@@ -1,13 +1,16 @@
 <template>
-	<div class="content" ref="slots">
+	<div class="content" :class="type" ref="slots">
 		<slot></slot>
 	</div>
 </template>
 <script setup>
-	import { ref, watch, onMounted } from "vue";
+	import { ref, watch, onMounted, nextTick } from "vue";
 	const slots = ref(null);
 
 	const props = defineProps({
+		type: String,
+		cardNum: Number,
+		showCardNum: Number,
 		config: Array,
 		indexCounter: Number,
 		transitionStyle: String,
@@ -43,10 +46,12 @@
 	}
 
 	onMounted(() => {
+		// test();
 		applyTransitionStyles();
 		updateCardItemStyles();
 	});
 </script>
+
 <style scoped lang="scss">
 	.content {
 		width: 100%;
@@ -56,4 +61,24 @@
 		border-radius: 12px;
 		transform: rotate(0);
 	}
+
+	.item {
+		display: none;
+		position: absolute;
+		width: 100%;
+		height: 100%;
+		border-radius: 12px;
+		padding: 20px;
+	}
+	.item.active-A,
+	.item.prev,
+	.item.next {
+		display: block;
+	}
+	.item.prev,
+	.item.next {
+		opacity: 0;
+	}
+
+	
 </style>

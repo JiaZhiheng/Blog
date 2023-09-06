@@ -21,43 +21,16 @@
 	});
 </script>
 <style scoped>
+	.item {
+		height: 100%;
+		width: 100%;
+		border-radius: 12px;
+	}
+	
 	*,
 	*::after,
 	*::before {
 		transition: all 0.25s ease;
-	}
-
-	.item {
-		display: none;
-		position: absolute;
-		width: 100%;
-		height: calc(50% - 8px);
-		background-color: transparent;
-		overflow: hidden;
-		color: #fff;
-		text-align: center;
-		font-size: 16px;
-		border-radius: 12px;
-		cursor: pointer;
-	}
-
-	.item.active-A,
-	.item.active-B,
-	.item.next,
-	.item.prev {
-		display: block;
-	}
-	.item.prev {
-		transform: translateY(calc(-100% - 16px));
-	}
-	.item.active-A {
-		transform: translateY(0);
-	}
-	.item.active-B {
-		transform: translateY(calc(100% + 16px));
-	}
-	.item.next {
-		transform: translateY(calc(200% + 32px));
 	}
 
 	.background {
