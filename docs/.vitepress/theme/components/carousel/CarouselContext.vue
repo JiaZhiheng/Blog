@@ -1,40 +1,105 @@
 <template>
-	<div class="content" :class="type">
+	<div class="card-container" :class="direction">
 		<template
 			v-for="(slotContent, index) in $slots.default()[0].children[0].children"
 		>
-			<Transition>
-				<div :class="itemClass(index)" :style="{ transition: transitionStyle }">
-					<component :is="slotContent"> </component>
-				</div>
-			</Transition>
+			<div class="card-item" :style="itemStyle(index)">
+				<component :is="slotContent"></component>
+			</div>
 		</template>
 	</div>
 </template>
+
 <script setup>
 	import { computed } from "vue";
 
 	const props = defineProps({
 		type: String,
-		config: Array,
+		direction: String,
+		effect: String,
+		cardNum: Number,
 		indexCounter: Number,
 		transitionStyle: String,
+		slidesPerView: Number,
+		spaceBetween: Number,
 	});
 
-	const itemClass = computed(() => {
+	const config = generateCardArray(
+		props.cardNum,
+		props.slidesPerView,
+		props.type,
+		props.direction,
+		props.effect,
+		props.spaceBetween
+	);
+
+	// 生成卡片数组
+	function generateCardArray(
+		cardNum,
+		slidesPerView,
+		type,
+		direction,
+		effect,
+		spaceBetween
+	) {
+		const cardArray = [];
+		const isFade = type === "fade";
+		const isVertical = type === "vertical";
+		const isHorizontal = type === "horizontal";
+		const isTranslating = isVertical || isHorizontal;
+
+		for (let i = 0; i < cardNum; i++) {
+			const item = {
+				id: i + 1,
+				style: { display: "block" },
+			};
+			const translateValue = `translate${isVertical ? "Y" : "X"}`;
+
+			if (i < slidesPerView) {
+				if (isFade) {
+					item.style.opacity = 1;
+				} else if (isTranslating) {
+					item.style.transform = `${translateValue}(calc(${i * 100}% + ${
+						i * spaceBetween
+					}px))`;
+				}
+			} else if (i === slidesPerView) {
+				if (isFade) {
+					item.style.opacity = 0;
+				} else if (isTranslating) {
+					item.style.transform = `${translateValue}(calc(${i * 100}% + ${
+						i * spaceBetween
+					}px))`;
+				}
+			} else if (i < cardNum - 1) {
+				item.style.display = "none";
+			} else {
+				if (isFade) {
+					item.style.opacity = 0;
+				} else if (isTranslating) {
+					item.style.transform = `${translateValue}(calc(-${100}% - ${spaceBetween}px))`;
+				}
+			}
+			cardArray.push(item);
+		}
+
+		return cardArray;
+	}
+
+	const itemStyle = computed(() => {
 		return (index) => {
-			const adjustedIndex = (index + props.indexCounter) % props.config.length;
-			return props.config[adjustedIndex].className;
+			const adjustedIndex = (index + props.indexCounter) % config.length;
+			return config[adjustedIndex].style;
 		};
 	});
+
+	const cardSize = `calc(${100 / props.slidesPerView}% - ${
+		(props.spaceBetween * (props.slidesPerView - 1)) / props.slidesPerView
+	}px)`;
 </script>
 
 <style scoped lang="scss">
-	$space-between: 16px;
-	$card-num: 8;
-	$show-card-num: 4;
-
-	.content {
+	.card-container {
 		width: 100%;
 		height: 100%;
 		overflow: hidden;
@@ -42,104 +107,26 @@
 		border-radius: 12px;
 		transform: rotate(0);
 		cursor: pointer;
+
+		&.horizontal {
+			.card-item {
+				width: v-bind("cardSize");
+			}
+		}
+
+		&.vertical {
+			.card-item {
+				height: v-bind("cardSize");
+			}
+		}
 	}
 
-	@mixin common-item-styles {
+	.card-item {
 		display: none;
 		position: absolute;
 		width: 100%;
 		height: 100%;
 		border-radius: 12px;
-	}
-
-	.fade {
-		.item {
-			@include common-item-styles;
-
-			&.active-A,
-			&.prev,
-			&.next {
-				display: block;
-			}
-
-			&.active-A {
-				opacity: 1;
-			}
-
-			&.prev,
-			&.next {
-				opacity: 0;
-			}
-		}
-	}
-
-	.horizontal {
-		.item {
-			@include common-item-styles;
-			width: calc(25% - 12px);
-
-			&.active-A,
-			&.active-B,
-			&.active-C,
-			&.active-D,
-			&.next,
-			&.prev {
-				display: block;
-			}
-
-			&.prev {
-				transform: translateX(calc(-100% - 16px));
-			}
-
-			&.active-A {
-				transform: translateX(0);
-			}
-
-			&.active-B {
-				transform: translateX(calc(100% + 16px));
-			}
-
-			&.active-C {
-				transform: translateX(calc(200% + 32px));
-			}
-
-			&.active-D {
-				transform: translateX(calc(300% + 48px));
-			}
-
-			&.next {
-				transform: translateX(calc(400% + 64px));
-			}
-		}
-	}
-
-	.vertical {
-		.item {
-			@include common-item-styles;
-			height: calc(50% - 8px);
-
-			&.active-A,
-			&.active-B,
-			&.next,
-			&.prev {
-				display: block;
-			}
-
-			&.prev {
-				transform: translateY(calc(-100% - 16px));
-			}
-
-			&.active-A {
-				transform: translateY(0);
-			}
-
-			&.active-B {
-				transform: translateY(calc(100% + 16px));
-			}
-
-			&.next {
-				transform: translateY(calc(200% + 32px));
-			}
-		}
+		transition: v-bind("transitionStyle");
 	}
 </style>

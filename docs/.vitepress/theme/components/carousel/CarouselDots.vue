@@ -1,35 +1,45 @@
 <template>
-	<ul class="dots">
-		<li
+  <ul class="dots">
+    <li
 			class="dot"
-			:class="itemClass(index)"
-			v-for="(item, index) in config"
-			:key="item.id"
-			@click="to(index)"
-		></li>
-	</ul>
+      :class="getItemClass(index)"
+      v-for="(item, index) in config"
+      :key="item.id"
+      @click="to(index)"
+    ></li>
+  </ul>
 </template>
+
 <script setup>
-	import { computed } from "vue";
 
-  const props = defineProps({
-    config: Array, 
-		indexCounter: Number,
-	});
+const props = defineProps({
+  cardNum: Number,
+  slidesPerView: Number,
+  indexCounter: Number,
+});
 
-	const itemClass = computed(() => {
-		return (index) => {
-			const adjustedIndex = (index + props.indexCounter) % props.config.length;
-			return props.config[adjustedIndex]?.className;
-		};
-	});
+function generateCardArray(cardNum, slidesPerView) {
+  const cardArray = [];
+  for (let i = 0; i < cardNum; i++) {
+		i < slidesPerView ? cardArray.push("current") : cardArray.push(""); 
+  }
+  return cardArray;
+}
 
-  const emit = defineEmits(["to"]);
+const config = generateCardArray(props.cardNum, props.slidesPerView);
 
-	function to(index) {
-		emit("to", index);
-	}
+function getItemClass(index) {
+  const adjustedIndex = (index + props.indexCounter) % config.length;
+  return config[adjustedIndex];
+}
+
+const emit = defineEmits(["to"]);
+
+function to(index) {
+  emit("to", index);
+}
 </script>
+
 <style scoped lang="scss">
 	.dots {
 		position: absolute;
@@ -62,7 +72,7 @@
 				transition: all 0.3s;
 			}
 
-			&.active-A::before {
+			&.current::before {
 				width: 24px;
 				background: rgba(255, 255, 255, 1);
 			}

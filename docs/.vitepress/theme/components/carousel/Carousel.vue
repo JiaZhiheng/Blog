@@ -1,17 +1,22 @@
 <template>
 	<div class="container">
-		<carousel-context 
+		<carousel-context
 			:type="type"
-			:config="config"
+			:direction="direction"
+			:effect="effect"
+			:card-num="cardNum"
 			:index-counter="indexCounter"
 			:transition-style="transitionStyle"
+			:slides-per-view="slidesPerView"
+			:space-between="spaceBetween"
 		>
 			<slot></slot>
 		</carousel-context>
 		<carousel-dots
 			v-if="showDots"
 			@to="to"
-			:config="config"
+			:card-num="cardNum"
+			:slides-per-view="slidesPerView"
 			:index-counter="indexCounter"
 		>
 		</carousel-dots>
@@ -20,7 +25,7 @@
 	</div>
 </template>
 <script setup>
-	import { ref, computed, onMounted, onUnmounted } from "vue";
+	import { ref, useSlots, onMounted, onUnmounted } from "vue";
 	import CarouselContext from "./CarouselContext.vue";
 	import CarouselArrow from "./CarouselArrow.vue";
 	import CarouselDots from "./CarouselDots.vue";
@@ -28,12 +33,13 @@
 	/**
 	 * Props定义，用于接收父组件传递的属性值
 	 *
-	 * @prop {String} type - 轮播图类型，可选值包括 "fade"、"vertical"、"horizontal"。
+	 * @prop {String} direction - 轮播图方向，可选值包括 "horizontal"、"vertical"。
+	 * @prop {String} effect - 轮播图效果，可选值包括 "slide"、"fade"。
 	 * @prop {Boolean} turnDirection - 轮播方向，默认为 true。
 	 * @prop {Boolean} showDots - 是否显示轮播点，默认为 false。
 	 * @prop {Boolean} showArrow - 是否显示轮播箭头，默认为 false。
-	 * @prop {Number} cardNum - 卡片数量，必需属性。
-	 * @prop {Number} showCardNum - 显示卡片数量，必需属性。
+	 * @prop {Number} slidesPerView - 每一页显示的轮播图数量，默认为 1。
+	 * @prop {Number} spaceBetween - 轮播图之间的间距，默认为 0。
 	 * @prop {Number} interval - 轮播间隔，单位毫秒，默认为 4000。
 	 * @prop {String} transitionStyle - 过渡效果的样式，单位秒，必需属性。
 	 * @prop {Boolean} immediate - 是否立即开始轮播，默认为 false。
@@ -41,9 +47,19 @@
 	const props = defineProps({
 		type: {
 			type: String,
-			required: true,
+		},
+		direction: {
+			type: String,
+			default: "horizontal",
 			validator: (value) => {
-				return ["fade", "vertical", "horizontal"].includes(value);
+				return ["horizontal", "vertical"].includes(value);
+			},
+		},
+		effect: {
+			type: String,
+			default: "fade",
+			validator: (value) => {
+				return ["slide", "fade"].includes(value);
 			},
 		},
 		turnDirection: {
@@ -58,13 +74,13 @@
 			type: Boolean,
 			default: false,
 		},
-		cardNum: {
+		slidesPerView: {
 			type: Number,
-			required: true,
+			default: 1,
 		},
-		showCardNum: {
+		spaceBetween: {
 			type: Number,
-			required: true,
+			default: 0,
 		},
 		interval: {
 			type: Number,
@@ -80,51 +96,24 @@
 		},
 	});
 
+	const cardNum = useSlots().default()[0].children.length;
 	const indexCounter = ref(0);
 	const playIntervalId = ref(null);
-
-	const config = computed(() => {
-		return generateCardArray(props.cardNum, props.showCardNum);
-	});
-
-	// 生成卡片数组
-	function generateCardArray(cardNum, showCardNum) {
-		const cardArray = [];
-		let id = 1;
-		for (let i = 0; i < cardNum; i++) {
-			const item = {
-				id: id,
-				className: "",
-			};
-			if (i < showCardNum) {
-				item.className = `item active-${String.fromCharCode(65 + i)}`;
-			} else if (i === showCardNum) {
-				item.className = "item next";
-			} else if (i < cardNum - 1) {
-				item.className = "item";
-			} else {
-				item.className = "item prev";
-			}
-			cardArray.push(item);
-			id++;
-		}
-		return cardArray;
-	}
 
 	// 滑动至前一页 (自动)
 	function toPrev() {
 		indexCounter.value =
-			(config.value.length - getCurrentIndex() + 1) % config.value.length;
+			(cardNum - getCurrentIndex() + 1) % cardNum;
 	}
 
 	// 滑动至后一页 (自动)
 	function toNext() {
-		indexCounter.value = config.value.length - getCurrentIndex() - 1;
+		indexCounter.value = cardNum - getCurrentIndex() - 1;
 	}
 
 	// 滑动至某一页
 	function to(index) {
-		indexCounter.value = (config.value.length - index) % config.value.length;
+		indexCounter.value = (cardNum - index) % cardNum;
 		stopPlay();
 		startPlay();
 	}
@@ -141,7 +130,7 @@
 
 	// 获取当前页
 	function getCurrentIndex() {
-		return (config.value.length - indexCounter.value) % config.value.length;
+		return (cardNum - indexCounter.value) % cardNum;
 	}
 
 	// 开始播放
@@ -175,6 +164,3 @@
 		stopPlay();
 	});
 </script>
-
-<style scoped lang="scss">
-</style>

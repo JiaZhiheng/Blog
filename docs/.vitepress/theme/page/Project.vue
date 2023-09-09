@@ -7,9 +7,11 @@
 					:key="carouselItem.id"
 					:class="`carousel carousel--${carouselItem.type}`"
 					:type="carouselItem.type"
+					:direction="carouselItem.direction"
+					:effect="carouselItem.effect"
 					:turn-direction="carouselItem.turnDirection"
-					:show-card-num="carouselItem.showCardNum"
-					:card-num="carouselItem.cardNum"
+					:slides-per-view="carouselItem.slidesPerView"
+					:space-between="carouselItem.spaceBetween"
 					:interval="carouselItem.interval"
 					:transition-style="carouselItem.transitionStyle"
 					:immediate="carouselItem.immediate"
@@ -45,26 +47,31 @@
 			id: 1,
 			config: fadeConfig,
 			type: "fade",
+			direction: "horizontal",
+			effect: "fade",
 			showArrow: true,
 			showDots: true,
-			showCardNum: 1,
-			cardNum: 4,
+			slidesPerView: 1,
 			transitionStyle: "all 300ms linear",
 		},
 		{
 			id: 2,
 			config: verticalConfig,
 			type: "vertical",
-			showCardNum: 2,
-			cardNum: 8,
+			direction: "vertical",
+			effect: "slide",
+			slidesPerView: 2,
+			spaceBetween: 16,
 			transitionStyle: "all 300ms linear",
 		},
 		{
 			id: 3,
 			config: horizontalConfig,
 			type: "horizontal",
-			showCardNum: 4,
-			cardNum: 8,
+			direction: "horizontal",
+			effect: "slide",
+			slidesPerView: 4,
+			spaceBetween: 16,
 			transitionStyle: "all 4000ms linear",
 			immediate: true,
 		},
