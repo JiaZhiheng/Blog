@@ -639,10 +639,10 @@ sass@^1.66.1:
     immutable "^4.0.0"
     source-map-js ">=0.6.2 <2.0.0"
 
-shiki@^0.14.3:
-  version "0.14.3"
-  resolved "https://registry.npmmirror.com/shiki/-/shiki-0.14.3.tgz#d1a93c463942bdafb9866d74d619a4347d0bbf64"
-  integrity sha512-U3S/a+b0KS+UkTyMjoNojvTgrBHjgp7L6ovhFVZsXmBGnVdQ4K4U9oK0z63w538S91ATngv1vXigHCSWOwnr+g==
+shiki@^0.14.4:
+  version "0.14.4"
+  resolved "https://registry.npmmirror.com/shiki/-/shiki-0.14.4.tgz#2454969b466a5f75067d0f2fa0d7426d32881b20"
+  integrity sha512-IXCRip2IQzKwxArNNq1S+On4KPML3Yyn8Zzs/xRgcgOWIr8ntIK3IKzjFPfjy/7kt9ZMjc+FItfqHRBg8b6tNQ==
   dependencies:
     ansi-sequence-parser "^1.1.0"
     jsonc-parser "^3.2.0"
@@ -677,10 +677,10 @@ vite@^4.4.9:
   optionalDependencies:
     fsevents "~2.3.2"
 
-vitepress@^1.0.0-rc.11:
-  version "1.0.0-rc.11"
-  resolved "https://registry.npmmirror.com/vitepress/-/vitepress-1.0.0-rc.11.tgz#7d70521e840271b873220d332bc55a9c128e0eb4"
-  integrity sha512-HUnfYOadqwLSahtgQxKt9/wiNHdd80BaUfQ+DIMpfq03Iv9CWX1SCBK4gxK/bMWns3Q0ArhXajQbU/fmBwYUMg==
+vitepress@^1.0.0-rc.13:
+  version "1.0.0-rc.13"
+  resolved "https://registry.npmmirror.com/vitepress/-/vitepress-1.0.0-rc.13.tgz#4073865d1ee319472f6d3e8e13d97b4714e0edd6"
+  integrity sha512-TnVydQOZE38rtXu9gHCb7EGdN03jTcmYkDdhCqox6+pfKYgiyfm1qk2Uy8BZatnM9wXpa64f+T5p30R8P/9Z+A==
   dependencies:
     "@docsearch/css" "^3.5.2"
     "@docsearch/js" "^3.5.2"
@@ -690,7 +690,7 @@ vitepress@^1.0.0-rc.11:
     focus-trap "^7.5.2"
     mark.js "8.11.1"
     minisearch "^6.1.0"
-    shiki "^0.14.3"
+    shiki "^0.14.4"
     vite "^4.4.9"
     vue "^3.3.4"
 

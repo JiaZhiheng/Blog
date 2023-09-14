@@ -1,8 +1,6 @@
 <template>
 	<div class="card-container" :class="direction">
-		<template
-			v-for="(slotContent, index) in $slots.default()[0].children[0].children"
-		>
+		<template	v-for="(slotContent, index) in $slots.default()[0].children[0].children" :key="slotContent.key">
 			<div class="card-item" :style="itemStyle(index)">
 				<component :is="slotContent"></component>
 			</div>
@@ -14,9 +12,20 @@
 	import { computed } from "vue";
 
 	const props = defineProps({
-		type: String,
-		direction: String,
-		effect: String,
+		direction: {
+			type: String,
+			default: "horizontal",
+			validator: (value) => {
+				return ["horizontal", "vertical"].includes(value);
+			},
+		},
+		effect: {
+			type: String,
+			default: "fade",
+			validator: (value) => {
+				return ["slide", "fade"].includes(value);
+			},
+		},
 		cardNum: Number,
 		indexCounter: Number,
 		transitionStyle: String,
@@ -27,69 +36,42 @@
 	const config = generateCardArray(
 		props.cardNum,
 		props.slidesPerView,
-		props.type,
 		props.direction,
 		props.effect,
 		props.spaceBetween
 	);
 
 	// 生成卡片数组
-	function generateCardArray(
-		cardNum,
-		slidesPerView,
-		type,
-		direction,
-		effect,
-		spaceBetween
-	) {
+	function generateCardArray(cardNum, slidesPerView, direction, effect, spaceBetween) {
 		const cardArray = [];
-		const isFade = type === "fade";
-		const isVertical = type === "vertical";
-		const isHorizontal = type === "horizontal";
-		const isTranslating = isVertical || isHorizontal;
-
+		function getTransformValue(index, isLast) {
+			const offset = isLast ? `calc(-100% - ${spaceBetween}px)` : `calc(${index * 100}% + ${index * spaceBetween}px)`;
+			return direction === 'horizontal' ? `translateX(${offset})` : `translateY(${offset})`;
+		}
 		for (let i = 0; i < cardNum; i++) {
-			const item = {
-				id: i + 1,
-				style: { display: "block" },
-			};
-			const translateValue = `translate${isVertical ? "Y" : "X"}`;
-
-			if (i < slidesPerView) {
-				if (isFade) {
-					item.style.opacity = 1;
-				} else if (isTranslating) {
-					item.style.transform = `${translateValue}(calc(${i * 100}% + ${
-						i * spaceBetween
-					}px))`;
+			const style = { display: 'block' };
+			if (effect === 'slide') {
+				if (i <= slidesPerView) {
+					style.transform = getTransformValue(i, false);
+				} else if (i === cardNum - 1) {
+					style.transform = getTransformValue(0, true);
+				} else {
+					style.display = 'none';
 				}
-			} else if (i === slidesPerView) {
-				if (isFade) {
-					item.style.opacity = 0;
-				} else if (isTranslating) {
-					item.style.transform = `${translateValue}(calc(${i * 100}% + ${
-						i * spaceBetween
-					}px))`;
-				}
-			} else if (i < cardNum - 1) {
-				item.style.display = "none";
 			} else {
-				if (isFade) {
-					item.style.opacity = 0;
-				} else if (isTranslating) {
-					item.style.transform = `${translateValue}(calc(-${100}% - ${spaceBetween}px))`;
-				}
+				style.opacity = i < slidesPerView ? 1 : 0;
 			}
-			cardArray.push(item);
+			cardArray.push(style);
 		}
 
 		return cardArray;
 	}
 
+
 	const itemStyle = computed(() => {
 		return (index) => {
 			const adjustedIndex = (index + props.indexCounter) % config.length;
-			return config[adjustedIndex].style;
+			return config[adjustedIndex];
 		};
 	});
 

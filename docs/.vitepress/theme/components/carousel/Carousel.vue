@@ -1,7 +1,6 @@
 <template>
 	<div class="container">
 		<carousel-context
-			:type="type"
 			:direction="direction"
 			:effect="effect"
 			:card-num="cardNum"
@@ -45,9 +44,6 @@
 	 * @prop {Boolean} immediate - 是否立即开始轮播，默认为 false。
 	 */
 	const props = defineProps({
-		type: {
-			type: String,
-		},
 		direction: {
 			type: String,
 			default: "horizontal",
