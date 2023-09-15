@@ -11,12 +11,15 @@
 </template>
 
 <script setup>
-
 const props = defineProps({
   cardNum: Number,
   slidesPerView: Number,
   indexCounter: Number,
 });
+
+const emit = defineEmits(["to"]);
+
+const config = generateCardArray(props.cardNum, props.slidesPerView);
 
 function generateCardArray(cardNum, slidesPerView) {
   const cardArray = [];
@@ -26,14 +29,9 @@ function generateCardArray(cardNum, slidesPerView) {
   return cardArray;
 }
 
-const config = generateCardArray(props.cardNum, props.slidesPerView);
-
 function getItemClass(index) {
-  const adjustedIndex = (index + props.indexCounter) % config.length;
-  return config[adjustedIndex];
+  return config[(index + props.indexCounter) % config.length];
 }
-
-const emit = defineEmits(["to"]);
 
 function to(index) {
   emit("to", index);
