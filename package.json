@@ -12,6 +12,7 @@
     "docs:serve": "vitepress serve docs"
   },
   "devDependencies": {
+    "eslint": "^8.49.0",
     "sass": "^1.66.1",
     "vitepress": "^1.0.0-rc.13"
   }
