@@ -12,7 +12,10 @@
     "docs:serve": "vitepress serve docs"
   },
   "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^6.7.0",
+    "@typescript-eslint/parser": "^6.7.0",
     "eslint": "^8.49.0",
+    "eslint-plugin-vue": "^9.17.0",
     "prettier": "^3.0.3",
     "sass": "^1.66.1",
     "vitepress": "^1.0.0-rc.14"
