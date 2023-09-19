@@ -1,53 +1,53 @@
 /* 防抖函数 */
 function debounce(fn, delay, immediate) {
-	let timer = null;
+  let timer = null;
 
-	const _debounce = function (...args) {
-		if (timer) clearTimeout(timer);
+  const _debounce = function (...args) {
+    if (timer) clearTimeout(timer);
 
-		if (immediate && !timer) {
-			fn.apply(this, args);
-		}
+    if (immediate && !timer) {
+      fn.apply(this, args);
+    }
 
-		timer = setTimeout(() => {
-			fn.apply(this, args);
-			timer = null;
-		}, delay);
-	};
+    timer = setTimeout(() => {
+      fn.apply(this, args);
+      timer = null;
+    }, delay);
+  };
 
-	_debounce.cancel = function () {
-		clearTimeout(timer);
-		timer = null;
-	};
+  _debounce.cancel = function () {
+    clearTimeout(timer);
+    timer = null;
+  };
 
-	return _debounce;
+  return _debounce;
 }
 
 /* 节流函数 */
 function throttle(fn, delay, immediate) {
-	let timer = null;
+  let timer = null;
 
-	const _throttle = function (...args) {
-		if (timer) return;
+  const _throttle = function (...args) {
+    if (timer) return;
 
-		if (immediate) {
-			fn.apply(this, args);
-		}
+    if (immediate) {
+      fn.apply(this, args);
+    }
 
-		timer = setTimeout(() => {
-			if (!immediate) {
-				fn.apply(this, args);
-			}
-			timer = null;
-		}, delay);
-	};
+    timer = setTimeout(() => {
+      if (!immediate) {
+        fn.apply(this, args);
+      }
+      timer = null;
+    }, delay);
+  };
 
-	_throttle.cancel = function () {
-		clearTimeout(timer);
-		timer = null;
-	};
+  _throttle.cancel = function () {
+    clearTimeout(timer);
+    timer = null;
+  };
 
-	return _throttle;
+  return _throttle;
 }
 
 export { debounce, throttle };

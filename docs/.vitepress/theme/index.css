@@ -1,203 +1,203 @@
 :root {
-    --vp-home-hero-name-color: transparent;
-    --vp-home-hero-name-background: linear-gradient(135deg, #00CAFD 50%, #00B0FF 100%);
-    --vp-button-brand-bg: #007CC2;
-    --vp-button-brand-hover-bg: #009AF0;
-    --vp-button-brand-border: #007CC2;
-    --vp-button-brand-hover-border: #009AF0;
-    --vp-button-brand-active-border: #00B0FF;
-    --vp-c-green: #0076B8;
-    --vp-c-brand-dark: #0070B9;
-    --vp-c-green-darker: #00B0FF;
+  --vp-home-hero-name-color: transparent;
+  --vp-home-hero-name-background: linear-gradient(135deg, #00cafd 50%, #00b0ff 100%);
+  --vp-button-brand-bg: #007cc2;
+  --vp-button-brand-hover-bg: #009af0;
+  --vp-button-brand-border: #007cc2;
+  --vp-button-brand-hover-border: #009af0;
+  --vp-button-brand-active-border: #00b0ff;
+  --vp-c-green: #0076b8;
+  --vp-c-brand-dark: #0070b9;
+  --vp-c-green-darker: #00b0ff;
 }
 
 .logo {
-    margin-bottom: 4px;
+  margin-bottom: 4px;
 }
 
 .VPHome .container {
-    position: relative;
-    transform-style: preserve-3d;
-    transition: 0.8s;
-    backface-visibility: hidden;
+  position: relative;
+  transform-style: preserve-3d;
+  transition: 0.8s;
+  backface-visibility: hidden;
 }
 
 /* 主页图片 */
 .image .image-container {
-    transform: translate(0, 0);
+  transform: translate(0, 0);
 }
 
 .VPHero .image {
-    margin: -56px 0 -18px
+  margin: -56px 0 -18px;
 }
 
 .VPContent .VPHome {
-    padding-bottom: 48px;
+  padding-bottom: 48px;
 }
 
 /* 主页标签icon */
 .box .icon {
-    background-color: transparent;
+  background-color: transparent;
 }
 
 /* 移入效果动画 */
 @keyframes bounceInLeft {
-    from,
-    60%,
-    75%,
-    90%,
-    to {
-        animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
-    }
+  from,
+  60%,
+  75%,
+  90%,
+  to {
+    animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+  }
 
-    0% {
-        opacity: 0;
-        transform: translate3d(-3000px, 0, 0) scaleX(3);
-    }
+  0% {
+    opacity: 0;
+    transform: translate3d(-3000px, 0, 0) scaleX(3);
+  }
 
-    60% {
-        opacity: 1;
-        transform: translate3d(25px, 0, 0) scaleX(1);
-    }
+  60% {
+    opacity: 1;
+    transform: translate3d(25px, 0, 0) scaleX(1);
+  }
 
-    75% {
-        transform: translate3d(-10px, 0, 0) scaleX(0.98);
-    }
+  75% {
+    transform: translate3d(-10px, 0, 0) scaleX(0.98);
+  }
 
-    90% {
-        transform: translate3d(5px, 0, 0) scaleX(0.995);
-    }
+  90% {
+    transform: translate3d(5px, 0, 0) scaleX(0.995);
+  }
 
-    to {
-        transform: translate3d(0, 0, 0);
-    }
+  to {
+    transform: translate3d(0, 0, 0);
+  }
 }
 
 @keyframes bounceInRight {
-    from,
-    60%,
-    75%,
-    90%,
-    to {
-        animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
-    }
+  from,
+  60%,
+  75%,
+  90%,
+  to {
+    animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+  }
 
-    from {
-        opacity: 0;
-        transform: translate3d(3000px, 0, 0) scaleX(3);
-    }
+  from {
+    opacity: 0;
+    transform: translate3d(3000px, 0, 0) scaleX(3);
+  }
 
-    60% {
-        opacity: 1;
-        transform: translate3d(-25px, 0, 0) scaleX(1);
-    }
+  60% {
+    opacity: 1;
+    transform: translate3d(-25px, 0, 0) scaleX(1);
+  }
 
-    75% {
-        transform: translate3d(10px, 0, 0) scaleX(0.98);
-    }
+  75% {
+    transform: translate3d(10px, 0, 0) scaleX(0.98);
+  }
 
-    90% {
-        transform: translate3d(-5px, 0, 0) scaleX(0.995);
-    }
+  90% {
+    transform: translate3d(-5px, 0, 0) scaleX(0.995);
+  }
 
-    to {
-        transform: translate3d(0, 0, 0);
-    }
+  to {
+    transform: translate3d(0, 0, 0);
+  }
 }
 
 @keyframes bounceInUp {
-    from,
-    60%,
-    75%,
-    90%,
-    to {
-        animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
-    }
+  from,
+  60%,
+  75%,
+  90%,
+  to {
+    animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+  }
 
-    from {
-        opacity: 0;
-        transform: translate3d(0, 3000px, 0) scaleY(5);
-    }
+  from {
+    opacity: 0;
+    transform: translate3d(0, 3000px, 0) scaleY(5);
+  }
 
-    60% {
-        opacity: 1;
-        transform: translate3d(0, -20px, 0) scaleY(0.9);
-    }
+  60% {
+    opacity: 1;
+    transform: translate3d(0, -20px, 0) scaleY(0.9);
+  }
 
-    75% {
-        transform: translate3d(0, 10px, 0) scaleY(0.95);
-    }
+  75% {
+    transform: translate3d(0, 10px, 0) scaleY(0.95);
+  }
 
-    90% {
-        transform: translate3d(0, -5px, 0) scaleY(0.985);
-    }
+  90% {
+    transform: translate3d(0, -5px, 0) scaleY(0.985);
+  }
 
-    to {
-        transform: translate3d(0, 0, 0);
-    }
+  to {
+    transform: translate3d(0, 0, 0);
+  }
 }
 
 .main .name {
-    animation-duration: 1s;
-    animation-fill-mode: both;
-    animation-name: bounceInLeft;
+  animation-duration: 1s;
+  animation-fill-mode: both;
+  animation-name: bounceInLeft;
 }
 
 .main .text {
-    animation-duration: 1s;
-    animation-fill-mode: both;
-    animation-name: bounceInLeft;
-    animation-delay: 0.2s;
+  animation-duration: 1s;
+  animation-fill-mode: both;
+  animation-name: bounceInLeft;
+  animation-delay: 0.2s;
 }
 
 .main .tagline {
-    animation-duration: 1s;
-    animation-fill-mode: both;
-    animation-name: bounceInLeft;
-    animation-delay: 0.4s;
+  animation-duration: 1s;
+  animation-fill-mode: both;
+  animation-name: bounceInLeft;
+  animation-delay: 0.4s;
 }
 
 .main .actions {
-    animation-duration: 1s;
-    animation-fill-mode: both;
-    animation-name: bounceInUp;
+  animation-duration: 1s;
+  animation-fill-mode: both;
+  animation-name: bounceInUp;
 }
 
 @media screen and (min-width: 640px) {
-    .VPHero .image {
-        margin: -88px 0 -18px
-    }
+  .VPHero .image {
+    margin: -88px 0 -18px;
+  }
 
-    .VPContent .VPHome {
-        padding-bottom: 64px;
-    }
+  .VPContent .VPHome {
+    padding-bottom: 64px;
+  }
 
-    .image .image-container {
-        transform: translate(0, 0);
-    }
+  .image .image-container {
+    transform: translate(0, 0);
+  }
 }
 
 @media screen and (min-width: 960px) {
-    .VPHero .image {
-        margin: 0;
-        min-width: 100px;
-    }
+  .VPHero .image {
+    margin: 0;
+    min-width: 100px;
+  }
 
-    /* .VPContent .VPHome {
+  /* .VPContent .VPHome {
         padding-bottom: 0;
     } */
 
-    .image .image-container {
-        transform: translate(0, 0);
-    }
+  .image .image-container {
+    transform: translate(0, 0);
+  }
 
-    .image {
-        height: 248px;
-    }
+  .image {
+    height: 248px;
+  }
 }
 
 @media screen and (min-width: 1024px) {
-    .items .item.grid-6 {
-        width: calc(100% / 4);
-    }
+  .items .item.grid-6 {
+    width: calc(100% / 4);
+  }
 }

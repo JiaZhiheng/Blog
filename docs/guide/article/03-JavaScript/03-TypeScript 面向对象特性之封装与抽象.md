@@ -14,21 +14,21 @@
 
 ```typescript
 class Car {
-	speed: number;
-	make: string;
+  speed: number;
+  make: string;
 
-	constructor(make: string) {
-		this.speed = 0;
-		this.make = make;
-	}
+  constructor(make: string) {
+    this.speed = 0;
+    this.make = make;
+  }
 }
 ```
 
 它们默认是公开的，可以对随意修改：
 
 ```typescript
-const car: Car = new Car("Toyota");
-car.make = "Honda";
+const car: Car = new Car('Toyota');
+car.make = 'Honda';
 car.speed = 200;
 
 console.log(car.make); // Honda
@@ -39,17 +39,17 @@ console.log(car.speed); // 200
 
 ```typescript
 class Car {
-	private speed: number;
-	private make: string;
+  private speed: number;
+  private make: string;
 
-	constructor(make: string) {
-		this.speed = 0;
-		this.make = make;
-	}
+  constructor(make: string) {
+    this.speed = 0;
+    this.make = make;
+  }
 }
 
-const car: Car = new Car("Toyota");
-car.make = "Honda"; // Property 'make' is private and only accessible within class 'Car'.
+const car: Car = new Car('Toyota');
+car.make = 'Honda'; // Property 'make' is private and only accessible within class 'Car'.
 car.speed = 200; // Property 'speed' is private and only accessible within class 'Car'.
 ```
 
@@ -57,10 +57,10 @@ car.speed = 200; // Property 'speed' is private and only accessible within class
 
 ```typescript
 class Car {
-	//...
-	getCurrentSpeed() {
-		return "当前车速是：" + this.speed;
-	}
+  //...
+  getCurrentSpeed() {
+    return '当前车速是：' + this.speed;
+  }
 }
 ```
 
@@ -68,26 +68,26 @@ class Car {
 
 ```typescript
 class Car {
-	//...
-	getCurrentSpeed() {
-		return "当前车速是：" + this.speed;
-	}
+  //...
+  getCurrentSpeed() {
+    return '当前车速是：' + this.speed;
+  }
 
-	private setSpeed(delta: number) {
-		if (delta > -100 && delta < 100) {
-			this.speed += delta;
-		} else {
-			throw new Error("delta只能取-100到100之间的数字");
-		}
-	}
+  private setSpeed(delta: number) {
+    if (delta > -100 && delta < 100) {
+      this.speed += delta;
+    } else {
+      throw new Error('delta只能取-100到100之间的数字');
+    }
+  }
 
-	accelerate(delta: number) {
-		this.setSpeed(delta);
-	}
+  accelerate(delta: number) {
+    this.setSpeed(delta);
+  }
 
-	decelerate(delta: number) {
-		this.setSpeed(-delta);
-	}
+  decelerate(delta: number) {
+    this.setSpeed(-delta);
+  }
 }
 
 car.accelerate(10);
@@ -102,27 +102,27 @@ car.accelerate(200);
 
 ```typescript
 class Car {
-	readonly make: string;
-	//...
+  readonly make: string;
+  //...
 }
 
-const car: Car = new Car("Toyota");
+const car: Car = new Car('Toyota');
 console.log(car.make); // Toyota
-car.make = "Honda"; // Cannot assign to 'make' because it is a read-only property.
+car.make = 'Honda'; // Cannot assign to 'make' because it is a read-only property.
 ```
 
 方法默认是公开的，我们也可以加上 `public` 关键字，让代码更清楚：
 
 ```typescript
 class Car {
-	//...
-	public accelerate(delta: number) {
-		this.setSpeed(delta);
-	}
+  //...
+  public accelerate(delta: number) {
+    this.setSpeed(delta);
+  }
 
-	public decelerate(delta: number) {
-		this.setSpeed(-delta);
-	}
+  public decelerate(delta: number) {
+    this.setSpeed(-delta);
+  }
 }
 
 //...
@@ -132,10 +132,10 @@ class Car {
 
 ```typescript
 class Car {
-	//...
-	get currentSpeed() {
-		return "当前车速是：" + this.speed;
-	}
+  //...
+  get currentSpeed() {
+    return '当前车速是：' + this.speed;
+  }
 }
 
 // 之前: car.getCurrentSpeed()
@@ -148,36 +148,36 @@ console.log(car.currentSpeed);
 
 ```typescript
 class Car {
-	private speed: number;
-	readonly make: string;
+  private speed: number;
+  readonly make: string;
 
-	constructor(make: string) {
-		this.speed = 0;
-		this.make = make;
-	}
+  constructor(make: string) {
+    this.speed = 0;
+    this.make = make;
+  }
 
-	get currentSpeed() {
-		return "当前车速是：" + this.speed;
-	}
+  get currentSpeed() {
+    return '当前车速是：' + this.speed;
+  }
 
-	private setSpeed(delta: number) {
-		if (delta > -100 && delta < 100) {
-			this.speed += delta;
-		} else {
-			throw new Error("delta只能取-100到100之间的数字");
-		}
-	}
+  private setSpeed(delta: number) {
+    if (delta > -100 && delta < 100) {
+      this.speed += delta;
+    } else {
+      throw new Error('delta只能取-100到100之间的数字');
+    }
+  }
 
-	public accelerate(delta: number) {
-		this.setSpeed(delta);
-	}
+  public accelerate(delta: number) {
+    this.setSpeed(delta);
+  }
 
-	public decelerate(delta: number) {
-		this.setSpeed(-delta);
-	}
+  public decelerate(delta: number) {
+    this.setSpeed(-delta);
+  }
 }
 
-const car: Car = new Car("Toyota");
+const car: Car = new Car('Toyota');
 console.log(car.make);
 
 car.accelerate(10);

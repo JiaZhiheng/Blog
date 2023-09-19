@@ -21,30 +21,30 @@
 
 ```typescript
 class Employee {
-	name: string;
-	age: number;
-	empNo: number;
+  name: string;
+  age: number;
+  empNo: number;
 
-	constructor(name: string, age: number, empNo: number) {
-		this.name = name;
-		this.age = age;
-		this.empNo = empNo;
-	}
+  constructor(name: string, age: number, empNo: number) {
+    this.name = name;
+    this.age = age;
+    this.empNo = empNo;
+  }
 
-	signIn() {
-		console.log(this.name + "上班打卡");
-	}
+  signIn() {
+    console.log(this.name + '上班打卡');
+  }
 
-	askLeave() {
-		console.log(this.name + "请假");
-	}
+  askLeave() {
+    console.log(this.name + '请假');
+  }
 }
 
-let emp = new Employee("张三", 22, 999);
+let emp = new Employee('张三', 22, 999);
 emp.signIn();
 emp.askLeave();
 
-let emp2 = new Employee("李四", 25, 888);
+let emp2 = new Employee('李四', 25, 888);
 emp2.signIn();
 emp.askLeave();
 ```

@@ -31,8 +31,8 @@ arr; // [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, [11, 12]]
 ```javascript
 let arr = [1, 2, 3, 4, 5, 6];
 arr.forEach((item, index, thisArr) => {
-	// item: current looping item, index: current looping item index, arr: array itself
-	console.log(item, index, arr);
+  // item: current looping item, index: current looping item index, arr: array itself
+  console.log(item, index, arr);
 });
 ```
 
@@ -54,7 +54,7 @@ arr.forEach((item, index, thisArr) => {
 ```javascript
 let arr = [1, 2, 3, 4, 5, 6];
 const newArr = arr.map((item, index, thisArr) => {
-	return item * index;
+  return item * index;
 });
 newArr; // [ 0, 2, 6, 12, 20, 30 ]
 ```
@@ -68,7 +68,7 @@ map 方法最后会返回和源数组同样长度的新数组。
 ```javascript
 let arr = [1, 2, 3, 4, 5, 6];
 const filteredArr = arr.filter((item, index, thisArr) => {
-	return item % 2 === 0;
+  return item % 2 === 0;
 });
 filteredArr; // [ 2, 4, 6 ]
 ```
@@ -80,7 +80,7 @@ filteredArr; // [ 2, 4, 6 ]
 ```javascript
 let arr = [1, 2, 3, 4, 5, 6];
 const index = arr.findIndex((item, index, thisArr) => {
-	return item === 5;
+  return item === 5;
 });
 index; // 4
 ```

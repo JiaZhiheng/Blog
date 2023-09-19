@@ -7,7 +7,7 @@ Audio API 是一个 Web API，它提供了一组 JavaScript 接口，用于在�
 在使用 Audio API 播放音频时，我们可以使用 `Audio` 对象来加载和播放音频文件。下面是一个简单的播放音频的示例代码：
 
 ```javascript
-const audio = new Audio("path/to/audio/file.mp3");
+const audio = new Audio('path/to/audio/file.mp3');
 audio.play();
 ```
 
@@ -21,29 +21,29 @@ audio.play();
 
 ```javascript
 navigator.mediaDevices
-	.getUserMedia({ audio: true })
-	.then((stream) => {
-		const mediaRecorder = new MediaRecorder(stream);
-		const audioChunks = [];
+  .getUserMedia({ audio: true })
+  .then((stream) => {
+    const mediaRecorder = new MediaRecorder(stream);
+    const audioChunks = [];
 
-		mediaRecorder.addEventListener("dataavailable", (event) => {
-			audioChunks.push(event.data);
-		});
+    mediaRecorder.addEventListener('dataavailable', (event) => {
+      audioChunks.push(event.data);
+    });
 
-		mediaRecorder.addEventListener("stop", () => {
-			const audioBlob = new Blob(audioChunks);
-			const audioUrl = URL.createObjectURL(audioBlob);
-			const audio = new Audio(audioUrl);
-			audio.play();
-		});
+    mediaRecorder.addEventListener('stop', () => {
+      const audioBlob = new Blob(audioChunks);
+      const audioUrl = URL.createObjectURL(audioBlob);
+      const audio = new Audio(audioUrl);
+      audio.play();
+    });
 
-		mediaRecorder.start();
+    mediaRecorder.start();
 
-		setTimeout(() => {
-			mediaRecorder.stop();
-		}, 5000);
-	})
-	.catch((err) => console.error("录制音频失败：", err));
+    setTimeout(() => {
+      mediaRecorder.stop();
+    }, 5000);
+  })
+  .catch((err) => console.error('录制音频失败：', err));
 ```
 
 在这个示例中，我们首先使用 `getUserMedia()` 方法获取音频流，然后创建一个 `MediaRecorder` 对象来录制音频。在录制过程中，我们使用 `addEventListener()` 方法来监听 `dataavailable` 和 `stop` 事件。`dataavailable` 事件在每次录制音频时触发，我们可以从事件对象中获取到音频数据，并将它们保存到一个数组中。`stop` 事件在录制结束后触发，我们可以从保存的音频数据中创建一个 Blob 对象，并使用 `URL.createObjectURL()` 方法将其转换为一个可播放的音频 URL。最后，我们创建一个 `Audio` 对象，并使用 `play()` 方法来播放录制的音频。
@@ -55,7 +55,7 @@ navigator.mediaDevices
 使用 Audio API，我们还可以对音频进行处理。在处理音频时，我们可以使用 `AudioContext` 对象来创建音频处理节点，并将它们连接在一起来实现音频处理的功能。下面是一个简单的音频处理的示例代码：
 
 ```javascript
-const audio = new Audio("path/to/audio/file.mp3");
+const audio = new Audio('path/to/audio/file.mp3');
 const audioContext = new AudioContext();
 const source = audioContext.createMediaElementSource(audio);
 const gainNode = audioContext.createGain();

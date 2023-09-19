@@ -14,19 +14,19 @@ BEM 命名规则比较常见，B 代表 Block 块，E 代表 Element 元素，M 
 
 ```html
 <nav class="nav">
-	<!-- B: nav, E: menu, 使用两个下划线分割 -->
-	<ul class="nav__menu">
-		<!-- B: nav, E: item -->
-		<li class="nav__item">
-			<!-- B: nav, E: link, M: active -->
-			<a href="#" class="nav__link nav__link--active">首页</a>
-		</li>
-		<li class="nav__item">
-			<a href="#" class="nav__link">关于我们</a>
-		</li>
-		<li class="nav__item">
-			<a href="#" class="nav__link">联系我们</a>
-		</li>
-	</ul>
+  <!-- B: nav, E: menu, 使用两个下划线分割 -->
+  <ul class="nav__menu">
+    <!-- B: nav, E: item -->
+    <li class="nav__item">
+      <!-- B: nav, E: link, M: active -->
+      <a href="#" class="nav__link nav__link--active">首页</a>
+    </li>
+    <li class="nav__item">
+      <a href="#" class="nav__link">关于我们</a>
+    </li>
+    <li class="nav__item">
+      <a href="#" class="nav__link">联系我们</a>
+    </li>
+  </ul>
 </nav>
 ```

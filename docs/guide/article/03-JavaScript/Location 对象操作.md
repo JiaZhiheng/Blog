@@ -19,13 +19,13 @@
 ```javascript
 // 获取当前页面的完整 URL
 const currentUrl = window.location.href;
-console.log("当前页面的 URL 是：" + currentUrl);
+console.log('当前页面的 URL 是：' + currentUrl);
 
 // 修改当前页面的路径部分
-window.location.pathname = "/new/path.html";
+window.location.pathname = '/new/path.html';
 
 // 跳转到另一个页面
-window.location.href = "http://www.example.com/newpage.html";
+window.location.href = 'http://www.example.com/newpage.html';
 ```
 
 在上面的代码中，我们首先使用 `window.location.href` 属性获取当前页面的完整 URL，然后修改了当前页面的路径部分和跳转到了另一个页面。
@@ -45,10 +45,10 @@ window.location.href = "http://www.example.com/newpage.html";
 window.location.reload();
 
 // 替换当前页面为指定的 URL
-window.location.replace("http://www.example.com/newpage.html");
+window.location.replace('http://www.example.com/newpage.html');
 
 // 将当前页面的 URL 修改为指定的 URL
-window.location.assign("http://www.example.com/newpage.html");
+window.location.assign('http://www.example.com/newpage.html');
 ```
 
 在上面的代码中，我们使用了 `window.location.reload()` 方法来重新加载当前页面，使用了 `window.location.replace()` 方法和 `window.location.assign()` 方法来修改当前页面的 URL。

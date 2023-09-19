@@ -9,13 +9,13 @@ Event Loop 开始时，会从全局代码开始，一行一行执行，遇到函
 ```javascript
 // 2, 1, 3
 function func1() {
-	console.log(1);
+  console.log(1);
 }
 
 function func2() {
-	console.log(2);
-	func1();
-	console.log(3);
+  console.log(2);
+  func1();
+  console.log(3);
 }
 
 func2();
@@ -37,15 +37,15 @@ JavaScript 中的异步操作比如(fetch)、事件回调、setTimeout、setInte
 ```javascript
 // 1, 3, 2
 function func1() {
-	console.log(1);
+  console.log(1);
 }
 
 function func2() {
-	setTimeout(() => {
-		console.log(2);
-	}, 0);
-	func1();
-	console.log(3);
+  setTimeout(() => {
+    console.log(2);
+  }, 0);
+  func1();
+  console.log(3);
 }
 
 func2();
@@ -59,21 +59,21 @@ func2();
 
 ```javascript
 var p = new Promise((resolve) => {
-	console.log(4);
-	resolve(5);
+  console.log(4);
+  resolve(5);
 });
 
 function func1() {
-	console.log(1);
+  console.log(1);
 }
 
 function func2() {
-	setTimeout(() => {
-		console.log(2);
-	});
-	func1();
-	console.log(3);
-	p.then((resolved) => console.log(resolved));
+  setTimeout(() => {
+    console.log(2);
+  });
+  func1();
+  console.log(3);
+  p.then((resolved) => console.log(resolved));
 }
 func2();
 ```

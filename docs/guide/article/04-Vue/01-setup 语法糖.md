@@ -9,9 +9,7 @@ Vue setup script 进一步简化了 vue composition api 的代码，不用每次
 首先是 `<script />` 标签加上了 setup 属性，它里边的代码可以直接视为在 `setup()` 函数中编写的，同时，import 语句也可以使用，仍然需要放在最上方。
 
 ```javascript
-<script setup>
-	import SomeComponent from "./components/SomeComponent.vue";
-</script>
+<script setup>import SomeComponent from "./components/SomeComponent.vue";</script>
 ```
 
 在 script setup 里边定义的变量、函数和导入的模块可以直接在 <template /> 模板中使用：
@@ -29,14 +27,14 @@ Vue setup script 进一步简化了 vue composition api 的代码，不用每次
 其实它编译后的代码类似于这样：
 
 ```javascript
-import SomeComponent from "./components/SomeComponent.vue";
+import SomeComponent from './components/SomeComponent.vue';
 function setup() {
-	const msg = "hello";
-	return () => {
-		// <template /> 的作用域相当于在这里
-		// 可以访问 msg
-		return h(SomeComponent, msg);
-	};
+  const msg = 'hello';
+  return () => {
+    // <template /> 的作用域相当于在这里
+    // 可以访问 msg
+    return h(SomeComponent, msg);
+  };
 }
 ```
 
@@ -71,9 +69,7 @@ function setup() {
 使用 script setup 也不能通过访问 setup 函数中的 context 参数来触发事件，这时可以用 defineEmit 来实现，它接收一个数组作为参数，定义当前组件将会触发的自定义事件：
 
 ```javascript
-<script setup>
-	import {defineEmit} from "vue"; const emit = defineEmit(['click', 'change'])
-</script>
+<script setup>import {defineEmit} from "vue"; const emit = defineEmit(['click', 'change'])</script>
 ```
 
 最后，就可以使用返回的 emit 触发事件了：
@@ -90,7 +86,7 @@ function setup() {
 
 ```javascript
 <script setup>
-	import {useContext} from "vue"; const {(slots, attrs)} = useContext()
+  import {useContext} from "vue"; const {(slots, attrs)} = useContext()
 </script>
 ```
 

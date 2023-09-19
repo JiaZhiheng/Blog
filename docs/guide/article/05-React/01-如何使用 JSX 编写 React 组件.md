@@ -46,7 +46,7 @@ JSX 与 HTML 虽然极其相似，但也有一些不同之处。首先，JSX 中
 
 ```tsx
 function Greeting() {
-	return <h1>Hello, Zhang San!</h1>;
+  return <h1>Hello, Zhang San!</h1>;
 }
 ```
 
@@ -58,14 +58,14 @@ function Greeting() {
 
 ```tsx
 function TodoList() {
-	const todos = [
-		{ id: 1, text: "Learn React" },
-		{ id: 2, text: "Build a React app" },
-		{ id: 3, text: "Deploy to production" },
-	];
+  const todos = [
+    { id: 1, text: 'Learn React' },
+    { id: 2, text: 'Build a React app' },
+    { id: 3, text: 'Deploy to production' }
+  ];
 
-	const listItems = todos.map((todo) => <li key={todo.id}>{todo.text}</li>);
-	return <ul>{listItems}</ul>;
+  const listItems = todos.map((todo) => <li key={todo.id}>{todo.text}</li>);
+  return <ul>{listItems}</ul>;
 }
 ```
 
@@ -77,12 +77,12 @@ function TodoList() {
 
 ```tsx
 function Greeting() {
-	const isLoggedIn = false;
-	if (isLoggedIn) {
-		return <h1>欢迎回来!</h1>;
-	} else {
-		return <h1>请登录</h1>;
-	}
+  const isLoggedIn = false;
+  if (isLoggedIn) {
+    return <h1>欢迎回来!</h1>;
+  } else {
+    return <h1>请登录</h1>;
+  }
 }
 ```
 
@@ -92,8 +92,8 @@ function Greeting() {
 
 ```tsx
 function Greeting(props) {
-	const isLoggedIn = true;
-	return <div>{isLoggedIn ? <h1>欢迎回来!</h1> : <h1>请登录</h1>}</div>;
+  const isLoggedIn = true;
+  return <div>{isLoggedIn ? <h1>欢迎回来!</h1> : <h1>请登录</h1>}</div>;
 }
 ```
 
@@ -103,10 +103,10 @@ function Greeting(props) {
 
 ```tsx
 function Button() {
-	function handleClick(e) {
-		console.log("点击了按钮");
-	}
-	return <button onClick={handleClick}>按钮</button>;
+  function handleClick(e) {
+    console.log('点击了按钮');
+  }
+  return <button onClick={handleClick}>按钮</button>;
 }
 ```
 

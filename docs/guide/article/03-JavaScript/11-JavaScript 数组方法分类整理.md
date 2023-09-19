@@ -77,7 +77,7 @@ arr.reduceRight((arr, curr) => arr + curr, 0);
 /* --- 类型转换 --- */
 
 // 使用逗号分隔符转换为字符串，结果: "0, 0, 1, 2, 3, 4"
-arr.join(", ");
+arr.join(', ');
 
 // 转换为区域特定字符串
 arr.toLocaleString();
@@ -94,5 +94,5 @@ arr.some((val) => val > 0);
 arr.flat();
 
 // 映射然后展平，结果: [0, 0, 2, 4, 6, 8]
-arr.flatMap(x => x * 2);
+arr.flatMap((x) => x * 2);
 ```

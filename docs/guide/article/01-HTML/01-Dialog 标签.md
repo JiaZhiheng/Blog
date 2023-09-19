@@ -8,8 +8,8 @@
 
 ```html
 <dialog>
-	<h1>Welcome!</h1>
-	<p>This is a simple dialog</p>
+  <h1>Welcome!</h1>
+  <p>This is a simple dialog</p>
 </dialog>
 ```
 
@@ -17,38 +17,38 @@
 
 ```css
 body {
-	box-sizing: border-box;
-	padding: 0;
-	margin: 0;
-	font-family: Verdana, "PingFang SC", "Microsoft Yahei", sans-serif;
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  font-family: Verdana, 'PingFang SC', 'Microsoft Yahei', sans-serif;
 }
 
 main {
-	display: grid;
-	place-items: center;
-	height: 100vh;
-	background-color: hsl(0deg, 0%, 98%);
+  display: grid;
+  place-items: center;
+  height: 100vh;
+  background-color: hsl(0deg, 0%, 98%);
 }
 
 form {
-	display: grid;
-	gap: 24px;
-	justify-content: end;
+  display: grid;
+  gap: 24px;
+  justify-content: end;
 }
 
 input {
-	padding: 12px;
-	font-size: 14px;
-	outline: none;
+  padding: 12px;
+  font-size: 14px;
+  outline: none;
 }
 
 button {
-	border: none;
-	border-radius: 4px;
-	color: white;
-	font-weight: bold;
-	background: linear-gradient(45deg, hsl(218, 100%, 50%), hsl(187, 100%, 51%));
-	padding: 12px 24px;
+  border: none;
+  border-radius: 4px;
+  color: white;
+  font-weight: bold;
+  background: linear-gradient(45deg, hsl(218, 100%, 50%), hsl(187, 100%, 51%));
+  padding: 12px 24px;
 }
 ```
 
@@ -56,8 +56,8 @@ button {
 
 ```html
 <dialog open>
-	<h1>Welcome!</h1>
-	<p>This is a simple dialog</p>
+  <h1>Welcome!</h1>
+  <p>This is a simple dialog</p>
 </dialog>
 ```
 
@@ -65,11 +65,11 @@ button {
 
 ```html
 <dialog open>
-	<h1>Welcome!</h1>
-	<p>This is a simple dialog</p>
-	<form method="dialog">
-		<button>Close</button>
-	</form>
+  <h1>Welcome!</h1>
+  <p>This is a simple dialog</p>
+  <form method="dialog">
+    <button>Close</button>
+  </form>
 </dialog>
 ```
 
@@ -79,10 +79,10 @@ button {
 
 ```css
 dialog {
-	border: none;
-	border-radius: 8px;
-	padding: 24px 32px;
-	box-shadow: 0 0 48px hsl(0deg, 0%, 0%, 0.1);
+  border: none;
+  border-radius: 8px;
+  padding: 24px 32px;
+  box-shadow: 0 0 48px hsl(0deg, 0%, 0%, 0.1);
 }
 ```
 
@@ -114,11 +114,11 @@ dialog {
 - 之后给按钮添加点击事件，调用 dialog 实例的 showModal() 方法，打开一个模态的对话框，也就是带有背景遮罩，且其他区域不可点击，也可以调用 show() 方法打开一个非模态的对话框。
 
 ```javascript
-const dialog = document.getElementById("dialog");
-const showDialogBtn = document.getElementById("showDialog");
+const dialog = document.getElementById('dialog');
+const showDialogBtn = document.getElementById('showDialog');
 
-showDialogBtn.addEventListener("click", () => {
-	dialog.showModal();
+showDialogBtn.addEventListener('click', () => {
+  dialog.showModal();
 });
 ```
 
@@ -126,7 +126,7 @@ showDialogBtn.addEventListener("click", () => {
 
 ```css
 dialog::backdrop {
-	background-color: hsl(0deg, 0%, 0%, 0.3);
+  background-color: hsl(0deg, 0%, 0%, 0.3);
 }
 ```
 
@@ -140,15 +140,15 @@ dialog::backdrop {
 
 ```html
 <dialog id="dialog">
-	<h1>Register</h1>
-	<form method="dialog">
-		<input type="text" name="username" placeholder="username" />
-		<input type="password" name="password" placeholder="password" />
-		<div>
-			<button value="cancel">Cancel</button>
-			<button value="ok">OK</button>
-		</div>
-	</form>
+  <h1>Register</h1>
+  <form method="dialog">
+    <input type="text" name="username" placeholder="username" />
+    <input type="password" name="password" placeholder="password" />
+    <div>
+      <button value="cancel">Cancel</button>
+      <button value="ok">OK</button>
+    </div>
+  </form>
 </dialog>
 ```
 
@@ -163,8 +163,8 @@ dialog::backdrop {
 当点击按钮关闭对话框时，可以监听对话框的 close 事件，在里边可以获得点击的按钮的 value 属性值，用于判断是点击了哪个按钮，或者其它自定义的功能逻辑。 在 index.js 中，我们监听 dialog 的 close 事件，然后 console.log 打印一下 dialog 示例的 returnValue 属性：
 
 ```javascript
-dialog.addEventListener("close", () => {
-	console.log(dialog.returnValue);
+dialog.addEventListener('close', () => {
+  console.log(dialog.returnValue);
 });
 ```
 

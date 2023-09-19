@@ -10,18 +10,18 @@
 
 ```typescript
 class Button {
-	public name: string;
-	constructor(name: string) {
-		this.name = name;
-	}
+  public name: string;
+  constructor(name: string) {
+    this.name = name;
+  }
 
-	public onClick() {
-		console.log("处理点击事件...");
-	}
+  public onClick() {
+    console.log('处理点击事件...');
+  }
 
-	public render() {
-		console.log(`<Button>${this.name}</Button>`);
-	}
+  public render() {
+    console.log(`<Button>${this.name}</Button>`);
+  }
 }
 ```
 
@@ -34,12 +34,12 @@ class Button {
 
 ```typescript
 class Link extends Button {
-	public render() {
-		console.log(`<a href="">${this.name}</a>`);
-	}
+  public render() {
+    console.log(`<a href="">${this.name}</a>`);
+  }
 }
 
-const link = new Link("点击跳转");
+const link = new Link('点击跳转');
 //处理点击事件...
 link.onClick();
 // <a href="">点击跳转</a>
@@ -59,19 +59,19 @@ link.render();
 
 ```typescript
 class Link extends Button {
-	private href: string;
+  private href: string;
 
-	constructor(name: string, href: string) {
-		super(name);
-		this.href = href;
-	}
+  constructor(name: string, href: string) {
+    super(name);
+    this.href = href;
+  }
 
-	public render() {
-		console.log(`<a href="${this.href}">${this.name}</a>`);
-	}
+  public render() {
+    console.log(`<a href="${this.href}">${this.name}</a>`);
+  }
 }
 
-const link = new Link("点击跳转", "https://www.bilibili.com");
+const link = new Link('点击跳转', 'https://www.bilibili.com');
 // <a href="https://www.bilibili.com">点击跳转</a>
 link.render();
 ```
@@ -82,17 +82,17 @@ link.render();
 
 ```typescript
 class Button {
-	public name: string;
-	private shape: string = "rectanglar";
-	// ...
+  public name: string;
+  private shape: string = 'rectanglar';
+  // ...
 }
 
 class Link extends Button {
-	// ...
-	public render() {
-		//Property 'shape' is private and only accessible within class 'Button'.ts(2341)
-		console.log(`<a href="${this.href}" shape=${this.shape}>${this.name}</a>`);
-	}
+  // ...
+  public render() {
+    //Property 'shape' is private and only accessible within class 'Button'.ts(2341)
+    console.log(`<a href="${this.href}" shape=${this.shape}>${this.name}</a>`);
+  }
 }
 ```
 
@@ -100,23 +100,23 @@ public 和 protected 修饰的属性和方法都能够被子类访问，public �
 
 ```typescript
 class Button {
-	public name: string;
-	protected shape: string = "rectangular";
-	// ...
+  public name: string;
+  protected shape: string = 'rectangular';
+  // ...
 }
 
 class Link extends Button {
-	// ...
-	public render() {
-		console.log(`<a href="${this.href}" shape=${this.shape}>${this.name}</a>`);
-	}
+  // ...
+  public render() {
+    console.log(`<a href="${this.href}" shape=${this.shape}>${this.name}</a>`);
+  }
 }
 
-const button = new Button("按钮");
+const button = new Button('按钮');
 // Property 'shape' is protected and only accessible within class 'Button' and its subclasses.ts(2445)
 button.shape;
 
-const link = new Link("点击跳转", "https://www.bilibili.com");
+const link = new Link('点击跳转', 'https://www.bilibili.com');
 // <a href="https://www.bilibili.com" shape=rectangular>点击跳转</a>
 link.render();
 ```
@@ -127,21 +127,21 @@ link.render();
 
 ```typescript
 class Button {
-	// ...
-	public onClick() {
-		console.log("处理点击事件...");
-	}
+  // ...
+  public onClick() {
+    console.log('处理点击事件...');
+  }
 }
 
 class Link extends Button {
-	// ...
-	public onClick() {
-		super.onClick();
-		console.log("事件处理完毕，开始跳转...");
-	}
+  // ...
+  public onClick() {
+    super.onClick();
+    console.log('事件处理完毕，开始跳转...');
+  }
 }
 
-const link = new Link("点击跳转", "https://www.bilibili.com");
+const link = new Link('点击跳转', 'https://www.bilibili.com');
 // 处理点击事件...
 // 事件处理完毕，开始跳转...
 link.onClick();

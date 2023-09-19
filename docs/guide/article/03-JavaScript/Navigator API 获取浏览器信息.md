@@ -18,8 +18,8 @@ console.log(navigator.userAgent);
 
 ```javascript
 navigator.geolocation.getCurrentPosition(function (position) {
-	console.log("Latitude: " + position.coords.latitude);
-	console.log("Longitude: " + position.coords.longitude);
+  console.log('Latitude: ' + position.coords.latitude);
+  console.log('Longitude: ' + position.coords.longitude);
 });
 ```
 
@@ -29,13 +29,13 @@ navigator.geolocation.getCurrentPosition(function (position) {
 
 ```javascript
 navigator.mediaDevices
-	.getUserMedia({ audio: true, video: true })
-	.then(function (stream) {
-		console.log("Got media stream:", stream);
-	})
-	.catch(function (error) {
-		console.error("Error accessing media devices:", error);
-	});
+  .getUserMedia({ audio: true, video: true })
+  .then(function (stream) {
+    console.log('Got media stream:', stream);
+  })
+  .catch(function (error) {
+    console.error('Error accessing media devices:', error);
+  });
 ```
 
 ### navigator.serviceWorker 注册 Service Worker
@@ -44,13 +44,13 @@ navigator.mediaDevices
 
 ```javascript
 navigator.serviceWorker
-	.register("/sw.js")
-	.then(function (registration) {
-		console.log("Service worker registered:", registration);
-	})
-	.catch(function (error) {
-		console.error("Error registering service worker:", error);
-	});
+  .register('/sw.js')
+  .then(function (registration) {
+    console.log('Service worker registered:', registration);
+  })
+  .catch(function (error) {
+    console.error('Error registering service worker:', error);
+  });
 ```
 
 ### navigator.platform 获取操作系统平台
@@ -74,7 +74,7 @@ console.log(navigator.language);
 这是一个只读属性，它可以告诉你当前设备是否联网。
 
 ```javascript
-console.log(navigator.onLine ? "online" : "offline");
+console.log(navigator.onLine ? 'online' : 'offline');
 ```
 
 这个属性可以帮助我们在用户断网的情况下提供更好的体验，例如当用户断网时，我们可以提示用户检查网络连接，或者从缓存中加载数据等。

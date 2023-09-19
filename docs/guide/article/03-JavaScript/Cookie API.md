@@ -9,7 +9,7 @@ Cookie 是一个小型的文本文件，它存储在用户的计算机上，并�
 下面是一个简单的示例，展示如何创建一个 Cookie：
 
 ```javascript
-document.cookie = "name=value; expires=Thu, 01 Jan 2099 00:00:00 UTC; path=/";
+document.cookie = 'name=value; expires=Thu, 01 Jan 2099 00:00:00 UTC; path=/';
 ```
 
 在这个示例中，我们使用 `document.cookie` 属性来创建一个名为 `name`，值为 `value` 的 Cookie。`expires` 属性用于设置 Cookie 的过期时间，`path` 属性用于指定 Cookie 的作用域。在这个示例中，我们将 Cookie 的过期时间设置为 2099 年 1 月 1 日，作用域为整个网站。
@@ -22,17 +22,17 @@ document.cookie = "name=value; expires=Thu, 01 Jan 2099 00:00:00 UTC; path=/";
 
 ```javascript
 function getCookie(name) {
-	const cookies = document.cookie.split("; ");
-	for (const cookie of cookies) {
-		const [cookieName, cookieValue] = cookie.split("=");
-		if (cookieName === name) {
-			return cookieValue;
-		}
-	}
-	return null;
+  const cookies = document.cookie.split('; ');
+  for (const cookie of cookies) {
+    const [cookieName, cookieValue] = cookie.split('=');
+    if (cookieName === name) {
+      return cookieValue;
+    }
+  }
+  return null;
 }
 
-const name = getCookie("name");
+const name = getCookie('name');
 ```
 
 在这个示例中，我们首先定义了一个 `getCookie()` 函数，它接受一个参数 `name`，用于指定要读取的 Cookie 的名称。在函数内部，我们使用 `document.cookie` 属性来获取当前文档中所有的 Cookie 信息，并使用 `split()` 方法将字符串分割成一个个的 Cookie。然后，使用 `split()` 方法将每个 Cookie 分割成名称和值，并使用 `for...of` 循环来遍历每个 Cookie。在遍历过程中，如果找到了指定名称的 Cookie，就返回它的值。如果没有找到指定名称的 Cookie，就返回 `null`。
@@ -42,7 +42,7 @@ const name = getCookie("name");
 在 JavaScript 中，我们可以通过将 Cookie 的过期时间设置为过去的时间来删除 Cookie。下面是一个示例，展示如何删除名为 `name` 的 Cookie：
 
 ```javascript
-document.cookie = "name=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+document.cookie = 'name=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
 ```
 
 在这个示例中，我们将 Cookie 的过期时间设置为 1970 年 1 月 1 日，这意味着这个 Cookie 已经过期，浏览器会自动删除它。

@@ -19,8 +19,7 @@ Jest 是用于测试 JavaScript 应用程序的框架，由 Meta，也就是 Fac
 - 单元测试，最简单的测试，经常用于测试单个函数，例如一个组件，给它特定的参数能返回特定的结果。
 - 集成测试，比单元测试更复杂，需要处理依赖关系，例如某个功能涉及多个函数调用。
 - 端到端测试，测试程序和用户交互的流程，例如输入文本，得到预期的结果。
-- UI 测试，属于前端重点的测试，用于测试页面视图显示正常，功能正确，并且性能符合预期，多数属于人工测试。
-  等等。
+- UI 测试，属于前端重点的测试，用于测试页面视图显示正常，功能正确，并且性能符合预期，多数属于人工测试。等等。
 
 ### 为什么使用 Jest
 
@@ -40,7 +39,7 @@ yarn add --dev jest
 
 ```javascript
 function sum(a, b) {
-	return a + b;
+  return a + b;
 }
 
 module.exports = sum;
@@ -49,10 +48,10 @@ module.exports = sum;
 sum.test.js，导入 sum，使用 test 函数，第 1 个参数编写测试描述，第二个参数编写测试代码。expect() 用于执行 JS 表达式，之后可以调用它内置的判断方法来检测结果，例如 toBe() 判断是否相等：
 
 ```javascript
-const sum = require("./sum");
+const sum = require('./sum');
 
-test("1 + 2 = 3", () => {
-	expect(sum(1, 2)).toBe(3);
+test('1 + 2 = 3', () => {
+  expect(sum(1, 2)).toBe(3);
 });
 ```
 
@@ -76,7 +75,7 @@ addToArray.js：
 
 ```javascript
 function addToArray(arr, ...args) {
-	arr.push(...args);
+  arr.push(...args);
 }
 module.exports = addToArray;
 ```
@@ -88,14 +87,14 @@ addToArray.test.js:
 - 可以连续使用，例如 .not.toBe，不相等
 
 ```javascript
-const addToArray = require("./addToArray");
+const addToArray = require('./addToArray');
 
-test("添加元素 4, 5, 6 到数组 [1, 2, 3] 中", () => {
-	const arr = [1, 2, 3];
-	addToArray(arr, 4, 5, 6);
-	// expect(arr).toBe([1, 2, 3, 4, 5, 6]);
-	// expect(arr).toEqual([1, 2, 3, 4, 5, 6]);
-	expect(arr).not.toEqual([1, 2, 3]);
+test('添加元素 4, 5, 6 到数组 [1, 2, 3] 中', () => {
+  const arr = [1, 2, 3];
+  addToArray(arr, 4, 5, 6);
+  // expect(arr).toBe([1, 2, 3, 4, 5, 6]);
+  // expect(arr).toEqual([1, 2, 3, 4, 5, 6]);
+  expect(arr).not.toEqual([1, 2, 3]);
 });
 ```
 
@@ -105,7 +104,7 @@ test("添加元素 4, 5, 6 到数组 [1, 2, 3] 中", () => {
 
 ```javascript
 function map(arr, cb) {
-	return arr.map(cb);
+  return arr.map(cb);
 }
 
 module.exports = map;
@@ -168,8 +167,8 @@ describe("测试 map 回调函数执行情况", () => {
 运行之后会在命令行显示覆盖率，我们这里是 100% 覆盖了，同时它也会生成网页版的结果，可以在生成的 coverage 目录里找到。 这时，我们修改一下 sum.test.js，去掉 sum 函数的导入和调用：
 
 ```javascript
-test("1 + 2 = 3", () => {
-	expect(1 + 1).toBe(2);
+test('1 + 2 = 3', () => {
+  expect(1 + 1).toBe(2);
 });
 ```
 

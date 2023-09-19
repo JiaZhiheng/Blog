@@ -9,21 +9,21 @@
 ```typescript
 // Button
 class Button {
-	protected name: string;
-	constructor(name: string) {
-		this.name = name;
-	}
-	public render() {
-		console.log(`<Button>${this.name}</Button>`);
-	}
-	// 其它代码
+  protected name: string;
+  constructor(name: string) {
+    this.name = name;
+  }
+  public render() {
+    console.log(`<Button>${this.name}</Button>`);
+  }
+  // 其它代码
 }
 
 // LinkButton
 class LinkButton extends Button {
-	public render() {
-		console.log(`<a>${this.name}</a>`);
-	}
+  public render() {
+    console.log(`<a>${this.name}</a>`);
+  }
 }
 ```
 
@@ -35,7 +35,7 @@ class LinkButton extends Button {
 - 后边渲染的时候，因为知道子类会继承父类的方法，所以可以直接调用 render 方法来渲染组件：
 
 ```typescript
-let comps: Array<Button> = [new Button("普通按钮"), new LinkButton("链接按钮")];
+let comps: Array<Button> = [new Button('普通按钮'), new LinkButton('链接按钮')];
 
 // <Button>普通按钮</Button>
 // <a>链接按钮</a>
@@ -46,17 +46,17 @@ comps.forEach((comp) => comp.render());
 
 ```typescript
 class Image {
-	public render() {
-		console.log(`<img />`);
-	}
-	// other methods
+  public render() {
+    console.log(`<img />`);
+  }
+  // other methods
 }
 
 let comps: Array<Button> = [
-	new Button("普通按钮"),
-	new LinkButton("链接按钮"),
-	// Error: Property 'name' is missing in type 'Image' but required in type 'Button'.
-	new Image(),
+  new Button('普通按钮'),
+  new LinkButton('链接按钮'),
+  // Error: Property 'name' is missing in type 'Image' but required in type 'Button'.
+  new Image()
 ];
 ```
 
@@ -70,7 +70,7 @@ let comps: Array<Button> = [
 
 ```typescript
 interface Renderable {
-	render(): void;
+  render(): void;
 }
 ```
 
@@ -78,10 +78,10 @@ interface Renderable {
 
 ```typescript
 class Image implements Renderable {
-	public render() {
-		console.log(`<img />`);
-	}
-	// other methods
+  public render() {
+    console.log(`<img />`);
+  }
+  // other methods
 }
 ```
 
@@ -90,11 +90,7 @@ class Image implements Renderable {
 - 接着再调用它们里边的 render 方法，就都能够正常渲染了。
 
 ```typescript
-let comps: Array<Renderable> = [
-	new Button("普通按钮"),
-	new LinkButton("链接按钮"),
-	new Image(),
-];
+let comps: Array<Renderable> = [new Button('普通按钮'), new LinkButton('链接按钮'), new Image()];
 
 comps.forEach((comp) => comp.render());
 ```

@@ -17,8 +17,7 @@ HTTPS 通信的加密是使用 TLS 协议实现的。在客户端和服务器正
   3. 最后发送 ServerHelloDone 消息
 - 浏览器接收消息后验证服务器证书是否为受信任的证书机构(CA)签发的，是否是真实的服务器（认证），之后使用证书附带的公钥生成 premaster secret， 作为 ClientKeyExchange - 消息体发送给服务器
 - 服务器收到后使用私钥解密 premaster secret
-- 随后浏览器和服务器使用 premaster secret 和之前生成的服务器+浏览器全部随机数生成相同的 master key，用于加密和解密后续所有的通信
-  浏览器
+- 随后浏览器和服务器使用 premaster secret 和之前生成的服务器+浏览器全部随机数生成相同的 master key，用于加密和解密后续所有的通信浏览器
   1. 发送 ChangeCipherSpec 消息
   2. 然后发送使用 master key 加密的 finished 消息
 - 服务器接收并验证，然后同样给浏览器发送 ChangeCipherSpec 消息和使用 master key 加密的 finished 消息，浏览器接收并验证

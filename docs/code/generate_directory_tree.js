@@ -1,5 +1,5 @@
-import fs from "fs";
-import path from "path";
+import fs from 'fs';
+import path from 'path';
 
 // 该文件夹下的文件夹和文件不输出
 const IGNORED_DIRECTORIES = [
@@ -15,41 +15,36 @@ const IGNORED_DIRECTORIES = [
   'util',
   'algorithm',
   'sort',
-  "01-HTML",
-  "02-CSS",
-  "03-JavaScript",
-  "04-Vue",
-  "05-React",
-  "06-Node.js",
-  "07-构建工具",
-  "08-单元测试",
-  "09-设计模式",
-  "10-计算机网络",
-  "11-浏览器原理",
-  "12-数据结构与算法",
+  '01-HTML',
+  '02-CSS',
+  '03-JavaScript',
+  '04-Vue',
+  '05-React',
+  '06-Node.js',
+  '07-构建工具',
+  '08-单元测试',
+  '09-设计模式',
+  '10-计算机网络',
+  '11-浏览器原理',
+  '12-数据结构与算法',
   'material',
   'project',
   'work',
   'document',
   'features',
-  'project',
+  'project'
 ];
 
-function generateDirectoryTree(
-  dirPath,
-  indent = "",
-  isLast = true,
-  parentIgnored = false
-) {
+function generateDirectoryTree(dirPath, indent = '', isLast = true, parentIgnored = false) {
   const stats = fs.statSync(dirPath);
-  const prefix = isLast ? "└─ " : "├─ ";
+  const prefix = isLast ? '└─ ' : '├─ ';
   const dirName = path.basename(dirPath);
   const isIgnored = IGNORED_DIRECTORIES.includes(dirName);
 
-  if (dirName !== "Blog" && dirName !== ".DS_Store") {
-    const symbol = stats.isDirectory() ? "📁 " : "📄 ";
+  if (dirName !== 'Blog' && dirName !== '.DS_Store') {
+    const symbol = stats.isDirectory() ? '📁 ' : '📄 ';
     console.log(`${indent}${prefix}${symbol}${dirName}`);
-  } else if (dirName === "Blog") {
+  } else if (dirName === 'Blog') {
     console.log(`${indent}${dirName}`);
   }
 
@@ -64,7 +59,7 @@ function generateDirectoryTree(
 
     // 分离文件夹和文件
     for (const file of files) {
-      if (file !== ".DS_Store") {
+      if (file !== '.DS_Store') {
         const filePath = path.join(dirPath, file);
         const fileStats = fs.statSync(filePath);
         if (fileStats.isDirectory()) {
@@ -79,31 +74,21 @@ function generateDirectoryTree(
     for (let i = 0; i < directories.length; i++) {
       const directory = directories[i];
       const isLastItem = i === directories.length - 1;
-      const subIndent = isLast ? "   " : "│  ";
+      const subIndent = isLast ? '   ' : '│  ';
       const nextParentIgnored = parentIgnored || isIgnored;
-      generateDirectoryTree(
-        directory,
-        `${indent}${subIndent}`,
-        isLastItem,
-        nextParentIgnored
-      );
+      generateDirectoryTree(directory, `${indent}${subIndent}`, isLastItem, nextParentIgnored);
     }
 
     // 再输出文件
     for (let i = 0; i < filesList.length; i++) {
       const file = filesList[i];
       const isLastItem = i === filesList.length - 1;
-      const subIndent = isLast ? "   " : "│  ";
+      const subIndent = isLast ? '   ' : '│  ';
       const nextParentIgnored = parentIgnored || isIgnored;
-      generateDirectoryTree(
-        file,
-        `${indent}${subIndent}`,
-        isLastItem,
-        nextParentIgnored
-      );
+      generateDirectoryTree(file, `${indent}${subIndent}`, isLastItem, nextParentIgnored);
     }
   }
 }
 
-const targetDirectory = "../../../Blog";
+const targetDirectory = '../../../Blog';
 generateDirectoryTree(targetDirectory);

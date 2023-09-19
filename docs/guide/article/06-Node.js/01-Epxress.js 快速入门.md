@@ -22,16 +22,14 @@ npm install express
 
 ```javascript
 // 1. 首先引入 express 库：
-const express = require("express");
+const express = require('express');
 // 2. 创建 express 的实例，代表服务器
 const app = express();
 // 3. 设置监听端口
 const port = 3000;
 
 // 4. 调用 app.listen 来启动 server 并监听指定端口，启动成功后打印出 log
-app.listen(port, () =>
-	console.log(`Express server listening at http://localhost:${port}`)
-);
+app.listen(port, () => console.log(`Express server listening at http://localhost:${port}`));
 ```
 
 编写完毕之后，使用命令：
@@ -58,9 +56,9 @@ Cannot GET /
 // 1. 调用 app 中的 get 方法
 // 第一个参数是请求的路径，这里处理根路径的请求，
 // 第二个参数是处理请求的回调函数，参数分别为请求和响应对象
-app.get("/", (req, res) => {
-	// 在回调函数里，调用响应对象的 send 方法，发送响应给客户端
-	res.send("Hello World!");
+app.get('/', (req, res) => {
+  // 在回调函数里，调用响应对象的 send 方法，发送响应给客户端
+  res.send('Hello World!');
 });
 ```
 
@@ -81,9 +79,9 @@ app.use(express.json());
 添加之后，使用 app.post()方法创建 post 服务：
 
 ```javascript
-app.post("/", (req, res) => {
-	console.log("收到请求体：", req.body);
-	res.status(201).send();
+app.post('/', (req, res) => {
+  console.log('收到请求体：', req.body);
+  res.status(201).send();
 });
 ```
 
@@ -101,7 +99,7 @@ https://www.postman.com/downloads/
 
 ```json
 {
-	"name": "jehan"
+  "name": "jehan"
 }
 ```
 
@@ -114,14 +112,14 @@ PUT 是用来更新服务器上的资源的，一般需要知道已经存在的�
 ```javascript
 // 路径后面的:id 的意思是，根路径后边的值都会作为请求的参数
 // 并且赋给名为 id 的变量，（如：http://localhost:3000/3, id 的值就为 3）
-app.put("/:id", (req, res) => {
-	// 打印一下请求参数的值，req.params.id
-	console.log("收到请求参数，id 为：", req.params.id);
-	// 再打印一下请求体
-	console.log("收到请求体：", req.body);
+app.put('/:id', (req, res) => {
+  // 打印一下请求参数的值，req.params.id
+  console.log('收到请求参数，id 为：', req.params.id);
+  // 再打印一下请求体
+  console.log('收到请求体：', req.body);
 
-	// 返回响应，默认是 200
-	res.send();
+  // 返回响应，默认是 200
+  res.send();
 });
 ```
 
@@ -133,7 +131,7 @@ app.put("/:id", (req, res) => {
 
 ```json
 {
-	"name": "John"
+  "name": "John"
 }
 ```
 
@@ -145,10 +143,10 @@ DELETE 用于删除服务器中的资源，跟 PUT 一样，也需要标识。
 
 ```javascript
 // 这里我们用 app.delete 方法，最后返回 204 状态码，代表已删除
-app.delete("/:id", (req, res) => {
-	console.log("收到请求参数，id 为：", req.params.id);
+app.delete('/:id', (req, res) => {
+  console.log('收到请求参数，id 为：', req.params.id);
 
-	res.status(204).send();
+  res.status(204).send();
 });
 ```
 
@@ -161,7 +159,7 @@ app.delete("/:id", (req, res) => {
 在项目根目录下创建一个 routes 文件夹，然后在里边新建一个 post.js 文件，在里边我们导入 express 然后创建一个 Router()实例，用于处理子路由：
 
 ```javascript
-var express = require("express");
+var express = require('express');
 
 var route = express.Router();
 ```
@@ -169,64 +167,64 @@ var route = express.Router();
 接下来把 app.js 中的四个请求处理代码复制过来：
 
 ```javascript
-app.get("/", (req, res) => {
-	res.send("Hello World!");
+app.get('/', (req, res) => {
+  res.send('Hello World!');
 });
 
-app.post("/", (req, res) => {
-	console.log("收到请求体：", req.body);
+app.post('/', (req, res) => {
+  console.log('收到请求体：', req.body);
 
-	res.status(201).send();
+  res.status(201).send();
 });
 
-app.put("/:id", (req, res) => {
-	console.log("收到请求参数，id 为：", req.params.id);
+app.put('/:id', (req, res) => {
+  console.log('收到请求参数，id 为：', req.params.id);
 
-	console.log("收到请求体：", req.body);
+  console.log('收到请求体：', req.body);
 
-	res.send();
+  res.send();
 });
 
-app.delete("/:id", (req, res) => {
-	console.log("收到请求参数，id 为：", req.params.id);
+app.delete('/:id', (req, res) => {
+  console.log('收到请求参数，id 为：', req.params.id);
 
-	res.status(204).send();
+  res.status(204).send();
 });
 ```
 
 把 app 改成 route，然后把日志文字稍微改一下，GET 请求中返回示例数据，再在 post 和 put 请求中，把创建或更新后的资源返回给客户端，以便后续使用：
 
 ```javascript
-route.get("/", (req, res) => {
-	res.send({
-		id: 1,
-		title: "express 入门教程",
-	});
+route.get('/', (req, res) => {
+  res.send({
+    id: 1,
+    title: 'express 入门教程'
+  });
 });
 
-route.post("/", (req, res) => {
-	console.log("保存文章：", req.body);
+route.post('/', (req, res) => {
+  console.log('保存文章：', req.body);
 
-	// 保存文章到数据库
+  // 保存文章到数据库
 
-	res.status(201).send({ id: 2, ...req.body });
+  res.status(201).send({ id: 2, ...req.body });
 });
 
-route.put("/:id", (req, res) => {
-	console.log("收到请求参数，文章 id 为：", req.params.id);
-	console.log("收到请求体，新的文章内容为：", req.body);
+route.put('/:id', (req, res) => {
+  console.log('收到请求参数，文章 id 为：', req.params.id);
+  console.log('收到请求体，新的文章内容为：', req.body);
 
-	// 更新数据库文章
+  // 更新数据库文章
 
-	res.send({ id: req.params.id, ...req.body });
+  res.send({ id: req.params.id, ...req.body });
 });
 
-route.delete("/:id", (req, res) => {
-	console.log("收到请求参数，文章 id 为：", req.params.id);
+route.delete('/:id', (req, res) => {
+  console.log('收到请求参数，文章 id 为：', req.params.id);
 
-	// 删除数据库文章
+  // 删除数据库文章
 
-	res.status(204).send();
+  res.status(204).send();
 });
 ```
 
@@ -239,9 +237,9 @@ module.exports = route;
 最后，在 app.js 中导入它，并挂载到"/post"子路由下：
 
 ```javascript
-const post = require("./routes/post");
+const post = require('./routes/post');
 
-app.use("/post", post);
+app.use('/post', post);
 ```
 
 重启服务， 这里测试一下 POST 请求，剩下的大家可以自行测试。打开 postman，在 url 中输入：
@@ -252,7 +250,7 @@ app.use("/post", post);
 
 ```json
 {
-	"title": "node.js 教程"
+  "title": "node.js 教程"
 }
 ```
 
@@ -263,16 +261,16 @@ app.use("/post", post);
 因为项目中可能包含多个子路由，为了不使 app.js 文件过于庞大，我们可以在 routes 下新建一个 index.js，用于统一处理路由的挂载，由它引入子路由，然后导出一个函数，接收 app 对象，挂载子路由：
 
 ```javascript
-const post = require("./post");
+const post = require('./post');
 
 module.exports = (app) => {
-	app.use("/post", post);
+  app.use('/post', post);
 };
 ```
 
 后面只需要在 app.js 中引入 routes 文件夹，然后调用这个函数即可：
 
 ```javascript
-const routes = require("./routes");
+const routes = require('./routes');
 routes(app);
 ```

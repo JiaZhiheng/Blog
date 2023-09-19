@@ -22,7 +22,7 @@ TypeScript 的基本类型跟 JavaScript 中的保持一致，有 boolean, numbe
 
 ```typescript
 let a = 10;
-a = "hello";
+a = 'hello';
 // error TS2322: Type '"hello"' is not assignable to type 'number'.
 ```
 
@@ -38,14 +38,14 @@ let b: boolean = true;
 
 ```typescript
 let a: any = 10;
-a = "hello";
+a = 'hello';
 ```
 
 类型也可以用在函数的参数和返回值中，比如定义一个加法函数，它接收一个参数 a，类型是 number，还接收参数 b，也是 number 类型，最后返回值类型也是 number，返回值的类型定义在参数列表的小括号后边，然后它的后边才是函数体，里边直接返回 a + b，返回值的类型可以省略，因为 typescript 可以根据 a+b 推断出它的返回值也是 number 类型：
 
 ```typescript
 function add(a: number, b: number): number {
-	return a + b;
+  return a + b;
 }
 ```
 
@@ -61,26 +61,23 @@ add(1, 2);
 let res: string = add(1, 2);
 ```
 
-提示：`Type 'number' is not assignable to type 'string'.` number 类型不能赋给 String 类型。
-如果给函数传递一个字符串进去：
+提示：`Type 'number' is not assignable to type 'string'.` number 类型不能赋给 String 类型。如果给函数传递一个字符串进去：
 
 ```typescript
-add("1", 2);
+add('1', 2);
 ```
 
-那么编译器就会提示`Argument of type '"1"' is not assignable to parameter of type 'number'`字符串"1"不能传给 number 类型的参数。
-另外调用函数时，必须传递跟参数列表数量相同的参数，不像 JS，可以不传或只传前边几个参数，这里如果只传一个参数的话：
+那么编译器就会提示`Argument of type '"1"' is not assignable to parameter of type 'number'`字符串"1"不能传给 number 类型的参数。另外调用函数时，必须传递跟参数列表数量相同的参数，不像 JS，可以不传或只传前边几个参数，这里如果只传一个参数的话：
 
 ```typescript
 add(1);
 ```
 
-会提示 `An argument for 'b' was not provided.` 没有给 b 传值。
-最后，如果函数不返回值的话，可以使用 void 类型代表函数没有返回值：
+会提示 `An argument for 'b' was not provided.` 没有给 b 传值。最后，如果函数不返回值的话，可以使用 void 类型代表函数没有返回值：
 
 ```typescript
 function printLog(log: string): void {
-	console.log(log);
+  console.log(log);
 }
 ```
 
@@ -90,7 +87,7 @@ function printLog(log: string): void {
 
 ```typescript
 let a: number | string = 10;
-a = "hello";
+a = 'hello';
 ```
 
 #### 类型别名
@@ -110,23 +107,23 @@ let a: NumStr = 10;
 同样也可以再定义一个 b 变量，给它一个字符串值：
 
 ```typescript
-let b: NumStr = "hello";
+let b: NumStr = 'hello';
 ```
 
 另外，组合类型也可以直接使用字面值来定义，这样就规定了一个变量的取值范围，比如我想让一个字符串类型的变量 c，只能取"on"或"off"两者之一，那么我们可以这样定义，在 c 后边直接使用"on" | "off" 来定义它能取的值：
 
 ```typescript
-let c: "on" | "off" = "on";
+let c: 'on' | 'off' = 'on';
 ```
 
 现在它的值是 on，如果给它赋值 off 是可以的，但是赋其他值就会出错，比如给它赋一个"other"字符串：
 
 ```typescript
-let c: "on" | "off" = "on";
+let c: 'on' | 'off' = 'on';
 
-c = "off";
+c = 'off';
 
-c = "other";
+c = 'other';
 ```
 
 提示 `error TS2322: Type '"other"' is not assignable to type '"on" | "off"'.` other 不能赋值给用 "on" 或 "off" 定义的类型里边。
@@ -137,8 +134,8 @@ c = "other";
 
 ```typescript
 interface Post {
-	title: string;
-	author: string;
+  title: string;
+  author: string;
 }
 ```
 
@@ -146,8 +143,8 @@ interface Post {
 
 ```typescript
 let post: Post = {
-	title: "标题",
-	author: "jehan",
+  title: '标题',
+  author: 'jehan'
 };
 ```
 
@@ -155,9 +152,9 @@ let post: Post = {
 
 ```typescript
 let post: Post = {
-	title: "标题",
-	author: "jehan",
-	publishDate: "2019-10-08",
+  title: '标题',
+  author: 'jehan',
+  publishDate: '2019-10-08'
 };
 ```
 
@@ -169,14 +166,14 @@ let post: Post = {
 
 ```typescript
 function getTitle(post: Post) {
-	console.log(post.title);
+  console.log(post.title);
 }
 ```
 
 然后定义一个 post 变量，不指定类型，然后还包括额外的 publishDate 属性:
 
 ```typescript
-let post = { title: "标题", author: "jehan", publishDate: "2019-10-08" };
+let post = { title: '标题', author: 'jehan', publishDate: '2019-10-08' };
 ```
 
 定义好之后把它传给 getTitle 函数，发现没有问题：
@@ -188,13 +185,13 @@ getTitle(post);
 如果想严格检查对象参数的话，可以像之前那样把 post 变量定义为 Post 接口类型的：
 
 ```typescript
-let post: Post = { title: "标题", author: "fh", publishDate: "2019-10-08" };
+let post: Post = { title: '标题', author: 'fh', publishDate: '2019-10-08' };
 ```
 
 或者直接给函数传递对象字面值：
 
 ```typescript
-getTitle({ title: "标题", author: "fh", publishDate: "2019-10-08" });
+getTitle({ title: '标题', author: 'fh', publishDate: '2019-10-08' });
 ```
 
 这样就会提示出错。
@@ -220,5 +217,5 @@ let arr: Array<number> = [1, 2, 3];
 TypeScript 里还有一个概念，叫 tuple，元组，它是一个有限元素数量的数组，但是呢每个元素需要分别指定是什么类型，比如我这里有一个三元组，就是说这个数组有三个元素，然后我规定第一个元素是 number 类型，第二个元素是 string 类型，第三个元素是 boolean 布尔类型，那么可以这样定义 `let tup: [number, string, boolean]` ，然后给它赋上合适的值 `[1, "fh", true]` ：
 
 ```typescript
-let tup: [number, string, boolean] = [1, "fh", true];
+let tup: [number, string, boolean] = [1, 'fh', true];
 ```
