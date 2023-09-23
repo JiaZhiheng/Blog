@@ -107,8 +107,8 @@ function toNext() {
 
 // 滑动至某一页
 function to(index) {
-  indexCounter.value = (cardNum - index) % cardNum;
   stopPlay();
+  indexCounter.value = (cardNum - index) % cardNum;
   startPlay();
 }
 
@@ -129,6 +129,7 @@ function getCurrentIndex() {
 
 // 开始播放
 function startPlay() {
+  
   if (props.turnDirection) {
     playIntervalId.value = setInterval(toNext, props.interval);
   } else {
@@ -141,17 +142,15 @@ function stopPlay() {
   clearInterval(playIntervalId.value);
 }
 
+// 初始化
+function init() {
+  stopPlay();
+  if (props.immediate) props.turnDirection ? toNext() : toPrev();
+  startPlay();
+}
+
 onMounted(() => {
-  setTimeout(() => {
-    if (props.immediate) {
-      if (props.turnDirection) {
-        toNext();
-      } else {
-        toPrev();
-      }
-    }
-    startPlay();
-  }, 1400);
+  setTimeout(init(), 1400);
 });
 
 onUnmounted(() => {
