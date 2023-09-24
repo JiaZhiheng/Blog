@@ -129,12 +129,7 @@ function getCurrentIndex() {
 
 // 开始播放
 function startPlay() {
-  
-  if (props.turnDirection) {
-    playIntervalId.value = setInterval(toNext, props.interval);
-  } else {
-    playIntervalId.value = setInterval(toPrev, props.interval);
-  }
+  playIntervalId.value = setInterval(props.turnDirection ? toNext : toPrev, props.interval);
 }
 
 // 暂停播放
@@ -150,7 +145,7 @@ function init() {
 }
 
 onMounted(() => {
-  setTimeout(init(), 1400);
+  setTimeout(init, 1400);
 });
 
 onUnmounted(() => {
