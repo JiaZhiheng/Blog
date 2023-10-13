@@ -45,6 +45,14 @@ export default defineConfig({
   /* Customization 定制化 */
   markdown: {
     // 配置 Markdown 解析器选项
+    math: true,
+    container: {
+      tipLabel: '提示',
+      warningLabel: '警告',
+      dangerLabel: '危险',
+      infoLabel: '信息',
+      detailsLabel: '详细信息'
+    },
     theme: { light: 'github-light', dark: 'github-dark' }, // https://github.com/shikijs/shiki/blob/main/docs/themes.md
     lineNumbers: false,
     anchors: {
