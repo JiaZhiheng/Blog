@@ -8,6 +8,8 @@
       :transition-style="transitionStyle"
       :slides-per-view="slidesPerView"
       :space-between="spaceBetween"
+      :interval="interval"
+      :transform="transform"
     >
       <slot></slot>
     </carousel-context>
@@ -54,7 +56,7 @@ const props = defineProps({
     type: String,
     default: 'fade',
     validator: (value) => {
-      return ['slide', 'fade'].includes(value);
+      return ['slide', 'fade', 'roll'].includes(value);
     }
   },
   turnDirection: {
@@ -94,6 +96,7 @@ const props = defineProps({
 const cardNum = useSlots().default()[0].children.length;
 const indexCounter = ref(0);
 const playIntervalId = ref(null);
+const transform = ref(0);
 
 // 滑动至前一页 (自动)
 function toPrev() {
@@ -115,11 +118,13 @@ function to(index) {
 // 滑动至前一页 (手动)
 function prev() {
   to(getCurrentIndex() - 1);
+  transform.value = (transform.value - 1) % cardNum;
 }
 
 // 滑动至后一页 (手动)
 function next() {
   to(getCurrentIndex() + 1);
+  transform.value = (transform.value + 1) % cardNum;
 }
 
 // 获取当前页

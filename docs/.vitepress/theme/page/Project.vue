@@ -65,10 +65,12 @@ const config = ref([
     config: horizontalConfig,
     type: 'horizontal',
     direction: 'horizontal',
-    effect: 'slide',
+    effect: 'roll',
+    showArrow: true,
+    showDots: true,
     slidesPerView: 4,
     spaceBetween: 16,
-    transitionStyle: 'all 4000ms linear',
+    transitionStyle: 'all 300ms linear',
     immediate: true
   }
 ]);
@@ -99,7 +101,7 @@ const getCarouselComponent = (type) => {
 
   &__carousel {
     width: 1280px;
-    height: 820px;
+    height: 840px;
     display: grid;
     grid-template-columns: 3fr 1fr;
     grid-template-rows: 2fr 1fr;
@@ -124,6 +126,7 @@ const getCarouselComponent = (type) => {
       width: 100%;
       padding: 0 8px;
       margin: 8px 0;
+      overflow: hidden;
     }
 
     &--horizontal {
@@ -134,6 +137,7 @@ const getCarouselComponent = (type) => {
       width: calc(100% - 16px);
       padding: 8px 0;
       margin: 0 8px;
+      // overflow: hidden;
     }
   }
 }

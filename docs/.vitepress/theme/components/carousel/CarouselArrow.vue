@@ -33,15 +33,19 @@
   </div>
 </template>
 <script setup>
+import { throttle } from '../../util/util';
 const emit = defineEmits(['prev', 'next']);
 
-function handlePrev() {
+function handlePrevThrottled() {
   emit('prev');
 }
 
-function handleNext() {
+function handleNextThrottled() {
   emit('next');
 }
+
+const handlePrev = throttle(handlePrevThrottled, 300, true);
+const handleNext = throttle(handleNextThrottled, 300, true);
 </script>
 <style scoped lang="scss">
 .arrow {
