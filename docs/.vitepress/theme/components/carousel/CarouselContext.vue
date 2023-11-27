@@ -56,7 +56,7 @@ function generateCardArray(cardNum, slidesPerView, direction, effect, spaceBetwe
     return direction === 'horizontal' ? `translateX(${offset})` : `translateY(${offset})`;
   }
   for (let i = 0; i < cardNum; i++) {
-    const style = { display: 'block' };
+    const style = { visibility: 'visible' };
     if (effect === 'slide') {
       if (i <= slidesPerView) {
         style.transform = getTransformValue(i, false);
@@ -103,7 +103,7 @@ function itemStyle(index) {
 }
 
 .card-item {
-  display: none;
+  visibility: hidden;
   position: absolute;
   width: 100%;
   height: 100%;
