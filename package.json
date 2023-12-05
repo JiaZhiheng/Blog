@@ -23,6 +23,7 @@
     "vitepress": "^1.0.0-rc.31"
   },
   "dependencies": {
-    "markdown-it-mathjax3": "^4.3.2"
+    "markdown-it-mathjax3": "^4.3.2",
+    "yarn": "^1.22.21"
   }
 }
