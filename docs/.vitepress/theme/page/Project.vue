@@ -32,7 +32,8 @@
 
 <script setup>
 import { ref } from 'vue';
-import Carousel from '@/components/carousel/Carousel.vue';
+import carousel from 'vue3-carousel-component';
+import 'vue3-carousel-component/dist/style.css';
 import CardFade from '@/components/card/CardFade.vue';
 import CardVertical from '@/components/card/CardVertical.vue';
 import CardHorizontal from '@/components/card/CardHorizontal.vue';
@@ -99,7 +100,7 @@ const getCarouselComponent = (type) => {
 
   &__carousel {
     width: 1280px;
-    height: 820px;
+    height: 810px;
     display: grid;
     grid-template-columns: 3fr 1fr;
     grid-template-rows: 2fr 1fr;
