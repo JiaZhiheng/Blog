@@ -94,13 +94,13 @@ const getCarouselComponent = (type) => {
   align-items: center;
 
   &__wrap {
-    max-width: 1280px;
+    max-width: 1312px;
     margin: 0 auto;
   }
 
   &__carousel {
-    width: 1280px;
-    height: 810px;
+    width: 1312px;
+    height: 840px;
     display: grid;
     grid-template-columns: 3fr 1fr;
     grid-template-rows: 2fr 1fr;
