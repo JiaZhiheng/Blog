@@ -37,6 +37,7 @@ import CardFade from '@/components/card/CardFade.vue';
 import CardVertical from '@/components/card/CardVertical.vue';
 import CardHorizontal from '@/components/card/CardHorizontal.vue';
 import { fadeConfig, horizontalConfig, verticalConfig } from '@/components/card/card.config';
+import 'vue3-carousel-component/dist/style.css';
 
 const config = ref([
   {

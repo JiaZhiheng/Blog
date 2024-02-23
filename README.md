@@ -4,18 +4,13 @@
 
 #### 多端适配
 
-移动端:仿照 appstore => 找到触控拖拽的方法<br/>
-桌面端:水平轮播 hover 样式 => 挑选 hover 样式<br/>
-| iPhone 12 Pro | iPad Pro 12.9 | MacBook Air M2 13.6 |iMac M1|
-| :--: | :--: | :--: |:--:|
-| 390 \* 844 | 1366 \* 1024 | 1710 \* 1112 |2240 \* 1260|
+移动端:仿照 appstore => 找到触控拖拽的方法<br/> 桌面端:水平轮播 hover 样式 => 挑选 hover 样式<br/> | iPhone 12 Pro | iPad Pro 12.9 | MacBook Air M2 13.6 |iMac M1| | :--: | :--: | :--: |:--:| | 390 \* 844 | 1366 \* 1024 | 1710 \* 1112 |2240 \* 1260|
 
 加社交链接 icon // 暂时搁置<br/>
 
 #### 检查
 
-每月检查 pagespeed // 10 号<br/>
-每周检查 algolia<br/>
+每月检查 pagespeed // 10 号<br/> 每周检查 algolia<br/>
 
 #### 功能需求
 
@@ -23,24 +18,15 @@
 
 #### 内容更新
 
-更新首页文案<br/>
-资料内容改为 markdown 格式<br/>
-《给产品经理讲技术》归纳整理<br/>
-《大话设计模式》归纳整理<br/>
+更新首页文案<br/> 资料内容改为 markdown 格式<br/> 《给产品经理讲技术》归纳整理<br/> 《大话设计模式》归纳整理<br/>
 
 #### 分支结构
 
-添加 Github 主页个人介绍<br/>
-新建分支 develop (正式版 vitepress 上线后)<br/>
+添加 Github 主页个人介绍<br/> 新建分支 develop (正式版 vitepress 上线后)<br/>
 
 #### 作品更新
 
-轮播图组件<br/>
-小菊记账<br/>
-iOS 版<br/>
-Android 版<br/>
-小程序版<br/>
-网页版<br/>
+轮播图组件<br/> 小菊记账<br/> iOS 版<br/> Android 版<br/> 小程序版<br/> 网页版<br/>
 
 ### Node.js 版本
 
@@ -64,6 +50,12 @@ yarn docs:dev
 
 ```sh [yarn]
 yarn add vitepress@latest
+```
+
+### 更新所有依赖
+
+```sh [yarn]
+yarn upgrade
 ```
 
 ### 文件目录
