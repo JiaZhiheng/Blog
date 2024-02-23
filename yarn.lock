@@ -2003,7 +2003,7 @@ vue-eslint-parser@^9.4.2:
     lodash "^4.17.21"
     semver "^7.3.6"
 
-vue3-carousel-component@^1.0.0-alpha.3:
+vue3-carousel-component@^1.0.0-alpha.5:
   version "1.0.0-alpha.5"
   resolved "https://registry.yarnpkg.com/vue3-carousel-component/-/vue3-carousel-component-1.0.0-alpha.5.tgz#b061624bcc268b90c6b85711a731f20a048439ae"
   integrity sha512-+fcg4BU7NqAD1DlWJxU79naYHfQbcd+svOIogehISFJ6o4u8pfdiFpPHfXJAj56zfPUEufmfMaxPoK40qrwJeA==
