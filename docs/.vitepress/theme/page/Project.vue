@@ -33,7 +33,6 @@
 <script setup>
 import { ref } from 'vue';
 import carousel from 'vue3-carousel-component';
-import 'vue3-carousel-component/dist/style.css';
 import CardFade from '@/components/card/CardFade.vue';
 import CardVertical from '@/components/card/CardVertical.vue';
 import CardHorizontal from '@/components/card/CardHorizontal.vue';
