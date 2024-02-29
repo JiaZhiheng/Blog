@@ -6,7 +6,6 @@
           v-for="carouselItem in config"
           :key="carouselItem.id"
           :class="`carousel carousel--${carouselItem.type}`"
-          :type="carouselItem.type"
           :direction="carouselItem.direction"
           :effect="carouselItem.effect"
           :turn-direction="carouselItem.turnDirection"
@@ -17,6 +16,9 @@
           :immediate="carouselItem.immediate"
           :show-arrow="carouselItem.showArrow"
           :show-dots="carouselItem.showDots"
+          :arrow-placement="carouselItem.arrowPlacement"
+          :dot-placement="carouselItem.dotPlacement"
+          :delay="carouselItem.delay"
         >
           <component
             v-for="item in carouselItem.config"
@@ -49,7 +51,12 @@ const config = ref([
     showArrow: true,
     showDots: true,
     slidesPerView: 1,
-    transitionStyle: 'all 300ms linear'
+    transitionStyle: 'all 300ms linear',
+    showArrow: 'hover',
+    showDots: 'hover',
+    dotPlacement: 'bottom',
+    arrowPlacement: 'center',
+    delay: 1400
   },
   {
     id: 2,
@@ -59,7 +66,10 @@ const config = ref([
     effect: 'slide',
     slidesPerView: 2,
     spaceBetween: 16,
-    transitionStyle: 'all 300ms linear'
+    transitionStyle: 'all 300ms linear',
+    showArrow: 'never',
+    showDots: 'never',
+    delay: 1400
   },
   {
     id: 3,
@@ -70,7 +80,10 @@ const config = ref([
     slidesPerView: 4,
     spaceBetween: 16,
     transitionStyle: 'all 4000ms linear',
-    immediate: true
+    immediate: true,
+    showArrow: 'never',
+    showDots: 'never',
+    delay: 1400
   }
 ]);
 
