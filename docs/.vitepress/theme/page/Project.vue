@@ -4,8 +4,8 @@
       <div class="project__carousel">
         <carousel
           v-for="carouselItem in config"
-          :key="carouselItem.id"
-          :class="`carousel carousel--${carouselItem.type}`"
+          :key="carouselItem.type"
+          :class="`carousel carousel--${carouselItem.effect}`"
           :direction="carouselItem.direction"
           :effect="carouselItem.effect"
           :turn-direction="carouselItem.turnDirection"
@@ -13,7 +13,6 @@
           :space-between="carouselItem.spaceBetween"
           :interval="carouselItem.interval"
           :transition-style="carouselItem.transitionStyle"
-          :immediate="carouselItem.immediate"
           :show-arrow="carouselItem.showArrow"
           :show-dots="carouselItem.showDots"
           :arrow-placement="carouselItem.arrowPlacement"
@@ -23,7 +22,7 @@
           <component
             v-for="item in carouselItem.config"
             :key="item.id"
-            :is="getCarouselComponent(carouselItem.type)"
+            :is="getCarouselComponent(carouselItem.effect)"
             :item="item"
           />
         </carousel>
@@ -36,16 +35,14 @@
 import { ref } from 'vue';
 import carousel from 'vue3-carousel-component';
 import CardFade from '@/components/card/CardFade.vue';
-import CardVertical from '@/components/card/CardVertical.vue';
-import CardHorizontal from '@/components/card/CardHorizontal.vue';
-import { fadeConfig, horizontalConfig, verticalConfig } from '@/components/card/card.config';
+import CardSlide from '@/components/card/CardSlide.vue';
+import CardScroll from '@/components/card/CardScroll.vue';
+import { fadeConfig, scrollConfig, slideConfig } from '@/components/card/card.config';
 import 'vue3-carousel-component/dist/style.css';
 
 const config = ref([
   {
-    id: 1,
     config: fadeConfig,
-    type: 'fade',
     direction: 'horizontal',
     effect: 'fade',
     showArrow: true,
@@ -59,9 +56,7 @@ const config = ref([
     delay: 1400
   },
   {
-    id: 2,
-    config: verticalConfig,
-    type: 'vertical',
+    config: slideConfig,
     direction: 'vertical',
     effect: 'slide',
     slidesPerView: 2,
@@ -72,28 +67,25 @@ const config = ref([
     delay: 1400
   },
   {
-    id: 3,
-    config: horizontalConfig,
-    type: 'horizontal',
+    config: scrollConfig,
     direction: 'horizontal',
-    effect: 'slide',
+    effect: 'scroll',
     slidesPerView: 4,
     spaceBetween: 16,
     transitionStyle: 'all 4000ms linear',
-    immediate: true,
     showArrow: 'never',
     showDots: 'never',
     delay: 1400
   }
 ]);
 
-const getCarouselComponent = (type) => {
+const getCarouselComponent = (effect) => {
   const components = {
     fade: CardFade,
-    vertical: CardVertical,
-    horizontal: CardHorizontal
+    slide: CardSlide,
+    scroll: CardScroll
   };
-  return components[type] || null;
+  return components[effect] || null;
 };
 </script>
 
@@ -130,7 +122,7 @@ const getCarouselComponent = (type) => {
       margin: 0;
     }
 
-    &--vertical {
+    &--slide {
       grid-area: 1/2/2/3;
       animation: bounceInRight 1s both;
       animation-delay: 0.2s;
@@ -140,7 +132,7 @@ const getCarouselComponent = (type) => {
       margin: 8px 0;
     }
 
-    &--horizontal {
+    &--scroll {
       grid-area: 2/1/3/3;
       animation: bounceInUp 1s both;
       animation-delay: 0.4s;

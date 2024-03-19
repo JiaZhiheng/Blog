@@ -616,11 +616,6 @@
     "@vue/compiler-dom" "3.4.21"
     "@vue/shared" "3.4.21"
 
-"@vue/devtools-api@^6.5.1":
-  version "6.6.1"
-  resolved "https://registry.yarnpkg.com/@vue/devtools-api/-/devtools-api-6.6.1.tgz#7c14346383751d9f6ad4bea0963245b30220ef83"
-  integrity sha512-LgPscpE3Vs0x96PzSSB4IGVSZXZBZHpfxs+ZA1d+VEPwHdOXowy/Y2CsvCAIFrf+ssVU1pD1jidj505EpUnfbA==
-
 "@vue/devtools-api@^7.0.14":
   version "7.0.15"
   resolved "https://registry.yarnpkg.com/@vue/devtools-api/-/devtools-api-7.0.15.tgz#875a228fb5154fa4a6678e8cbc4c894089d87cde"
@@ -2008,22 +2003,12 @@ vue-eslint-parser@^9.4.2:
     lodash "^4.17.21"
     semver "^7.3.6"
 
-vue-router@^4.3.0:
-  version "4.3.0"
-  resolved "https://registry.yarnpkg.com/vue-router/-/vue-router-4.3.0.tgz#d5913f27bf68a0a178ee798c3c88be471811a235"
-  integrity sha512-dqUcs8tUeG+ssgWhcPbjHvazML16Oga5w34uCUmsk7i0BcnskoLGwjpa15fqMr2Fa5JgVBrdL2MEgqz6XZ/6IQ==
-  dependencies:
-    "@vue/devtools-api" "^6.5.1"
+vue3-carousel-component@^1.0.0-alpha.9:
+  version "1.0.0-alpha.9"
+  resolved "https://registry.yarnpkg.com/vue3-carousel-component/-/vue3-carousel-component-1.0.0-alpha.9.tgz#8f8d184a2e4ea00232823e66fdf17dbca4b98ccd"
+  integrity sha512-sXdYSLbaqS3umAMrhZ7iGT6dFx+PTGuA6jHzMxL2iQVo7go+XO1sgtBkA1GykyEa1Y4r9hW70CZUr9udsvgY0Q==
 
-vue3-carousel-component@^1.0.0-alpha.6:
-  version "1.0.0-alpha.6"
-  resolved "https://registry.yarnpkg.com/vue3-carousel-component/-/vue3-carousel-component-1.0.0-alpha.6.tgz#20d5a3f54e0676ca36c9a56fc0c86a216220238e"
-  integrity sha512-8yhZZb5IrD0Dx4BJ7vMgzZgZ65DEFemokLOTjo7L+SHZZscdCCBGccz2SsXNVbOOzJZTUikgsFtBH/SrNMLJHg==
-  dependencies:
-    vue "^3.3.11"
-    vue-router "^4.3.0"
-
-vue@^3.3.11, vue@^3.4.19:
+vue@^3.4.19:
   version "3.4.21"
   resolved "https://registry.yarnpkg.com/vue/-/vue-3.4.21.tgz#69ec30e267d358ee3a0ce16612ba89e00aaeb731"
   integrity sha512-5hjyV/jLEIKD/jYl4cavMcnzKwjMKohureP8ejn3hhEjwhWIhWeuzL2kJAjzl/WyVsgPY56Sy4Z40C3lVshxXA==

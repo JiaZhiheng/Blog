@@ -3,8 +3,23 @@ export const fadeConfig = [
     id: 1,
     name: '项目A',
     info: '别催啦，已经在做啦【实际：新建文件夹】',
-    url: 'http://101.43.140.74:64/',
-    source: 'https://github.com/JiaZhiheng',
+    linkList: [
+      {
+        icon: '/Blog/icon/link.svg',
+        text: '项目链接',
+        url: 'http://101.43.140.74:64/'
+      },
+      {
+        icon: '/Blog/icon/github.svg',
+        text: '项目源码',
+        url: 'http://101.43.140.74:64/'
+      },
+      {
+        icon: '/Blog/icon/npmjs.svg',
+        text: 'npm包',
+        url: 'http://101.43.140.74:64/'
+      }
+    ],
     styleObject: {
       backgroundColor: 'rgba(47, 205, 100, 0.2)'
     },
@@ -55,7 +70,7 @@ export const fadeConfig = [
     }
   }
 ];
-export const horizontalConfig = [
+export const scrollConfig = [
   {
     id: 1,
     name: '敬',
@@ -105,7 +120,7 @@ export const horizontalConfig = [
     style: 'background-color:#F7C41E'
   }
 ];
-// export const verticalConfig = [
+// export const slideConfig = [
 // 	{
 // 		id: 0,
 // 		name: "游戏速报",
@@ -139,7 +154,7 @@ export const horizontalConfig = [
 // 		src: "/Blog/4.png",
 // 	},
 // ];
-export const verticalConfig = [
+export const slideConfig = [
   {
     id: 1,
     name: '游戏速报',
