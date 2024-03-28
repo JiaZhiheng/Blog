@@ -20,10 +20,10 @@
     "eslint-plugin-vue": "^9.17.0",
     "prettier": "^3.0.3",
     "sass": "^1.66.1",
-    "vitepress": "^1.0.0-rc.44"
+    "vitepress": "^1.0.1"
   },
   "dependencies": {
     "markdown-it-mathjax3": "^4.3.2",
-    "vue3-carousel-component": "^1.0.0-alpha.9"
+    "vue3-carousel-component": "^1.0.0-alpha.12"
   }
 }

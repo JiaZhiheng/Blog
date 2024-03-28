@@ -1,73 +1,223 @@
 export const fadeConfig = [
   {
-    id: 1,
-    name: '项目A',
-    info: '别催啦，已经在做啦【实际：新建文件夹】',
+    name: 'Vue3-Carousel-Component',
+    style: {
+      backgroundColor: 'rgba(80, 190, 250, 0.2)',
+      color: 'rgb(80, 190, 250)',
+      lineHeight: '1.4'
+      // backgroundColor: '#fff'
+    },
+    info: {
+      name: {
+        content: 'Vue3-Carousel-Component',
+        style: {
+          fontSize: '24px',
+          fontWeight: 'bold'
+          // color: '#1f1d2b'
+        }
+      },
+      title: {
+        content: '轮播图组件',
+        style: {
+          fontSize: '30px',
+          fontWeight: 'bold'
+          // color: '#3b3948'
+        }
+      },
+      descriptionList: {
+        content: [
+          'Vue3-Carousel-Component 是一个用 Vue 3 构建的轮播组件。提供了丰富的功能和灵活性，用于创建现代化的轮播效果。',
+          '这个组件利用 Vue 3 的组合式 API 和响应式特性，为开发者提供了一种易于使用且高度可定制的轮播解决方案。通过 Vue3-Carousel-Component，开发者可以创建流畅的图片、视频或任何内容的滑动展示，并且能够很方便地集成到 Vue 3 项目中。'
+        ],
+        style: {
+          // color: '#9195a1'
+        }
+      }
+    },
+    img: {
+      src: '../../../../public/project/carousel.png',
+      alt: 'Vue3-Carousel-Component',
+      style: {
+        top: '64px',
+        right: '64px',
+        width: '384px',
+        height: '384px',
+        position: 'absolute'
+      }
+    },
     linkList: [
       {
         icon: '/Blog/icon/link.svg',
         text: '项目链接',
-        url: 'http://101.43.140.74:64/'
+        url: 'https://jiazhiheng.github.io/vue3-carsouel-component/'
       },
       {
         icon: '/Blog/icon/github.svg',
         text: '项目源码',
-        url: 'http://101.43.140.74:64/'
+        url: 'https://github.com/JiaZhiheng/vue3-carsouel-component'
       },
       {
         icon: '/Blog/icon/npmjs.svg',
         text: 'npm包',
-        url: 'http://101.43.140.74:64/'
+        url: 'https://www.npmjs.com/package/vue3-carousel-component'
       }
-    ],
-    styleObject: {
-      backgroundColor: 'rgba(47, 205, 100, 0.2)'
-    },
-    infoStyle: {
-      color: 'rgb(47, 205, 100)'
-    }
+    ]
   },
   {
-    id: 2,
     name: '项目B',
-    info: '别催啦，已经在做啦【实际：新建文件夹】',
-    description: '',
-    url: 'http://101.43.140.74:64/',
-    source: 'https://github.com/JiaZhiheng',
-    styleObject: {
-      backgroundColor: 'rgba(80, 190, 250, 0.2)'
+    style: {
+      backgroundColor: 'rgba(47, 205, 100, 0.2)',
+      color: 'rgb(47, 205, 100)'
     },
-    infoStyle: {
-      color: 'rgb(80, 190, 250)'
-    }
+    info: {
+      name: {
+        content: 'Vue3-Carousel-Component',
+        style: {}
+      },
+      title: {
+        content: '轮播图组件',
+        style: {}
+      },
+      descriptionList: {
+        content: [
+          'Vue3-Carousel-Component 是一个用 Vue 3 构建的轮播组件。提供了丰富的功能和灵活性，用于创建现代化的轮播效果。',
+          '这个组件利用 Vue 3 的组合式 API 和响应式特性，为开发者提供了一种易于使用且高度可定制的轮播解决方案。通过 Vue3-Carousel-Component，开发者可以创建流畅的图片、视频或任何内容的滑动展示，并且能够很方便地集成到 Vue 3 项目中。'
+        ],
+        style: {}
+      }
+    },
+    img: {
+      src: '../../../../public/project/carousel.png',
+      alt: 'Vue3-Carousel-Component',
+      style: {
+        top: '64px',
+        right: '64px',
+        width: '384px',
+        height: '384px',
+        position: 'absolute'
+      }
+    },
+    linkList: [
+      {
+        icon: '/Blog/icon/link.svg',
+        text: '项目链接',
+        url: 'https://jiazhiheng.github.io/vue3-carsouel-component/'
+      },
+      {
+        icon: '/Blog/icon/github.svg',
+        text: '项目源码',
+        url: 'https://github.com/JiaZhiheng/vue3-carsouel-component'
+      },
+      {
+        icon: '/Blog/icon/npmjs.svg',
+        text: 'npm包',
+        url: 'https://www.npmjs.com/package/vue3-carousel-component'
+      }
+    ]
   },
   {
-    id: 3,
     name: '项目C',
-    info: '别催啦，已经在做啦【实际：新建文件夹】',
-    description: '',
-    url: 'http://101.43.140.74:64/',
-    source: 'https://github.com/JiaZhiheng',
-    styleObject: {
-      backgroundColor: 'rgba(146, 102, 214, 0.2)'
-    },
-    infoStyle: {
+    style: {
+      backgroundColor: 'rgba(146, 102, 214, 0.2)',
       color: 'rgb(146, 102, 214)'
-    }
+    },
+    info: {
+      name: {
+        content: 'Vue3-Carousel-Component',
+        style: {}
+      },
+      title: {
+        content: '轮播图组件',
+        style: {}
+      },
+      descriptionList: {
+        content: [
+          'Vue3-Carousel-Component 是一个用 Vue 3 构建的轮播组件。提供了丰富的功能和灵活性，用于创建现代化的轮播效果。',
+          '这个组件利用 Vue 3 的组合式 API 和响应式特性，为开发者提供了一种易于使用且高度可定制的轮播解决方案。通过 Vue3-Carousel-Component，开发者可以创建流畅的图片、视频或任何内容的滑动展示，并且能够很方便地集成到 Vue 3 项目中。'
+        ],
+        style: {}
+      }
+    },
+    img: {
+      src: '../../../../public/project/carousel.png',
+      alt: 'Vue3-Carousel-Component',
+      style: {
+        top: '64px',
+        right: '64px',
+        width: '384px',
+        height: '384px',
+        position: 'absolute'
+      }
+    },
+    linkList: [
+      {
+        icon: '/Blog/icon/link.svg',
+        text: '项目链接',
+        url: 'https://jiazhiheng.github.io/vue3-carsouel-component/'
+      },
+      {
+        icon: '/Blog/icon/github.svg',
+        text: '项目源码',
+        url: 'https://github.com/JiaZhiheng/vue3-carsouel-component'
+      },
+      {
+        icon: '/Blog/icon/npmjs.svg',
+        text: 'npm包',
+        url: 'https://www.npmjs.com/package/vue3-carousel-component'
+      }
+    ]
   },
   {
-    id: 4,
     name: '项目D',
-    info: '别催啦，已经在做啦【实际：新建文件夹】',
-    description: '',
-    url: 'http://101.43.140.74:64/',
-    source: 'https://github.com/JiaZhiheng',
-    styleObject: {
-      backgroundColor: 'rgba(254, 141, 85, 0.2)'
-    },
-    infoStyle: {
+    style: {
+      backgroundColor: 'rgba(254, 141, 85, 0.2)',
       color: 'rgb(254, 141, 85)'
-    }
+    },
+    info: {
+      name: {
+        content: 'Vue3-Carousel-Component',
+        style: {}
+      },
+      title: {
+        content: '轮播图组件',
+        style: {}
+      },
+      descriptionList: {
+        content: [
+          'Vue3-Carousel-Component 是一个用 Vue 3 构建的轮播组件。提供了丰富的功能和灵活性，用于创建现代化的轮播效果。',
+          '这个组件利用 Vue 3 的组合式 API 和响应式特性，为开发者提供了一种易于使用且高度可定制的轮播解决方案。通过 Vue3-Carousel-Component，开发者可以创建流畅的图片、视频或任何内容的滑动展示，并且能够很方便地集成到 Vue 3 项目中。'
+        ],
+        style: {}
+      }
+    },
+    img: {
+      src: '../../../../public/project/carousel.png',
+      alt: 'Vue3-Carousel-Component',
+      style: {
+        top: '64px',
+        right: '64px',
+        width: '384px',
+        height: '384px',
+        position: 'absolute'
+      }
+    },
+    linkList: [
+      {
+        icon: '/Blog/icon/link.svg',
+        text: '项目链接',
+        url: 'https://jiazhiheng.github.io/vue3-carsouel-component/'
+      },
+      {
+        icon: '/Blog/icon/github.svg',
+        text: '项目源码',
+        url: 'https://github.com/JiaZhiheng/vue3-carsouel-component'
+      },
+      {
+        icon: '/Blog/icon/npmjs.svg',
+        text: 'npm包',
+        url: 'https://www.npmjs.com/package/vue3-carousel-component'
+      }
+    ]
   }
 ];
 export const scrollConfig = [

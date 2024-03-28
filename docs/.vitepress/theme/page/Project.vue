@@ -4,7 +4,7 @@
       <div class="project__carousel">
         <carousel
           v-for="carouselItem in config"
-          :key="carouselItem.type"
+          :key="carouselItem.effect"
           :class="`carousel carousel--${carouselItem.effect}`"
           :direction="carouselItem.direction"
           :effect="carouselItem.effect"
@@ -18,10 +18,11 @@
           :arrow-placement="carouselItem.arrowPlacement"
           :dot-placement="carouselItem.dotPlacement"
           :delay="carouselItem.delay"
+          :autoplay="carouselItem.autoplay"
         >
           <component
             v-for="item in carouselItem.config"
-            :key="item.id"
+            :key="item.name"
             :is="getCarouselComponent(carouselItem.effect)"
             :item="item"
           />
@@ -53,7 +54,8 @@ const config = ref([
     showDots: 'hover',
     dotPlacement: 'bottom',
     arrowPlacement: 'center',
-    delay: 1400
+    delay: 1400,
+    autoplay: false
   },
   {
     config: slideConfig,
