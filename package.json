@@ -9,7 +9,7 @@
   "scripts": {
     "docs:dev": "vitepress dev docs",
     "docs:build": "vitepress build docs",
-    "docs:serve": "vitepress serve docs"
+    "docs:preview": "vitepress preview docs"
   },
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^6.7.0",
