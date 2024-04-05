@@ -2034,10 +2034,10 @@ vue-eslint-parser@^9.4.2:
     lodash "^4.17.21"
     semver "^7.3.6"
 
-vue3-carousel-component@^1.0.0-alpha.12:
-  version "1.0.0-alpha.12"
-  resolved "https://registry.yarnpkg.com/vue3-carousel-component/-/vue3-carousel-component-1.0.0-alpha.12.tgz#524018d8d77d03bce072564cdf3b672eb695cb1b"
-  integrity sha512-uMWuHaJo14vRIKl3tlhYLyRCA+JdwiX2Kt9my8qkNVL4wQq03p4ickqUd40Z0SVLyPbbXdj+FlvziRDnXb3NPw==
+vue3-carousel-component@^1.0.0-alpha.13:
+  version "1.0.0-alpha.13"
+  resolved "https://registry.yarnpkg.com/vue3-carousel-component/-/vue3-carousel-component-1.0.0-alpha.13.tgz#2b8c63842a0ea939a3e5c4655c7c162884816b77"
+  integrity sha512-u+QrG8EW2X72iCsTu0TDcmLVTEwTwCAGVSPGHXrs0nmZFrQriwI6eVfpVi92bg3XyOcDNoMwtTo4p2hqfR/TbQ==
 
 vue@^3.4.21:
   version "3.4.21"

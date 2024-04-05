@@ -18,7 +18,6 @@
           :arrow-placement="carouselItem.arrowPlacement"
           :dot-placement="carouselItem.dotPlacement"
           :delay="carouselItem.delay"
-          :autoplay="carouselItem.autoplay"
         >
           <component
             v-for="item in carouselItem.config"
@@ -54,8 +53,7 @@ const config = ref([
     showDots: 'hover',
     dotPlacement: 'bottom',
     arrowPlacement: 'center',
-    delay: 1400,
-    autoplay: false
+    delay: 1400
   },
   {
     config: slideConfig,
@@ -118,30 +116,36 @@ const getCarouselComponent = (effect) => {
       grid-area: 1/1/2/2;
       animation: bounceInLeft 1s both;
       animation-delay: 0s;
-      height: 100%;
-      width: 100%;
-      padding: 8px;
-      margin: 0;
+      width: 968px;
+      height: 544px;
+      padding: 0;
+      margin: 8px;
+      position: relative;
+      overflow: hidden;
     }
 
     &--slide {
       grid-area: 1/2/2/3;
       animation: bounceInRight 1s both;
       animation-delay: 0.2s;
-      height: calc(100% - 16px);
-      width: 100%;
+      width: 328px;
+      height: 544px;
       padding: 0 8px;
       margin: 8px 0;
+      position: relative;
+      overflow: hidden;
     }
 
     &--scroll {
       grid-area: 2/1/3/3;
       animation: bounceInUp 1s both;
       animation-delay: 0.4s;
-      height: 100%;
-      width: calc(100% - 16px);
+      width: 1296px;
+      height: 280px;
       padding: 8px 0;
       margin: 0 8px;
+      position: relative;
+      overflow: hidden;
     }
   }
 }

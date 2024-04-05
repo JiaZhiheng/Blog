@@ -35,7 +35,7 @@ export const fadeConfig = [
       }
     },
     img: {
-      src: '../../../../public/project/carousel.png',
+      src: '/Blog/project/carousel.png',
       alt: 'Vue3-Carousel-Component',
       style: {
         top: '64px',
@@ -223,8 +223,9 @@ export const fadeConfig = [
 export const scrollConfig = [
   {
     id: 1,
-    name: '敬',
-    info: '前端开发工程师',
+    name: '定制课程表',
+    icon: '/Blog/icon/timetable.svg',
+    link: 'https://jiazhiheng.github.io/brillant-design/school-timetable/index.html',
     style: 'background-color:#5E95FA'
   },
   {

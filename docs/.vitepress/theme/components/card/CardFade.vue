@@ -10,7 +10,7 @@
           >{{ description }}</div
         >
       </div>
-      <img :style="item.img.style" src="/project/carousel.png" :alt="item.img.alt" />
+      <img :style="item.img.style" :src="item.img.src" :alt="item.img.alt" />
     </div>
     <div class="item-link">
       <div class="item-link-content" v-for="link in item.linkList">
@@ -28,22 +28,25 @@ const props = defineProps({
 
 <style scoped>
 .item {
-  height: 100%;
-  width: 100%;
+  width: 968px;
+  height: 544px;
   border-radius: 12px;
   padding: 20px;
 }
+
 .item-content {
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
+
 .item-info {
   display: flex;
   flex-direction: column;
   gap: 16px;
   width: 50%;
 }
+
 .item-link {
   position: absolute;
   bottom: 20px;
@@ -51,9 +54,11 @@ const props = defineProps({
   display: flex;
   gap: 16px;
 }
+
 .item-link-content {
   display: flex;
 }
+
 .item-link-svg {
   width: 24px;
   height: 24px;

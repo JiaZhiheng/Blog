@@ -1,8 +1,11 @@
 <template>
   <div class="item" :style="item.style">
-    <div class="item-in">
-      <span>{{ item.name }}</span>
-    </div>
+    <a class="link" :href="item.link" target="_blank">
+      <div class="title">
+        <img class="img" v-if="item.icon" :src="item.icon" :alt="item.name" />
+        <span class="name">{{ item.name }}</span>
+      </div>
+    </a>
   </div>
 </template>
 
@@ -14,21 +17,34 @@ const props = defineProps({
 
 <style scoped>
 .item {
-  height: 100%;
-  width: 100%;
+  width: 312px;
+  height: 264px;
   border-radius: 12px;
-  font-size: 40px;
-  font-weight: bold;
-  color: #333;
+  position: relative;
 }
-.item-in {
+
+.link {
+  display: block;
+  width: 100%;
   height: 100%;
-  border-radius: 12px;
+  padding: 24px;
+}
+
+.title {
   display: flex;
-  justify-content: center;
+  gap: 12px;
+  justify-content: flex-start;
   align-items: center;
-  font-size: 40px;
+}
+
+.img {
+  width: 64px;
+  height: 64px;
+}
+
+.name {
+  font-size: 24px;
   font-weight: bold;
-  color: #333;
+  color: #fff;
 }
 </style>
