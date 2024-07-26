@@ -15,13 +15,6 @@
   margin-bottom: 4px;
 }
 
-.VPHome .container {
-  position: relative;
-  transform-style: preserve-3d;
-  transition: 0.8s;
-  backface-visibility: hidden;
-}
-
 /* 主页图片 */
 .image .image-container {
   transform: translate(0, 0);
