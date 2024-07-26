@@ -28,13 +28,13 @@ true
 折线图默认主题
 operator
 false
-TemplateRef<void>
+TemplateRef
 自定义传入模板
 有标题、tabs
 extra
 false
 
-TemplateRef<void>
+TemplateRef
 
 自定义传入模板
 有radio button
