@@ -103,7 +103,7 @@ export default defineConfig({
       // },
       {
         text: '工作',
-        link: '/guide/work/01-开发问题以及解决方案/01-Angular项目集成TailwindCSS'
+        link: '/guide/work/02-轮播图笔记/01-轮播图卡片重叠问题'
       },
       { text: '资料', link: '/guide/material/regularExpression' }
     ],
