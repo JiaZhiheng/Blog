@@ -20,7 +20,7 @@ export default defineConfig({
     ]
   ],
   lang: 'zh-CN', // 语言
-  base: '/Blog/', // GitHub部署配置
+  base: '/Blog', // GitHub部署配置
 
   /* Routing 路由 */
   cleanUrls: true, // 清洁网址
