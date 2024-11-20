@@ -230,81 +230,55 @@ export const scrollConfig = [
   },
   {
     id: 2,
-    name: '请',
-    info: '后端开发工程师',
+    name: '俄罗斯方块',
+    icon: '/Blog/icon/tetris.svg',
+    link: 'https://jiazhiheng.github.io/brillant-design/Gameboy%20Tetris%20Clone/index.html',
     style: 'background-color:#FE8D55'
   },
   {
     id: 3,
-    name: '期',
-    info: '测试工程师',
+    name: '贪吃蛇',
+    icon: '/Blog/icon/greedy-snake.svg',
+    link: 'https://jiazhiheng.github.io/brillant-design/greedy-snake/index.html',
     style: 'background-color:#9266D6'
   },
   {
     id: 4,
-    name: '待',
-    info: '数据分析工程师',
+    name: '2048',
+    icon: '/Blog/icon/matrix.svg',
+    link: 'https://jiazhiheng.github.io/brillant-design/2048%20Game/index.html',
     style: 'background-color:#2FCD64'
   },
   {
     id: 5,
-    name: '尚',
-    info: '前端开发工程师',
-    style: 'background-color:#A9D71A'
+    name: '定制课程表',
+    icon: '/Blog/icon/timetable.svg',
+    link: 'https://jiazhiheng.github.io/brillant-design/school-timetable/index.html',
+    style: 'background-color:#5E95FA'
   },
   {
     id: 6,
-    name: '未',
-    info: '后端开发工程师',
-    style: 'background-color:#50BEFA'
+    name: '俄罗斯方块',
+    icon: '/Blog/icon/tetris.svg',
+    link: 'https://jiazhiheng.github.io/brillant-design/Gameboy%20Tetris%20Clone/index.html',
+    style: 'background-color:#FE8D55'
   },
   {
     id: 7,
-    name: '完',
-    info: '测试工程师',
-    style: 'background-color:#EAAA71'
+    name: '贪吃蛇',
+    icon: '/Blog/icon/greedy-snake.svg',
+    link: 'https://jiazhiheng.github.io/brillant-design/greedy-snake/index.html',
+    style: 'background-color:#9266D6'
   },
   {
     id: 8,
-    name: '成',
-    info: '数据分析工程师',
-    style: 'background-color:#F7C41E'
-  }
+    name: '2048',
+    icon: '/Blog/icon/matrix.svg',
+    link: 'https://jiazhiheng.github.io/brillant-design/2048%20Game/index.html',
+    style: 'background-color:#2FCD64'
+  },
 ];
-// export const slideConfig = [
-// 	{
-// 		id: 0,
-// 		name: "游戏速报",
-// 		info: "游戏内容前沿资讯",
-// 		url: "https://jiazhiheng.github.io/brillant-design/GameDate-demo-master/main.html",
-// 		source: "https://github.com/JiaZhiheng",
-// 		src: "/Blog/1.png",
-// 	},
-// 	{
-// 		id: 0,
-// 		name: "企业官网",
-// 		info: "科技公司响应式首页",
-// 		url: "https://jiazhiheng.github.io/brillant-design/23-fullwebsite-design-agency/index.html",
-// 		source: "https://github.com/JiaZhiheng",
-// 		src: "/Blog/2.png",
-// 	},
-// 	{
-// 		id: 0,
-// 		name: "太空漫游",
-// 		info: "带你探索神秘宇宙",
-// 		url: "https://jiazhiheng.github.io/brillant-design/solar-system-explorer-in-css-only%202/dist/index.html",
-// 		source: "https://github.com/JiaZhiheng",
-// 		src: "/Blog/3.png",
-// 	},
-// 	{
-// 		id: 0,
-// 		name: "求职平台",
-// 		info: "助您找到满意工作",
-// 		url: "https://jiazhiheng.github.io/brillant-design/job-search-platform-ui%202/dist/index.html",
-// 		source: "https://github.com/JiaZhiheng",
-// 		src: "/Blog/4.png",
-// 	},
-// ];
+
 export const slideConfig = [
   {
     id: 1,
