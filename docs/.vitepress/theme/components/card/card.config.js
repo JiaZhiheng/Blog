@@ -282,68 +282,36 @@ export const scrollConfig = [
 export const slideConfig = [
   {
     id: 1,
-    name: '游戏速报',
-    info: '游戏内容前沿资讯',
-    url: 'http://101.43.140.74:51/',
-    source: 'https://github.com/JiaZhiheng',
+    name: '企业官网',
+    info: '科技公司响应式首页',
+    url: 'https://jiazhiheng.github.io/brillant-design/23-fullwebsite-design-agency/index.html',
+    source: 'https://github.com/JiaZhiheng/brillant-design',
     style: 'background-color:#F5E5F4'
   },
   {
     id: 2,
     name: '企业官网',
     info: '科技公司响应式首页',
-    url: 'http://101.43.140.74:64/',
-    source: 'https://github.com/JiaZhiheng',
+    url: 'https://jiazhiheng.github.io/brillant-design/23-fullwebsite-design-agency/index.html',
+    source: 'https://github.com/JiaZhiheng/brillant-design',
     style: 'background-color:#E5E4F6'
   },
   {
     id: 3,
-    name: '太空漫游',
-    info: '带你探索神秘宇宙',
-    url: 'http://101.43.140.74:73/',
-    source: 'https://github.com/JiaZhiheng',
+    name: '企业官网',
+    info: '科技公司响应式首页',
+    url: 'https://jiazhiheng.github.io/brillant-design/23-fullwebsite-design-agency/index.html',
+    source: 'https://github.com/JiaZhiheng/brillant-design',
     style: 'background-color:#E1ECF8'
   },
   {
     id: 4,
-    name: '求职平台',
-    info: '助您找到满意工作',
-    url: 'http://101.43.140.74:56/',
-    source: 'https://github.com/JiaZhiheng',
-    style: 'background-color:#DDF0F1'
-  },
-  {
-    id: 5,
-    name: '游戏速报',
-    info: '游戏内容前沿资讯',
-    url: 'http://101.43.140.74:51/',
-    source: 'https://github.com/JiaZhiheng',
-    style: 'background-color:#DEF1E3'
-  },
-  {
-    id: 6,
     name: '企业官网',
     info: '科技公司响应式首页',
-    url: 'http://101.43.140.74:64/',
-    source: 'https://github.com/JiaZhiheng',
-    style: 'background-color:#E5EED6'
+    url: 'https://jiazhiheng.github.io/brillant-design/23-fullwebsite-design-agency/index.html',
+    source: 'https://github.com/JiaZhiheng/brillant-design',
+    style: 'background-color:#DDF0F1'
   },
-  {
-    id: 7,
-    name: '漫游太阳系',
-    info: '带你探索神秘宇宙',
-    url: 'http://101.43.140.74:73/',
-    source: 'https://github.com/JiaZhiheng',
-    style: 'background-color:#F7F1DB'
-  },
-  {
-    id: 8,
-    name: '求职平台',
-    info: '助您找到满意工作',
-    url: 'http://101.43.140.74:56/',
-    source: 'https://github.com/JiaZhiheng',
-    style: 'background-color:#F8ECDA'
-  }
 ];
 
 /**

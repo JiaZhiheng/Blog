@@ -77,7 +77,6 @@ const config = ref([
     showArrow: 'never',
     showDots: 'never',
     delay: 1400,
-    autoplay: false,
   }
 ]);
 
