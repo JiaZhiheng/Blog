@@ -4,7 +4,12 @@
 import fs from 'fs';
 import path from 'path';
 
-// 定义一个函数，从项目名中提取排序序号和名称
+/**
+ * 从项目名中提取排序序号和名称
+ *
+ * @param item - 项目名字符串
+ * @returns 包含序号和名称的对象
+ */
 function extractOrderAndName(item) {
   // 使用正则表达式匹配项目名，提取序号和名称
   const match = item.match(/^(\d+)?[-_]?(.*)/);
@@ -14,7 +19,13 @@ function extractOrderAndName(item) {
   return { order, name };
 }
 
-// 定义一个生成侧边栏的函数，传入目录路径和基本路径（默认为根路径）
+/**
+ * 生成侧边栏数组
+ *
+ * @param directoryPath - 要生成侧边栏的目录路径
+ * @param basePath - 基本路径（默认为根路径）
+ * @returns 生成的侧边栏数组
+ */
 function generateSidebar(directoryPath, basePath = '/') {
   const sidebar = []; // 初始化空的侧边栏数组
   const items = fs.readdirSync(directoryPath); // 同步读取目录下的所有项目（文件和子目录）
@@ -44,7 +55,7 @@ function generateSidebar(directoryPath, basePath = '/') {
 
     // 判断项目是否为目录
     if (stat.isDirectory()) {
-      // 递归调用generateSidebar函数处理子目录
+      // 递归调用 generateSidebar 函数处理子目录
       const nestedSidebar = generateSidebar(itemPath, basePath + item + '/');
       // 如果子目录有内容，将其添加到侧边栏数组中
       if (nestedSidebar.length > 0) {
@@ -56,19 +67,20 @@ function generateSidebar(directoryPath, basePath = '/') {
         });
       }
     } else if (stat.isFile() && item.endsWith('.md')) {
-      // 判断项目是否为Markdown文件
+      // 判断项目是否为 Markdown 文件
       const { name } = extractOrderAndName(item); // 提取文件名，去除序号
-      const title = name.replace(/\.md$/, ''); // 从文件名中去掉.md后缀，作为侧边栏文本
+      const title = name.replace(/\.md$/, ''); // 从文件名中去掉 .md 后缀，作为侧边栏文本
       sidebar.push({
         text: title, // 文件名作为侧边栏文本
-        link: basePath + item.replace(/\.md$/, '') // 生成该Markdown文件的链接
+        link: basePath + item.replace(/\.md$/, '') // 生成该 Markdown 文件的链接
       });
     }
   });
+
   // 返回生成的侧边栏数组
   return sidebar;
 }
 
-// 导出generateSidebar函数生成的sidebar，以便在其他模块中使用
+// 导出 generateSidebar 函数生成的 sidebar，以便在其他模块中使用
 export { generateSidebar };
 ```
