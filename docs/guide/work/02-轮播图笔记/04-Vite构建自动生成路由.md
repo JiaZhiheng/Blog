@@ -23,12 +23,12 @@ function extractOrderAndName(item) {
  * 生成侧边栏数组
  *
  * @param directoryPath - 要生成侧边栏的目录路径
- * @param basePath - 基本路径（默认为根路径）
  * @returns 生成的侧边栏数组
  */
-function generateSidebar(directoryPath, basePath = '/') {
+function generateSidebar(directoryPath) {
   const sidebar = []; // 初始化空的侧边栏数组
   const items = fs.readdirSync(directoryPath); // 同步读取目录下的所有项目（文件和子目录）
+  const basePath = directoryPath.replace(/^\.\/docs\//, '/').replace(/\\/g, '/'); // 生成基本路径
 
   // 对项目进行排序，根据提取的序号进行排序
   const sortedItems = items.sort((a, b) => {
