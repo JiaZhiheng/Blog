@@ -11,11 +11,10 @@ function extractOrderAndName(item) {
   return { order, name };
 }
 
-// 定义一个生成侧边栏的函数，传入目录路径
-function generateSidebar(directoryPath) {
+// 定义一个生成侧边栏的函数，传入目录路径和基本路径（默认为根路径）
+function generateSidebar(directoryPath, basePath = '/') {
   const sidebar = []; // 初始化空的侧边栏数组
   const items = fs.readdirSync(directoryPath); // 同步读取目录下的所有项目（文件和子目录）
-  const basePath = directoryPath.replace(/^\.\/docs\//, '/').replace(/\\/g, '/'); // 生成基本路径
 
   // 对项目进行排序，根据提取的序号进行排序
   const sortedItems = items.sort((a, b) => {

@@ -109,7 +109,7 @@ export default defineConfig({
     ],
     sidebar: {
       // 侧边栏
-      '/guide/article/': generateSidebar('./docs/guide/article/'),
+      '/guide/article/': generateSidebar('./docs/guide/article/', '/guide/article/'),
       // 项目
       '/guide/project/': [
         {
@@ -123,9 +123,9 @@ export default defineConfig({
         }
       ],
       // 资料
-      '/guide/material/': generateSidebar('./docs/guide/material/'),
+      '/guide/material/': generateSidebar('./docs/guide/material/', '/guide/material/'),
       // 工作
-      '/guide/work/': generateSidebar('./docs/guide/work/')
+      '/guide/work/': generateSidebar('./docs/guide/work/', '/guide/work/')
     },
     aside: true, // 是否开启侧边栏
     outline: [2, 4], // 大纲
