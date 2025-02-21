@@ -3,8 +3,7 @@ import { h } from 'vue';
 import '@/index.css';
 import Project from '@/page/Project.vue'; // 我的项目
 import Author from '@/page/Author.vue'; // 关于作者
-import Linux from '@/page/Linux.vue';
-import Regular from '@/page/Regular.vue';
+import PdfViewer from '@/page/PdfViewer.vue';
 import Hero from '@/components/hero/Hero.vue';
 
 export default {
@@ -21,8 +20,7 @@ export default {
     // 注册全局组件
     app.component('Project', Project);
     app.component('Author', Author);
-    app.component('Linux', Linux);
-    app.component('Regular', Regular);
+    app.component('PdfViewer', PdfViewer);
   },
   setup() {}
 };

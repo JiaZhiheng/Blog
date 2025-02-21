@@ -123,26 +123,7 @@ export default defineConfig({
         }
       ],
       // 资料
-      '/guide/material/': [
-        {
-          text: '正则表达式',
-          items: [
-            {
-              text: '正则表达式',
-              link: '/guide/material/regularExpression'
-            }
-          ]
-        },
-        {
-          text: 'Linux',
-          items: [
-            {
-              text: 'Linux',
-              link: '/guide/material/Linux'
-            }
-          ]
-        }
-      ],
+      '/guide/material/': generateSidebar('./docs/guide/material/', '/guide/material/'),
       // 工作
       '/guide/work/': generateSidebar('./docs/guide/work/', '/guide/work/')
     },
