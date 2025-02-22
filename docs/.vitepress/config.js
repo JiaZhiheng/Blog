@@ -109,23 +109,20 @@ export default defineConfig({
     ],
     sidebar: {
       // 侧边栏
-      '/guide/article/': generateSidebar('./docs/guide/article/', '/guide/article/'),
-      // 项目
-      '/guide/project/': [
-        {
-          text: '项目',
-          items: [
-            {
-              text: '项目',
-              link: '/guide/project/project'
-            }
-          ]
-        }
-      ],
-      // 资料
-      '/guide/material/': generateSidebar('./docs/guide/material/', '/guide/material/'),
-      // 工作
-      '/guide/work/': generateSidebar('./docs/guide/work/', '/guide/work/')
+      '/guide/article/': generateSidebar('/guide/article/'), // 文章
+      // '/guide/project/': [
+      //   {
+      //     text: '项目',
+      //     items: [
+      //       {
+      //         text: '项目',
+      //         link: '/guide/project/project'
+      //       }
+      //     ]
+      //   }
+      // ],
+      '/guide/work/': generateSidebar('/guide/work/'), // 工作
+      '/guide/material/': generateSidebar('/guide/material/', false) // 资料
     },
     aside: true, // 是否开启侧边栏
     outline: [2, 4], // 大纲
