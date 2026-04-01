@@ -1,6 +1,35 @@
+# Dependencies
 node_modules
-.gitignore
-.vscode
-.DS_Store
+
+# Build output
 dist
+
+# VitePress cache
 cache
+.vitepress/cache
+docs/.vitepress/cache
+
+# System files
+.DS_Store
+Thumbs.db
+
+# Editor / IDE
+.vscode
+.idea
+.kiro
+*.swp
+*.swo
+*~
+
+# Logs
+*.log
+npm-debug.log*
+
+# Environment
+.env
+.env.*
+
+# Package manager lock (optional, uncomment if using yarn/pnpm)
+# package-lock.json
+# yarn.lock
+# pnpm-lock.yaml
