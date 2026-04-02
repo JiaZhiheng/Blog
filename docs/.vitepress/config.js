@@ -1,8 +1,10 @@
 import path from 'path';
 import { defineConfig } from 'vitepress';
+import mathjax3 from 'markdown-it-mathjax3'
+import { withMermaid } from 'vitepress-plugin-mermaid'
 import { generateSidebar } from './theme/util/sidebarGenerator'; // 基于文件目录生成 sidebar
 
-export default defineConfig({
+export default withMermaid(defineConfig({
   /* Site Metadata 站点元数据 */
   title: '前端工程师博客', // 网站标题
   titleTemplate: 'Vite & Vue powered static site generator', // 标题的后缀
@@ -59,6 +61,13 @@ export default defineConfig({
       slugify(str) {
         return encodeURIComponent(str);
       }
+    },
+    config: async (md) => {
+      md.use(mathjax3, {
+        tex: {
+          tags: 'all',
+        }
+      })
     }
   },
   vite: {
@@ -215,5 +224,9 @@ export default defineConfig({
     returnToTopLabel: 'Return to top', // 返回顶部标签
     langMenuLabel: 'Change language', // 语言菜单标签
     externalLinkIcon: false // 外部链接图标
+  },
+  // Mermaid 图表配置
+  mermaid: {
+    theme: 'default'
   }
-});
+}));

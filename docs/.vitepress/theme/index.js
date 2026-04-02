@@ -5,6 +5,7 @@ import Project from '@/page/Project.vue'; // 我的项目
 import Author from '@/page/Author.vue'; // 关于作者
 import PdfViewer from '@/page/PdfViewer.vue';
 import Hero from '@/components/hero/Hero.vue';
+import { MermaidMarkdown } from 'vitepress-plugin-mermaid';
 
 export default {
   ...DefaultTheme,
@@ -22,5 +23,12 @@ export default {
     app.component('Author', Author);
     app.component('PdfViewer', PdfViewer);
   },
-  setup() {}
+  setup() {},
+  extends: {
+    markdown: {
+      config(md) {
+        md.use(MermaidMarkdown);
+      }
+    }
+  }
 };

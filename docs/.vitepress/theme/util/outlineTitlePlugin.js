@@ -1,17 +1,14 @@
-module.exports = {
-  name: 'outlineTitlePlugin',
-  enhanceApp({ app }) {
-    app.mixin({
-      computed: {
-        outlineTitle() {
-          const url = window.location.pathname;
-          const segments = url.split('/').filter((segment) => segment !== '');
-          const lastSegment = segments[segments.length - 1];
-          const decodedTitle = decodeURIComponent(lastSegment);
-          const titleWithoutNumber = decodedTitle.replace(/^\d+-/, '');
-          return titleWithoutNumber;
-        }
-      }
-    });
-  }
-};
+import { useRoute } from 'vitepress';
+import { computed } from 'vue';
+
+export function useOutlineTitle() {
+  const route = useRoute();
+  const outlineTitle = computed(() => {
+    const path = route.path;
+    const segments = path.split('/').filter((s) => s !== '');
+    const lastSegment = segments[segments.length - 1];
+    const decoded = decodeURIComponent(lastSegment);
+    return decoded.replace(/^\d+-/, '');
+  });
+  return { outlineTitle };
+}

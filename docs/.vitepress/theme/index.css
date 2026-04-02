@@ -1,3 +1,23 @@
+@font-face {
+  font-family: 'Menlo';
+  src: url('/Blog/font/Menlo_Regular.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+.MathJax {
+  background-color: #000a2008;
+  border-color: #0000000d;
+  border-radius: 5px;
+  border-width: 1px;
+  color: #262626bf;
+  font-family: Menlo, sans-serif;
+  font-size: .75rem;
+  line-height: 1rem;
+  padding: .125rem;
+  white-space: pre-wrap;
+}
+
 :root {
   --vp-home-hero-name-color: transparent;
   --vp-home-hero-name-background: linear-gradient(135deg, #00cafd 50%, #00b0ff 100%);
@@ -193,4 +213,25 @@
   .items .item.grid-6 {
     width: calc(100% / 4);
   }
+}
+
+/* 行内代码颜色改为灰色 */
+:not(pre) > code {
+  color: #0000008c !important;
+}
+
+/* blockquote 内样式：模拟 LeetCode 风格 */
+blockquote {
+  color: #0000008c;
+  font-family: 'Menlo', monospace;
+}
+
+blockquote strong {
+  color: #262626 !important;
+}
+
+blockquote em {
+  color: #0000008c;
+  font-style: normal;
+  font-weight: bold;
 }
