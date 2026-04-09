@@ -114,7 +114,7 @@ export default withMermaid(defineConfig({
         text: '工作',
         link: '/guide/work/02-轮播图笔记/01-轮播图卡片重叠问题'
       },
-      { text: '资料', link: '/guide/material/regularExpression' }
+      { text: '资料', link: '/guide/material/正则表达式速查备忘⼿册' }
     ],
     sidebar: {
       // 侧边栏
